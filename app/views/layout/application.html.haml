@@ -1,0 +1,9 @@
+!!! Strict
+%html{ "xml:lang" => "en-us", :lang => "en-us", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title
+      Fresh Merb App
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/
+    = css_include_tag :master
+  %body
+    = catch_content :for_layout
