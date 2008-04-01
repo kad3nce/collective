@@ -182,7 +182,7 @@ private
   #   => "form_view_spec.rb" # If you're running a RSpec-like suite
   def test_for(filename, kind_of_test) # :nodoc:
     name  = [filename]
-    name << kind_of_test.to_s unless if == :view
+    name << kind_of_test.to_s unless kind_of_test == :view
     name << "spec"
     return name.join("_") + ".rb"
   end
