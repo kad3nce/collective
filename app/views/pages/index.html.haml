@@ -1,0 +1,7 @@
+%h1 Pages
+%p= link_to 'New Page', url(:new_page)
+
+- @pages.each do |page|
+  %ul
+    %li
+      = link_to(page.name, url(:page, page))

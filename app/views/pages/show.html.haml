@@ -1,0 +1,5 @@
+%h2= @page.name
+
+= @page.content_html
+
+%p= link_to 'edit page', url(:edit_page, @page)
