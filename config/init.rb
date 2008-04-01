@@ -53,8 +53,9 @@ dependencies 'merb-action-args', 'merb-assets', 'merb-haml', 'merb_helpers', 'Re
 
 Merb::BootLoader.after_app_loads do
   if Merb.environment == 'development'
+    Merb.logger.info('Auto migrating development database')
     DataMapper::Persistence.auto_migrate! 
-    require './db/seed_dev'
+    require Merb.root / 'db' / 'seed_dev'
   end
   
   require Merb.root / 'lib' / 'core_ext' / 'try'
