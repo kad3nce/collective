@@ -1,3 +1,10 @@
 = Collective
 
 A no-frills Merb wiki
+
+= Features
+
+  * Versioned pages
+  * Textile/Markdown content formatting
+  * Pretty page urls
+  * TODO: Version reverting
