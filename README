@@ -9,13 +9,13 @@ A no-frills wiki built on Merb 0.9.x and DataMapper
   * Pretty page urls
   * TODO: Version reverting
   
-== Caveat Emptor
-
-The development database is auto migrated and seeded at every boot, so don't put anything in there that you want to keep.
-
 == Take It For A Spin
 
   * git clone git://github.com/meekish/collective.git collective
   * cd collective
   * merb
   * open a browser at http://localhost:4000
+  
+== Caveat Emptor
+
+The development database is auto migrated and seeded at every boot, so don't put anything in there that you want to keep.
