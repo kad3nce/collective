@@ -1,10 +1,14 @@
 = Collective
 
-A no-frills Merb wiki
+A no-frills wiki built on Merb 0.9.x and DataMapper
 
-= Features
+== Features
 
   * Versioned pages
   * Textile/Markdown content formatting
   * Pretty page urls
   * TODO: Version reverting
+  
+== Caveat Emptor
+
+The development database is automatically recreated and seeded at every boot, so don't put anything in there that you want to keep.
