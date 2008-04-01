@@ -3,6 +3,7 @@ require 'merb-core'
 require 'spec' # Satiates Autotest and anyone else not using the Rake tasks
 
 Merb.start_environment(:testing => true, :adapter => 'runner', :environment => ENV['MERB_ENV'] || 'test')
+DataMapper::Persistence.auto_migrate! 
 
 Spec::Runner.configure do |config|
   config.include(Merb::Test::ViewHelper)
