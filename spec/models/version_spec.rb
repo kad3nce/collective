@@ -18,6 +18,10 @@ describe Version do
     Version.new(:created_at => creation_time).created_at.should == creation_time
   end
 
+  it 'should have a number field' do
+    Version.new(:number => 10).number.should == 10
+  end
+
   it 'should belong to a page' do
     Version.new(:page => @page).page.should == @page
   end

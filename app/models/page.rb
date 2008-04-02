@@ -1,27 +1,33 @@
 class Page < DataMapper::Base
+  class VersionNotFound < Exception; end
+  
   property :name, :string
   property :slug, :string
+  property :versions_count, :integer, :default => 0
   has_many :versions
   before_save :build_new_version
   before_save :set_slug
+  
   attr_writer :content
-
-  # ============================================
-  # = TODO: This is a brainbuster; refactor it =
-  # ============================================
   def content
-    @content ||= latest_version.try(:content) || ''
+    @content ||= selected_version.try(:content) || ''
   end
 
   def content_html
-    latest_version.try(:content_html) || ''
+    selected_version.try(:content_html) || ''
   end
 
-  # ==================
-  # = TODO: Optimize =
-  # ==================
   def latest_version
-    versions.sort_by(&:created_at).last
+    versions.sort_by(&:number).last
+  end
+  
+  def select_version!(version_number)
+    @selected_version = versions.detect { |version| version.number == version_number } || raise(VersionNotFound)
+    @content = @selected_version.content
+  end
+  
+  def selected_version
+    @selected_version || latest_version
   end
   
   def to_param
@@ -30,7 +36,11 @@ class Page < DataMapper::Base
   
   private
   def build_new_version
-    versions.build(:content => content)
+    # DataMapper not initializing versions_count with default value of zero. Bug?
+    self.versions_count ||= 0
+    
+    self.versions_count += 1
+    versions.build(:content => content, :number => versions_count)
   end
   
   def set_slug
