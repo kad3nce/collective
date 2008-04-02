@@ -4,8 +4,10 @@ class Pages < Application
     display @pages
   end
 
-  def show(id)
+               # I wonder if merb-action-args could conceivably support nil defaults
+  def show(id, version = '')
     @page = Page.first(:slug => id)
+    @page.select_version!(version.to_i) unless version.empty?
     raise NotFound unless @page
     display @page
   end
@@ -15,8 +17,9 @@ class Pages < Application
     render
   end
 
-  def edit(id)
+  def edit(id, version = '')
     @page = Page.first(:slug => id)
+    @page.select_version!(version.to_i) unless version.empty?
     raise NotFound unless @page
     render
   end
@@ -33,21 +36,10 @@ class Pages < Application
   def update(id)
     @page = Page.first(:slug => id)
     raise NotFound unless @page
-    if @page.update_attributes(params[:page])
+    if @page.update_attributes(:content => params[:page][:content])
       redirect url(:page, @page)
     else
       raise BadRequest
     end
   end
-
-  def destroy
-    @page = Page.first(params[:id])
-    raise NotFound unless @page
-    if @page.destroy!
-      redirect url(:page)
-    else
-      raise BadRequest
-    end
-  end
-
 end
