@@ -7,7 +7,7 @@ A no-frills wiki built on Merb 0.9.x and DataMapper
   * Versioned pages
   * Textile/Markdown content formatting
   * Pretty page urls
-  * TODO: Version reverting
+  * View http://github.com/meekish/collective/wikis/todo to get an idea of current status
   
 == Take It For A Spin
 
