@@ -1,7 +1,8 @@
-%h2 New Page
+%h2
+  Editing
+  %strong= @page.name
 
 - form_for :page, :action => url(:page, @page) do
   %ul#page-form
-    %li= text_control :name, :label => 'Name'
     %li~ text_area_control :content, :label => 'Content'
     %li= submit_button 'Submit'
