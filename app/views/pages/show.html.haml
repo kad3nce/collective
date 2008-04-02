@@ -2,4 +2,13 @@
 
 = @page.content_html
 
-%p= link_to 'edit page', url(:edit_page, @page)
+%p
+  %form{ :action => url(:page, @page), :method => 'get', :id => 'select-version' }
+    = link_to 'home', url(:pages)
+    |
+    = link_to 'edit page', url(:edit_page, @page) 
+    |
+    = link_to 'revert to this version', url(:edit_page, :id => @page.to_param, :version => @page.selected_version.number) 
+    | Versions: 
+    = select_field :name => 'version', :id => 'version-select', :selected => @page.selected_version.number.to_s, :collection => (1..@page.versions_count).to_a
+    = submit_button 'Go', :id => 'go-button'
