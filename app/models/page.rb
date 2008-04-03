@@ -44,6 +44,6 @@ class Page < DataMapper::Base
   end
   
   def set_slug
-    self.slug = URI.escape(name.downcase.gsub(' ', '-')).gsub('/', '%2F')
+    self.slug = URI.escape(name.downcase.gsub(/(\s|\/)/, '-'))
   end
 end
