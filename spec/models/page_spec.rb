@@ -114,8 +114,8 @@ describe Page do
       Page.create!(:name => 'a super informative page').slug.should == 'a-super-informative-page'
     end
 
-    it 'should be the page name with forward slashes escaped' do
-      Page.create!(:name => 'a/super/informative/page').slug.should == 'a%2Fsuper%2Finformative%2Fpage'
+    it 'should be the page name with forward slashes dasherized' do
+      Page.create!(:name => 'a/super/informative/page').slug.should == 'a-super-informative-page'
     end
 
     it 'should be the page name with any other non URL-friendly characters escaped' do
