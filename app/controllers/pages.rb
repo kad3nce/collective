@@ -4,10 +4,10 @@ class Pages < Application
     display @pages
   end
 
-               # I wonder if merb-action-args could conceivably support nil defaults
-  def show(id, version = '')
+               # I wonder if merb-action-args could conceivably support nil defaults (i.e. version = nil)
+  def show(id, version = :latest)
     @page = Page.first(:slug => id)
-    @page.select_version!(version.to_i) unless version.empty?
+    @page.select_version!(version.to_i) unless version == :latest
     raise NotFound unless @page
     display @page
   end
@@ -17,9 +17,9 @@ class Pages < Application
     render
   end
 
-  def edit(id, version = '')
+  def edit(id, version = :latest)
     @page = Page.first(:slug => id)
-    @page.select_version!(version.to_i) unless version.empty?
+    @page.select_version!(version.to_i) unless version == :latest
     raise NotFound unless @page
     render
   end
