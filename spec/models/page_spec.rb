@@ -89,8 +89,8 @@ describe Page do
       }.should change(@page, :content_html)
     end
     
-    it 'should raise Page::VersionNotFound when asked for a non-existent version' do
-      lambda { @page.select_version!(2000) }.should raise_error(Page::VersionNotFound)
+    it 'should raise NotFound when asked for a non-existent version' do
+      lambda { @page.select_version!(2000) }.should raise_error
     end
   end
   
