@@ -10,7 +10,7 @@ class Page < DataMapper::Base
   
   ## Properties
   
-  property :name, :string
+  property :name,           :string
   property :versions_count, :integer, :default => 0
   
   permalink_from :name
