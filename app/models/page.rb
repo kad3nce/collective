@@ -1,6 +1,4 @@
 class Page < DataMapper::Base
-  class VersionNotFound < Exception; end
-  
   property :name, :string
   property :slug, :string
   property :versions_count, :integer, :default => 0
@@ -22,7 +20,7 @@ class Page < DataMapper::Base
   end
   
   def select_version!(version_number)
-    @selected_version = versions.detect { |version| version.number == version_number } || raise(VersionNotFound)
+    @selected_version = versions.detect { |version| version.number == version_number } || raise(NotFound)
     @content = @selected_version.content
   end
   
