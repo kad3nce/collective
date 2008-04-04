@@ -16,7 +16,7 @@ class Permalinked < DataMapper::Base
 end
 
 # Make sure the above class is in our db
-DataMapper::Persistence.auto_migrate!
+Permalinked.auto_migrate!
 
 ## The fun begins!
 
