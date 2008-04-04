@@ -51,6 +51,8 @@ dependencies 'merb-action-args', 'merb-assets', 'merb-haml', 'merb_helpers', 'Re
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
 
+Dir.glob(Merb.root / 'app' / 'controllers' / 'pages_mixins/*.rb').each { |mixin| require mixin }
+
 Merb::BootLoader.after_app_loads do
   if Merb.environment == 'development'
     Merb.logger.info('Auto migrating development database')
