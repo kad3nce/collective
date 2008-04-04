@@ -106,4 +106,31 @@ describe Page do
     
   end
   
+  describe "#name" do
+    
+    attr_accessor :existing_page
+    
+    before(:each) do
+      self.existing_page = Page.new(:name => "Existing name")
+      existing_page.stub!(:new_record?).and_return(false)
+    end
+    
+    after(:each) do
+      self.existing_page = nil
+    end
+    
+    it "should set a new record's name" do
+      p = Page.new(:name => "My name is Jonas")
+      p.name.should == "My name is Jonas"
+    end
+    
+    it "should not allow an existing page's name to be overwritten" do
+      old_name = existing_page.name
+      
+      existing_page.name = "I want a new name"
+      existing_page.name.should == old_name
+    end
+    
+  end
+  
 end

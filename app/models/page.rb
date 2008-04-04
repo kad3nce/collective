@@ -10,7 +10,7 @@ class Page < DataMapper::Base
   
   ## Properties
   
-  property :name,           :string
+  property :name,           :string 
   property :versions_count, :integer, :default => 0
   
   permalink_from :name
@@ -39,6 +39,15 @@ class Page < DataMapper::Base
 
   def latest_version
     versions.sort_by(&:number).last
+  end
+  
+  # A setter for the +name+ attribute of a page. When a page is not a new 
+  # record a new name cannot be set.
+  # 
+  # ==== Arguments
+  # +new_name+<String>:: the name to set for this page record
+  def name=(new_name)
+    @name = new_name if new_record?
   end
   
   def select_version!(version_number)
