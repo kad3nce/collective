@@ -1,0 +1,17 @@
+---
+# This is a sample database file for the DataMapper ORM
+:development: &defaults
+  :adapter:  sqlite3
+  :database: db/dev.sqlite3
+
+:test:
+  <<: *defaults
+  :database: db/test.sqlite3
+
+# This is a sample database file for the DataMapper ORM
+:production: &defaults
+  :adapter:  mysql
+  :database: collective_production
+  :username: the_user
+  :password: secrets
+  :host:     localhost

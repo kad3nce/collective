@@ -1,6 +1,7 @@
 require File.join(File.dirname(__FILE__), '..',  'spec_helper')
 
 describe Page do
+  
   it 'should have a name property' do
     Page.new(:name => 'A super informative page').name.should == 'A super informative page'
   end
@@ -25,21 +26,25 @@ describe Page do
   end
 
   describe '#latest_version' do
+    
     it 'should fetch the latest version of the page' do
       page = Page.new
       page.versions << old_version = Version.new(:number => 1)
       page.versions << latest_version = Version.new(:number => 2)
       page.latest_version.should == latest_version
     end
+    
   end
 
   describe do
+    
     before(:each) do
       @page = Page.new
       @page.versions << Version.new(:content => 'the content', :content_html => '<p>the content</p>')
     end
 
     describe '#content' do
+      
       it 'should fetch the content from the latest version' do
         @page.content.should == 'the content'
       end
@@ -47,18 +52,22 @@ describe Page do
       it 'should return an empty string if #latest_version is nil' do
         Page.new.content.should == ''
       end
+      
     end
 
     describe '#content=' do
+      
       it 'should change the return value of #content' do
         page = Page.new
         lambda {
           page.content = 'Some new content'
           }.should change(page, :content)
       end
+      
     end
 
     describe '#content_html' do
+      
       it 'should fetch the html formatted content from the latest version' do
         @page.content_html.should == '<p>the content</p>'
       end
@@ -66,10 +75,12 @@ describe Page do
       it 'should return an empty string if #latest_version is nil' do
         Page.new.content_html.should == ''
       end
+      
     end
   end
   
   describe '#select_version!' do
+    
     before(:each) do
       raise(@page.inspect) if @page
       @page = Page.new
@@ -92,35 +103,34 @@ describe Page do
     it 'should raise NotFound when asked for a non-existent version' do
       lambda { @page.select_version!(2000) }.should raise_error
     end
+    
   end
   
-  
-  describe '#to_param' do
-    it "should return the page's slug" do
-      Page.new(:slug => 'a-super-informative-page').to_param.should == 'a-super-informative-page'
+  describe "#name" do
+    
+    attr_accessor :existing_page
+    
+    before(:each) do
+      self.existing_page = Page.new(:name => "Existing name")
+      existing_page.stub!(:new_record?).and_return(false)
     end
-  end
-
-  describe '#slug' do
-    it 'should be the page name' do
-      Page.create!(:name => 'asuperinformativepage').slug.should == 'asuperinformativepage'
+    
+    after(:each) do
+      self.existing_page = nil
     end
-
-    it 'should be the page name downcased' do
-      Page.create!(:name => 'ASuperInformativePage').slug.should == 'asuperinformativepage'
+    
+    it "should set a new record's name" do
+      p = Page.new(:name => "My name is Jonas")
+      p.name.should == "My name is Jonas"
     end
-
-    it 'should be the page name with spaces dasherized' do
-      Page.create!(:name => 'a super informative page').slug.should == 'a-super-informative-page'
+    
+    it "should not allow an existing page's name to be overwritten" do
+      old_name = existing_page.name
+      
+      existing_page.name = "I want a new name"
+      existing_page.name.should == old_name
     end
-
-    it 'should be the page name with forward slashes dasherized' do
-      Page.create!(:name => 'a/super/informative/page').slug.should == 'a-super-informative-page'
-    end
-
-    it 'should be the page name with any other non URL-friendly characters escaped' do
-      Page.create!(:name => '\2007\11\15').slug.should == '%5C2007%5C11%5C15'
-    end
+    
   end
   
 end

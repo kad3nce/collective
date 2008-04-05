@@ -1,12 +1,29 @@
+require 'permalinker'
+
 class Page < DataMapper::Base
-  property :name, :string
-  property :slug, :string
+  include Permalinker
+
+  ## Properties
+  
+  property :name,           :string 
   property :versions_count, :integer, :default => 0
+  
+  permalink_from :name
+  
+  ## Associations
+  
   has_many :versions
+  
+  ## Call-backs
+  
   before_save :build_new_version
-  before_save :set_slug
+  
+  ## Attributes
   
   attr_writer :content
+  
+  ## Methods
+  
   def content
     @content ||= selected_version.try(:content) || ''
   end
@@ -19,6 +36,15 @@ class Page < DataMapper::Base
     versions.sort_by(&:number).last
   end
   
+  # A setter for the +name+ attribute of a page. When a page is not a new 
+  # record a new name cannot be set.
+  # 
+  # ==== Arguments
+  # +new_name+<String>:: the name to set for this page record
+  def name=(new_name)
+    @name = new_name if new_record?
+  end
+  
   def select_version!(version_number)
     @selected_version = versions.detect { |version| version.number == version_number } || raise(NotFound)
     @content = @selected_version.content
@@ -28,11 +54,8 @@ class Page < DataMapper::Base
     @selected_version || latest_version
   end
   
-  def to_param
-    slug
-  end
+private
   
-  private
   def build_new_version
     # DataMapper not initializing versions_count with default value of zero. Bug?
     self.versions_count ||= 0
@@ -41,7 +64,4 @@ class Page < DataMapper::Base
     versions.build(:content => content, :number => versions_count)
   end
   
-  def set_slug
-    self.slug = URI.escape(name.downcase.gsub(/(\s|\/)/, '-'))
-  end
 end
