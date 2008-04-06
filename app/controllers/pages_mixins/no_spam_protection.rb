@@ -1,10 +1,13 @@
+# =========================================================================
+# = TODO: Figure out a way to get action-args to work on mixed in actions =
+# =========================================================================
 module NoSpamProtection
   def self.included(base)
     base.show_action(:create, :update)
   end
   
-  def create(page)
-    @page = Page.new page
+  def create
+    @page = Page.new params[:page]
     if @page.save
       redirect url(:page, @page)
     else
@@ -12,9 +15,9 @@ module NoSpamProtection
     end
   end
 
-  def update(id, page)
-    @page = Page.first(:slug => id) || raise(NotFound)
-    if @page.update_attributes(:content => page[:content])
+  def update
+    @page = Page.first(:slug => params[:id]) || raise(NotFound)
+    if @page.update_attributes(:content => params[:page][:content])
       redirect url(:page, @page)
     else
       raise BadRequest
