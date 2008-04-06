@@ -8,7 +8,7 @@ class Pages < Application
   end
 
   def show(id, version = :latest)
-    @page = Page.first(:slug => id) || raise(NotFound)
+    @page = Page.by_slug(id) || raise(NotFound)
     @page.select_version!(version.to_i) unless version == :latest
     display @page
   end
@@ -19,7 +19,7 @@ class Pages < Application
   end
 
   def edit(id, version = :latest)
-    @page = Page.first(:slug => id) || raise(NotFound)
+    @page = Page.by_slug(id) || raise(NotFound)
     @page.select_version!(version.to_i) unless version == :latest
     render
   end
