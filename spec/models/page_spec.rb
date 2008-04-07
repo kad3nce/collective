@@ -19,11 +19,16 @@ describe Page do
   end
 
   it 'should create a new version when saving' do
-    page = Page.create(:content => 'the body of the page', :name => 'a new page')
+    page = Page.new(:content => 'the body of the page', :name => 'a new page')
     first_version = page.latest_version
     page.save
     page.latest_version.should_not == first_version
   end
+
+  it 'should set the slug when saving' do
+    
+  end
+
 
   describe '#latest_version' do
     
@@ -40,7 +45,7 @@ describe Page do
     
     before(:each) do
       @page = Page.new
-      @page.versions << Version.new(:content => 'the content', :content_html => '<p>the content</p>')
+      @page.versions.build(:content => 'the content', :content_html => '<p>the content</p>')
     end
 
     describe '#content' do
@@ -79,6 +84,33 @@ describe Page do
     end
   end
   
+  describe "#name" do
+    
+    attr_accessor :existing_page
+    
+    before(:each) do
+      self.existing_page = Page.new(:name => "Existing name")
+      existing_page.stub!(:new_record?).and_return(false)
+    end
+    
+    after(:each) do
+      self.existing_page = nil
+    end
+    
+    it "should set a new record's name" do
+      p = Page.new(:name => "My name is Jonas")
+      p.name.should == "My name is Jonas"
+    end
+    
+    it "should not allow an existing page's name to be overwritten" do
+      old_name = existing_page.name
+      
+      existing_page.name = "I want a new name"
+      existing_page.name.should == old_name
+    end
+    
+  end
+  
   describe '#select_version!' do
     
     before(:each) do
@@ -106,31 +138,43 @@ describe Page do
     
   end
   
-  describe "#name" do
-    
-    attr_accessor :existing_page
-    
-    before(:each) do
-      self.existing_page = Page.new(:name => "Existing name")
-      existing_page.stub!(:new_record?).and_return(false)
+  describe "slug characteristics" do
+    it 'should be the page name' do
+      page = Page.new(:name => 'asuperinformativepage')
+      page.valid?
+      page.slug.should == 'asuperinformativepage'
+    end
+
+    it 'should be set before validations' do
+      page = Page.new(:name => 'asuperinformativepage')
+      page.slug.should be_nil
+      page.valid?
+      page.slug.should == 'asuperinformativepage'
     end
     
-    after(:each) do
-      self.existing_page = nil
+    it 'should be the page name downcased' do
+      page = Page.new(:name => 'ASuperInformativePage')
+      page.valid?
+      page.slug.should == 'asuperinformativepage'
     end
     
-    it "should set a new record's name" do
-      p = Page.new(:name => "My name is Jonas")
-      p.name.should == "My name is Jonas"
+    it 'should be the page name with spaces dasherized' do
+      page = Page.new(:name => 'a super informative page')
+      page.valid?
+      page.slug.should == 'a-super-informative-page'
     end
     
-    it "should not allow an existing page's name to be overwritten" do
-      old_name = existing_page.name
-      
-      existing_page.name = "I want a new name"
-      existing_page.name.should == old_name
+    it 'should be the page name with non-word characters dasherized' do
+      page = Page.new(:name => 'a/super/informative/page')
+      page.valid?
+      page.slug.should == 'a-super-informative-page'
     end
-    
+  end
+  
+  describe '#to_param' do
+    it "should return the page's slug" do
+      Page.new(:slug => 'a-slug').to_param.should == 'a-slug'
+    end
   end
   
 end
