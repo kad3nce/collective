@@ -1,0 +1,348 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
+  :margin 0
+  :padding 0
+  :border 0
+  :font-weight inherit
+  :font-style inherit
+  :font-size 100%
+  :font-family inherit
+  :vertical-align baseline
+
+
+/ GENERAL RULES
+
+body
+  :background #000 url(http://merbivore.com/img/body.gif) repeat-x bottom center
+  :color #000
+  :font 
+    :family 'Lucida Grande', Arial, sans-serif
+    :size 12px 
+    :weight normal
+  :line-height 1
+
+ul
+  :list-style-type none
+
+#content_full
+  :margin 10px 20px 20px 20px
+  ul.revisions
+    :list-style-type disc
+    li
+      :margin-left 15px
+      :padding 3px 0
+      a
+        :display inline
+  a
+    :color #11b716
+    :font-weight bold
+  a:hover
+    :background #22d716
+    :color black
+  ul.quicklinks_bottom li
+    a
+      :color #d7ff00
+      :display inline
+    a:hover
+      :background #d7ff00
+      :color #000
+
+/ EDITED
+/ li a
+/   :display block
+
+strong
+  :font-weight bold
+
+table
+  :border-collapse separate
+  :border-spacing 0
+
+caption, th, td
+  :text-align left
+  :font-weight normal
+
+.invisible
+  :display none
+
+.full_width
+  :width 100%
+
+.wrap_to_center, #foot
+  :margin 0 auto
+  :display block
+  :width 800px
+
+#content
+  :width 100%
+  p
+    :line-height 17px
+
+#content_top
+  :background #fff url(http://merbivore.com/img/content_top.gif) no-repeat top center
+  :float left
+  :margin 25px 0px
+  :width 100%
+
+#content_bottom
+  :background url(http://merbivore.com/img/content_bottom.gif) no-repeat bottom center
+  :width 100%
+  :float left
+
+#content_main
+  :float left
+  :margin 10px 20px 20px 20px
+  :width 506px
+  ul
+    :margin 10px 0px
+    li
+      :background url(http://merbivore.com/img/li.gif) no-repeat left center
+      :padding 4px 4px 4px 16px
+      :font-weight bold
+  a
+    :color #11b716
+    :font-weight bold
+  a:hover
+    :background #22d716
+
+#header
+  :background #1db900 url(http://merbivore.com/img/header_waves.gif) repeat-x top center
+  :height 74px
+  :width 100%
+  img
+    :margin-top 8px
+    :float left
+  a
+    :color #fff
+    :text-decoration none
+  a:hover
+    :color #000
+
+#waves
+  :background url(http://merbivore.com/img/header_waves.gif) no-repeat top left
+  :height 74px
+  :width 980px
+
+ul#nav
+  :float right
+  :display block
+  :width 19em
+  :margin-top 25px
+  li
+    :display block
+    :float left
+    a
+      :display block
+      :float left
+      :margin 0px 5px
+      :padding 6px 9px 31px 9px
+    a:hover
+      :background url(http://merbivore.com/img/header_hover.gif) repeat-x bottom center
+    a#active
+      :background url(http://merbivore.com/img/header_arrow.gif)no-repeat bottom center
+  li.last a
+    :margin-right 0
+
+h1
+  :border-bottom 2px solid #ccc
+  :margin 20px 0px
+  :text-align left
+  :width 100%
+
+h1, h1 input
+  :color #000
+  :font bold 28px "Arial" sans-serif
+  :letter-spacing 1px
+  
+h1 input
+  :width 752px
+
+h1.home
+  :border 0
+  :color #fff
+  :font-size 36px
+  :margin 20px 0px
+  :text-align center
+
+h2
+  :color #7aad00
+  :font bold 22px "Lucida Grande" sans-serif
+  :margin 10px 0px
+
+h3
+  :font bold 16px "Lucida Grande"
+  :margin 10px 0px
+
+p
+  :margin-bottom 12px
+
+pre
+  :background #222
+  :color #fff
+  :font 12px "Courier" serif
+  :line-height 18px
+  :padding 12px
+  :margin-bottom 10px
+  code
+    :font-weight normal
+
+code
+  :font bold 12px "Courier" serif
+  
+/ ========
+/ = Wiki =
+/ ========
+#wiki-page
+  #content
+    blockquote p
+      :font-style oblique
+      :margin 20px
+    li
+      :margin-bottom 5px
+    ol
+      :padding-left 20px
+    pre
+      :margin
+        :bottom 10px
+        :top 10px
+    textarea
+      :height 400px
+      :width 755px
+    ul#list-of-pages, form ul
+      :list-style-type none
+      :padding-left 0
+    ul
+      :padding-left 15px
+      :list-style-type disc
+    #page-form
+      h1
+        :border-bottom none
+        :margin-bottom 10px
+      p
+        :margin-bottom 0
+        a
+          :text-decoration none
+
+#content_sidebar
+  :float left
+  :margin 20px 20px 15px 10px
+  :width 224px
+  p
+    :padding 10px 0px
+
+.sidebar_top
+  :background #868686 url(http://merbivore.com/img/sidebar_top.gif) no-repeat top center
+  :margin-bottom 12px
+  :width 224px
+
+dl.sidebar_bottom
+  :background url(http://merbivore.com/img/sidebar_bottom.gif) no-repeat bottom center
+  :padding 12px
+  dt
+    :color #fff
+    :font bold 14px "Lucida Grande" sans-serif
+    :margin-bottom 6px
+  dd
+    :padding 3px 0px
+
+p#rss
+  a
+    :background url(http://merbivore.com/img/rss.gif) no-repeat left center
+    :color #000
+    :font bold 14px "Lucida Grande"
+    :padding 8px 6px 8px 34px
+    :text-decoration none
+  a:hover
+    :background url(http://merbivore.com/img/rss.gif) no-repeat left center
+    :background-color #fff
+    :text-decoration underline
+
+#footer
+  :background #444
+  :clear both
+  p
+    :padding 12px
+    :color #999
+    :margin 0
+    :text-align center
+  a
+    :color #d7ff00
+  a:hover
+    :background #d7ff00
+    :color #000
+  
+
+.feature
+  :background-repeat no-repeat
+  :background-position top left
+  :border-bottom 2px solid #ccc
+  :padding-left 150px
+
+div#speed
+  :background-image url(http://merbivore.com/img/feature_speed.gif)
+
+div#light
+  :background-image url(http://merbivore.com/img/feature_light.gif)
+
+div#power
+  :background-image url(http://merbivore.com/img/feature_power.gif)
+
+.quicklinks_top
+  :background #868686 url(http://merbivore.com/img/quicklinks_top.gif) no-repeat top center
+  :float right
+  :margin-bottom 12px
+  :width 169px
+
+ul.quicklinks_bottom
+  :background url(http://merbivore.com/img/quicklinks_bottom.gif) no-repeat bottom center
+  :padding 12px
+  li
+    :display block
+    :padding 3px 0px
+
+.sub-framework
+  :border-bottom 2px solid #ccc
+  :margin-bottom 20px
+  :padding-bottom 10px
+
+#icons_top
+  :background url(http://merbivore.com/img/icons_top.gif) no-repeat top center
+  :float left
+  :width 800px
+  dl
+    :color #fff
+    :float left
+    :width 224px
+    :padding 15px 20px
+  dt
+    :background-repeat no-repeat
+    :background-position center 2.5em
+    :color #35d726
+    :font bold 18px 'Lucida Grande' sans-serif
+    :padding 6px 6px 150px 6px
+    :text-align center
+  dd
+    :font 11px "Lucida Grande"
+    :line-height 18px
+    :text-align center
+
+#icons_bottom
+  :background url(http://merbivore.com/img/icons_bottom.gif) no-repeat bottom center
+  :float left
+  :width 800px
+
+dl#speed
+  :border-right 1px solid #444
+  dt
+    :background-image url(http://merbivore.com/img/icon_speed.gif)
+
+dl#light
+  :border-right 1px solid #444
+  :border-left 1px solid #000
+  dt
+    :background-image url(http://merbivore.com/img/icon_light.gif)
+
+dl#power
+  :border-left 1px solid #000
+  dt
+    :background-image url(http://merbivore.com/img/icon_power.gif)
+
