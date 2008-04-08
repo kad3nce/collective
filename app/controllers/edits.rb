@@ -5,7 +5,7 @@ class Edits < Application
   #--
   # FIXME What happens if we get here and there are no edits?
   def index
-    @edits = Version.all(:moderated => false, :limit => 100, :order => 'created_at DESC')
+    @edits = Version.most_recent_unmoderated
     display @edits
   end
 
