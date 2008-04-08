@@ -2,31 +2,35 @@ require File.join(File.dirname(__FILE__), '..',  'spec_helper')
 
 describe Page do
   
-  it 'should have a name property' do
-    Page.new(:name => 'A super informative page').name.should == 'A super informative page'
+  describe ".new" do
+    it 'should have a name property' do
+      Page.new(:name => 'A super informative page').name.should == 'A super informative page'
+    end
+
+    it 'should have a slug property' do
+      Page.new(:slug => 'a-super-informative-page').slug.should == 'a-super-informative-page'
+    end
+
+    it 'should have a spam property' do
+      Page.new(:spam => true).spam.should == true
+    end
+
+    it 'should have many versions' do
+      Page.new.versions.should be_an_instance_of(DataMapper::Associations::HasManyAssociation::Set)
+    end
+
+    it 'should have a versions_count property' do
+      Page.new(:versions_count => 10).versions_count.should == 10
+    end
   end
 
-  it 'should have a slug property' do
-    Page.new(:slug => 'a-super-informative-page').slug.should == 'a-super-informative-page'
-  end
-
-  it 'should have a spam property' do
-    Page.new(:spam => true).spam.should == true
-  end
-
-  it 'should have many versions' do
-    Page.new.versions.should be_an_instance_of(DataMapper::Associations::HasManyAssociation::Set)
-  end
-
-  it 'should have a versions_count property' do
-    Page.new(:versions_count => 10).versions_count.should == 10
-  end
-
-  it 'should create a new version when saving' do
-    page = Page.new(:content => 'the body of the page', :name => 'a new page')
-    first_version = page.latest_version
-    page.save
-    page.latest_version.should_not == first_version
+  describe "#save" do
+    it 'should create a new version when saving' do
+      page = Page.new(:content => 'the body of the page', :name => 'a new page')
+      first_version = page.latest_version
+      page.save
+      page.latest_version.should_not == first_version
+    end
   end
 
   describe 'when updating with spam attribute set to true' do
