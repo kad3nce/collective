@@ -45,7 +45,7 @@ use_orm :datamapper
 
 # These are some examples of how you might specify dependencies.
 # 
-dependencies 'iconv', 'merb-action-args', 'merb-assets', 'merb-haml', 'merb_helpers', 'RedCloth', 'uri'
+dependencies 'iconv', 'merb-action-args', 'merb-assets', 'merb_has_flash', 'merb-haml', 'merb_helpers', 'RedCloth', 'uri'
 # OR
 # dependency "RedCloth", "> 3.0"
 # OR
@@ -55,10 +55,11 @@ Dir.glob(Merb.root / 'app' / 'controllers' / 'pages_mixins/*.rb').each { |mixin|
 
 Merb::BootLoader.after_app_loads do
   if Merb.environment == 'development'
-    Merb.logger.info('Auto migrating development database')
-    DataMapper::Persistence.auto_migrate! 
-    require Merb.root / 'db' / 'seed_dev'
+    # Merb.logger.info('Auto migrating development database')
+    # DataMapper::Persistence.auto_migrate! 
+    require Merb.root / 'db' / 'seed_dev' unless Page.count > 0
   end
   
   require Merb.root / 'lib' / 'core_ext' / 'try'
+  require Merb.root / 'lib' / 'controller' / 'mixins' / 'controller'
 end
