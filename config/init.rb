@@ -45,7 +45,7 @@ use_orm :datamapper
 
 # These are some examples of how you might specify dependencies.
 # 
-dependencies 'iconv', 'merb-action-args', 'merb-assets', 'merb_has_flash', 'merb-haml', 'merb_helpers', 'RedCloth', 'uri'
+dependencies 'iconv', 'merb-action-args', 'merb-assets', 'merb_has_flash', 'merb-haml', 'merb_helpers', 'merb_http_basic_auth', 'RedCloth', 'uri'
 # OR
 # dependency "RedCloth", "> 3.0"
 # OR
