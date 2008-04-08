@@ -10,6 +10,10 @@ describe Page do
     Page.new(:slug => 'a-super-informative-page').slug.should == 'a-super-informative-page'
   end
 
+  it 'should have a spam property' do
+    Page.new(:spam => true).spam.should == true
+  end
+
   it 'should have many versions' do
     Page.new.versions.should be_an_instance_of(DataMapper::Associations::HasManyAssociation::Set)
   end
@@ -25,10 +29,45 @@ describe Page do
     page.latest_version.should_not == first_version
   end
 
-  it 'should set the slug when saving' do
+  describe 'when updating with spam attribute set to true' do
+    before(:each) do
+      @page = Page.create!(:content => 'the body of the page', :name => "a new page for testing")
+    end
     
+    after(:each) do
+      @page.destroy!
+    end
+    
+    it 'should create a new Version record' do
+      lambda {
+        @page.update_attributes(:spam => true, :content => 'V1/\GRA')
+      }.should change(Version, :count)
+    end
+    
+    it 'should not change latest_version' do
+      lambda {
+        @page.update_attributes(:spam => true, :content => 'V1/\GRA')
+      }.should_not change(@page, :latest_version)
+    end
+    
+    it 'should mark the new version as spam' do
+      @page.update_attributes(:spam => true, :content => 'V1/\GRA')
+      Version.first(:content => 'V1/\GRA').spam.should == true
+    end
+    
+    it 'should not increase the versions_count' do
+      lambda {
+        @page.update_attributes(:spam => true, :content => 'V1/\GRA')
+      }.should_not change(@page, :versions_count)
+    end
   end
 
+  describe '#content_additions' do
+    it "should return the additions between the page's current content and an arbitrary string" do
+      page = Page.new(:content => "An old version\nof the content.")
+      page.content_additions("An old version\nof the content.\nPlus some new content.").should == "\nPlus some new content."
+    end
+  end
 
   describe '#latest_version' do
     
@@ -132,8 +171,8 @@ describe Page do
       }.should change(@page, :content_html)
     end
     
-    it 'should raise NotFound when asked for a non-existent version' do
-      lambda { @page.select_version!(2000) }.should raise_error
+    it 'should return nil when asked for a non-existent version' do
+      @page.select_version!(2000).should == nil
     end
     
   end
