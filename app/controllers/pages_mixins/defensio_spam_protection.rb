@@ -12,8 +12,10 @@ module DefensioSpamProtection
         content_as_html = RedCloth.new(@page.content).to_html
         response = {} # send content_as_html to Defensio API to check for spaminess
         if (response[:spam]) # defensio says it's spam
-          Version.create(:content => @page.content, :spam => true, :spaminess => response[:spaminess], :page_id => -1, :remote_ip => request.remote_ip)
+          Version.create(:content => @page.content, :spam => true, :spaminess => response[:spaminess], :signature => response[:signature], :page_id => -1, :remote_ip => request.remote_ip)
         else
+          @page.signature = response[:signature]
+          @page.spaminess = response[:spaminess]
           @page.save
         end
       end
@@ -30,8 +32,9 @@ module DefensioSpamProtection
       redirect_then_call(url(:page, @page)) do
         new_content_as_html = RedCloth.new(@page.content_additions(params[:page][:content])).to_html
         response = {} # send new_content_as_html to Defensio API to check for spaminess
+        page_attributes.merge!(:signature => response[:signature], :spaminess => response[:spaminess])
         if (response[:spam]) # Defensio says it's spam
-          @page.update_attributes(page_attributes.merge(:spam => true, :spaminess => response[:spaminess]))
+          @page.update_attributes(page_attributes.merge(:spam => true))
         else
           @page.update_attributes(page_attributes)
         end
