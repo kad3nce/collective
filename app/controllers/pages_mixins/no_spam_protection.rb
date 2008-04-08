@@ -17,10 +17,10 @@ module NoSpamProtection
 
   def update
     @page = Page.first(:slug => params[:id]) || raise(NotFound)
-    if @page.update_attributes(:content => params[:page][:content])
+    if @page.update_attributes(params[:page])
       redirect url(:page, @page)
     else
-      raise BadRequest
+      render :edit
     end
   end
 end
