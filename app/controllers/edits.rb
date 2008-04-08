@@ -2,19 +2,22 @@ class Edits < Application
   
   before :authenticate
 
-  # Accessed by: GET /edits
   #--
   # FIXME What happens if we get here and there are no edits?
   def index
-    @edits = Version.most_recent_unmoderated
+    @edits = Version.all(:moderated => false, :limit => 100, :order => 'created_at DESC')
     display @edits
   end
 
-  # Accessed by: PUT /edits/1
   def update
     @edit = Version.first(params[:id])
     raise NotFound unless @edit
     if @edit.update_attributes(:moderated => true)
+      if(@edit.spam)
+        DEFENSIO_GATEWAY.mark_as_ham(:signatures => @edit.signature)
+      else
+        DEFENSIO_GATEWAY.mark_as_spam(:signatures => @edit.signature)
+      end
       if request.xhr?
         render :nothing => 200
       else
