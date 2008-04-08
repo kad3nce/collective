@@ -11,9 +11,9 @@ class Edits < Application
     raise NotFound unless @edit
     if @edit.update_attributes(:moderated => true)
       if(@edit.spam)
-        # send @edit.signature to Defensio with #report-false-positives
+        DEFENSIO_GATEWAY.mark_as_ham(:signatures => @edit.signature)
       else
-        # send @edit.signature to Defensio with #report-false-negatives
+        DEFENSIO_GATEWAY.mark_as_spam(:signatures => @edit.signature)
       end
       if request.xhr?
         render :nothing => 200
