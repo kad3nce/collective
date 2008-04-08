@@ -222,6 +222,7 @@ code {
   padding: 5px;
   position: relative; }
   #wiki-page #content #recent-edits li h2 {
+    color: black;
     margin-top: 0; }
     #wiki-page #content #recent-edits li h2 a {
       color: black; }

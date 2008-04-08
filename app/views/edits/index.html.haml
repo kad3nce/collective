@@ -6,7 +6,7 @@
 - @edits.each do |version|
   %ul#recent-edits
     %li{ :class => spam_or_ham(version) }
-      %h2= link_to version.page.name, url(:page, version.page)
+      %h2= link_to_page_or_nothing(version)
       - form_for :edit, :action => url(:edit, version), :method => :put, :class => 'moderate-edit-form' do |f|
         .moderate-edit
           = mark_as_ham_or_spam(version)
