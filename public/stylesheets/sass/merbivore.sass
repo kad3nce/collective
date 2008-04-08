@@ -33,7 +33,7 @@ ul
       a
         :display inline
   a
-    :color #11b716
+    :color #11B716
     :font-weight bold
   a:hover
     :background #22d716
@@ -165,7 +165,7 @@ h1.home, #notice p
   :text-align center
 
 h2
-  :color #7aad00
+  :color #7AAD00
   :font bold 22px "Lucida Grande" sans-serif
   :margin 10px 0px
 
@@ -208,7 +208,7 @@ code
     textarea
       :height 400px
       :width 755px
-    ul#list-of-pages, form ul
+    ul#list-of-pages, ul#recent-edits, form ul
       :list-style-type none
       :padding-left 0
     ul
@@ -222,7 +222,25 @@ code
         :margin-bottom 0
         a
           :text-decoration none
-
+    #recent-edits
+      li
+        :padding 5px
+        h2
+          :margin-top 0
+          a
+            :color black
+        &.ham
+          :background-color #C7FFC9
+          h2
+            a:hover
+              :background-color black
+              :color #C7FFC9
+        &.spam
+          :background-color #FFC7DF
+          a:hover
+            :background-color black
+            :color #FFC7DF
+          
 #content_sidebar
   :float left
   :margin 20px 20px 15px 10px

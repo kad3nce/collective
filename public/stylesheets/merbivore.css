@@ -30,7 +30,7 @@ ul {
       #content_full ul.revisions li a {
         display: inline; }
   #content_full a {
-    color: #11b716;
+    color: #11B716;
     font-weight: bold; }
   #content_full a:hover {
     background: #22d716;
@@ -160,7 +160,7 @@ h1.home, #notice p {
   text-align: center; }
 
 h2 {
-  color: #7aad00;
+  color: #7AAD00;
   font: bold 22px "Lucida Grande" sans-serif;
   margin: 10px 0px; }
 
@@ -200,7 +200,7 @@ code {
 #wiki-page #content textarea {
   height: 400px;
   width: 755px; }
-#wiki-page #content ul#list-of-pages, #wiki-page #content form ul {
+#wiki-page #content ul#list-of-pages, #wiki-page #content ul#recent-edits, #wiki-page #content form ul {
   list-style-type: none;
   padding-left: 0; }
 #wiki-page #content ul {
@@ -213,6 +213,22 @@ code {
   margin-bottom: 0; }
   #wiki-page #content #page-form p a {
     text-decoration: none; }
+#wiki-page #content #recent-edits li {
+  padding: 5px; }
+  #wiki-page #content #recent-edits li h2 {
+    margin-top: 0; }
+    #wiki-page #content #recent-edits li h2 a {
+      color: black; }
+  #wiki-page #content #recent-edits li.ham {
+    background-color: #C7FFC9; }
+    #wiki-page #content #recent-edits li.ham h2 a:hover {
+      background-color: black;
+      color: #C7FFC9; }
+  #wiki-page #content #recent-edits li.spam {
+    background-color: #FFC7DF; }
+    #wiki-page #content #recent-edits li.spam a:hover {
+      background-color: black;
+      color: #FFC7DF; }
 
 #content_sidebar {
   float: left;

@@ -23,4 +23,5 @@ Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do |r|
   r.match('/').to(:controller => 'pages', :action =>'index')
   r.resources :pages
+  r.resources :edits
 end
