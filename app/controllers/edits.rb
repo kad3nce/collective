@@ -1,6 +1,9 @@
 class Edits < Application
+  
   before :authenticate
 
+  #--
+  # FIXME What happens if we get here and there are no edits?
   def index
     @edits = Version.all(:moderated => false, :limit => 100, :order => 'created_at DESC')
     display @edits
@@ -26,6 +29,7 @@ class Edits < Application
   end
   
 private
+
   def authenticate
     authenticate_or_request_with_http_basic("login") do |username, password|
       # ==============================================================================
@@ -34,4 +38,5 @@ private
       username == "merbivore" && password == "supersecret"
     end
   end
+
 end
