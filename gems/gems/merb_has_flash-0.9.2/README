@@ -1,0 +1,14 @@
+merb_has_flash
+=================
+
+A plugin for the Merb framework that provides Rails-style flash.
+
+Most of the code is taken directly from Rails, which is
+Copyright (c) 2004-2006 David Heinemeier Hansson.
+This plugin is released under the same terms as Rails itself.
+
+Hacked together by Michael Ivey <ivey@gweezlebur.com> ... send bug
+reports and patches to him.
+
+Contributors:
+Tim Kofol
