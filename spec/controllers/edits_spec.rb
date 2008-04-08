@@ -17,7 +17,7 @@ describe Edits do
   describe "requesting /edits with GET" do
     
     before(:each) do
-      Version.stub!(:all).and_return(edits)
+      Version.stub!(:most_recent_unmoderated).and_return(edits)
     end
     
     def do_get_successfully
@@ -35,7 +35,7 @@ describe Edits do
     end
     
     it "should load the most recent Versions available" do
-      Version.should_receive(:all).and_return(edits)
+      Version.should_receive(:most_recent_unmoderated).and_return(edits)
       do_get_successfully.assigns(:edits).should == edits
     end
     
