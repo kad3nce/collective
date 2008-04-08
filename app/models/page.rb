@@ -1,8 +1,14 @@
 class Page < DataMapper::Base
   property :name, :string, :nullable => false
+  attr_accessor :spam
+  attr_accessor :spaminess
+  attr_accessor :remote_ip
   property :slug, :string, :nullable => false
   property :versions_count, :integer, :default => 0
-  has_many :versions
+  # ==============================================================
+  # = TODO: Remove this hack once DataMapper supports with_scope =
+  # ==============================================================
+  has_many :versions_with_spam, :class => 'Version'
   before_save :build_new_version
   before_validation :set_slug
 
@@ -22,6 +28,13 @@ class Page < DataMapper::Base
     selected_version.try(:content_html) || ''
   end
 
+  def content_additions(new_content)
+    diff = Diff::LCS.sdiff(content, new_content)
+    all_changes = diff.reject { |diff| diff.unchanged? }
+    additions = all_changes.reject { |diff| diff.deleting? }
+    additions.map { |diff| diff.to_a.last.last }.join
+  end
+
   def latest_version
     versions.sort_by(&:number).last
   end
@@ -31,8 +44,10 @@ class Page < DataMapper::Base
   end
 
   def select_version!(version_number)
-    @selected_version = versions.detect { |version| version.number == version_number } || debugger
-    @content = @selected_version.content
+    if @selected_version = versions.detect { |version| version.number == version_number }
+      @content = @selected_version.content
+    end
+    @selected_version
   end
 
   def selected_version
@@ -43,15 +58,29 @@ class Page < DataMapper::Base
     slug
   end
 
-  private
+  # ==============================================================
+  # = TODO: Remove this hack once DataMapper supports with_scope =
+  # ==============================================================
+  def versions
+    versions_with_spam.set(versions_with_spam.reject { |version| version.spam })
+    versions_with_spam
+  end
+  
+private
 
   def build_new_version
     # DataMapper not initializing versions_count with default value of zero. Bug?
     self.versions_count ||= 0
 
-    self.versions_count += 1
-    # Don't use #build as it is NULLifying the page_id field of this page's other versions
-    versions.create(:content => content, :number => versions_count)
+    version_attributes = { :content => content, :remote_ip => remote_ip }
+
+    if(spam)
+      versions.create(version_attributes.merge(:number => versions_count + 1, :spam => true, :spaminess => spaminess))
+    else
+      self.versions_count += 1
+      # Don't use #build as it is NULLifying the page_id field of this page's other versions
+      versions.create(version_attributes.merge(:number => versions_count))
+    end
   end
 
   def escape_slug(string)
