@@ -23,3 +23,7 @@ For isolated controller specs:
   MyController.stub!(:new).and_return my_stubbed_controller
 </pre>
 CONTENT
+
+speccing_page.update_attributes :spam => true, :content => <<-CONTENT
+Free Viagra!
+CONTENT
