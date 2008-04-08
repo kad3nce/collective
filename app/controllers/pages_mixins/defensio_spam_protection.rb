@@ -5,7 +5,7 @@ module DefensioSpamProtection
   end
   
   def create
-    @page = Page.new params[:page].merge(:remote_ip => request.remote_ip)
+    @page = Page.new(params[:page].merge(:remote_ip => request.remote_ip))
     if @page.valid?
       flash[:notice] = 'Your new page will appear momentarily.'
       redirect_then_call(url(:pages)) do
