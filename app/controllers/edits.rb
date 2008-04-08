@@ -1,5 +1,7 @@
 class Edits < Application
   
+  #--
+  # FIXME What happens if we're not authenticated?
   before :authenticate
 
   #--
