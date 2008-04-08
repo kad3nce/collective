@@ -21,7 +21,8 @@ ul {
   list-style-type: none; }
 
 #content_full {
-  margin: 10px 20px 20px 20px; }
+  margin: 10px 20px 20px 20px;
+  position: relative; }
   #content_full ul.revisions {
     list-style-type: disc; }
     #content_full ul.revisions li {
@@ -213,8 +214,13 @@ code {
   margin-bottom: 0; }
   #wiki-page #content #page-form p a {
     text-decoration: none; }
+#wiki-page #content #edit-filters {
+  position: absolute;
+  right: -7px;
+  top: 0; }
 #wiki-page #content #recent-edits li {
-  padding: 5px; }
+  padding: 5px;
+  position: relative; }
   #wiki-page #content #recent-edits li h2 {
     margin-top: 0; }
     #wiki-page #content #recent-edits li h2 a {
@@ -226,9 +232,28 @@ code {
       color: #C7FFC9; }
   #wiki-page #content #recent-edits li.spam {
     background-color: #FFC7DF; }
-    #wiki-page #content #recent-edits li.spam a:hover {
+    #wiki-page #content #recent-edits li.spam h2 a:hover {
       background-color: black;
       color: #FFC7DF; }
+  #wiki-page #content #recent-edits li .moderate-edit {
+    position: absolute;
+    right: 6px;
+    top: 11px; }
+#wiki-page #content #recent-edits button, #wiki-page #content #edit-filters button {
+  background-color: #F5F5F5;
+  display: block;
+  float: left;
+  margin: 0 7px 0 0;
+  border: 1px solid #DEDEDE;
+  border-top: 1px solid #EEE;
+  border-left: 1px solid #EEE;
+  font-size: 100%;
+  line-height: 130%;
+  text-decoration: none;
+  font-weight: bold;
+  color: #565656;
+  cursor: pointer;
+  padding: 5px 10px 6px 7px; }
 
 #content_sidebar {
   float: left;

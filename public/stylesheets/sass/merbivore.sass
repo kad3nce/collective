@@ -25,6 +25,7 @@ ul
 
 #content_full
   :margin 10px 20px 20px 20px
+  :position relative
   ul.revisions
     :list-style-type disc
     li
@@ -222,9 +223,14 @@ code
         :margin-bottom 0
         a
           :text-decoration none
+    #edit-filters
+      :position absolute
+      :right -7px
+      :top 0
     #recent-edits
       li
         :padding 5px
+        :position relative
         h2
           :margin-top 0
           a
@@ -237,9 +243,30 @@ code
               :color #C7FFC9
         &.spam
           :background-color #FFC7DF
-          a:hover
-            :background-color black
-            :color #FFC7DF
+          h2
+            a:hover
+              :background-color black
+              :color #FFC7DF
+        .moderate-edit
+          :position absolute
+          :right 6px
+          :top 11px
+    #recent-edits button, #edit-filters button
+      :background-color #F5F5F5
+      :display block
+      :float left
+      :margin 0 7px 0 0
+      :border 1px solid #DEDEDE
+      :border-top 1px solid #EEE
+      :border-left 1px solid #EEE
+      :font-size 100%
+      :line-height 130%
+      :text-decoration none
+      :font-weight bold
+      :color #565656
+      :cursor pointer
+      :padding 5px 10px 6px 7px
+            
           
 #content_sidebar
   :float left
