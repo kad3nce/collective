@@ -1,10 +1,32 @@
 !!! Strict
 %html{ "xml:lang" => "en-us", :lang => "en-us", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
-    %title
-      Collective | A No-Frills Merb Wiki
+    %title= title :site => 'Merb Wiki'
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/
-    = css_include_tag :master
-  %body
-    = catch_content :for_layout
+    = css_include_tag :merbivore
+  %body#wiki-page
+    #header
+      .wrap_to_center
+        #logo
+          = image_tag 'http://merbivore.com/img/header_logo.png'
+        %ul#nav
+          %li= link_to 'Home', 'http://merbivore.com'
+          %li= highlighted_link_to 'All Pages', url(:pages)
+          %li.last= highlighted_link_to 'New Page', url(:new_page)
+    #content
+      .wrap_to_center
+        - flash.each do |type, message|      
+          #notice{ :class => type }
+            %p= message
+        #content_top.full_width
+          #content_bottom
+            #content_full
+              = catch_content :for_layout
+      #footer
+        .wrap_to_center
+          %p
+            &copy;2006, Ezra Zygmuntowicz | Merb is released under the
+            %a{ :href => "http://www.opensource.org/licenses/mit-license.php" } MIT License 
+            | Wiki powered by
+            %a{ :href => 'http://github.com/meekish/collective' } Collective
     = js_include_tag :jquery, :application

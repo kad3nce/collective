@@ -1,8 +1,8 @@
-%h2
-  Editing
-  %strong= @page.name
-
+%h2= title "Editing #{@page.name}"
+= error_messages_for @page
 - form_for :page, :action => url(:page, @page) do
   %ul#page-form
-    %li~ text_area_control :content, :label => 'Content'
+    %li
+      %p= link_to 'Textile Enabled', 'http://hobix.com/textile/quick.html', :target => '_blank'
+      ~ text_area_control :content
     %li= submit_button 'Submit'

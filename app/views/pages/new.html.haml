@@ -1,7 +1,9 @@
-%h2 New Page
-
-- form_for :page, :action => url(:page) do
-  %ul#page-form
-    %li= text_control :name, :label => 'Name'
-    %li~ text_area_control :content, :label => 'Content'
+- title 'New Page'
+= error_messages_for @page
+- form_for :page, :action => url(:page), :id => 'page-form' do
+  %h1= text_control :name
+  %ul
+    %li
+      %p= link_to 'Textile Enabled', 'http://hobix.com/textile/quick.html', :target => '_blank'
+      ~ text_area_control :content
     %li= submit_button 'Submit'
