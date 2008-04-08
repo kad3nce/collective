@@ -9,9 +9,10 @@ module DefensioSpamProtection
     if @page.valid?
       flash[:notice] = 'Your new page will appear momentarily.'
       redirect_then_call(url(:pages)) do
-        response = {} # call Defensio API to check for spaminess
+        content_as_html = RedCloth.new(@page.content).to_html
+        response = {} # send content_as_html to Defensio API to check for spaminess
         if (response[:spam]) # defensio says it's spam
-          Version.create(:content => @page.content, :spam => true, :spaminess => response[:spaminess], :page_id => -1)
+          Version.create(:content => @page.content, :spam => true, :spaminess => response[:spaminess], :page_id => -1, :remote_ip => request.remote_ip)
         else
           @page.save
         end
