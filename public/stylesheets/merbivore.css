@@ -21,7 +21,8 @@ ul {
   list-style-type: none; }
 
 #content_full {
-  margin: 10px 20px 20px 20px; }
+  margin: 10px 20px 20px 20px;
+  position: relative; }
   #content_full ul.revisions {
     list-style-type: disc; }
     #content_full ul.revisions li {
@@ -30,7 +31,7 @@ ul {
       #content_full ul.revisions li a {
         display: inline; }
   #content_full a {
-    color: #11b716;
+    color: #11B716;
     font-weight: bold; }
   #content_full a:hover {
     background: #22d716;
@@ -160,7 +161,7 @@ h1.home, #notice p {
   text-align: center; }
 
 h2 {
-  color: #7aad00;
+  color: #7AAD00;
   font: bold 22px "Lucida Grande" sans-serif;
   margin: 10px 0px; }
 
@@ -200,7 +201,7 @@ code {
 #wiki-page #content textarea {
   height: 400px;
   width: 755px; }
-#wiki-page #content ul#list-of-pages, #wiki-page #content form ul {
+#wiki-page #content ul#list-of-pages, #wiki-page #content ul#recent-edits, #wiki-page #content form ul {
   list-style-type: none;
   padding-left: 0; }
 #wiki-page #content ul {
@@ -213,6 +214,47 @@ code {
   margin-bottom: 0; }
   #wiki-page #content #page-form p a {
     text-decoration: none; }
+#wiki-page #content #edit-filters {
+  position: absolute;
+  right: -7px;
+  top: 0; }
+#wiki-page #content #recent-edits li {
+  padding: 5px;
+  position: relative; }
+  #wiki-page #content #recent-edits li h2 {
+    color: black;
+    margin-top: 0; }
+    #wiki-page #content #recent-edits li h2 a {
+      color: black; }
+  #wiki-page #content #recent-edits li.ham {
+    background-color: #C7FFC9; }
+    #wiki-page #content #recent-edits li.ham h2 a:hover {
+      background-color: black;
+      color: #C7FFC9; }
+  #wiki-page #content #recent-edits li.spam {
+    background-color: #FFC7DF; }
+    #wiki-page #content #recent-edits li.spam h2 a:hover {
+      background-color: black;
+      color: #FFC7DF; }
+  #wiki-page #content #recent-edits li .moderate-edit {
+    position: absolute;
+    right: 6px;
+    top: 11px; }
+#wiki-page #content #recent-edits button, #wiki-page #content #edit-filters button {
+  background-color: #F5F5F5;
+  display: block;
+  float: left;
+  margin: 0 7px 0 0;
+  border: 1px solid #DEDEDE;
+  border-top: 1px solid #EEE;
+  border-left: 1px solid #EEE;
+  font-size: 100%;
+  line-height: 130%;
+  text-decoration: none;
+  font-weight: bold;
+  color: #565656;
+  cursor: pointer;
+  padding: 5px 10px 6px 7px; }
 
 #content_sidebar {
   float: left;

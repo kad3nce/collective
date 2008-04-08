@@ -3,6 +3,7 @@ class Page < DataMapper::Base
   attr_accessor :spam
   attr_accessor :spaminess
   attr_accessor :remote_ip
+  attr_accessor :signature
   property :slug, :string, :nullable => false
   property :versions_count, :integer, :default => 0
   # ==============================================================
@@ -72,10 +73,10 @@ private
     # DataMapper not initializing versions_count with default value of zero. Bug?
     self.versions_count ||= 0
 
-    version_attributes = { :content => content, :remote_ip => remote_ip }
+    version_attributes = { :content => @content, :remote_ip => @remote_ip, :signature => @signature }
 
     if(spam)
-      versions.create(version_attributes.merge(:number => versions_count + 1, :spam => true, :spaminess => spaminess))
+      versions.create(version_attributes.merge(:number => versions_count + 1, :spam => true, :spaminess => @spaminess))
     else
       self.versions_count += 1
       # Don't use #build as it is NULLifying the page_id field of this page's other versions

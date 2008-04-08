@@ -25,6 +25,7 @@ ul
 
 #content_full
   :margin 10px 20px 20px 20px
+  :position relative
   ul.revisions
     :list-style-type disc
     li
@@ -33,7 +34,7 @@ ul
       a
         :display inline
   a
-    :color #11b716
+    :color #11B716
     :font-weight bold
   a:hover
     :background #22d716
@@ -165,7 +166,7 @@ h1.home, #notice p
   :text-align center
 
 h2
-  :color #7aad00
+  :color #7AAD00
   :font bold 22px "Lucida Grande" sans-serif
   :margin 10px 0px
 
@@ -208,7 +209,7 @@ code
     textarea
       :height 400px
       :width 755px
-    ul#list-of-pages, form ul
+    ul#list-of-pages, ul#recent-edits, form ul
       :list-style-type none
       :padding-left 0
     ul
@@ -222,7 +223,52 @@ code
         :margin-bottom 0
         a
           :text-decoration none
-
+    #edit-filters
+      :position absolute
+      :right -7px
+      :top 0
+    #recent-edits
+      li
+        :padding 5px
+        :position relative
+        h2
+          :color black
+          :margin-top 0
+          a
+            :color black
+        &.ham
+          :background-color #C7FFC9
+          h2
+            a:hover
+              :background-color black
+              :color #C7FFC9
+        &.spam
+          :background-color #FFC7DF
+          h2
+            a:hover
+              :background-color black
+              :color #FFC7DF
+        .moderate-edit
+          :position absolute
+          :right 6px
+          :top 11px
+    #recent-edits button, #edit-filters button
+      :background-color #F5F5F5
+      :display block
+      :float left
+      :margin 0 7px 0 0
+      :border 1px solid #DEDEDE
+      :border-top 1px solid #EEE
+      :border-left 1px solid #EEE
+      :font-size 100%
+      :line-height 130%
+      :text-decoration none
+      :font-weight bold
+      :color #565656
+      :cursor pointer
+      :padding 5px 10px 6px 7px
+            
+          
 #content_sidebar
   :float left
   :margin 20px 20px 15px 10px

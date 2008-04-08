@@ -1,0 +1,13 @@
+%h1= title 'Recent Edits'
+#edit-filters
+  %button{ :type => 'submit' } Spam
+  %button{ :type => 'submit' } Ham
+  %button{ :type => 'submit' } All
+- @edits.each do |version|
+  %ul#recent-edits
+    %li{ :class => spam_or_ham(version) }
+      %h2= link_to_page_or_nothing(version)
+      - form_for :edit, :action => url(:edit, version), :method => :put, :class => 'moderate-edit-form' do |f|
+        .moderate-edit
+          = mark_as_ham_or_spam(version)
+      = version.content_html
