@@ -5,12 +5,16 @@ class Version < DataMapper::Base
   property :moderated,    :boolean, :default => false
   property :number,       :integer
   property :spam,         :boolean, :default => false
-  property :spaminess,    :float, :default => 0
+  property :spaminess,    :float,   :default => 0
   property :signature,    :string
   
   belongs_to :page
   
   before_save :populate_content_html
+  
+  def self.most_recent_unmoderated(max=100)
+    all(:moderated => false, :limit => max, :order => 'created_at DESC')
+  end
   
 private
   def populate_content_html
