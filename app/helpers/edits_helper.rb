@@ -6,7 +6,7 @@ module Merb
       
       def mark_as_ham_or_spam(version)
         open_tag('button', :type => 'submit') +
-          (version.spam ? 'Mark as Ham' : 'Mark as Spam') + 
+          (version.spam ? 'This Is Ham' : 'This Is Spam') + 
           "</button>"
       end
     end
