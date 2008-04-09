@@ -15,11 +15,6 @@ class Edits < Application
     @edit = Version.first(params[:id])
     raise NotFound unless @edit
     if @edit.update_attributes(:moderated => true)
-      if(@edit.spam)
-        DEFENSIO_GATEWAY.mark_as_ham(:signatures => @edit.signature)
-      else
-        DEFENSIO_GATEWAY.mark_as_spam(:signatures => @edit.signature)
-      end
       if request.xhr?
         render :nothing => 200
       else
