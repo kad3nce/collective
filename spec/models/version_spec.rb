@@ -72,4 +72,14 @@ describe Version do
     end
   end
 
+  describe "#spam_or_ham" do
+    it "should be 'spam' if the record is flagged as spam" do
+      Version.new(:spam => true).spam_or_ham.should == "spam"
+    end
+    
+    it "should be 'ham' if the record is not flagged as spam" do
+      Version.new(:spam => false).spam_or_ham.should == "ham"
+    end
+  end
+
 end

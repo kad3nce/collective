@@ -1,9 +1,5 @@
 module Merb
   module EditsHelper
-    def spam_or_ham(version)
-      version.spam ? 'spam' : 'ham'
-    end
-    
     #--
     # FIXME This method explodes if Version is nil, or Version does not have 
     # any contents
