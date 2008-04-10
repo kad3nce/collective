@@ -5,7 +5,7 @@
   %button{ :type => 'submit' } All
 - @edits.each do |version|
   %ul#recent-edits
-    %li{ :class => spam_or_ham(version) }
+    %li{ :class => version.spam_or_ham }
       %h2= link_to_page_or_nothing(version)
       - form_for :edit, :action => url(:edit, version), :method => :put, :class => 'moderate-edit-form' do |f|
         .moderate-edit

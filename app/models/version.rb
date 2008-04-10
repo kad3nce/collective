@@ -14,6 +14,10 @@ class Version < DataMapper::Base
   
   after_save  :update_as_spam_or_ham
 
+  def spam_or_ham
+    spam? ? "spam" : "ham"
+  end
+
   def self.most_recent_unmoderated(max=100)
     all(:moderated => false, :limit => max, :order => 'created_at DESC')
   end
