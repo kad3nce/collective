@@ -63,44 +63,14 @@ describe Page do
       end
     end
   end
-
-#  describe 'when updating with spam attribute set to true' do
-#    attr_accessor :page
-#    
-#    before(:each) do
-#      self.page = Page.create!(
-#        :content => 'the body of the page', 
-#        :name    => 'a new page for testing'
-#      )
-#    end
-#    
-#    after(:each) do
-#      page.destroy!
-#    end
-#    
-#    it 'should create a new Version record' do
-#      lambda {
-#        page.update_attributes(:spam => true, :content => 'V1/\GRA')
-#      }.should change(Version, :count)
-#    end
-#    
-#    it 'should not change latest_version' do
-#      lambda {
-#        page.update_attributes(:spam => true, :content => 'V1/\GRA')
-#      }.should_not change(page, :latest_version)
-#    end
-#    
-#    it 'should mark the new version as spam' do
-#      page.update_attributes(:spam => true, :content => 'V1/\GRA')
-#      Version.first(:content => 'V1/\GRA').spam.should == true
-#    end
-#    
-#    it 'should not increase the versions_count' do
-#      lambda {
-#        page.update_attributes(:spam => true, :content => 'V1/\GRA')
-#      }.should_not change(page, :versions_count)
-#    end
-#  end
+  
+  describe "#version_attributes" do
+    it "should set the 'spam' attribute to true if the Page is spam" do
+      Page.publicize_methods do
+        Page.new(:spam => true, :versions_count => 0).version_attributes[:spam].should be_true
+      end
+    end
+  end
 
   describe '#content_additions' do
     it "should return the additions between the page's current content and an arbitrary string" do
