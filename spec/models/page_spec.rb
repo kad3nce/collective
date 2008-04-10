@@ -80,11 +80,23 @@ describe Page do
   end
 
   describe '#latest_version' do
-    it 'should fetch the latest version of the page' do
-      page = Page.new
-      page.versions << old_version = Version.new(:number => 1)
-      page.versions << latest_version = Version.new(:number => 2)
-      page.latest_version.should == latest_version
+    attr_accessor :page, :version
+    
+    before(:each) do
+      self.page = Page.new
+      page.stub!(:id).and_return(1)
+      
+      self.version = mock_model(Version)
+    end
+    
+    after(:each) do
+      self.page    = nil
+      self.version = nil
+    end
+    
+    it "should return that most recent version for this page" do
+      Version.should_receive(:latest_version_for_page).with(page).and_return(version)
+      page.latest_version.should == version
     end
   end
 
@@ -93,9 +105,11 @@ describe Page do
     
     before(:each) do
       self.page = Page.new
-      page.versions.build(
-        :content      => 'the content', 
-        :content_html => '<p>the content</p>'
+      page.stub!(:latest_version).and_return(
+        stub("latest", 
+          :content      => "the content", 
+          :content_html => "<p>the content</p>"
+        )
       )
     end
     
@@ -115,8 +129,8 @@ describe Page do
 
     describe '#content=' do
       it 'should change the return value of #content' do
-        page = Page.new
-        lambda { page.content = 'Some new content' }.should change(page, :content)
+        p = Page.new
+        lambda { p.content = 'Some new content' }.should change(p, :content)
       end
     end
 

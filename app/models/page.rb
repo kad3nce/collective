@@ -31,14 +31,14 @@ class Page < DataMapper::Base
   end
 
   def content_additions(new_content)
-    diff = Diff::LCS.sdiff(content, new_content)
+    diff        = Diff::LCS.sdiff(content, new_content)
     all_changes = diff.reject { |diff| diff.unchanged? }
-    additions = all_changes.reject { |diff| diff.deleting? }
+    additions   = all_changes.reject { |diff| diff.deleting? }
     additions.map { |diff| diff.to_a.last.last }.join
   end
 
   def latest_version
-    versions.sort_by(&:number).last
+    Version.latest_version_for_page(self)
   end
 
   def name=(new_name)
