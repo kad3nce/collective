@@ -5,8 +5,10 @@ describe Edits do
   attr_accessor :edit, :edits
   
   before(:each) do
-    self.edit  = Version.new(:content => "I have content")
+    self.edit  = stub_everything("version")
     self.edits = [edit]
+    
+    edit.stub!(:id).and_return("1")
   end
   
   after(:each) do
@@ -43,6 +45,52 @@ describe Edits do
       do_get_without_authentication.status.should == 401
     end 
     
+  end
+
+  describe "requesting /edits/1 with PUT" do
+    
+    before(:each) do
+      Version.stub!(:first).and_return(edit)
+      edit.stub!(:update_attributes).and_return(true)
+    end
+    
+    def do_authorized_put
+      dispatch_to(Edits, :update, :id => "1") do |controller|
+        controller.stub!(:authenticate_or_request_with_http_basic).and_return(true)
+      end
+    end
+    
+    def do_unauthorized_put
+      dispatch_to(Edits, :update, :id => "1")
+    end
+    
+    it "should redirect to /edits" do
+      do_authorized_put.should be_redirection_to(url(:edits))
+    end
+    
+    it "should load the requested record" do
+      Version.should_receive(:first).with("1").and_return(edit)
+      do_authorized_put.assigns(:edit).should == edit
+    end
+    
+    it "should raise NotFound if the record cannot be found" do
+      Version.should_receive(:first).with("1").and_return(nil)
+      lambda { do_authorized_put }.should raise_error(Merb::ControllerExceptions::NotFound)
+    end
+    
+    it "should set the record as moderated" do
+      edit.should_receive(:update_attributes).with(:moderated => true).and_return(true)
+      do_authorized_put.should be_redirection_to(url(:edits))
+    end 
+    
+    it "should raise BadRequest if the update fails" do
+      edit.should_receive(:update_attributes).with(:moderated => true).and_return(false)
+      lambda { do_authorized_put }.should raise_error(Merb::ControllerExceptions::BadRequest)
+    end
+    
+    it "should respond with a client error (HTTP 401) if accessed by an unauthorized user" do
+      do_unauthorized_put.should be_client_error
+    end
   end
 
 end

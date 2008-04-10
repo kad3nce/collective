@@ -1,9 +1,8 @@
 class Edits < Application
   
-  #--
-  # FIXME What happens if we're not authenticated?
   before :authenticate
 
+  # Accessed by: GET /edits
   #--
   # FIXME What happens if we get here and there are no edits?
   def index
@@ -11,6 +10,7 @@ class Edits < Application
     display @edits
   end
 
+  # Accessed by: PUT /edits/1
   def update
     @edit = Version.first(params[:id])
     raise NotFound unless @edit
