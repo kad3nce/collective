@@ -23,48 +23,84 @@ describe Page do
       Page.new(:versions_count => 10).versions_count.should == 10
     end
   end
-
-  describe "#save" do
-    it 'should create a new version when saving' do
-      page = Page.new(:content => 'the body of the page', :name => 'a new page')
-      first_version = page.latest_version
-      page.save
-      page.latest_version.should_not == first_version
-    end
-  end
-
-  describe 'when updating with spam attribute set to true' do
+  
+  describe "#build_new_version" do
+    attr_accessor :page
+    
     before(:each) do
-      @page = Page.create!(:content => 'the body of the page', :name => "a new page for testing")
+      self.page = Page.new(
+        :content => 'the body of the page', 
+        :name    => 'a new page'
+      )
+      page.versions_count = 1
+      
+      page.stub!(:valid?).and_return(true)
+      page.stub!(:versions).and_return(stub("versions", :create => true))
     end
     
     after(:each) do
-      @page.destroy!
+      page.destroy!
     end
     
-    it 'should create a new Version record' do
-      lambda {
-        @page.update_attributes(:spam => true, :content => 'V1/\GRA')
-      }.should change(Version, :count)
+    it "should increment versions_count if the page is not spam" do
+      page.spam = false
+      Page.publicize_methods(page) do |p|
+        lambda { p.build_new_version }.should change(p, :versions_count)
+      end
     end
     
-    it 'should not change latest_version' do
-      lambda {
-        @page.update_attributes(:spam => true, :content => 'V1/\GRA')
-      }.should_not change(@page, :latest_version)
+    it "should not increment versions_count if the page is spam" do
+      page.spam = true
+      Page.publicize_methods(page) do |p|
+        lambda { p.build_new_version }.should_not change(p, :versions_count)
+      end
     end
     
-    it 'should mark the new version as spam' do
-      @page.update_attributes(:spam => true, :content => 'V1/\GRA')
-      Version.first(:content => 'V1/\GRA').spam.should == true
-    end
-    
-    it 'should not increase the versions_count' do
-      lambda {
-        @page.update_attributes(:spam => true, :content => 'V1/\GRA')
-      }.should_not change(@page, :versions_count)
+    it "should build a new Version" do
+      page.should_receive(:versions).and_return(mock("versions", :create => true))
+      Page.publicize_methods(page) do |p|
+        p.build_new_version
+      end
     end
   end
+
+#  describe 'when updating with spam attribute set to true' do
+#    attr_accessor :page
+#    
+#    before(:each) do
+#      self.page = Page.create!(
+#        :content => 'the body of the page', 
+#        :name    => 'a new page for testing'
+#      )
+#    end
+#    
+#    after(:each) do
+#      page.destroy!
+#    end
+#    
+#    it 'should create a new Version record' do
+#      lambda {
+#        page.update_attributes(:spam => true, :content => 'V1/\GRA')
+#      }.should change(Version, :count)
+#    end
+#    
+#    it 'should not change latest_version' do
+#      lambda {
+#        page.update_attributes(:spam => true, :content => 'V1/\GRA')
+#      }.should_not change(page, :latest_version)
+#    end
+#    
+#    it 'should mark the new version as spam' do
+#      page.update_attributes(:spam => true, :content => 'V1/\GRA')
+#      Version.first(:content => 'V1/\GRA').spam.should == true
+#    end
+#    
+#    it 'should not increase the versions_count' do
+#      lambda {
+#        page.update_attributes(:spam => true, :content => 'V1/\GRA')
+#      }.should_not change(page, :versions_count)
+#    end
+#  end
 
   describe '#content_additions' do
     it "should return the additions between the page's current content and an arbitrary string" do
@@ -74,25 +110,21 @@ describe Page do
   end
 
   describe '#latest_version' do
-    
     it 'should fetch the latest version of the page' do
       page = Page.new
       page.versions << old_version = Version.new(:number => 1)
       page.versions << latest_version = Version.new(:number => 2)
       page.latest_version.should == latest_version
     end
-    
   end
 
   describe do
-    
     before(:each) do
       @page = Page.new
       @page.versions.build(:content => 'the content', :content_html => '<p>the content</p>')
     end
 
     describe '#content' do
-      
       it 'should fetch the content from the latest version' do
         @page.content.should == 'the content'
       end
@@ -100,22 +132,16 @@ describe Page do
       it 'should return an empty string if #latest_version is nil' do
         Page.new.content.should == ''
       end
-      
     end
 
     describe '#content=' do
-      
       it 'should change the return value of #content' do
         page = Page.new
-        lambda {
-          page.content = 'Some new content'
-          }.should change(page, :content)
+        lambda { page.content = 'Some new content' }.should change(page, :content)
       end
-      
     end
 
     describe '#content_html' do
-      
       it 'should fetch the html formatted content from the latest version' do
         @page.content_html.should == '<p>the content</p>'
       end
@@ -123,12 +149,10 @@ describe Page do
       it 'should return an empty string if #latest_version is nil' do
         Page.new.content_html.should == ''
       end
-      
     end
   end
   
   describe "#name" do
-    
     attr_accessor :existing_page
     
     before(:each) do
@@ -151,11 +175,9 @@ describe Page do
       existing_page.name = "I want a new name"
       existing_page.name.should == old_name
     end
-    
   end
   
   describe '#select_version!' do
-    
     before(:each) do
       raise(@page.inspect) if @page
       @page = Page.new
@@ -178,7 +200,6 @@ describe Page do
     it 'should return nil when asked for a non-existent version' do
       @page.select_version!(2000).should == nil
     end
-    
   end
   
   describe "slug characteristics" do
