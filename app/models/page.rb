@@ -10,6 +10,7 @@ class Page < DataMapper::Base
   # = TODO: Remove this hack once DataMapper supports with_scope =
   # ==============================================================
   has_many :versions_with_spam, :class => 'Version'
+  
   before_save :build_new_version
   before_validation :set_slug
 
@@ -72,15 +73,26 @@ private
   def build_new_version
     # DataMapper not initializing versions_count with default value of zero. Bug?
     self.versions_count ||= 0
-
-    version_attributes = { :content => @content, :remote_ip => @remote_ip, :signature => @signature }
-
-    if(spam)
-      versions.create(version_attributes.merge(:number => versions_count + 1, :spam => true, :spaminess => @spaminess))
+    self.versions_count  += 1 unless spam
+    
+    # Don't use #build as it is NULLifying the page_id field of this page's other versions
+    versions.create(version_attributes)
+  end
+  
+  def version_attributes
+    defaults = { 
+      :content   => content, 
+      :remote_ip => remote_ip, 
+      :signature => signature
+    }
+    if spam
+      defaults.update(
+        :number    => versions_count.succ, 
+        :spam      => true, 
+        :spaminess => spaminess
+      )
     else
-      self.versions_count += 1
-      # Don't use #build as it is NULLifying the page_id field of this page's other versions
-      versions.create(version_attributes.merge(:number => versions_count))
+      defaults.update(:number => versions_count)
     end
   end
 
