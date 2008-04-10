@@ -88,15 +88,24 @@ describe Page do
     end
   end
 
-  describe do
+  describe "content methods" do
+    attr_accessor :page
+    
     before(:each) do
-      @page = Page.new
-      @page.versions.build(:content => 'the content', :content_html => '<p>the content</p>')
+      self.page = Page.new
+      page.versions.build(
+        :content      => 'the content', 
+        :content_html => '<p>the content</p>'
+      )
+    end
+    
+    after(:each) do
+      self.page = nil
     end
 
     describe '#content' do
       it 'should fetch the content from the latest version' do
-        @page.content.should == 'the content'
+        page.content.should == 'the content'
       end
 
       it 'should return an empty string if #latest_version is nil' do
@@ -113,7 +122,7 @@ describe Page do
 
     describe '#content_html' do
       it 'should fetch the html formatted content from the latest version' do
-        @page.content_html.should == '<p>the content</p>'
+        page.content_html.should == '<p>the content</p>'
       end
 
       it 'should return an empty string if #latest_version is nil' do
