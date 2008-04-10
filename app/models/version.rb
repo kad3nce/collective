@@ -18,6 +18,10 @@ class Version < DataMapper::Base
     all(:moderated => false, :limit => max, :order => 'created_at DESC')
   end
   
+  def self.latest_version_for_page(page)
+    first(:page_id => page.id, :order => "number DESC")
+  end
+  
 private
   def populate_content_html
     self.content_html = RedCloth.new(content).to_html
