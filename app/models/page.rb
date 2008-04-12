@@ -20,6 +20,16 @@ class Page < DataMapper::Base
   def self.by_slug(slug)
     first(:slug => slug)
   end
+  
+  def self.by_slug_and_select_version!(slug, version)
+    page = by_slug(slug)
+    page.select_version!(version) if page
+    
+    # Order matters! This is a little clever. If +try+ fails, +nil+ is 
+    # returned, and therefore the search was invalid. If +try+ doesn't fail, 
+    # +page+ must have been found and will be returned.
+    return page.try(:selected_version) && page
+  end
 
   attr_writer :content
   def content
