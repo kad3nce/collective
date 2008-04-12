@@ -25,6 +25,7 @@ describe Edits do
     def do_get_successfully
       dispatch_to(Edits, :index) do |controller|
         controller.stub!(:authenticate_or_request_with_http_basic).and_return(true)
+        controller.stub!(:display)
       end
     end
     
@@ -41,9 +42,16 @@ describe Edits do
       do_get_successfully.assigns(:edits).should == edits
     end
     
+    it "should display the loaded Version records" do
+      dispatch_to(Edits, :index) do |controller|
+        controller.stub!(:authenticate_or_request_with_http_basic).and_return(true)
+        controller.should_receive(:display).with(edits)
+      end
+    end
+    
     it "should return an HTTP 401 (UNAUTHORIZED) response if the user isn't authenticated" do
       do_get_without_authentication.status.should == 401
-    end 
+    end
     
   end
 
