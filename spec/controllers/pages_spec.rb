@@ -94,4 +94,27 @@ describe Pages do
     end
   end
 
+  describe "requesting /pages/1/edit with GET" do
+    def do_get
+      dispatch_to(Pages, :edit, :id => "1") do |controller|
+        controller.stub!(:render)
+      end
+    end
+    
+    it "should be successful" do
+      do_get.should be_successful
+    end
+    
+    it "should load the requested page record" do
+      Page.should_receive(:by_slug_and_select_version!).and_return(page)
+      do_get.assigns(:page).should == page
+    end
+    
+    it "should render the action" do
+      dispatch_to(Pages, :edit, :id => "1") do |controller|
+        controller.should_receive(:render)
+      end
+    end
+  end
+
 end
