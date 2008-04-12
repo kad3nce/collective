@@ -20,6 +20,16 @@ class Page < DataMapper::Base
   def self.by_slug(slug)
     first(:slug => slug)
   end
+  
+  def self.by_slug_and_select_version!(slug, version)
+    page = by_slug(slug)
+    page.select_version!(version) if page
+    
+    # Order matters! This is a little clever. If +try+ fails, +nil+ is 
+    # returned, and therefore the search was invalid. If +try+ doesn't fail, 
+    # +page+ must have been found and will be returned.
+    return page.try(:selected_version) && page
+  end
 
   attr_writer :content
   def content
@@ -45,13 +55,13 @@ class Page < DataMapper::Base
     @name = new_name if new_record?
   end
 
-  def select_version!(version_number)
-    if @selected_version = versions.detect { |version| version.number == version_number }
-      @content = @selected_version.content
-    end
-    @selected_version
+  def select_version!(version_number=:latest)
+    self.selected_version = v = find_selected_version(version_number)
+    self.content          = selected_version.try(:content)
+    return v
   end
 
+  attr_writer :selected_version
   def selected_version
     @selected_version || latest_version
   end
@@ -77,6 +87,15 @@ private
     
     # Don't use #build as it is NULLifying the page_id field of this page's other versions
     versions.create(version_attributes)
+  end
+  
+  def find_selected_version(version_number)
+    if version_number.nil? || version_number == :latest
+      latest_version
+    else
+      version_number = version_number.to_i
+      versions.detect { |version| version.number == version_number }
+    end
   end
   
   def version_attributes
