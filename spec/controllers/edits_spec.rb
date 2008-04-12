@@ -1,7 +1,6 @@
 require File.join(File.dirname(__FILE__), "..", 'spec_helper.rb')
 
 describe Edits do
-
   attr_accessor :edit, :edits
   
   before(:each) do
@@ -17,7 +16,6 @@ describe Edits do
   end
   
   describe "requesting /edits with GET" do
-    
     before(:each) do
       Version.stub!(:most_recent_unmoderated).and_return(edits)
     end
@@ -52,11 +50,9 @@ describe Edits do
     it "should return an HTTP 401 (UNAUTHORIZED) response if the user isn't authenticated" do
       do_get_without_authentication.status.should == 401
     end
-    
   end
 
   describe "requesting /edits/1 with PUT" do
-    
     before(:each) do
       Version.stub!(:first).and_return(edit)
       edit.stub!(:update_attributes).and_return(true)
@@ -100,5 +96,4 @@ describe Edits do
       do_unauthorized_put.should be_client_error
     end
   end
-
 end

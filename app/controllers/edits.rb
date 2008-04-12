@@ -1,5 +1,4 @@
-class Edits < Application
-  
+class Edits < Application  
   before :authenticate
 
   # Accessed by: GET /edits
@@ -27,7 +26,6 @@ class Edits < Application
   end
   
 private
-
   def authenticate
     authenticate_or_request_with_http_basic("login") do |username, password|
       # ==============================================================================
@@ -36,5 +34,4 @@ private
       username == "merbivore" && password == "supersecret"
     end
   end
-
 end
