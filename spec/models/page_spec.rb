@@ -170,28 +170,71 @@ describe Page do
     end
   end
   
-  describe '#select_version!' do
+  describe "#select_version!" do
+    attr_accessor :page, :initial_version, :updated_version
+    
     before(:each) do
-      raise(@page.inspect) if @page
-      @page = Page.new
-      @page.versions << first_version = Version.new(:content => 'Initial Content', :content_html => '<p>Initial Content</p>', :number => 1)
-      @page.versions << second_version = Version.new(:content => 'Updated Content', :content_html => '<p>Updated Content</p>', :number => 2)
+      self.page = Page.new
+      self.initial_version = Version.new(
+        :content      => 'Initial Content', 
+        :content_html => '<p>Initial Content</p>', 
+        :number       => 1
+      )
+      self.updated_version = Version.new(
+        :content      => 'Updated Content', 
+        :content_html => '<p>Updated Content</p>', 
+        :number       => 2
+      )
+      page.versions << initial_version
+      page.versions << updated_version
+      
+      Version.stub!(:latest_version_for_page).and_return(updated_version)
     end
     
-    it 'should change the return value of #content when asking for an older version' do
-      lambda {
-        @page.select_version!(1)
-      }.should change(@page, :content)
+    after(:each) do
+      page.destroy!
+      initial_version.destroy!
+      updated_version.destroy!
     end
     
-    it 'should change the return value of #content_html when asking for an older version' do
-      lambda {
-        @page.select_version!(1)
-      }.should change(@page, :content_html)
+    it "should select the latest version if no version number was specified" do
+      page.select_version!
+      page.selected_version.should == updated_version
     end
     
-    it 'should return nil when asked for a non-existent version' do
-      @page.select_version!(2000).should == nil
+    it "should select the latest version if 'nil' is specified as the version number" do
+      page.select_version!(nil)
+      page.selected_version.should == updated_version
+    end
+    
+    it "should select the latest version if ':latest' is specified as the version number" do
+      page.select_version!(:latest)
+      page.selected_version.should == updated_version
+    end
+    
+    it "should select the specified version number" do
+      page.select_version!(initial_version.number)
+      page.selected_version.should == initial_version
+    end
+    
+    it "should select the specified version number when it's a string" do
+      page.select_version!(initial_version.number.to_s)
+      page.selected_version.should == initial_version
+    end
+    
+    it "should return 'nil' if the specified version number is invalid" do
+      page.versions.should_receive(:detect).and_return(nil)
+      page.select_version!(3).should be_nil
+    end
+    
+    it "should set 'content' to the selected version's content" do
+      page.select_version!(initial_version.number)
+      page.content.should == initial_version.content
+    end
+    
+    it "should set 'content_html' to the selected version's content_html" do
+      page.select_version!(initial_version.number)
+      page.content_html.should == initial_version.content_html
     end
   end
   
