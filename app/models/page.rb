@@ -45,13 +45,13 @@ class Page < DataMapper::Base
     @name = new_name if new_record?
   end
 
-  def select_version!(version_number)
-    if @selected_version = versions.detect { |version| version.number == version_number }
-      @content = @selected_version.content
-    end
-    @selected_version
+  def select_version!(version_number=:latest)
+    self.selected_version = v = find_selected_version(version_number)
+    self.content          = selected_version.try(:content)
+    return v
   end
 
+  attr_writer :selected_version
   def selected_version
     @selected_version || latest_version
   end
@@ -77,6 +77,15 @@ private
     
     # Don't use #build as it is NULLifying the page_id field of this page's other versions
     versions.create(version_attributes)
+  end
+  
+  def find_selected_version(version_number)
+    if version_number.nil? || version_number == :latest
+      latest_version
+    else
+      version_number = version_number.to_i
+      versions.detect { |version| version.number == version_number }
+    end
   end
   
   def version_attributes
