@@ -30,16 +30,4 @@ private
   def populate_content_html
     self.content_html = RedCloth.new(content).to_html
   end
-  
-  def update_as_spam_or_ham
-    # FIXME Refactoring opportunity:
-    # This sort of logic should be shoved inside of Viking. If models that are 
-    # protected using Viking have a certain assumed API, we can keep any sort 
-    # of logic like the below where it belongs: in Viking.
-    if spam?
-      DEFENSIO_GATEWAY.mark_as_ham(:signatures => signature)
-    else
-      DEFENSIO_GATEWAY.mark_as_spam(:signatures => signature)
-    end
-  end
 end

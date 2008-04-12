@@ -14,6 +14,7 @@ class Edits < Application
   def update
     @edit = Version.first(params[:id])
     raise NotFound unless @edit
+    # FIXME Needs to call out to Defensio
     if @edit.update_attributes(:moderated => true)
       if request.xhr?
         render :nothing => 200
