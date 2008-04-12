@@ -18,8 +18,7 @@ class Pages < Application
   end
 
   def edit(id, version = :latest)
-    @page = Page.by_slug(id)       || raise(NotFound)
-    @page.select_version!(version) || raise(NotFound)
+    @page = Page.by_slug_and_select_version!(id, version) || raise(NotFound)
     render
   end
 end
