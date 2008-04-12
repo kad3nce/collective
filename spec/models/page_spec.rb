@@ -277,4 +277,37 @@ describe Page do
     end
   end
   
+  describe ".by_slug_and_select_version!" do
+    attr_accessor :page, :version
+    
+    before(:each) do
+      self.version = stub("version")
+      self.page    = stub("page", :select_version! => true, :selected_version => version)
+      Page.stub!(:by_slug).and_return(page)
+    end
+    
+    after(:each) do
+      self.page = nil
+    end
+    
+    it "should return the page with the specified slug" do
+      Page.by_slug_and_select_version!("slug", 1).should == page
+    end
+    
+    it "should return nil if the slug is invalid" do
+      Page.should_receive(:by_slug).and_return(nil)
+      Page.by_slug_and_select_version!("slug", 1).should be_nil
+    end
+    
+    it "should select the specified version of the slug" do
+      page.should_receive(:select_version!).with(1)
+      Page.by_slug_and_select_version!("slug", 1).selected_version.should == version
+    end
+    
+    it "should return nil if the specified version is invalid" do
+      page.should_receive(:selected_version).and_return(nil)
+      Page.by_slug_and_select_version!("slug", 1).should be_nil
+    end
+  end
+  
 end
