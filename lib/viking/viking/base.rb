@@ -15,6 +15,17 @@ module Viking
     def check_comment(options = {})
     end
   
+    # Provides a fuzzy interface to marking as either spam or ham based upon 
+    # a boolean switch, +is_spam+. When +is_spam+ is true, +mark_as_spam+ is 
+    # used. +mark_as_ham+ is used if +is_spam+ is false.
+    # 
+    # ==== Arguments
+    # +is_spam+ <Boolean>:: the switch that determines the method to use
+    # +options+ <Hash>:: options for your gateway of choice
+    def mark_as(is_spam, options = {})
+      is_spam ? mark_as_spam(options) : mark_as_ham(options)
+    end
+  
     def mark_as_spam(options = {})
     end
   
