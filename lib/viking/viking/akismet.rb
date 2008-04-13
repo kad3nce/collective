@@ -112,8 +112,12 @@ module Viking
       # Internal call to Akismet. Prepares the data for posting to the Akismet 
       # service.
       #
-      # +akismet_function+::
+      # ==== Arguments
+      # +akismet_function+ <String>::
       #   the Akismet function that should be called
+      # 
+      # The following keys are available to configure a given call to Akismet: 
+      # 
       # +user_ip+ (*required*)::
       #   IP address of the comment submitter.
       # +user_agent+ (*required*)::
