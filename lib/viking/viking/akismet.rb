@@ -87,7 +87,7 @@ module Viking
     #   the server can be very telling, so please include as much information 
     #   as possible.
     def check_comment(options={})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+      return false if invalid_options?
       message = call_akismet('comment-check', options)
       {:spam => !self.class.valid_responses.include?(message), :message => message}
     end
@@ -96,7 +96,7 @@ module Viking
     # should have been (i.e. false negatives). It takes identical arguments as 
     # +check_comment+. 
     def mark_as_spam(options={})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+      return false if invalid_options?
       {:message => call_akismet('submit-spam', options)}
     end
   
@@ -104,7 +104,7 @@ module Viking
     # were incorrectly marked as spam. It takes identical arguments as 
     # +check_comment+ and +mark_as_spam+.
     def mark_as_ham(options={})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+      return false if invalid_options?
       {:message => call_akismet('submit-ham', options)}
     end
 
@@ -153,7 +153,7 @@ module Viking
       # Call to check and verify your API key. You may then call the 
       # <tt>verified?</tt> method to see if your key has been validated
       def verify_api_key
-        return :false if @options[:api_key].nil? || @options[:blog].nil?
+        return :false if invalid_options?
         http = Net::HTTP.new(self.class.host, self.class.port, @options[:proxy_host], @options[:proxy_port])
         value = http_post(http, 'verify-key', {:key => @options[:api_key], :blog => @options[:blog]}.to_query)
         self.verified_key = (value == "valid") ? true : :false

@@ -45,12 +45,12 @@ module Viking
     end
 
     def check_article(options={})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+      return false if invalid_options?
       call_defensio 'announce-article', options
     end
 
     def check_comment(options={})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+      return false if invalid_options?
       if options[:article_date].respond_to?(:strftime)
         options[:article_date] = options[:article_date].strftime("%Y/%m/%d")
       end
@@ -58,17 +58,17 @@ module Viking
     end
   
     def mark_as_spam(options={})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+      return false if invalid_options?
       call_defensio 'report-false-negatives', options
     end
   
     def mark_as_ham(options={})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+      return false if invalid_options?
       call_defensio 'report-false-positives', options
     end
   
     def stats
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+      return false if invalid_options?
       call_defensio 'get-stats'
     end
 
