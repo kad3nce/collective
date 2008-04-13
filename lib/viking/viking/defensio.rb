@@ -52,7 +52,7 @@ module Viking
     def check_comment(options={})
       return false if invalid_options?
       if options[:article_date].respond_to?(:strftime)
-        options[:article_date] = options[:article_date].strftime("%Y/%m/%d")
+        options[:article_date] = options[:article_date].defensio_date_format
       end
       call_defensio 'audit-comment', options
     end
