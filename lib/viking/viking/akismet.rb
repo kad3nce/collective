@@ -100,9 +100,10 @@ module Viking
       {:message => call_akismet('submit-spam', options)}
     end
   
-    # This call is intended for the marking of false positives, things that were incorrectly marked as spam. It takes identical arguments as comment check and submit spam.
-    # The call parameters are the same as for the #commentCheck method.
-    def mark_as_ham(options = {})
+    # This call is intended for the marking of false positives, things that 
+    # were incorrectly marked as spam. It takes identical arguments as 
+    # +check_comment+ and +mark_as_spam+.
+    def mark_as_ham(options={})
       return false if @options[:api_key].nil? || @options[:blog].nil?
       {:message => call_akismet('submit-ham', options)}
     end
