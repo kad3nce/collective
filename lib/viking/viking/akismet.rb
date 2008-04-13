@@ -25,8 +25,6 @@ module Viking
       'Content-Type' => 'application/x-www-form-urlencoded'
     }
   
-    attr_accessor :verified_key
-  
     # Create a new instance of the Akismet class
     #
     # ==== Arguments
@@ -153,7 +151,7 @@ module Viking
         return :false if @options[:api_key].nil? || @options[:blog].nil?
         http = Net::HTTP.new(self.class.host, self.class.port, @options[:proxy_host], @options[:proxy_port])
         value = http_post(http, 'verify-key', {:key => @options[:api_key], :blog => @options[:blog]}.to_query)
-        @verified_key = (value == "valid") ? true : :false
+        self.verified_key = (value == "valid") ? true : :false
       end
       
       def http_post(http, action, data)
@@ -162,5 +160,8 @@ module Viking
         log_request(url, data, resp)
         resp.body
       end
+      
+    private
+      attr_accessor :verified_key
   end
 end
