@@ -11,9 +11,9 @@ module Viking
     attr_accessor :proxy_port, :proxy_host
     attr_reader :last_response
 
-    self.service_type = :blog
-    self.host = 'api.defensio.com'
-    self.api_version = '1.1'
+    self.service_type     = :blog
+    self.host             = 'api.defensio.com'
+    self.api_version      = '1.1'
     self.standard_headers = {
       'User-Agent'   => 'Viking (Rails Plugin) v0.5',
       'Content-Type' => 'application/x-www-form-urlencoded'
@@ -21,28 +21,35 @@ module Viking
   
     # Create a new instance of the Akismet class
     #
-    # :api_key 
-    #   Your Akismet API key
-    # :blog 
-    #   The blog associated with your api key
-    # :proxy_port
-    # :proxy_host
+    # ==== Arguments
+    # Arguments are provided in the form of a Hash with the following keys 
+    # (as Symbols) available: 
+    # 
+    # +api_key+::    your Defensio API key
+    # +blog+::       the blog associated with your api key
+    # 
+    # The following keys are available and are entirely optional. They are 
+    # available incase communication with Akismet's servers requires a 
+    # proxy port and/or host:
+    # 
+    # * +proxy_port+
+    # * +proxy_host+
     def initialize(options)
       super
-      @verify_options = false
+      self.verify_options = false
     end
 
-    # Returns <tt>true</tt> if the API key has been verified, <tt>false</tt> otherwise
+    # Returns +true+ if the API key has been verified, +false+ otherwise
     def verified?
-      (@verify_options ||= call_defensio('validate-key'))[:status] == 'success'
+      (verify_options ||= call_defensio('validate-key'))[:status] == 'success'
     end
 
-    def check_article(options = {})
+    def check_article(options={})
       return false if @options[:api_key].nil? || @options[:blog].nil?
       call_defensio 'announce-article', options
     end
 
-    def check_comment(options = {})
+    def check_comment(options={})
       return false if @options[:api_key].nil? || @options[:blog].nil?
       if options[:article_date].respond_to?(:strftime)
         options[:article_date] = options[:article_date].strftime("%Y/%m/%d")
@@ -50,12 +57,12 @@ module Viking
       call_defensio 'audit-comment', options
     end
   
-    def mark_as_spam(options = {})
+    def mark_as_spam(options={})
       return false if @options[:api_key].nil? || @options[:blog].nil?
       call_defensio 'report-false-negatives', options
     end
   
-    def mark_as_ham(options = {})
+    def mark_as_ham(options={})
       return false if @options[:api_key].nil? || @options[:blog].nil?
       call_defensio 'report-false-positives', options
     end
@@ -82,5 +89,8 @@ module Viking
         data = YAML.load(resp.body)
         (data.respond_to?(:key?) && data.key?('defensio-result')) ? data['defensio-result'].symbolize_keys : {:data => resp.body, :status => 'fail'}
       end
+      
+    private
+      attr_accessor :verify_options
   end
 end
