@@ -9,16 +9,16 @@ module Viking
     def verified?
     end
 
-    def check_article(options = {})
+    def check_article(options={})
     end
 
-    def check_comment(options = {})
+    def check_comment(options={})
     end
   
-    def mark_as_spam(options = {})
+    def mark_as_spam(options={})
     end
   
-    def mark_as_ham(options = {})
+    def mark_as_ham(options={})
     end
     
     def stats
@@ -30,6 +30,19 @@ module Viking
     
     def logger
       Viking.logger
+    end
+    
+    # Checks to ensure that the minimum number of +options+ have been provided 
+    # to make a call to the spam protection service.
+    # 
+    # Required options include:
+    # * +api_key+
+    # * +blog+
+    # 
+    # See the module for your desired spam protection service for details on 
+    # the format of these options.
+    def invalid_options?
+      options[:api_key].nil? || options[:blog].nil?
     end
     
     protected
