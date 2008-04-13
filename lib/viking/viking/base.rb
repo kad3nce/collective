@@ -3,7 +3,7 @@ module Viking
     attr_reader :options
 
     def initialize(options)
-      @options = options
+      self.options = options
     end
 
     def verified?
