@@ -11,10 +11,10 @@ module SpamProtection
         response = check_comment(@page)
         if response[:spam]
           Version.create_spam(@page.name, 
-              :content   => @page.content, 
-              :spaminess => response[:spaminess], 
-              :signature => response[:signature], 
-              :remote_ip => request.remote_ip
+            :content   => @page.content, 
+            :spaminess => response[:spaminess], 
+            :signature => response[:signature], 
+            :remote_ip => request.remote_ip
           )
         else
           @page.signature = response[:signature]
@@ -29,22 +29,17 @@ module SpamProtection
 
   def update
     @page = Page.by_slug(params[:id]) || raise(NotFound)
-    page_attributes = { :content => params[:page][:content], :remote_ip => request.remote_ip }
-    unless page_attributes[:content].strip.blank?
+    unless params[:page][:content].strip.blank?
       flash[:notice] = 'Your changes will appear momentarily.'
       redirect_then_call(url(:page, @page)) do
         response = check_comment(@page, params[:page][:content])
         
-        page_attributes.merge!(
+        params[:page].merge!(
           :signature => response[:signature], 
           :spaminess => response[:spaminess]
         )
-        
-        if response[:spam]
-          @page.update_attributes(page_attributes.merge(:spam => true))
-        else
-          @page.update_attributes(page_attributes)
-        end
+
+        @page.update_attributes(params[:page].update(:remote_ip => request.remote_ip))
       end
     else
       @page.errors.add :content, 'cannot be blank'
@@ -65,7 +60,7 @@ private
   end
 
   def content_as_html(page, content)
-    content = page.new_record? ? page.content : page.content_additions(content)
+    content = page.new_record? ? page.content : page.content_diff(content)
     RedCloth.new(content).to_html
   end
 

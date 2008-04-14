@@ -72,13 +72,6 @@ describe Page do
     end
   end
 
-  describe '#content_additions' do
-    it "should return the additions between the page's current content and an arbitrary string" do
-      page = Page.new(:content => "An old version\nof the content.")
-      page.content_additions("An old version\nof the content.\nPlus some new content.").should == "\nPlus some new content."
-    end
-  end
-
   describe '#latest_version' do
     attr_accessor :page, :version
     
@@ -127,10 +120,18 @@ describe Page do
       end
     end
 
-    describe '#content=' do
-      it 'should change the return value of #content' do
+    describe "#content=" do
+      it "should set the content of the page" do
         p = Page.new
-        lambda { p.content = 'Some new content' }.should change(p, :content)
+        p.content = "Content for page"
+        p.content.should == "Content for page"
+      end
+
+      it "should set the diff of the new content and the old content" do
+        p = Page.new
+        p.content = "Content for page"
+        p.content = [p.content, "Content for diff"].join("\n")
+        p.content_diff.should == "\nContent for diff"
       end
     end
 
