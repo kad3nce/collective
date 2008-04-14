@@ -12,6 +12,8 @@ class Version < DataMapper::Base
   
   before_save :populate_content_html
 
+  validates_presence_of :content
+
   def spam_or_ham
     spam? ? "spam" : "ham"
   end
@@ -22,6 +24,16 @@ class Version < DataMapper::Base
   
   def self.latest_version_for_page(page)
     first(:page_id => page.id, :order => "number DESC")
+  end
+  
+  def self.create_spam(page_name, options={})
+    create(
+      options.update(
+        :spam    => true, 
+        :page_id => -1, 
+        :content => [options[:content], page_name].join(":")
+      )
+    )
   end
   
 private
