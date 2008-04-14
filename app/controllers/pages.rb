@@ -1,6 +1,6 @@
 class Pages < Application
   # include NoSpamProtection
-  include DefensioSpamProtection
+  include SpamProtection
   
   def index
     @pages = Page.all

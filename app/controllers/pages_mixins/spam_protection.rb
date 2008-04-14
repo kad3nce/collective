@@ -1,6 +1,6 @@
 require 'diff/lcs'
 
-module DefensioSpamProtection
+module SpamProtection
   def self.included(base)
     base.show_action(:create, :update)
   end
