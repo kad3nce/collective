@@ -8,7 +8,7 @@ require 'set'
 # Copyright:: Copyright (c) 2005 - David Czarnecki
 # License::   BSD
 #
-# rewritten to be more rails-like
+# Rewritten to be more rails-like
 module Viking
   class Akismet < Base
     class << self
@@ -145,18 +145,43 @@ module Viking
       #   the server can be very telling, so please include as much information 
       #   as possible.
       def call_akismet(akismet_function, options={})
-        http = Net::HTTP.new("#{@options[:api_key]}.#{self.class.host}", self.class.port, @options[:proxy_host], @options[:proxy_port])
-        data = options.update(:blog => @options[:blog]).to_query
-        http_post(http, akismet_function, data)
+        http_post(
+          akismet_http, 
+          akismet_function, 
+          options.update(:blog => options[:blog]).to_query
+        )
       end
 
       # Call to check and verify your API key. You may then call the 
       # <tt>verified?</tt> method to see if your key has been validated
       def verify_api_key
         return :false if invalid_options?
-        http = Net::HTTP.new(self.class.host, self.class.port, @options[:proxy_host], @options[:proxy_port])
-        value = http_post(http, 'verify-key', {:key => @options[:api_key], :blog => @options[:blog]}.to_query)
+        value = http_post(
+          validate_http, 
+          'verify-key', 
+          { 
+            :key  => options[:api_key], 
+            :blog => options[:blog] 
+          }.to_query
+        )
         self.verified_key = (value == "valid") ? true : :false
+      end
+      
+      def akismet_http
+        Net::HTTP.new(
+          [options[:api_key], self.class.host].join("."), 
+          options[:proxy_host], 
+          options[:proxy_port]
+        )
+      end
+      
+      def validate_http
+        Net::HTTP.new(
+          self.class.host, 
+          self.class.port, 
+          options[:proxy_host], 
+          options[:proxy_port]
+        )
       end
       
       def http_post(http, action, data)
