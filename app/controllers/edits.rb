@@ -13,7 +13,11 @@ class Edits < Application
   def update
     @edit = Version.first(params[:id])
     raise NotFound unless @edit
-    # FIXME Needs to call out to Defensio
+    if(@edit.spam)
+      DEFENSIO_GATEWAY.mark_as_ham(:signatures => @edit.signature)
+    else
+      DEFENSIO_GATEWAY.mark_as_spam(:signatures => @edit.signature)
+    end
     if @edit.update_attributes(:moderated => true)
       if request.xhr?
         render :nothing => 200
