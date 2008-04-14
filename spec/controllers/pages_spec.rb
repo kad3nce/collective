@@ -1,6 +1,7 @@
 require File.join(File.dirname(__FILE__), "..", 'spec_helper.rb')
 
 describe Pages do
+  
   attr_accessor :page, :pages
   
   before(:each) do
@@ -118,6 +119,43 @@ describe Pages do
     it "should render the action" do
       dispatch_to(Pages, :edit, :id => "1") do |controller|
         controller.should_receive(:render)
+      end
+    end
+  end
+  
+end
+
+describe Pages, "with no spam protection" do
+
+  class Pages < Application
+    include NoSpamProtection # force it
+  end
+
+  describe "request /pages with POST" do
+    attr_accessor :page
+    
+    before(:each) do
+      self.page = mock_model(Page, :save => true)
+      Page.stub!(:new).and_return(page)
+    end
+    
+    def do_post
+      dispatch_to(Pages, :create)
+    end
+    
+    it "should create a new page" do
+      page.should_receive(:save).and_return(true)
+      do_post
+    end
+    
+    it "should redirect_to the new page if creating was successful" do
+      do_post.should be_redirection_to(url(:page, page))
+    end
+    
+    it "should render 'new' if the page was invalid" do
+      page.should_receive(:save).and_return(false)
+      dispatch_to(Pages, :create) do |controller|
+        controller.should_receive(:render).with(:new)
       end
     end
   end

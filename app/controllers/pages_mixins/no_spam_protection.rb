@@ -7,7 +7,7 @@ module NoSpamProtection
   end
   
   def create
-    @page = Page.new params[:page]
+    @page = Page.new(params[:page])
     if @page.save
       redirect url(:page, @page)
     else
