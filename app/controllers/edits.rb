@@ -32,10 +32,7 @@ class Edits < Application
 private
   def authenticate
     authenticate_or_request_with_http_basic("login") do |username, password|
-      # ==============================================================================
-      # = TODO: load password from an external file (set in place during deployment) =
-      # ==============================================================================
-      username == "merbivore" && password == "supersecret"
+      username == "admin" && password == "supersecret"
     end
   end
 end
