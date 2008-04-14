@@ -1,6 +1,6 @@
 module Viking
   class Base
-    attr_reader :options
+    attr_accessor :options
 
     def initialize(options)
       self.options = options
