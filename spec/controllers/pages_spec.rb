@@ -131,7 +131,7 @@ describe Pages, "with no spam protection" do
     include NoSpamProtection # force it
   end
 
-  describe "request /pages with POST" do
+  describe "requesting /pages with POST" do
     attr_accessor :page
     
     before(:each) do
@@ -158,6 +158,10 @@ describe Pages, "with no spam protection" do
         controller.should_receive(:render).with(:new)
       end
     end
+  end
+
+  describe "requesting /pages/1 with PUT" do
+    
   end
 
 end
