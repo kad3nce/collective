@@ -310,4 +310,12 @@ describe Page do
     end
   end
   
+  describe '.versions' do
+    it 'should not include any versions marked as spam' do
+      @page = Page.create!(:name => 'A Page', :content => 'blah')
+      @page.update_attributes(:content => 'spam', :spam => true)
+      @page.versions.length.should == 1
+    end
+  end
+  
 end
