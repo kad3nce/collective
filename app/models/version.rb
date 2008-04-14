@@ -12,10 +12,10 @@ class Version < DataMapper::Base
   
   before_save :populate_content_html
   
-  after_save  :update_as_spam_or_ham
+  # after_save  :update_as_spam_or_ham
 
   def spam_or_ham
-    spam? ? "spam" : "ham"
+    spam? ? 'spam' : 'ham'
   end
 
   def self.most_recent_unmoderated(max=100)
@@ -23,7 +23,7 @@ class Version < DataMapper::Base
   end
   
   def self.latest_version_for_page(page)
-    first(:page_id => page.id, :order => "number DESC")
+    first(:page_id => page.id, :order => 'number DESC')
   end
   
 private

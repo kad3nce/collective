@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), '..',  'spec_helper')
 
 describe Page do
   
-  describe ".new" do
+  describe '.new' do
     it 'should have a name property' do
       Page.new(:name => 'A super informative page').name.should == 'A super informative page'
     end
@@ -24,7 +24,7 @@ describe Page do
     end
   end
   
-  describe "#build_new_version" do
+  describe '#build_new_version' do
     attr_accessor :page
     
     before(:each) do
@@ -35,36 +35,36 @@ describe Page do
       page.versions_count = 1
       
       page.stub!(:valid?).and_return(true)
-      page.stub!(:versions).and_return(stub("versions", :create => true))
+      page.stub!(:versions).and_return(stub('versions', :create => true))
     end
     
     after(:each) do
       page.destroy!
     end
     
-    it "should increment versions_count if the page is not spam" do
+    it 'should increment versions_count if the page is not spam' do
       page.spam = false
       Page.publicize_methods(page) do |p|
         lambda { p.build_new_version }.should change(p, :versions_count)
       end
     end
     
-    it "should not increment versions_count if the page is spam" do
+    it 'should not increment versions_count if the page is spam' do
       page.spam = true
       Page.publicize_methods(page) do |p|
         lambda { p.build_new_version }.should_not change(p, :versions_count)
       end
     end
     
-    it "should build a new Version" do
-      page.should_receive(:versions).and_return(mock("versions", :create => true))
+    it 'should build a new Version' do
+      page.should_receive(:versions).and_return(mock('versions', :create => true))
       Page.publicize_methods(page) do |p|
         p.build_new_version
       end
     end
   end
   
-  describe "#version_attributes" do
+  describe '#version_attributes' do
     it "should set the 'spam' attribute to true if the Page is spam" do
       Page.publicize_methods do
         Page.new(:spam => true, :versions_count => 0).version_attributes[:spam].should be_true
@@ -94,21 +94,21 @@ describe Page do
       self.version = nil
     end
     
-    it "should return that most recent version for this page" do
+    it 'should return that most recent version for this page' do
       Version.should_receive(:latest_version_for_page).with(page).and_return(version)
       page.latest_version.should == version
     end
   end
 
-  describe "content methods" do
+  describe 'content methods' do
     attr_accessor :page
     
     before(:each) do
       self.page = Page.new
       page.stub!(:latest_version).and_return(
-        stub("latest", 
-          :content      => "the content", 
-          :content_html => "<p>the content</p>"
+        stub('latest', 
+          :content      => 'the content', 
+          :content_html => '<p>the content</p>'
         )
       )
     end
@@ -145,11 +145,11 @@ describe Page do
     end
   end
   
-  describe "#name" do
+  describe '#name' do
     attr_accessor :existing_page
     
     before(:each) do
-      self.existing_page = Page.new(:name => "Existing name")
+      self.existing_page = Page.new(:name => 'Existing name')
       existing_page.stub!(:new_record?).and_return(false)
     end
     
@@ -158,19 +158,19 @@ describe Page do
     end
     
     it "should set a new record's name" do
-      p = Page.new(:name => "My name is Jonas")
-      p.name.should == "My name is Jonas"
+      p = Page.new(:name => 'My name is Jonas')
+      p.name.should == 'My name is Jonas'
     end
     
     it "should not allow an existing page's name to be overwritten" do
       old_name = existing_page.name
       
-      existing_page.name = "I want a new name"
+      existing_page.name = 'I want a new name'
       existing_page.name.should == old_name
     end
   end
   
-  describe "#select_version!" do
+  describe '#select_version!' do
     attr_accessor :page, :initial_version, :updated_version
     
     before(:each) do
@@ -197,7 +197,7 @@ describe Page do
       updated_version.destroy!
     end
     
-    it "should select the latest version if no version number was specified" do
+    it 'should select the latest version if no version number was specified' do
       page.select_version!
       page.selected_version.should == updated_version
     end
@@ -212,7 +212,7 @@ describe Page do
       page.selected_version.should == updated_version
     end
     
-    it "should select the specified version number" do
+    it 'should select the specified version number' do
       page.select_version!(initial_version.number)
       page.selected_version.should == initial_version
     end
@@ -238,7 +238,7 @@ describe Page do
     end
   end
   
-  describe "slug characteristics" do
+  describe 'slug characteristics' do
     it 'should be the page name' do
       page = Page.new(:name => 'asuperinformativepage')
       page.valid?
@@ -277,12 +277,12 @@ describe Page do
     end
   end
   
-  describe ".by_slug_and_select_version!" do
+  describe '.by_slug_and_select_version!' do
     attr_accessor :page, :version
     
     before(:each) do
-      self.version = stub("version")
-      self.page    = stub("page", :select_version! => true, :selected_version => version)
+      self.version = stub('version')
+      self.page    = stub('page', :select_version! => true, :selected_version => version)
       Page.stub!(:by_slug).and_return(page)
     end
     
@@ -290,23 +290,23 @@ describe Page do
       self.page = nil
     end
     
-    it "should return the page with the specified slug" do
-      Page.by_slug_and_select_version!("slug", 1).should == page
+    it 'should return the page with the specified slug' do
+      Page.by_slug_and_select_version!('slug', 1).should == page
     end
     
-    it "should return nil if the slug is invalid" do
+    it 'should return nil if the slug is invalid' do
       Page.should_receive(:by_slug).and_return(nil)
-      Page.by_slug_and_select_version!("slug", 1).should be_nil
+      Page.by_slug_and_select_version!('slug', 1).should be_nil
     end
     
-    it "should select the specified version of the slug" do
+    it 'should select the specified version of the slug' do
       page.should_receive(:select_version!).with(1)
-      Page.by_slug_and_select_version!("slug", 1).selected_version.should == version
+      Page.by_slug_and_select_version!('slug', 1).selected_version.should == version
     end
     
-    it "should return nil if the specified version is invalid" do
+    it 'should return nil if the specified version is invalid' do
       page.should_receive(:selected_version).and_return(nil)
-      Page.by_slug_and_select_version!("slug", 1).should be_nil
+      Page.by_slug_and_select_version!('slug', 1).should be_nil
     end
   end
   
