@@ -64,10 +64,16 @@ module Viking
     def default_instance
       @default_instance ||= connect(default_engine, connect_options)
     end
+    
+    def enabled?
+      !default_instance.nil?
+    end
   
     def connect(engine, options)
-      require "viking/#{engine}"
-      Viking.const_get(engine.to_s.capitalize).new(options)
+      unless engine.nil? || engine.empty?
+        require "viking/#{engine}"
+        Viking.const_get(engine.to_s.capitalize).new(options)
+      end
     end
     
     def verified?()               default_instance.verified?;              end
