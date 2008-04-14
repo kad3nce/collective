@@ -23,7 +23,7 @@ class Version < DataMapper::Base
   end
   
   def self.latest_version_for_page(page)
-    first(:page_id => page.id, :order => 'number DESC')
+    first(:page_id => page.id, :order => 'number DESC', :spam => false)
   end
   
 private
