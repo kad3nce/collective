@@ -136,6 +136,10 @@ describe Pages, "with no spam protection" do
   before(:each) do
     self.page = mock_model(Page, :save => true, :update_attributes => true)
   end
+  
+  after(:each) do
+    self.page = nil
+  end
 
   describe "requesting /pages with POST" do
     before(:each) do
