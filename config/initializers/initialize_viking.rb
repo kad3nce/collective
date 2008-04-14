@@ -1,3 +1,8 @@
+# Sometimes Viking isn't loaded at this point, so we make sure it is here
+unless Object.const_defined?("Viking")
+  require Merb.root / 'lib' / 'viking' / 'viking'
+end
+
 Merb::BootLoader.after_app_loads do
   
   config_path = Merb.root / 'config' / 'spam_protection.yml'
