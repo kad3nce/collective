@@ -6,6 +6,7 @@ module NoSpamProtection
     base.show_action(:create, :update)
   end
   
+  # Accessed by: POST /pages
   def create
     @page = Page.new(params[:page])
     if @page.save
@@ -15,8 +16,9 @@ module NoSpamProtection
     end
   end
 
+  # Accessed by: PUT /pages/1
   def update
-    @page = Page.first(:slug => params[:id]) || raise(NotFound)
+    @page = Page.by_slug(params[:id]) || raise(NotFound)
     if @page.update_attributes(params[:page])
       redirect url(:page, @page)
     else
