@@ -74,20 +74,42 @@ module Viking
 
     protected
       def api_url(action)
-        URI.escape("/#{self.class.service_type}/#{self.class.api_version}/#{action}/#{@options[:api_key]}.yaml")
+        URI.escape("/#{self.class.service_type}/#{self.class.api_version}/#{action}/#{options[:api_key]}.yaml")
       end
 
-      def call_defensio(action, params = {})
-        url  = api_url(action)
-        data = params.inject({'owner-url' => @options[:blog] || @options[:owner_url]}) do |memo, (key, value)|
-          memo[key.to_s.dasherize] = value
-          memo
-        end.to_query
-        http = Net::HTTP.new(self.class.host, self.class.port, @options[:proxy_host], @options[:proxy_port])
-        resp = http.post(url, data, self.class.standard_headers)
-        log_request url, data, resp
-        data = YAML.load(resp.body)
-        (data.respond_to?(:key?) && data.key?('defensio-result')) ? data['defensio-result'].symbolize_keys : {:data => resp.body, :status => 'fail'}
+      def call_defensio(action, params={})
+        resp = defensio_http.post(
+          api_url(action), 
+          data(params), 
+          self.class.standard_headers
+        )
+        log_request(url, data, resp)
+        process_response_body(resp.body)
+      end
+      
+      def process_response_body(response_body)
+        data = YAML.load(response_body)
+        if data.respond_to?(:key) && data.key?('defensio-result')
+          data['defensio-result'].symbolize_keys
+        else
+          { :data => raw_data, :status => 'fail' }
+        end
+      end
+      
+      def defensio_http
+        Net::HTTP.new(
+          self.class.host, 
+          self.class.port, 
+          options[:proxy_host], 
+          options[:proxy_port]
+        )
+      end
+      
+      def data(params={})
+        params.
+          update('owner-url' => options[:blog] || options[:owner_url]).
+          dasherize_keys.
+          to_query
       end
       
     private

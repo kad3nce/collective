@@ -26,6 +26,13 @@ class Hash
     end
   end
   
+  def dasherize_keys
+    inject({}) do |options, (key, value)|
+      options[key.dasherize] = value
+      options
+    end
+  end
+  
   def to_query(namespace = nil)
     collect do |key, value|
       value.to_query(namespace ? "#{namespace}[#{key}]" : key)
