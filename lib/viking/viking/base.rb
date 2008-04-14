@@ -21,6 +21,22 @@ module Viking
     def mark_as_ham(options={})
     end
     
+    # Automatically determines whether to mark as spam or ham depending on a 
+    # boolean switch, +is_spam+. The post will be marked as spam when 
+    # +is_spam+ is +true+. The post will be marked as ham if +is_spam+ is 
+    # +false+.
+    #
+    # ==== Arguments
+    # +is_spam+ <Boolean>:: 
+    #   determines whether to mark a post as spam or ham -- spam when true, 
+    #   ham when false
+    # 
+    # +options+ <Hash>:: 
+    #   any options either +mark_as_spam+ or +mark_as_ham+ accepts
+    def mark_as_spam_or_ham(is_spam, options={})
+      is_spam ? mark_as_spam(options) : mark_as_ham(options)
+    end
+    
     def stats
     end
 
