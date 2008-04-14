@@ -1,9 +1,6 @@
-Merb::BootLoader.after_app_loads do
-  # Load core extensions
-  Dir[Merb.root / 'lib' / 'core_ext' / '*.rb'].each do |core_ext|
-    require(core_ext)
+Merb::BootLoader.before_app_loads do
+  # Load our goodies in lib
+  Dir[Merb.root / 'lib' / '**' / '*.rb'].each do |ext|
+    require(ext)
   end
-  
-  # Load controller mixins
-  require Merb.root / 'lib' / 'controller' / 'mixins' / 'controller'
 end
