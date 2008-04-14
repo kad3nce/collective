@@ -1,6 +1,5 @@
 class Pages < Application
-  # include NoSpamProtection
-  include SpamProtection
+  include(Viking.enabled? ? SpamProtection : NoSpamProtection)
   
   def index
     @pages = Page.all
