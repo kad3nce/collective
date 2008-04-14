@@ -1,0 +1,5 @@
+---
+  :api:     defensio
+  :connect_options:
+    :api_key: 1234abc
+    :blog:    myblog
