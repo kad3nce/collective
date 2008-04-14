@@ -1,0 +1,22 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Internal links
+desc: Support [[double bracket]] style internal links
+type: :feature
+component: collective
+release: 
+reporter: meekish <jed.hurt@gmail.com>
+status: :unstarted
+disposition: 
+creation_time: 2008-04-14 09:32:07.189800 Z
+references: []
+
+id: 0d5da407b983b129b4f83b79c2092cc4a0a2824b
+log_events: 
+- - 2008-04-14 09:32:08.752583 Z
+  - elliottcable <git@elliottcable.name>
+  - created
+  - ""
+- - 2008-04-14 09:32:42.694063 Z
+  - elliottcable <git@elliottcable.name>
+  - commented
+  - Extract the Page#set_slug logic to a public method so that it can be used for internal link formatting

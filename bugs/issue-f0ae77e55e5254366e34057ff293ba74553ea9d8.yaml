@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Audio code to ensure that Collective works without Defensio enabled
+desc: ""
+type: :feature
+component: Security
+release: 
+reporter: meekish <jed.hurt@gmail.com>
+status: :unstarted
+disposition: 
+creation_time: 2008-04-14 09:30:21.866913 Z
+references: []
+
+id: f0ae77e55e5254366e34057ff293ba74553ea9d8
+log_events: 
+- - 2008-04-14 09:30:23.531760 Z
+  - elliottcable <git@elliottcable.name>
+  - created
+  - ""
