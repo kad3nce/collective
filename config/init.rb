@@ -35,13 +35,7 @@ Dir[Merb.root / 'app' / 'controllers' / 'page_mixins' / '*.rb'].each do |mixin|
   require mixin
 end
 
-Merb::BootLoader.after_app_loads do
-  if Merb.environment == 'development'
-    # Merb.logger.info('Auto migrating development database')
-    # DataMapper::Persistence.auto_migrate! 
-    require Merb.root / 'db' / 'seed_dev' unless Page.count > 0
-  end
-  
-  require Merb.root / 'lib' / 'core_ext' / 'try'
-  require Merb.root / 'lib' / 'controller' / 'mixins' / 'controller'
+# Load initializers
+Dir[Merb.root / 'config' / 'initializers' / '*.rb'].each do |initializer|
+  load(initializer)
 end
