@@ -2,6 +2,7 @@
 # = Temporary Core Extensions to make Viking work =
 # =================================================
 require 'cgi'
+
 class Object
   def to_query(key)
     "#{CGI.escape(key.to_s)}=#{CGI.escape(to_param.to_s)}"
