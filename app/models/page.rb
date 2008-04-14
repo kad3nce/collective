@@ -1,3 +1,5 @@
+require 'diff/lcs'
+
 class Page < DataMapper::Base
   property :name, :string, :nullable => false
   attr_accessor :spam

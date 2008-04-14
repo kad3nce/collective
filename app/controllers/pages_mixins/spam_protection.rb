@@ -1,5 +1,3 @@
-require 'diff/lcs'
-
 module SpamProtection
   def self.included(base)
     base.show_action(:create, :update)
