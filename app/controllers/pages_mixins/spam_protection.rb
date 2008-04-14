@@ -8,7 +8,7 @@ module SpamProtection
     if @page.valid?
       flash[:notice] = 'Your new page will appear momentarily.'
       redirect_then_call(url(:pages)) do
-        response = check_comment(@page)
+        response = check_comment_with_defensio(@page)
         if response[:spam]
           Version.create_spam(@page.name, 
             :content   => @page.content, 
@@ -32,17 +32,17 @@ module SpamProtection
     unless params[:page][:content].strip.blank?
       flash[:notice] = 'Your changes will appear momentarily.'
       redirect_then_call(url(:page, @page)) do
-        response = check_comment(@page, params[:page][:content])
-        
-        params[:page].merge!(
-          :signature => response[:signature], 
-          :spaminess => response[:spaminess]
+        response = check_comment_with_defensio(@page, params[:page][:content])        
+        @page.update_attributes(
+          params[:page].update(
+            :signature => response[:signature], 
+            :spaminess => response[:spaminess], 
+            :remote_ip => request.remote_ip
+          )
         )
-
-        @page.update_attributes(params[:page].update(:remote_ip => request.remote_ip))
       end
     else
-      @page.errors.add :content, 'cannot be blank'
+      flash[:notice] = "Your changes have been rejected"
       render :edit
     end
   end
@@ -77,5 +77,4 @@ private
       :trusted_user   => false
     }
   end
-  
 end
