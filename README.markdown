@@ -8,7 +8,6 @@ A no-frills wiki built on Merb 0.9.x and DataMapper
 * Textile/Markdown content formatting
 * Pretty page urls
 * Markup and Styling still looks like wiki.merbivore.com
-* View http://github.com/meekish/collective/wikis/todo to get an idea of current status
   
 ### Take It For A Spin
  
