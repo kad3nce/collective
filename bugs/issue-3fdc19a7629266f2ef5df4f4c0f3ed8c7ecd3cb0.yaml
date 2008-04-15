@@ -5,8 +5,8 @@ type: :feature
 component: collective
 release: 
 reporter: meekish <jed.hurt@gmail.com>
-status: :paused
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2008-04-14 09:31:10.759756 Z
 references: []
 
@@ -24,3 +24,7 @@ log_events:
   - elliottcable <git@elliottcable.name>
   - changed status from in_progress to paused
   - All done! All non-completed wiki TODOs have been added as well.
+- - 2008-04-15 07:41:07.771892 Z
+  - meekish <jed.hurt@gmail.com>
+  - closed issue with disposition fixed
+  - Pushing to github. Thanks elliottcable!

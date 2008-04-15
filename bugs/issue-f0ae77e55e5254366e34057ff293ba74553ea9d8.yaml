@@ -1,5 +1,5 @@
 --- !ditz.rubyforge.org,2008-03-06/issue 
-title: Audio code to ensure that Collective works without Defensio enabled
+title: Audit code to ensure that Collective works without Defensio enabled
 desc: ""
 type: :feature
 component: Security
