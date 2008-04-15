@@ -35,11 +35,11 @@ describe Page do
       page.versions_count = 1
       
       page.stub!(:valid?).and_return(true)
-      page.stub!(:versions).and_return(stub('versions', :create => true))
+      page.stub!(:versions).and_return(stub('versions', :create => true, :deactivate => true))
     end
     
     after(:each) do
-      page.destroy!
+      self.page = nil
     end
     
     it 'should increment versions_count if the page is not spam' do
@@ -314,7 +314,7 @@ describe Page do
     it 'should not include any versions marked as spam' do
       @page = Page.create!(:name => 'A Page', :content => 'blah')
       @page.update_attributes(:content => 'spam', :spam => true)
-      @page.versions.length.should == 1
+      Page[@page.id].versions.length.should == 1
     end
   end
   

@@ -6,10 +6,7 @@ class Page < DataMapper::Base
   attr_accessor :signature
   property :slug, :string, :nullable => false
   property :versions_count, :integer, :default => 0
-  # ==============================================================
-  # = TODO: Remove this hack once DataMapper supports with_scope =
-  # ==============================================================
-  has_many :versions_with_spam, :class => 'Version'
+  has_many :versions, :spam => false, :dependent => :destroy
   
   before_save :build_new_version
   before_validation :set_slug
@@ -28,7 +25,7 @@ class Page < DataMapper::Base
     # Order matters! This is a little clever. If +try+ fails, +nil+ is 
     # returned, and therefore the search was invalid. If +try+ doesn't fail, 
     # +page+ must have been found and will be returned.
-    return page.try(:selected_version) && page
+    page.try(:selected_version) && page
   end
 
   attr_writer :content
@@ -56,12 +53,11 @@ class Page < DataMapper::Base
   end
 
   def select_version!(version_number=:latest)
-    self.selected_version = v = find_selected_version(version_number)
-    self.content          = selected_version.try(:content)
-    return v
+    @selected_version = find_selected_version(version_number)
+    self.content      = selected_version.try(:content)
+    @selected_version
   end
 
-  attr_writer :selected_version
   def selected_version
     @selected_version || latest_version
   end
@@ -70,14 +66,6 @@ class Page < DataMapper::Base
     slug
   end
 
-  # ==============================================================
-  # = TODO: Remove this hack once DataMapper supports with_scope =
-  # ==============================================================
-  def versions
-    versions_with_spam.set(versions_with_spam.reject { |version| version.spam })
-    versions_with_spam
-  end
-  
 private
 
   def build_new_version
