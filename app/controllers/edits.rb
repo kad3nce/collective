@@ -10,8 +10,8 @@ class Edits < Application
   end
 
   # Accessed by: PUT /edits/1
-  def update
-    @edit = Version.first(params[:id])
+  def update(id)
+    @edit = Version.first(id)
     raise NotFound unless @edit
     if @edit.update_attributes(:moderated => true)
       if(@edit.spam)
