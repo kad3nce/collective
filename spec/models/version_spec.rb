@@ -41,7 +41,7 @@ describe Version do
     
     before(:each) do
       Version.publicize_methods do
-        self.version = Version.new(:content => 'How to make Merb cook breakfast')
+        self.version = Version.new(:content => 'How to make [[Merb]] cook breakfast')
         version.populate_content_html
       end
     end
@@ -52,6 +52,10 @@ describe Version do
     
     it 'should render content to HTML' do
       version.content_html.should match(/^<p>How to make/)
+    end
+    
+    it 'should convert double-bracketed phrases to internal links' do
+      version.content_html.should match(/<a href="\/pages\/merb">Merb<\/a>/)
     end
   end
 

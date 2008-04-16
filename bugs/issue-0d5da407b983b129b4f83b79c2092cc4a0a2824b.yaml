@@ -5,8 +5,8 @@ type: :feature
 component: collective
 release: 
 reporter: meekish <jed.hurt@gmail.com>
-status: :unstarted
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2008-04-14 09:32:07.189800 Z
 references: []
 
@@ -20,3 +20,7 @@ log_events:
   - elliottcable <git@elliottcable.name>
   - commented
   - Extract the Page#set_slug logic to a public method so that it can be used for internal link formatting
+- - 2008-04-16 07:47:35.218371 Z
+  - meekish <jed.hurt@gmail.com>
+  - closed issue with disposition fixed
+  - ""

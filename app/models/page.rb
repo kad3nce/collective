@@ -62,6 +62,15 @@ class Page < DataMapper::Base
     @selected_version || latest_version
   end
 
+  def self.slug_for(name)
+    name = Iconv.iconv('ascii//translit//IGNORE', 'utf-8', name).to_s
+    name.gsub!(/\W+/, ' ') # non-words to space
+    name.strip!
+    name.downcase!
+    name.gsub!(/\s+/, '-') # all spaces to dashes
+    name
+  end
+
   def to_param
     slug
   end
@@ -103,17 +112,8 @@ private
     end
   end
 
-  def escape_slug(string)
-    string = Iconv.iconv('ascii//translit//IGNORE', 'utf-8', string).to_s
-    string.gsub!(/\W+/, ' ') # non-words to space
-    string.strip!
-    string.downcase!
-    string.gsub!(/\s+/, '-') # all spaces to dashes
-    string
-  end
-
   def set_slug
-    self.slug = escape_slug(name) if new_record?
+    self.slug = Page.slug_for(name) if new_record?
   end
 
 end
