@@ -31,10 +31,6 @@ dependencies 'iconv', 'merb-action-args', 'merb-assets', 'merb_has_flash',
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
 
-Dir[Merb.root / 'app' / 'controllers' / 'page_mixins' / '*.rb'].each do |mixin|
-  require mixin
-end
-
 # Load initializers
 Dir[Merb.root / 'config' / 'initializers' / '*.rb'].each do |initializer|
   load(initializer)
