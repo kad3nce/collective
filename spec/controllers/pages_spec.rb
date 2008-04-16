@@ -1,7 +1,6 @@
 require File.join(File.dirname(__FILE__), "..", 'spec_helper.rb')
 
 describe Pages do
-  
   attr_accessor :page, :pages
   
   before(:each) do
@@ -14,10 +13,6 @@ describe Pages do
   after(:each) do
     self.page  = nil
     self.pages = nil
-  end
-  
-  it "should include the SpamProtection module if spam_protection.yml is properly configured" do
-    Pages.should include(SpamProtection)
   end
   
   describe "requesting /pages with GET" do
@@ -120,5 +115,4 @@ describe Pages do
       end
     end
   end
-  
 end
