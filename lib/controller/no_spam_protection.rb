@@ -1,3 +1,5 @@
+require 'ruby-debug'
+
 # =========================================================================
 # = TODO: Figure out a way to get action-args to work on mixed in actions =
 # =========================================================================
@@ -22,6 +24,7 @@ module NoSpamProtection
     if @page.update_attributes(params[:page])
       redirect url(:page, @page)
     else
+      flash[:notice] = "Your changes have been rejected"
       render :edit
     end
   end

@@ -2,27 +2,29 @@ require File.join(File.dirname(__FILE__), "..", 'spec_helper.rb')
 
 describe Pages, "with no spam protection" do
 
-  class Pages < Application
-    include NoSpamProtection # force it
-  end
-  
   attr_accessor :page
   
   before(:each) do
-    self.page = mock_model(Page, :save => true, :update_attributes => true)
+    self.page = Page.new
+    Pages.send(:include, NoSpamProtection)
   end
   
   after(:each) do
     self.page = nil
   end
+  
+  it "should include the NoSpamProtection module" do
+    Pages.should include(NoSpamProtection)
+  end
 
   describe "requesting /pages with POST" do
     before(:each) do
+      page.stub!(:save).and_return(true)
       Page.stub!(:new).and_return(page)
     end
     
     def do_post
-      dispatch_to(Pages, :create)
+      dispatch_to(Pages, :create, :page => {})
     end
     
     it "should create a new page" do
@@ -44,11 +46,14 @@ describe Pages, "with no spam protection" do
 
   describe "requesting /pages/1 with PUT" do
     before(:each) do
+      page.stub!(:update_attributes).and_return(true)
       Page.stub!(:by_slug).and_return(page)
     end
     
     def do_put
-      dispatch_to(Pages, :update, :id => "1", :page => {})
+      dispatch_to(Pages, :update, :id => "1", :page => {}) do |controller|
+        controller.stub!(:render)
+      end
     end
     
     it "should load the requested page record" do
