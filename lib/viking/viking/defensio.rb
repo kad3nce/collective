@@ -83,7 +83,7 @@ module Viking
           data(params), 
           self.class.standard_headers
         )
-        log_request(url, data, resp)
+        log_request(api_url(action), data, resp)
         process_response_body(resp.body)
       end
       

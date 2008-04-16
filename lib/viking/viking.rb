@@ -13,10 +13,18 @@ class Object
   end
 end
 
-class String
+module Dasherize
   def dasherize
-    self.gsub(/_/, '-')
+    self.to_s.gsub(/_/, '-')
   end
+end
+
+class String
+  include Dasherize
+end
+
+class Symbol
+  include Dasherize
 end
 
 class Hash
