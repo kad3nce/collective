@@ -82,6 +82,10 @@ module Viking
     def mark_as_spam(options={})  default_instance.mark_as_spam(options);  end
     def mark_as_ham(options={})   default_instance.mark_as_ham(options);   end
     def stats()                   default_instance.stats;                  end
+    
+    def mark_as_spam_or_ham(is_spam, options={})
+      default_instance.mark_as_spam_or_ham(is_spam, options)
+    end
   end
 end
 
