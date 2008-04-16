@@ -10,8 +10,8 @@ module DefensioSpamProtection
     base.show_action(:create, :update)
   end
   
-  def create(page)
-    @page = Page.new(page.merge(:remote_ip => request.remote_ip))
+  def create
+    @page = Page.new(params[:page].merge(:remote_ip => request.remote_ip))
     if @page.valid?
       flash[:notice] = 'Your new page will appear momentarily.'
       redirect_then_call(url(:pages)) do
@@ -37,13 +37,13 @@ module DefensioSpamProtection
     end
   end
 
-  def update(id, page)
-    @page = Page.by_slug(id) || raise(NotFound)
-    page_attributes = { :content => page[:content], :remote_ip => request.remote_ip }
+  def update
+    @page = Page.by_slug(params[:id]) || raise(NotFound)
+    page_attributes = { :content => params[:page][:content], :remote_ip => request.remote_ip }
     unless page_attributes[:content].strip.blank?
       flash[:notice] = 'Your changes will appear momentarily.'
       redirect_then_call(url(:page, @page)) do
-        new_content_as_html = RedCloth.new(@page.content_additions(page[:content])).to_html
+        new_content_as_html = RedCloth.new(@page.content_additions(params[:page][:content])).to_html
         response = DEFENSIO_GATEWAY.check_comment(DEFENSIO_REQUIRED_PARAMS.merge(
           :article_date => Time::now.strftime('%Y/%m/%d'),
           :comment_content => new_content_as_html,
