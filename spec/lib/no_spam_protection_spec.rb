@@ -1,12 +1,21 @@
 require File.join(File.dirname(__FILE__), "..", 'spec_helper.rb')
 
-describe Pages, "with no spam protection" do
+# A fake controller to play with. This prevents any confusion that might 
+# arise because of how spam protection (or lack thereof) is included into the 
+# Pages controller where it is normally used.
+class NotSpamProtected < Application
+  include SpamProtection
+end
 
+# Note that even though we're actually using a fake controller, we still talk 
+# about the Pages controller. This is only to prevent confusion at a later 
+# date when reading a specdoc.
+describe Pages, "with no spam protection" do
   attr_accessor :page
   
   before(:each) do
     self.page = Page.new
-    Pages.send(:include, NoSpamProtection)
+    NotSpamProtected.send(:include, NoSpamProtection)
   end
   
   after(:each) do
@@ -14,7 +23,7 @@ describe Pages, "with no spam protection" do
   end
   
   it "should include the NoSpamProtection module" do
-    Pages.should include(NoSpamProtection)
+    NotSpamProtected.should include(NoSpamProtection)
   end
 
   describe "requesting /pages with POST" do
@@ -24,7 +33,7 @@ describe Pages, "with no spam protection" do
     end
     
     def do_post
-      dispatch_to(Pages, :create, :page => {})
+      dispatch_to(NotSpamProtected, :create, :page => {})
     end
     
     it "should create a new page" do
@@ -38,7 +47,7 @@ describe Pages, "with no spam protection" do
     
     it "should render 'new' if the page was invalid" do
       page.should_receive(:save).and_return(false)
-      dispatch_to(Pages, :create) do |controller|
+      dispatch_to(NotSpamProtected, :create) do |controller|
         controller.should_receive(:render).with(:new)
       end
     end
@@ -51,7 +60,7 @@ describe Pages, "with no spam protection" do
     end
     
     def do_put
-      dispatch_to(Pages, :update, :id => "1", :page => {}) do |controller|
+      dispatch_to(NotSpamProtected, :update, :id => "1", :page => {}) do |controller|
         controller.stub!(:render)
       end
     end
@@ -69,10 +78,9 @@ describe Pages, "with no spam protection" do
     it "should render the 'edit' view if the update failed" do
       page.should_receive(:update_attributes).and_return(false)
       
-      dispatch_to(Pages, :update, :id => "1", :page => {}) do |controller|
+      dispatch_to(NotSpamProtected, :update, :id => "1", :page => {}) do |controller|
         controller.should_receive(:render).with(:edit)
       end
     end
   end
-
 end
