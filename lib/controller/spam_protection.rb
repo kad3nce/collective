@@ -4,11 +4,12 @@ module SpamProtection
   end
   
   def create
-    @page = Page.new(params[:page].merge(:remote_ip => request.remote_ip))
+    @page = Page.new(params[:page])
+    @page.remote_ip = request.remote_ip
     if @page.valid?
       flash[:notice] = 'Your new page will appear momentarily.'
       redirect_then_call(url(:pages)) do
-        response = check_comment_with_defensio(@page)
+        response = check_comment_with_spam_engine(@page)
         if response[:spam]
           Version.create_spam(@page.name, 
             :content   => @page.content, 
@@ -32,7 +33,7 @@ module SpamProtection
     unless params[:page][:content].strip.blank?
       flash[:notice] = 'Your changes will appear momentarily.'
       redirect_then_call(url(:page, @page)) do
-        response = check_comment_with_defensio(@page, params[:page][:content])        
+        response = check_comment_with_spam_engine(@page, params[:page][:content])        
         @page.update_attributes(
           params[:page].update(
             :signature => response[:signature], 
@@ -49,9 +50,9 @@ module SpamProtection
   
 private
 
-  def check_comment_with_defensio(page, content=nil)
+  def check_comment_with_spam_engine(page, content=nil)
     Viking.check_comment(
-      default_defensio_params.update(
+      default_spam_engine_params.update(
         :comment_content => content_as_html(page, content),
         :user_ip         => request.remote_ip,
         :permalink       => permalink_for_page(page.slug)
@@ -68,7 +69,7 @@ private
     "http://#{Viking.default_instance.options[:blog]}/pages/#{slug}"
   end
 
-  def default_defensio_params(page_slug)
+  def default_spam_engine_params(page_slug)
     { 
       :comment_author => 'anonymous', 
       :comment_type   => 'comment', 
