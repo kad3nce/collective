@@ -1,19 +1,27 @@
 require File.join(File.dirname(__FILE__), "..", 'spec_helper.rb')
 
-describe Pages, "with spam protection" do
+# A fake controller to play with. This prevents any confusion that might 
+# arise because of how spam protection (or lack thereof) is included into the 
+# Pages controller where it is normally used.
+class SpamProtected < Application
+  include SpamProtection
+end
 
+# Note that even though we're actually using a fake controller, we still talk 
+# about the Pages controller. This is only to prevent confusion at a later 
+# date when reading a specdoc.
+describe Pages, "with spam protection" do
   attr_accessor :page, :response
   
   before(:each) do
-    self.page = Page.new
-    Page.stub!(:new).and_return(page)
-    
+    self.page     = Page.new
     self.response = {
       :spaminess => 0.1, 
       :signature => 1234, 
       :spam      => true
     }
     Viking.stub!(:check_comment).and_return(response)
+    Viking.stub!(:enabled?).and_return(true)
   end
   
   after(:each) do
@@ -22,18 +30,19 @@ describe Pages, "with spam protection" do
   end
   
   it "should include the SpamProtection module" do
-    Pages.should include(SpamProtection)
+    SpamProtected.should include(SpamProtection)
   end
 
   describe "requesting /pages with POST" do
     before(:each) do
       page.stub!(:valid?).and_return(true)
       page.stub!(:save).and_return(true)
+      Page.stub!(:new).and_return(page)
       Version.stub!(:create_spam)
     end
     
     def do_post
-      dispatch_to(Pages, :create, :page => {})
+      dispatch_to(SpamProtected, :create, :page => {})
     end
     
     it "should redirect to /pages if a new page record was successfully created" do
@@ -70,10 +79,50 @@ describe Pages, "with spam protection" do
     
     it "should render the 'new' action if the Page isn't valid" do
       page.should_receive(:valid?).and_return(false)
-      dispatch_to(Pages, :create, :page => {}) do |controller|
+      dispatch_to(SpamProtected, :create, :page => {}) do |controller|
         controller.should_receive(:render).with(:new)
       end
     end
   end
 
+  describe "requesting /pages/1 with PUT" do
+    before(:each) do
+      page.stub!(:update_attributes).and_return(true)
+      Page.stub!(:by_slug).and_return(page)
+    end
+    
+    def do_put
+      dispatch_to(SpamProtected, :update, :id => "1", :page => { :content => "I can has content" })
+    end
+    
+    it "should load the requested Page record" do
+      Page.should_receive(:by_slug).with("1").and_return(page)
+      do_put.assigns(:page).should == page
+    end
+    
+    it "should raise NotFound if the provided ID is invalid" do
+      Page.should_receive(:by_slug).with("1").and_return(nil)
+      lambda { do_put }.should raise_error(Merb::ControllerExceptions::NotFound)
+    end
+    
+    it "should redirect to the page record if successful" do
+      do_put.should be_redirection_to(url(:page, page))
+    end
+    
+    it "should check to see if the changes are spam" do
+      Viking.should_receive(:check_comment).and_return(response)
+      do_put
+    end
+    
+    it "should update the record's attributes" do
+      page.should_receive(:update_attributes)
+      do_put
+    end
+    
+    it "should render 'edit' if the submission has blank content" do
+      dispatch_to(SpamProtected, :update, :id => "1", :page => { :content => "" }) do |controller|
+        controller.should_receive(:render).with(:edit)
+      end
+    end
+  end
 end

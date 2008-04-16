@@ -31,7 +31,7 @@ module SpamProtection
 
   # Accessed by: PUT /pages/1
   def update
-    @page = Page.by_slug(params[:id]) || raise(NotFound)
+    @page = Page.by_slug(params[:id]) || raise(Merb::ControllerExceptions::NotFound)
     unless params[:page][:content].strip.blank?
       flash[:notice] = 'Your changes will appear momentarily.'
       redirect_then_call(url(:page, @page)) do
