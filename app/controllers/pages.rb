@@ -1,4 +1,4 @@
-class Pages < Application
+class Pages < Application 
   include(Viking.enabled? ? SpamProtection : NoSpamProtection)
   
   # Accessed by: GET /pages

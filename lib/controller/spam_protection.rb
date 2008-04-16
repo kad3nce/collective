@@ -2,7 +2,8 @@ module SpamProtection
   def self.included(base)
     base.show_action(:create, :update)
   end
-  
+
+  # Accessed by: POST /pages
   def create
     @page = Page.new(params[:page])
     @page.remote_ip = request.remote_ip
@@ -28,6 +29,7 @@ module SpamProtection
     end
   end
 
+  # Accessed by: PUT /pages/1
   def update
     @page = Page.by_slug(params[:id]) || raise(NotFound)
     unless params[:page][:content].strip.blank?
@@ -69,7 +71,7 @@ private
     "http://#{Viking.default_instance.options[:blog]}/pages/#{slug}"
   end
 
-  def default_spam_engine_params(page_slug)
+  def default_spam_engine_params
     { 
       :comment_author => 'anonymous', 
       :comment_type   => 'comment', 
