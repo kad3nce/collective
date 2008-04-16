@@ -19,7 +19,10 @@ describe Pages, "with spam protection" do
       :spaminess => 0.1, 
       :signature => 1234, 
       :spam      => true
-    }
+    }    
+    
+    Viking.default_engine  = 'defensio'
+    Viking.connect_options = { :api_key => "1234abc", :blog => "myblog" }
     Viking.stub!(:check_comment).and_return(response)
     Viking.stub!(:enabled?).and_return(true)
   end
