@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: RSS Feeds
+desc: Collective really needs to provide a master feed that would generate an entry when a new page is created and when an existing page is updated.
+type: :feature
+component: collective
+release: 
+reporter: meekish <jed.hurt@gmail.com>
+status: :unstarted
+disposition: 
+creation_time: 2008-04-16 08:45:59.974364 Z
+references: []
+
+id: 02eebc251b3099492dd89a83b09c7b00103d15b2
+log_events: 
+- - 2008-04-16 08:47:28.099995 Z
+  - meekish <jed.hurt@gmail.com>
+  - created
+  - Should we just 'provides :rss' on Pages#index or create a new action/controller for the feed?
