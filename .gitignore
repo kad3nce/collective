@@ -3,5 +3,4 @@ log
 log/*.log
 db/*.sqlite3
 config/database.yml
-config/defensio.yml
 config/spam_protection.yml
