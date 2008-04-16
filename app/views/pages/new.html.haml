@@ -4,6 +4,8 @@
   %h1= text_control :name
   %ul
     %li
-      %p= link_to 'Textile Enabled', 'http://hobix.com/textile/quick.html', :target => '_blank'
+      %p
+        = link_to 'Textile Enabled', 'http://hobix.com/textile/quick.html', :target => '_blank'
+        | [[Page Name]] for internal links
       ~ text_area_control :content
     %li= submit_button 'Submit'
