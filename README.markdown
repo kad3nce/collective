@@ -18,7 +18,7 @@ A no-frills wiki built on Merb 0.9.x and DataMapper
 * open a browser at http://localhost:4000
   
 #### Spam Protection
-Collective supports protection against spam using either the Akismet or Defensio API via Viking. By default this support is disabled. To enable support you will need to create a configuration file named spam_protection.yml in the config directory. A sample file is available for you in  config/spam_protection.yml.sample.
+Collective supports protection against spam using either the Akismet or Defensio API via Viking. By default this support is disabled. To enable support you will need to create a configuration file named spam\_protection.yml in the config directory. A sample file is available for you in  config/spam\_protection.yml.sample.
 
 Your configuration file must:
   * have the name of your desired spam protection service. Available options include: 'akismet', 'defensio', or blank (i.e. disabled).
