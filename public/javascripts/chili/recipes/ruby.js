@@ -13,6 +13,10 @@ WEBSITE: http://noteslog.com/chili/
     com     : { exp : /#[^\n]+/ }, 
     string  : { exp : /'[^']*'|"[^"]*"/ }, 
     keyword : { exp : /\b(do|end|self|class|def|if|module|yield|then|else|for|until|unless|while|elsif|case|when|break|retry|redo|rescue|require|raise)\b/ }, 
+    sclass  : { exp : /<\s?[A-Z]\w+(::\w+)?/ }, 
+    bool    : { exp : /true|false/ }, 
+    number  : { exp : /\d+/ }, 
+    attr    : { exp : /attr(_accessor|writer|reader)?/ }, 
     symbol  : { exp : /([^:])(:[A-Za-z0-9_!?]+)/ }
   }
 }

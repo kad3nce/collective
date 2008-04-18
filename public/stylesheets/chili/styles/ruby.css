@@ -12,3 +12,7 @@ WEBSITE: http://noteslog.com/chili/
 .ruby .string  { color: #99FF00; }
 .ruby .keyword { color: #FF8400; }
 .ruby .symbol  { color: #07DFFC; }
+.ruby .sclass  { color: #F9F; }
+.ruby .bool    { color: #FC6; }
+.ruby .number  { color: #6C6; }
+.ruby .attr    { color: #FF9; }
