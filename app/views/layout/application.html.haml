@@ -29,4 +29,7 @@
             %a{ :href => "http://www.opensource.org/licenses/mit-license.php" } MIT License 
             | Wiki powered by
             %a{ :href => 'http://github.com/meekish/collective' } Collective
-    = js_include_tag :jquery, :application
+    = js_include_tag :jquery, :application, "chili/chili.pack.js"
+    %script{ :type => "text/javascript" }
+      ChiliBook.recipeFolder = "/javascripts/chili/recipes/";
+      ChiliBook.stylesheetFolder = "/stylesheets/chili/styles/";
