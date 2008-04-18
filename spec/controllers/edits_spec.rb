@@ -65,7 +65,7 @@ describe Edits do
     end
     
     def do_xhr_put
-      dispatch_to(Edits, :update, :id => "1", :page => {}, :format => 'js') do |controller|
+      dispatch_to(Edits, :update, {:id => "1", :page => {}}, {:http_x_requested_with => "XMLHttpRequest"}) do |controller|
         controller.stub!(:authenticate_or_request_with_http_basic).and_return(true)
       end
     end

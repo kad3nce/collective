@@ -17,7 +17,7 @@ class Edits < Application
     if @edit.update_attributes(:moderated => true)
       Viking.mark_as_spam_or_ham(@edit.spam?, :signatures => @edit.signature)
       if request.xhr?
-        render :nothing => 200
+        render "", :status => 200 # renders nothing
       else
         redirect url(:edits)
       end
