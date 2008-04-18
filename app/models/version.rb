@@ -15,7 +15,7 @@ class Version < DataMapper::Base
   validates_presence_of :content
 
   def spam_or_ham
-    spam? ? "spam" : "ham"
+    spam? ? 'spam' : 'ham'
   end
   
   def self.most_recent_unmoderated(max=100)
@@ -23,7 +23,7 @@ class Version < DataMapper::Base
   end
   
   def self.latest_version_for_page(page)
-    first(:page_id => page.id, :order => "number DESC")
+    first(:page_id => page.id, :order => 'number DESC', :spam => false)
   end
   
   def self.create_spam(page_name, options={})
@@ -31,23 +31,9 @@ class Version < DataMapper::Base
       options.update(
         :spam    => true, 
         :page_id => -1, 
-        :content => [options[:content], page_name].join(":")
+        :content => [options[:content], page_name].join(':')
       )
     )
-  end
-  
-  # after_save  :update_as_spam_or_ham
-
-  def spam_or_ham
-    spam? ? 'spam' : 'ham'
-  end
-
-  def self.most_recent_unmoderated(max=100)
-    all(:moderated => false, :limit => max, :order => 'created_at DESC')
-  end
-  
-  def self.latest_version_for_page(page)
-    first(:page_id => page.id, :order => 'number DESC', :spam => false)
   end
   
 private
