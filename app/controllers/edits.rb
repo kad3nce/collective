@@ -15,7 +15,7 @@ class Edits < Application
     provides :js, :json
     @edit = Version.first(id) || raise(NotFound)
     if @edit.update_attributes(:moderated => true)
-      Viking.mark_as_spam_or_ham(@edit.spam?, :signatures => @edit.signature)
+      check_comment_with_spam_engine(@edit)
       if request.xhr?
         render "", :status => 200 # renders nothing
       else
@@ -31,6 +31,15 @@ private
   def authenticate
     authenticate_or_request_with_http_basic("login") do |username, password|
       username == "admin" && password == "supersecret"
+    end
+  end
+
+  def check_comment_with_spam_engine(version)
+    if Viking.enabled?
+      Viking.mark_as_spam_or_ham(
+        version.spam?, 
+        :signatures => version.signature
+      )
     end
   end
 
