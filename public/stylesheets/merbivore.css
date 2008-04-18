@@ -182,15 +182,13 @@ pre {
   font: 12px "Courier" serif;
   line-height: 18px;
   padding: 12px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  overflow: auto; }
   pre code {
     font-weight: normal; }
 
 code {
-  font: bold 12px "Courier" serif; }
-
-
-
+  font: bold 12px Monaco, "Courier New", Courier, mono; }
 
 #wiki-page #content blockquote p {
   font-style: oblique;
