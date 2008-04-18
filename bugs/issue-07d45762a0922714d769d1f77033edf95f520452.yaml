@@ -7,8 +7,8 @@ type: :feature
 component: Styling
 release: 
 reporter: James Herdman <james.herdman@gmail.com>
-status: :unstarted
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2008-04-18 15:55:30.733556 Z
 references: []
 
@@ -18,3 +18,7 @@ log_events:
   - James Herdman <james.herdman@gmail.com>
   - created
   - ""
+- - 2008-04-18 21:35:31.848853 Z
+  - James Herdman <james.herdman@gmail.com>
+  - closed issue with disposition fixed
+  - Most styles closely approximate Vibrant Ink now
