@@ -1,0 +1,14 @@
+/*
+===============================================================================
+Ruby syntax highlighting support for Chili. This is based on the efforts of 
+Dan Webb and Shelly Fisher in the CodeHighlighter JS library. Please see 
+http://svn.danwebb.net/external/CodeHighlighter/ for more details.
+-------------------------------------------------------------------------------
+LICENSE: http://www.opensource.org/licenses/mit-license.php
+WEBSITE: http://noteslog.com/chili/
+===============================================================================
+*/
+.ruby .com 		 { color: #BD48B3; }
+.ruby .string  { color: #99FF00; }
+.ruby .keyword { color: #FF8400; }
+.ruby .symbol  { color: #07DFFC; }
