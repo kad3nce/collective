@@ -5,8 +5,8 @@ type: :feature
 component: Security
 release: 
 reporter: meekish <jed.hurt@gmail.com>
-status: :unstarted
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2008-04-14 09:30:21.866913 Z
 references: []
 
@@ -16,3 +16,7 @@ log_events:
   - elliottcable <git@elliottcable.name>
   - created
   - ""
+- - 2008-04-18 14:26:01.656430 Z
+  - James Herdman <james.herdman@gmail.com>
+  - closed issue with disposition fixed
+  - Fixed in commit a855b5e68e96080d5e056b915772bac6cb049a01
