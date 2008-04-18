@@ -55,6 +55,7 @@ describe Edits do
     before(:each) do
       Version.stub!(:first).and_return(edit)
       Viking.stub!(:mark_as_spam_or_ham)
+      Viking.stub!(:enabled?).and_return(true)
       edit.stub!(:update_attributes).and_return(true)
     end
     
@@ -102,7 +103,11 @@ describe Edits do
       edit.should_receive(:update_attributes).and_return(false)
       lambda { do_put }.should raise_error(Merb::ControllerExceptions::BadRequest)
     end
-        
+
+    it "should not require Viking to update a Version" do
+      Viking.should_receive(:enabled?).and_return(false)
+      do_put.should be_redirection_to(url(:edits))
+    end
   end
   
 end
