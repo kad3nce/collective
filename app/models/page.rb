@@ -1,3 +1,5 @@
+require 'diff/lcs'
+
 class Page < DataMapper::Base
   property :name, :string, :nullable => false
   attr_accessor :spam
@@ -25,23 +27,21 @@ class Page < DataMapper::Base
     # Order matters! This is a little clever. If +try+ fails, +nil+ is 
     # returned, and therefore the search was invalid. If +try+ doesn't fail, 
     # +page+ must have been found and will be returned.
-    page.try(:selected_version) && page
+    return page.try(:selected_version) && page
   end
-
-  attr_writer :content
+  
+  attr_accessor :content_diff
+  def content=(new_content)
+    self.content_diff = diff(new_content)
+    @content          = new_content
+  end
+  
   def content
     @content ||= selected_version.try(:content) || ''
   end
 
   def content_html
     selected_version.try(:content_html) || ''
-  end
-
-  def content_additions(new_content)
-    diff        = Diff::LCS.sdiff(content, new_content)
-    all_changes = diff.reject { |diff| diff.unchanged? }
-    additions   = all_changes.reject { |diff| diff.deleting? }
-    additions.map { |diff| diff.to_a.last.last }.join
   end
 
   def latest_version
@@ -76,6 +76,12 @@ class Page < DataMapper::Base
   end
 
 private
+  def diff(new_content)
+    diff        = Diff::LCS.sdiff(content, new_content)
+    all_changes = diff.reject { |diff| diff.unchanged? }
+    additions   = all_changes.reject { |diff| diff.deleting? }
+    additions.map { |diff| diff.to_a.last.last }.join
+  end
 
   def build_new_version
     # DataMapper not initializing versions_count with default value of zero. Bug?

@@ -72,13 +72,6 @@ describe Page do
     end
   end
 
-  describe '#content_additions' do
-    it "should return the additions between the page's current content and an arbitrary string" do
-      page = Page.new(:content => "An old version\nof the content.")
-      page.content_additions("An old version\nof the content.\nPlus some new content.").should == "\nPlus some new content."
-    end
-  end
-
   describe '#latest_version' do
     attr_accessor :page, :version
     
@@ -127,10 +120,18 @@ describe Page do
       end
     end
 
-    describe '#content=' do
-      it 'should change the return value of #content' do
+    describe "#content=" do
+      it "should set the content of the page" do
         p = Page.new
-        lambda { p.content = 'Some new content' }.should change(p, :content)
+        p.content = "Content for page"
+        p.content.should == "Content for page"
+      end
+
+      it "should set the diff of the new content and the old content" do
+        p = Page.new
+        p.content = "Content for page"
+        p.content = [p.content, "Content for diff"].join("\n")
+        p.content_diff.should == "\nContent for diff"
       end
     end
 
@@ -170,7 +171,7 @@ describe Page do
     end
   end
   
-  describe '#select_version!' do
+  describe "#select_version!" do
     attr_accessor :page, :initial_version, :updated_version
     
     before(:each) do
@@ -197,7 +198,7 @@ describe Page do
       updated_version.destroy!
     end
     
-    it 'should select the latest version if no version number was specified' do
+    it "should select the latest version if no version number was specified" do
       page.select_version!
       page.selected_version.should == updated_version
     end
@@ -212,7 +213,7 @@ describe Page do
       page.selected_version.should == updated_version
     end
     
-    it 'should select the specified version number' do
+    it "should select the specified version number" do
       page.select_version!(initial_version.number)
       page.selected_version.should == initial_version
     end

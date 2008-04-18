@@ -1,7 +1,6 @@
 require File.join(File.dirname(__FILE__), "..", 'spec_helper.rb')
 
 describe Pages do
-  
   attr_accessor :page, :pages
   
   before(:each) do
@@ -116,5 +115,4 @@ describe Pages do
       end
     end
   end
-
 end

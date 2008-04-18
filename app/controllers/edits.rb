@@ -1,4 +1,5 @@
-class Edits < Application  
+class Edits < Application
+
   before :authenticate
 
   # Accessed by: GET /edits
@@ -11,16 +12,12 @@ class Edits < Application
 
   # Accessed by: PUT /edits/1
   def update(id)
-    @edit = Version.first(id)
-    raise NotFound unless @edit
+    provides :js, :json
+    @edit = Version.first(id) || raise(NotFound)
     if @edit.update_attributes(:moderated => true)
-      if(@edit.spam)
-        DEFENSIO_GATEWAY.mark_as_ham(:signatures => @edit.signature)
-      else
-        DEFENSIO_GATEWAY.mark_as_spam(:signatures => @edit.signature)
-      end
+      Viking.mark_as_spam_or_ham(@edit.spam?, :signatures => @edit.signature)
       if request.xhr?
-        render :nothing => 200
+        render "", :status => 200 # renders nothing
       else
         redirect url(:edits)
       end
@@ -30,9 +27,11 @@ class Edits < Application
   end
   
 private
+
   def authenticate
     authenticate_or_request_with_http_basic("login") do |username, password|
       username == "admin" && password == "supersecret"
     end
   end
+
 end

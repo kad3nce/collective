@@ -1,8 +1,17 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
 
+module VersionSpecHelper
+  def valid_version_attributes
+    {
+      :content => "I have content!"
+    }
+  end
+end
+
 describe Version do
   
-  describe '.new' do
+  describe ".new" do
+    include VersionSpecHelper
     attr_accessor :page
 
     before(:each) do
@@ -11,6 +20,10 @@ describe Version do
 
     after(:each) do
       self.page = nil
+    end
+    
+    it "should require content" do
+      Version.new(valid_version_attributes.except(:content)).should have(1).error_on(:content)
     end
     
     it 'should have a content field' do
@@ -59,7 +72,7 @@ describe Version do
     end
   end
 
-  describe '.most_recent_unmoderated' do
+  describe ".most_recent_unmoderated" do
     attr_accessor :versions
     
     before(:each) do
@@ -70,19 +83,43 @@ describe Version do
       self.versions = nil
     end
     
-    it 'should find the most recent Versions' do
+    it "should find the most recent Versions" do
       Version.should_receive(:all).and_return(versions)
       Version.most_recent_unmoderated.should == versions
     end
   end
 
-  describe '#spam_or_ham' do
+  describe "#spam_or_ham" do
     it "should be 'spam' if the record is flagged as spam" do
-      Version.new(:spam => true).spam_or_ham.should == 'spam'
+      Version.new(:spam => true).spam_or_ham.should == "spam"
     end
     
     it "should be 'ham' if the record is not flagged as spam" do
-      Version.new(:spam => false).spam_or_ham.should == 'ham'
+      Version.new(:spam => false).spam_or_ham.should == "ham"
+    end
+  end
+
+  describe ".create_spam" do
+    include VersionSpecHelper
+    
+    after(:each) do
+      Version.delete_all
+    end
+    
+    it "should create a new record" do
+      lambda { Version.create_spam("Name", valid_version_attributes) }.should change(Version, :count).by(1)
+    end
+    
+    it "should create a new record that is marked as spam" do
+      Version.create_spam("Name", valid_version_attributes).should be_spam
+    end
+    
+    it "should have a page_id of -1" do
+      Version.create_spam("Name", valid_version_attributes).page_id.should == -1
+    end
+    
+    it "should pre-format the content" do
+      Version.create_spam("Name", valid_version_attributes).content.should == [valid_version_attributes[:content], "Name"].join(":")
     end
   end
 

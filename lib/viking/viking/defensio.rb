@@ -11,9 +11,9 @@ module Viking
     attr_accessor :proxy_port, :proxy_host
     attr_reader :last_response
 
-    self.service_type = :blog
-    self.host = 'api.defensio.com'
-    self.api_version = '1.1'
+    self.service_type     = :blog
+    self.host             = 'api.defensio.com'
+    self.api_version      = '1.1'
     self.standard_headers = {
       'User-Agent'   => 'Viking (Rails Plugin) v0.5',
       'Content-Type' => 'application/x-www-form-urlencoded'
@@ -21,66 +21,98 @@ module Viking
   
     # Create a new instance of the Akismet class
     #
-    # :api_key 
-    #   Your Akismet API key
-    # :blog 
-    #   The blog associated with your api key
-    # :proxy_port
-    # :proxy_host
+    # ==== Arguments
+    # Arguments are provided in the form of a Hash with the following keys 
+    # (as Symbols) available: 
+    # 
+    # +api_key+::    your Defensio API key
+    # +blog+::       the blog associated with your api key
+    # 
+    # The following keys are available and are entirely optional. They are 
+    # available incase communication with Akismet's servers requires a 
+    # proxy port and/or host:
+    # 
+    # * +proxy_port+
+    # * +proxy_host+
     def initialize(options)
       super
-      @verify_options = false
+      self.verify_options = false
     end
 
-    # Returns <tt>true</tt> if the API key has been verified, <tt>false</tt> otherwise
+    # Returns +true+ if the API key has been verified, +false+ otherwise
     def verified?
-      (@verify_options ||= call_defensio('validate-key'))[:status] == 'success'
+      (verify_options ||= call_defensio('validate-key'))[:status] == 'success'
     end
 
-    def check_article(options = {})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+    def check_article(options={})
+      return false if invalid_options?
       call_defensio 'announce-article', options
     end
 
-    def check_comment(options = {})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+    def check_comment(options={})
+      return false if invalid_options?
       if options[:article_date].respond_to?(:strftime)
-        options[:article_date] = options[:article_date].strftime("%Y/%m/%d")
+        options[:article_date] = options[:article_date].defensio_date_format
       end
       call_defensio 'audit-comment', options
     end
   
-    def mark_as_spam(options = {})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+    def mark_as_spam(options={})
+      return false if invalid_options?
       call_defensio 'report-false-negatives', options
     end
   
-    def mark_as_ham(options = {})
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+    def mark_as_ham(options={})
+      return false if invalid_options?
       call_defensio 'report-false-positives', options
     end
   
     def stats
-      return false if @options[:api_key].nil? || @options[:blog].nil?
+      return false if invalid_options?
       call_defensio 'get-stats'
     end
 
     protected
       def api_url(action)
-        URI.escape("/#{self.class.service_type}/#{self.class.api_version}/#{action}/#{@options[:api_key]}.yaml")
+        URI.escape("/#{self.class.service_type}/#{self.class.api_version}/#{action}/#{options[:api_key]}.yaml")
       end
 
-      def call_defensio(action, params = {})
-        url  = api_url(action)
-        data = params.inject({'owner-url' => @options[:blog] || @options[:owner_url]}) do |memo, (key, value)|
-          memo[key.to_s.dasherize] = value
-          memo
-        end.to_query
-        http = Net::HTTP.new(self.class.host, self.class.port, @options[:proxy_host], @options[:proxy_port])
-        resp = http.post(url, data, self.class.standard_headers)
-        log_request url, data, resp
-        data = YAML.load(resp.body)
-        (data.respond_to?(:key?) && data.key?('defensio-result')) ? data['defensio-result'].symbolize_keys : {:data => resp.body, :status => 'fail'}
+      def call_defensio(action, params={})
+        resp = defensio_http.post(
+          api_url(action), 
+          data(params), 
+          self.class.standard_headers
+        )
+        log_request(api_url(action), data, resp)
+        process_response_body(resp.body)
       end
+      
+      def process_response_body(response_body)
+        data = YAML.load(response_body)
+        if data.respond_to?(:key) && data.key?('defensio-result')
+          data['defensio-result'].symbolize_keys
+        else
+          { :data => raw_data, :status => 'fail' }
+        end
+      end
+      
+      def defensio_http
+        Net::HTTP.new(
+          self.class.host, 
+          self.class.port, 
+          options[:proxy_host], 
+          options[:proxy_port]
+        )
+      end
+      
+      def data(params={})
+        params.
+          update('owner-url' => options[:blog] || options[:owner_url]).
+          dasherize_keys.
+          to_query
+      end
+      
+    private
+      attr_accessor :verify_options
   end
 end
