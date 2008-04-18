@@ -5,8 +5,8 @@ type: :feature
 component: Styling
 release: 
 reporter: meekish <jed.hurt@gmail.com>
-status: :unstarted
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2008-04-15 07:53:51.875524 Z
 references: []
 
@@ -15,4 +15,8 @@ log_events:
 - - 2008-04-15 07:54:29.925979 Z
   - meekish <jed.hurt@gmail.com>
   - created
+  - ""
+- - 2008-04-18 15:54:28.814631 Z
+  - James Herdman <james.herdman@gmail.com>
+  - closed issue with disposition fixed
   - ""
