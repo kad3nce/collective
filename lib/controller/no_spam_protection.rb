@@ -1,8 +1,8 @@
 require 'ruby-debug'
 
-# =========================================================================
-# = TODO: Figure out a way to get action-args to work on mixed in actions =
-# =========================================================================
+# ========================================================
+# = TODO: Use action-args after the next release of Merb =
+# ========================================================
 module NoSpamProtection
   def self.included(base)
     base.show_action(:create, :update)
@@ -24,7 +24,7 @@ module NoSpamProtection
     if @page.update_attributes(params[:page])
       redirect url(:page, @page)
     else
-      flash[:notice] = "Your changes have been rejected"
+      flash[:notice] = 'Your changes have been rejected.'
       render :edit
     end
   end

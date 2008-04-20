@@ -45,7 +45,7 @@ module SpamProtection
         )
       end
     else
-      flash[:notice] = "Your changes have been rejected"
+      flash[:notice] = 'Your changes have been rejected.'
       render :edit
     end
   end
@@ -57,7 +57,7 @@ private
       default_spam_engine_params.update(
         :comment_content => content_as_html(page, content),
         :user_ip         => request.remote_ip,
-        :permalink       => permalink_for_page(page.slug)
+        :permalink       => slug_for_page(page.slug)
       )
     )
   end
@@ -67,7 +67,7 @@ private
     RedCloth.new(content).to_html
   end
 
-  def permalink_for_page(slug)
+  def slug_for_page(slug)
     "http://#{Viking.default_instance.options[:blog]}/pages/#{slug}"
   end
 
