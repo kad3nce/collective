@@ -17,11 +17,7 @@ WEBSITE: http://noteslog.com/chili/
     bool    : { exp : /true|false/ }, 
     number  : { exp : /\d+/ }, 
     attr    : { exp : /attr(_accessor|writer|reader)?/ }, 
-<<<<<<< Updated upstream:public/javascripts/chili/recipes/ruby.js
-    symbol  : { exp : /([^:])(:[A-Za-z0-9_!?]+)/ }
-=======
     symbol  : { exp : /(:[A-Za-z0-9_!?]+)/ }, 
-    regexp  : { exp : /\/[^\/]*\/(i|m|x|o)?/ }
->>>>>>> Stashed changes:public/javascripts/chili/recipes/ruby.js
+    regexp  : { exp : /\/[^\/]*\/(m|o|x|i)?/ }
   }
 }
