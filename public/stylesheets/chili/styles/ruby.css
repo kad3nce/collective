@@ -16,3 +16,4 @@ WEBSITE: http://noteslog.com/chili/
 .ruby .bool    { color: #FC6; }
 .ruby .number  { color: #6C6; }
 .ruby .attr    { color: #FF9; }
+.ruby .regexp  { color: #6CC; }

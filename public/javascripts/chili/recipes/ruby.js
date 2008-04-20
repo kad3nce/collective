@@ -17,6 +17,7 @@ WEBSITE: http://noteslog.com/chili/
     bool    : { exp : /true|false/ }, 
     number  : { exp : /\d+/ }, 
     attr    : { exp : /attr(_accessor|writer|reader)?/ }, 
-    symbol  : { exp : /(:[A-Za-z0-9_!?]+)/ }
+    symbol  : { exp : /(:[A-Za-z0-9_!?]+)/ }, 
+    regexp  : { exp : /\/[^\/]*\/(m|o|x|i)?/ }
   }
 }

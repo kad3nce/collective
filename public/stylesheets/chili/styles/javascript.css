@@ -8,11 +8,10 @@ LICENSE: http://www.opensource.org/licenses/mit-license.php
 WEBSITE: http://noteslog.com/chili/
 ===============================================================================
 */
-
-.javascript .mlcom    { color: #4040c2; }
-.javascript .com      { color: green; }
-.javascript .regexp   { color: maroon; }
-.javascript .string   { color: teal; }
-.javascript .keywords { color: navy; font-weight: bold; }
+.javascript .mlcom    { color: #999; }
+.javascript .com      { color: #999; }
+.javascript .regexp   { color: #6CC; }
+.javascript .string   { color: #6F0; }
+.javascript .keywords { color: #F60; }
 .javascript .global   { color: blue; }
-.javascript .numbers  { color: red; }
+.javascript .numbers  { color: #6C6; }
