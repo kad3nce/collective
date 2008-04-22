@@ -24,10 +24,10 @@ use_test :rspec
 ### Add your other dependencies here
 
 dependencies 'iconv', 'merb-action-args', 'merb-assets', 'merb_has_flash', 
-             'merb-haml', 'merb_helpers', 'merb_http_basic_auth', 'uri', 
-             'viking'
+             'merb-haml', 'merb_helpers', 'merb_http_basic_auth', 'uri'
              
-require 'redcloth'                       
+require 'redcloth'
+require 'viking'
 
 # dependency "RedCloth", "> 3.0"
 # OR

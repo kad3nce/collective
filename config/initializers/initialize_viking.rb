@@ -1,7 +1,7 @@
 # Sometimes Viking isn't loaded at this point, so we make sure it is here
-unless Object.const_defined?("Viking")
-  require Merb.root / 'lib' / 'viking' / 'viking'
-end
+#unless Object.const_defined?("Viking")
+#  require Merb.root / 'lib' / 'viking' / 'viking'
+#end
 
 # This needs to load before the app so Pages can load the appropriate module 
 # for it's +create+ and +update+ methods
