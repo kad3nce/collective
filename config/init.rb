@@ -25,9 +25,6 @@ use_test :rspec
 dependencies 'iconv', 'merb-action-args', 'merb-assets', 'merb_has_flash', 
              'merb-haml', 'merb_helpers', 'merb_http_basic_auth', 'uri'
              
-require 'redcloth'
-require 'viking'
-
 # dependency "RedCloth", "> 3.0"
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
@@ -36,7 +33,8 @@ require 'viking'
 # put a redcloth.rb file next to its lib dir. Work around it by bypassing
 # the #dependencies helper and doing an explicit #require. Perhaps we
 # should patch #dependencies to support this edge case.
-require 'redcloth'                       
+require 'redcloth'
+require 'viking'
 
 # Load initializers
 Dir[Merb.root / 'config' / 'initializers' / '*.rb'].each do |initializer|
