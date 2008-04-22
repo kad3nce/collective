@@ -22,7 +22,6 @@ use_orm :datamapper
 use_test :rspec
 
 ### Add your other dependencies here
-
 dependencies 'iconv', 'merb-action-args', 'merb-assets', 'merb_has_flash', 
              'merb-haml', 'merb_helpers', 'merb_http_basic_auth', 'uri'
              
@@ -32,6 +31,12 @@ require 'viking'
 # dependency "RedCloth", "> 3.0"
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
+
+# There seems to be an issue with the fact that the RedCloth gem doesn't
+# put a redcloth.rb file next to its lib dir. Work around it by bypassing
+# the #dependencies helper and doing an explicit #require. Perhaps we
+# should patch #dependencies to support this edge case.
+require 'redcloth'                       
 
 # Load initializers
 Dir[Merb.root / 'config' / 'initializers' / '*.rb'].each do |initializer|
