@@ -5,8 +5,8 @@ type: :bugfix
 component: Styling
 release: 
 reporter: meekish <jed.hurt@gmail.com>
-status: :paused
-disposition: 
+status: :closed
+disposition: :fixed
 creation_time: 2008-04-22 14:09:30.416156 Z
 references: []
 
@@ -24,3 +24,7 @@ log_events:
   - James Herdman <james.herdman@gmail.com>
   - changed status from in_progress to paused
   - ""
+- - 2008-04-22 19:32:04.349078 Z
+  - James Herdman <james.herdman@gmail.com>
+  - closed issue with disposition fixed
+  - Closed issue
