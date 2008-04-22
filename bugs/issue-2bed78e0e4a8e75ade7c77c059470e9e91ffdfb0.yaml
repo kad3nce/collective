@@ -5,7 +5,7 @@ type: :bugfix
 component: Styling
 release: 
 reporter: meekish <jed.hurt@gmail.com>
-status: :unstarted
+status: :in_progress
 disposition: 
 creation_time: 2008-04-22 14:09:30.416156 Z
 references: []
@@ -16,3 +16,7 @@ log_events:
   - meekish <jed.hurt@gmail.com>
   - created
   - ""
+- - 2008-04-22 18:06:22.165059 Z
+  - James Herdman <james.herdman@gmail.com>
+  - changed status from unstarted to in_progress
+  - Will move a Vibrant Ink-esque theme as I have with others
