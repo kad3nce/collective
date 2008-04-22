@@ -1,0 +1,18 @@
+--- !ditz.rubyforge.org,2008-03-06/issue 
+title: Make Chili's HTML recipe more legible on a black background
+desc: ""
+type: :bugfix
+component: Styling
+release: 
+reporter: meekish <jed.hurt@gmail.com>
+status: :unstarted
+disposition: 
+creation_time: 2008-04-22 14:09:30.416156 Z
+references: []
+
+id: 2bed78e0e4a8e75ade7c77c059470e9e91ffdfb0
+log_events: 
+- - 2008-04-22 14:09:32.392298 Z
+  - meekish <jed.hurt@gmail.com>
+  - created
+  - ""
