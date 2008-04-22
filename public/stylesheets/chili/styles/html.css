@@ -9,9 +9,9 @@ WEBSITE: http://noteslog.com/chili/
 ===============================================================================
 */
 
-.html .php    { color: red; font-weight: bold; }
-.html .tag    { color: navy; font-weight: bold; }
-.html .aname  { color: purple; }
-.html .avalue { color: fuchsia; }
-.html .mlcom  { color: green; }
-.html .entity { color: teal; }
+.html .erb    { color: #CCC; }
+.html .tag    { color: #FF8400; }
+.html .aname  { color: #FF9; }
+.html .avalue { color: #9F0; }
+.html .mlcom  { color: #BD48B3; }
+.html .entity { color: #07DFFC;; }
