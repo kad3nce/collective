@@ -75,7 +75,7 @@ private
     { 
       :comment_author => 'anonymous', 
       :comment_type   => 'comment', 
-      :article_date   => Time.now.defensio_date_format, 
+      :article_date   => Time.now, 
       :user_logged_in => false,
       :trusted_user   => false
     }
