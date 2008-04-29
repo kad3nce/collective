@@ -14,7 +14,7 @@ module Merb
     def mark_as_ham_or_spam(version)
       [
         open_tag('button', :type => 'submit'), 
-        "This is #{version.spam_or_ham.capitalize}", 
+        "Mark as #{version.spam_or_ham == 'spam' ? 'Ham' : 'Spam'}", 
         "</button>"
       ].join("")
     end
