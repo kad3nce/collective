@@ -14,7 +14,7 @@ Features/Problems
 Take It For A Spin
 ------------------
  
-* $ git clone git://github.com/meekish/collective.git collective
+* $ git clone git://github.com/meekish/collective.git
 * $ cd collective
 * $ cp config/database.sample.yml config/database.yml
 * $ rake dm:db:automigrate
