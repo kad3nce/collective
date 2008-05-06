@@ -21,7 +21,7 @@
 
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do |r|
-  r.match('/').to(:controller => 'pages', :action =>'index')
+  r.match('/').to(:controller => 'pages', :action =>'show', :id => 'home').name(:home)
   r.resources :pages
   r.resources :edits
 end
