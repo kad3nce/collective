@@ -9,7 +9,9 @@ Features/Problems
 * Versioned pages
 * Textile/Markdown content formatting
 * Pretty page urls
-* Markup and Styling still looks like wiki.merbivore.com
+* Markup and Styling still tied to wiki.merbivore.com (both of which are 
+  copyright Ezra Zygmuntowicz). Thus Collective is not ready for reuse 
+  unless one removes merbivore.sass and restyles the wiki.
   
 Take It For A Spin
 ------------------
