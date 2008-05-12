@@ -124,11 +124,11 @@ describe Page do
         p.content.should == "Content for page"
       end
 
-      it "should set the diff of the new content and the old content" do
+      it "should set the diff of the new html content and the old html content" do
         p = Page.new
-        p.content = "Content for page"
-        p.content = [p.content, "Content for diff"].join("\n")
-        p.content_diff.should == "\nContent for diff"
+        p.content = "Content for *page*"
+        # p.content = [p.content, "Content for diff"].join("\n")
+        p.content_diff.should == "\n<p>Content for <b>diff</b></p>"
       end
     end
 
