@@ -15,94 +15,16 @@ body {
   font-family: 'Lucida Grande', Arial, sans-serif;
   font-size: 12px;
   font-weight: normal;
-  line-height: 1; }
+  line-height: 1;
+  min-width: 834px; }
 
 ul {
   list-style-type: none; }
 
-#content_full {
-  margin: 10px 20px 20px 20px;
-  position: relative; }
-  #content_full ul.revisions {
-    list-style-type: disc; }
-    #content_full ul.revisions li {
-      margin-left: 15px;
-      padding: 3px 0; }
-      #content_full ul.revisions li a {
-        display: inline; }
-  #content_full a {
-    color: #11B716;
-    font-weight: bold; }
-  #content_full a:hover {
-    background: #22d716;
-    color: black; }
-  #content_full ul.quicklinks_bottom li a {
-    color: #d7ff00;
-    display: inline; }
-  #content_full ul.quicklinks_bottom li a:hover {
-    background: #d7ff00;
-    color: #000; }
-
-
-
-
-strong {
-  font-weight: bold; }
-
-table {
-  border-collapse: separate;
-  border-spacing: 0; }
-
-caption, th, td {
-  text-align: left;
-  font-weight: normal; }
-
-.invisible {
-  display: none; }
-
-.full_width {
-  width: 100%; }
-
-.wrap_to_center, #foot {
-  margin: 0 auto;
-  display: block;
-  width: 800px; }
-
-#content {
-  width: 100%; }
-  #content p {
-    line-height: 17px; }
-
-#content_top {
-  background: #fff url(http://merbivore.com/img/content_top.gif) no-repeat top center;
-  float: left;
-  margin: 25px 0px;
-  width: 100%; }
-
-#content_bottom {
-  background: url(http://merbivore.com/img/content_bottom.gif) no-repeat bottom center;
-  width: 100%;
-  float: left; }
-
-#content_main {
-  float: left;
-  margin: 10px 20px 20px 20px;
-  width: 506px; }
-  #content_main ul {
-    margin: 10px 0px; }
-    #content_main ul li {
-      background: url(http://merbivore.com/img/li.gif) no-repeat left center;
-      padding: 4px 4px 4px 16px;
-      font-weight: bold; }
-  #content_main a {
-    color: #11b716;
-    font-weight: bold; }
-  #content_main a:hover {
-    background: #22d716; }
-
 #header {
   background: #1db900 url(http://merbivore.com/img/header_waves.gif) repeat-x top center;
   height: 74px;
+  margin-bottom: 25px;
   width: 100%; }
   #header img {
     margin-top: 8px;
@@ -138,9 +60,108 @@ ul#nav {
   ul#nav li.last a {
     margin-right: 0; }
 
+#branding h1 {
+  border-bottom: none;
+  float: left;
+  height: 60px;
+  margin-bottom: 0;
+  margin-left: 10px;
+  margin-top: 8px;
+  width: 400px;
+  text-indent: -9999px;
+  background: transparent url(http://merbivore.com/img/header_logo.png) no-repeat top left; }
+
+#payload {
+  min-width: 834px;
+  width: 100%; }
+
+#content {
+  background-color: white;
+  float: left;
+  width: 70%;
+  margin: 0 13px 25px 15px;
+  padding: 15px;
+  position: relative; }
+  #content ul.revisions {
+    list-style-type: disc; }
+    #content ul.revisions li {
+      margin-left: 15px;
+      padding: 3px 0; }
+      #content ul.revisions li a {
+        display: inline; }
+  #content ul.quicklinks_bottom li a {
+    color: #d7ff00;
+    display: inline; }
+  #content ul.quicklinks_bottom li a:hover {
+    background: #d7ff00;
+    color: #000; }
+  #content p {
+    line-height: 17px; }
+
+#sidebar {
+  color: white;
+  float: left;
+  width: 23%; }
+
+#content a, #sidebar a {
+  color: #11B716;
+  font-weight: bold; }
+#content a:hover, #sidebar a:hover {
+  background: #22d716;
+  color: black; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+strong {
+  font-weight: bold; }
+
+table {
+  border-collapse: separate;
+  border-spacing: 0; }
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal; }
+
+.invisible {
+  display: none; }
+
+.full_width {
+  width: 100%; }
+
+#foot {
+  margin: 0 auto;
+  display: block;
+  width: 800px; }
+
 h1 {
   border-bottom: 2px solid #ccc;
-  margin: 20px 0px;
+  margin-bottom: 20px;
   text-align: left;
   width: 100%; }
 
@@ -150,7 +171,7 @@ h1, h1 input {
   letter-spacing: 1px; }
 
 h1 input {
-  width: 752px; }
+  width: 99%; }
 
 h1.home, #notice p {
   border: 0;
@@ -167,7 +188,7 @@ h1.home, #notice p {
 h2 {
   color: #7AAD00;
   font: bold 22px "Lucida Grande" sans-serif;
-  margin: 10px 0px; }
+  margin-bottom: 10px; }
 
 h3 {
   font: bold 16px "Lucida Grande";
@@ -182,81 +203,12 @@ pre {
   font: 12px "Courier" serif;
   line-height: 18px;
   padding: 12px;
-  margin-bottom: 10px;
-  overflow: auto; }
+  margin-bottom: 10px; }
   pre code {
     font-weight: normal; }
 
 code {
-  font: bold 12px Monaco, "Courier New", Courier, mono; }
-
-#wiki-page #content blockquote p {
-  font-style: oblique;
-  margin: 20px; }
-#wiki-page #content li {
-  margin-bottom: 5px; }
-#wiki-page #content ol {
-  padding-left: 20px; }
-#wiki-page #content pre {
-  margin-bottom: 10px;
-  margin-top: 10px; }
-#wiki-page #content textarea {
-  height: 400px;
-  width: 755px; }
-#wiki-page #content ul#list-of-pages, #wiki-page #content ul#recent-edits, #wiki-page #content form ul {
-  list-style-type: none;
-  padding-left: 0; }
-#wiki-page #content ul {
-  padding-left: 15px;
-  list-style-type: disc; }
-#wiki-page #content #page-form h1 {
-  border-bottom: none;
-  margin-bottom: 10px; }
-#wiki-page #content #page-form p {
-  margin-bottom: 0; }
-  #wiki-page #content #page-form p a {
-    text-decoration: none; }
-#wiki-page #content #edit-filters {
-  position: absolute;
-  right: -7px;
-  top: 0; }
-#wiki-page #content #recent-edits li {
-  padding: 5px;
-  position: relative; }
-  #wiki-page #content #recent-edits li h2 {
-    color: black;
-    margin-top: 0; }
-    #wiki-page #content #recent-edits li h2 a {
-      color: black; }
-  #wiki-page #content #recent-edits li.ham {
-    background-color: #C7FFC9; }
-    #wiki-page #content #recent-edits li.ham h2 a:hover {
-      background-color: black;
-      color: #C7FFC9; }
-  #wiki-page #content #recent-edits li.spam {
-    background-color: #FFC7DF; }
-    #wiki-page #content #recent-edits li.spam h2 a:hover {
-      background-color: black;
-      color: #FFC7DF; }
-  #wiki-page #content #recent-edits li .moderate-edit {
-    position: absolute;
-    right: 6px;
-    top: 11px; }
-#wiki-page #content #recent-edits button, #wiki-page #content #edit-filters button {
-  background-color: #F5F5F5;
-  display: block;
-  float: left;
-  margin: 0 7px 0 0;
-  border: 1px solid #DEDEDE;
-  border-top: 1px solid #EEE;
-  border-left: 1px solid #EEE;
-  font-size: 100%;
-  line-height: 130%;
-  text-decoration: none;
-  font-weight: bold;
-  color: #565656;
-  cursor: pointer;
-  padding: 5px 10px 6px 7px; }
+  font: bold 12px "Courier" serif; }
 
 #content_sidebar {
   float: left;

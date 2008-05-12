@@ -1,27 +1,100 @@
-body
-  :font normal 12px "Lucida Grande", "Arial", sans-serif
-  :padding 10px
-
-h1
-  :font-size 1.5em
-
-h2
-  :font-size 1.3em
-
-h1, h2
-  :margin-bottom .2em
-
-input, textarea
-  :width 500px
+/ body
+/   :font normal 12px "Lucida Grande", "Arial", sans-serif
+/   :padding 10px
+/ 
+/ h1
+/   :font-size 1.5em
+/ 
+/ h2
+/   :font-size 1.3em
+/ 
+/ h1, h2
+/   :margin-bottom .2em
+/ 
+/ input, textarea
+/   :width 500px
+/   
+/ label
+/   :display block
+/ 
+/ ul#page-form
+/   :list-style-type none
+/   :margin 0
+/   :padding 0
+/ 
+/ textarea
+/   :height 500px
   
-label
-  :display block
-
-ul#page-form
-  :list-style-type none
-  :margin 0
-  :padding 0
-
-textarea
-  :height 500px
-  
+#content
+  blockquote p
+    :font-style oblique
+    :margin 20px
+  li
+    :margin-bottom 5px
+  ol
+    :padding-left 20px
+  pre
+    :margin
+      :bottom 10px
+      :top 10px
+  textarea
+    :height 400px
+    :width 99%
+  ul#list-of-pages, ul#recent-edits, form ul
+    :list-style-type none
+    :padding-left 0
+  ul
+    :padding-left 15px
+    :list-style-type disc
+  #page-form
+    h1
+      :border-bottom none
+      :margin-bottom 10px
+    p
+      :margin-bottom 0
+      a
+        :text-decoration none
+  #edit-filters
+    :position absolute
+    :right -7px
+    :top 0
+  #recent-edits
+    li
+      :padding 5px
+      :position relative
+      h2
+        :color black
+        :margin-top 0
+        a
+          :color black
+      &.ham
+        :background-color #C7FFC9
+        h2
+          a:hover
+            :background-color black
+            :color #C7FFC9
+      &.spam
+        :background-color #FFC7DF
+        h2
+          a:hover
+            :background-color black
+            :color #FFC7DF
+      .moderate-edit
+        :position absolute
+        :right 6px
+        :top 11px
+  #recent-edits button, #edit-filters button
+    :background-color #F5F5F5
+    :display block
+    :float left
+    :margin 0 7px 0 0
+    :border 1px solid #DEDEDE
+    :border-top 1px solid #EEE
+    :border-left 1px solid #EEE
+    :font-size 100%
+    :line-height 130%
+    :text-decoration none
+    :font-weight bold
+    :color #565656
+    :cursor pointer
+    :padding 5px 10px 6px 7px

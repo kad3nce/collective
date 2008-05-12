@@ -8,7 +8,7 @@ $(document).ready(function(){
     $(this).find('button').fadeOut();
     $.ajax({ type: 'PUT', url: this.action });
     return false;
-  })
+  });
   
   $('#edit-filters button').click(function(){
     var edits = $('li.spam, li.ham');
@@ -19,5 +19,7 @@ $(document).ready(function(){
       $('li.'+$(this).text().toLowerCase()).fadeIn();
     }
     return false;
-  })
-})
+  });
+  
+  $('#content').corner({ autoPad: false });
+});

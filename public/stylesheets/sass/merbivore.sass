@@ -19,95 +19,15 @@ body
     :size 12px 
     :weight normal
   :line-height 1
+  :min-width 834px
 
 ul
   :list-style-type none
 
-#content_full
-  :margin 10px 20px 20px 20px
-  :position relative
-  ul.revisions
-    :list-style-type disc
-    li
-      :margin-left 15px
-      :padding 3px 0
-      a
-        :display inline
-  a
-    :color #11B716
-    :font-weight bold
-  a:hover
-    :background #22d716
-    :color black
-  ul.quicklinks_bottom li
-    a
-      :color #d7ff00
-      :display inline
-    a:hover
-      :background #d7ff00
-      :color #000
-
-/ EDITED
-/ li a
-/   :display block
-
-strong
-  :font-weight bold
-
-table
-  :border-collapse separate
-  :border-spacing 0
-
-caption, th, td
-  :text-align left
-  :font-weight normal
-
-.invisible
-  :display none
-
-.full_width
-  :width 100%
-
-.wrap_to_center, #foot
-  :margin 0 auto
-  :display block
-  :width 800px
-
-#content
-  :width 100%
-  p
-    :line-height 17px
-
-#content_top
-  :background #fff url(http://merbivore.com/img/content_top.gif) no-repeat top center
-  :float left
-  :margin 25px 0px
-  :width 100%
-
-#content_bottom
-  :background url(http://merbivore.com/img/content_bottom.gif) no-repeat bottom center
-  :width 100%
-  :float left
-
-#content_main
-  :float left
-  :margin 10px 20px 20px 20px
-  :width 506px
-  ul
-    :margin 10px 0px
-    li
-      :background url(http://merbivore.com/img/li.gif) no-repeat left center
-      :padding 4px 4px 4px 16px
-      :font-weight bold
-  a
-    :color #11b716
-    :font-weight bold
-  a:hover
-    :background #22d716
-
 #header
   :background #1db900 url(http://merbivore.com/img/header_waves.gif) repeat-x top center
   :height 74px
+  :margin-bottom 25px
   :width 100%
   img
     :margin-top 8px
@@ -143,9 +63,118 @@ ul#nav
   li.last a
     :margin-right 0
 
+
+#branding h1
+  :border-bottom none
+  :float left
+  :height 60px
+  :margin
+    :bottom 0
+    :left 10px
+    :top 8px
+  :width 400px
+  :text-indent -9999px
+  :background transparent url(http://merbivore.com/img/header_logo.png) no-repeat top left
+
+#payload
+  :min-width 834px
+  :width 100%
+
+#content
+  :background-color white
+  :float left
+  :width 70%
+  :margin 0 13px 25px 15px
+  :padding 15px
+  :position relative
+  ul.revisions
+    :list-style-type disc
+    li
+      :margin-left 15px
+      :padding 3px 0
+      a
+        :display inline
+  ul.quicklinks_bottom li
+    a
+      :color #d7ff00
+      :display inline
+    a:hover
+      :background #d7ff00
+      :color #000
+  p
+    :line-height 17px
+
+#sidebar
+  :color white
+  :float left
+  :width 23%
+
+#content, #sidebar
+  a
+    :color #11B716
+    :font-weight bold
+  a:hover
+    :background #22d716
+    :color black
+  
+
+/ #content_top
+/   :background #fff url(http://merbivore.com/img/content_top.gif) no-repeat top center
+/   :float left
+/   :margin 25px 0px
+/   :width 100%
+
+/ #content_bottom
+/   :background url(http://merbivore.com/img/content_bottom.gif) no-repeat bottom center
+/   :width 100%
+/   :float left
+
+/ #content
+/   :float left
+/   :margin 10px 20px 20px 20px
+/   :width 506px
+/   ul
+/     :margin 10px 0px
+/     li
+/       :background url(http://merbivore.com/img/li.gif) no-repeat left center
+/       :padding 4px 4px 4px 16px
+/       :font-weight bold
+/   a
+/     :color #11b716
+/     :font-weight bold
+/   a:hover
+/     :background #22d716
+
+/ EDITED
+/ li a
+/   :display block
+
+strong
+  :font-weight bold
+
+table
+  :border-collapse separate
+  :border-spacing 0
+
+caption, th, td
+  :text-align left
+  :font-weight normal
+
+.invisible
+  :display none
+
+.full_width
+  :width 100%
+
+#foot
+  :margin 0 auto
+  :display block
+  :width 800px
+
+
 h1
   :border-bottom 2px solid #ccc
-  :margin 20px 0px
+  :margin-bottom 20px
   :text-align left
   :width 100%
 
@@ -155,7 +184,7 @@ h1, h1 input
   :letter-spacing 1px
   
 h1 input
-  :width 752px
+  :width 99%
 
 h1.home, #notice p
   :border 0
@@ -172,7 +201,7 @@ h1.home, #notice p
 h2
   :color #7AAD00
   :font bold 22px "Lucida Grande" sans-serif
-  :margin 10px 0px
+  :margin-bottom 10px
 
 h3
   :font bold 16px "Lucida Grande"
@@ -194,85 +223,6 @@ pre
 code
   :font bold 12px "Courier" serif
   
-/ ========
-/ = Wiki =
-/ ========
-#wiki-page
-  #content
-    blockquote p
-      :font-style oblique
-      :margin 20px
-    li
-      :margin-bottom 5px
-    ol
-      :padding-left 20px
-    pre
-      :margin
-        :bottom 10px
-        :top 10px
-    textarea
-      :height 400px
-      :width 755px
-    ul#list-of-pages, ul#recent-edits, form ul
-      :list-style-type none
-      :padding-left 0
-    ul
-      :padding-left 15px
-      :list-style-type disc
-    #page-form
-      h1
-        :border-bottom none
-        :margin-bottom 10px
-      p
-        :margin-bottom 0
-        a
-          :text-decoration none
-    #edit-filters
-      :position absolute
-      :right -7px
-      :top 0
-    #recent-edits
-      li
-        :padding 5px
-        :position relative
-        h2
-          :color black
-          :margin-top 0
-          a
-            :color black
-        &.ham
-          :background-color #C7FFC9
-          h2
-            a:hover
-              :background-color black
-              :color #C7FFC9
-        &.spam
-          :background-color #FFC7DF
-          h2
-            a:hover
-              :background-color black
-              :color #FFC7DF
-        .moderate-edit
-          :position absolute
-          :right 6px
-          :top 11px
-    #recent-edits button, #edit-filters button
-      :background-color #F5F5F5
-      :display block
-      :float left
-      :margin 0 7px 0 0
-      :border 1px solid #DEDEDE
-      :border-top 1px solid #EEE
-      :border-left 1px solid #EEE
-      :font-size 100%
-      :line-height 130%
-      :text-decoration none
-      :font-weight bold
-      :color #565656
-      :cursor pointer
-      :padding 5px 10px 6px 7px
-            
-          
 #content_sidebar
   :float left
   :margin 20px 20px 15px 10px
