@@ -65,7 +65,7 @@ ul#nav {
   float: left;
   height: 60px;
   margin-bottom: 0;
-  margin-left: 10px;
+  margin-left: 16px;
   margin-top: 8px;
   width: 400px;
   text-indent: -9999px;
@@ -80,8 +80,7 @@ ul#nav {
   float: left;
   width: 70%;
   margin: 0 13px 25px 15px;
-  padding: 15px;
-  position: relative; }
+  padding: 15px; }
   #content ul.revisions {
     list-style-type: disc; }
     #content ul.revisions li {
@@ -173,17 +172,13 @@ h1, h1 input {
 h1 input {
   width: 99%; }
 
-h1.home, #notice p {
-  border: 0;
+#notice p {
   color: #fff;
   font-size: 36px;
   font-weight: bold;
-  margin: 20px 0px;
-  text-align: center; }
-
-#notice p {
   line-height: 36px;
-  margin-bottom: 0; }
+  margin-bottom: 25px;
+  text-align: center; }
 
 h2 {
   color: #7AAD00;

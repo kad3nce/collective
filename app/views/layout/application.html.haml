@@ -12,26 +12,17 @@
         %li= highlighted_link_to 'Home', url(:home)
         %li= highlighted_link_to 'All Pages', url(:pages)
         %li.last= highlighted_link_to 'New Page', url(:new_page)
+    - flash.each do |type, message|      
+      #notice{ :class => type }
+        %p= message
     #content
-      - flash.each do |type, message|      
-        #notice{ :class => type }
-          %p= message
       = catch_content :for_layout
     #sidebar
       %h2 Recent Activity
       %ul
         %li
           = link_to 'Contributing to Merb', '#'
-          was updated by Michael Klishin
-        %li
-          = link_to 'Contributing to Merb', '#'
-          was updated by Michael Klishin
-        %li
-          = link_to 'Contributing to Merb', '#'
-          was updated by Michael Klishin
-        %li
-          = link_to 'Contributing to Merb', '#'
-          was updated by Michael Klishin
+          was updated 3 minutes ago
     #footer
       %p
         &copy;2006, Ezra Zygmuntowicz | Merb is released under the
