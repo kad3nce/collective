@@ -17,6 +17,16 @@ describe Version do
     :signature => 'muchlovefromdefensio'
   }}
   
+  fixture(:spam) {{
+    :content => 17.random.words.join(' '),
+    :content_html => RedCloth.new(17.random.words.join(' ')).to_html,
+    :created_at => Time::now,
+    :number => 1,
+    :spam => true,
+    :spamminess => 0.99,
+    :signature => 'nolovefromdefensio'
+  }}
+  
   describe ".new" do
     include VersionSpecHelper
     attr_accessor :page
@@ -100,18 +110,15 @@ describe Version do
     before(:each) do
       @versions = []
       5.times { @versions.unshift(Version.gen) }
+      Version.gen(:spam)
     end
     
-    it 'should return the five (by default) most recent versions' do
+    it 'should return the five (by default) most recent non-spam versions' do
       Version.recent.should == @versions
     end
     
     it 'should accept an argument to return an arbitrary number of recent versions' do
       Version.recent(3).should == @versions[0..2]
-    end
-    
-    after(:each) do
-      Version.auto_migrate!
     end
   end
 
