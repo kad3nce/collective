@@ -3,3 +3,5 @@ Merb::Config.use { |c|
   c[:testing] = true
   c[:exception_details] = true
 }
+
+dependency 'can_has_fixtures'
