@@ -1,0 +1,5 @@
+%h2 Recent Activity
+
+= list_of @versions do |version|
+  = link_to version.page.name, url(:page, version.page)
+  was updated
