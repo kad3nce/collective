@@ -36,7 +36,7 @@ class Version < DataMapper::Base
     )
   end
   
-  def self.recent(number = 5)
+  def self.recent(number = 10)
     all(:limit => number, :order => 'id DESC', :spam => false)
   end
   
