@@ -36,6 +36,10 @@ class Version < DataMapper::Base
     )
   end
   
+  def self.recent(number = 5)
+    all(:limit => number, :order => 'id DESC')
+  end
+  
 private
   def linkify_bracketed_phrases(string)
     string.gsub(/\[\[([^\]]+)\]\]/) { "<a href=\"/pages/#{Page.slug_for($1.strip)}\">#{$1.strip}</a>" }

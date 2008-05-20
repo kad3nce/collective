@@ -9,6 +9,13 @@ module VersionSpecHelper
 end
 
 describe Version do
+  fixture {{
+    :content => 17.random.words.join(' '),
+    :content_html => RedCloth.new(17.random.words.join(' ')).to_html,
+    :created_at => Time::now,
+    :number => 1,
+    :signature => 'muchlovefromdefensio'
+  }}
   
   describe ".new" do
     include VersionSpecHelper
@@ -86,6 +93,25 @@ describe Version do
     it "should find the most recent Versions" do
       Version.should_receive(:all).and_return(versions)
       Version.most_recent_unmoderated.should == versions
+    end
+  end
+
+  describe '.recent' do
+    before(:each) do
+      @versions = []
+      5.times { @versions.unshift(Version.gen) }
+    end
+    
+    it 'should return the five (by default) most recent versions' do
+      Version.recent.should == @versions
+    end
+    
+    it 'should accept an argument to return an arbitrary number of recent versions' do
+      Version.recent(3).should == @versions[0..2]
+    end
+    
+    after(:each) do
+      Version.auto_migrate!
     end
   end
 

@@ -22,8 +22,9 @@ use_orm :datamapper
 use_test :rspec
 
 ### Add your other dependencies here
-dependencies 'iconv', 'merb-action-args', 'merb-assets', 'merb_has_flash', 
-             'merb-haml', 'merb_helpers', 'merb_http_basic_auth', 'uri'
+dependencies 'iconv', 'can_has_fixtures', 'merb-action-args', 'merb-assets',
+             'merb_has_flash', 'merb-haml', 'merb_helpers',
+             'merb_http_basic_auth', 'uri'
              
 # dependency "RedCloth", "> 3.0"
 # OR
