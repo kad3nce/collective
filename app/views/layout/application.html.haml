@@ -1,35 +1,41 @@
 !!! Strict
-%html{ "xml:lang" => "en-us", :lang => "en-us", :xmlns => "http://www.w3.org/1999/xhtml" }
+%html{ 'xml:lang' => 'en-us', :lang => 'en-us', :xmlns => 'http://www.w3.org/1999/xhtml' }
   %head
     %title= title :site => 'Merb Wiki'
-    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/
-    = css_include_tag :merbivore
-  %body#wiki-page
+    %meta{ :content => 'text/html; charset=utf-8', 'http-equiv' => "content-type" }/
+    = css_include_tag :reset, :master, :theme
+  %body
     #header
-      .wrap_to_center
-        #logo
-          = link_to(image_tag('http://merbivore.com/img/header_logo.png'), 'http://merbivore.com')
-        %ul#nav
-          %li= highlighted_link_to 'Home', url(:home)
-          %li= highlighted_link_to 'All Pages', url(:pages)
-          %li.last= highlighted_link_to 'New Page', url(:new_page)
+      #branding
+        %h1 Merb
+      %ul#navigation
+        %li= highlighted_link_to 'Home', url(:home)
+        %li= highlighted_link_to 'All Pages', url(:pages)
+        %li.last= highlighted_link_to 'New Page', url(:new_page)
+    - flash.each do |type, message|      
+      #notice{ :class => type }
+        %p= message
     #content
-      .wrap_to_center
-        - flash.each do |type, message|      
-          #notice{ :class => type }
-            %p= message
-        #content_top.full_width
-          #content_bottom
-            #content_full
-              = catch_content :for_layout
-      #footer
-        .wrap_to_center
-          %p
-            &copy;2006, Ezra Zygmuntowicz | Merb is released under the
-            %a{ :href => "http://www.opensource.org/licenses/mit-license.php" } MIT License 
-            | Wiki powered by
-            %a{ :href => 'http://github.com/meekish/collective' } Collective
-    = js_include_tag :jquery, :application, "chili/chili.pack.js"
-    %script{ :type => "text/javascript" }
+      = catch_content :for_layout
+    #sidebar
+      %h2 Recent Activity
+      %ul
+        %li
+          = link_to 'Contributing to Merb', '#'
+          was updated 3 minutes ago
+        %li
+          = link_to 'Contributing to Merb', '#'
+          was updated 3 minutes ago
+        %li
+          = link_to 'Contributing to Merb', '#'
+          was updated 3 minutes ago
+    #footer
+      %p
+        &copy;2006, Ezra Zygmuntowicz | Merb is released under the
+        %a{ :href => 'http://www.opensource.org/licenses/mit-license.php' } MIT License 
+        | Wiki powered by
+        %a{ :href => 'http://github.com/meekish/collective' } Collective
+    = js_include_tag :jquery, 'jquery-curvycorners', :application, 'chili/chili.pack.js'
+    %script{ :type => 'text/javascript' }
       ChiliBook.recipeFolder = "/javascripts/chili/recipes/";
       ChiliBook.stylesheetFolder = "/stylesheets/chili/styles/";
