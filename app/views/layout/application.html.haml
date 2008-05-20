@@ -18,17 +18,7 @@
     #content
       = catch_content :for_layout
     #sidebar
-      %h2 Recent Activity
-      %ul
-        %li
-          = link_to 'Contributing to Merb', '#'
-          was updated 3 minutes ago
-        %li
-          = link_to 'Contributing to Merb', '#'
-          was updated 3 minutes ago
-        %li
-          = link_to 'Contributing to Merb', '#'
-          was updated 3 minutes ago
+      = part RecentUpdatesPart => :index
     #footer
       %p
         &copy;2006, Ezra Zygmuntowicz | Merb is released under the
