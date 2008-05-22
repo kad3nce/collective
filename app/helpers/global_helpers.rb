@@ -8,7 +8,7 @@ module Merb
     
     def title(options)
       if(options.is_a?(Hash))
-        merged_title = @site_title = options[:site]
+        merged_title = @site_title = options[:site].dup
         (merged_title << " | #{@page_title}") if @page_title
         return merged_title
       else

@@ -1,0 +1,6 @@
+---  
+:title: Collective Wiki
+:stylesheets: 
+- default_theme
+# - custom_theme
+:footer: "&copy;2010, John Doe"
