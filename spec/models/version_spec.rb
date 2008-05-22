@@ -109,11 +109,11 @@ describe Version do
   describe '.recent' do
     before(:each) do
       @versions = []
-      5.times { @versions.unshift(Version.gen) }
+      10.times { @versions.unshift(Version.gen) }
       Version.gen(:spam)
     end
     
-    it 'should return the five (by default) most recent non-spam versions' do
+    it 'should return the ten (by default) most recent non-spam versions' do
       Version.recent.should == @versions
     end
     
