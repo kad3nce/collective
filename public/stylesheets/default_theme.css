@@ -1,0 +1,68 @@
+/* ****************************** */
+/* * GENERAL */
+/* ****************************** */
+body {
+  background: #DDD; }
+
+/* ****************************** */
+/* * HEADER */
+/* ****************************** */
+#header {
+  background-color: #444;
+  border-bottom: 4px solid black;
+  color: white; }
+  #header a {
+    color: white;
+    text-decoration: none; }
+    #header a#active, #header a:hover {
+      background-color: white;
+      color: black; }
+
+/* ****************************** */
+/* * CONTENT */
+/* ****************************** */
+/* #notice p */
+#content {
+  background-color: white;
+  /* a */
+  /* &:hover */ }
+
+/* ****************************** */
+/* * SIDEBAR */
+/* ****************************** */
+/* #sidebar */
+/* a */
+/* &:hover */
+/* h2 */
+/* ****************************** */
+/* * FOOTER */
+/* ****************************** */
+/* #footer */
+/* p */
+/* a */
+/* &:hover */
+/* ****************************** */
+/* * ADMIN SECTION */
+/* ****************************** */
+#recent-edits h2 {
+  color: black; }
+  #recent-edits h2 a {
+    color: black; }
+#recent-edits li.ham {
+  background-color: #C7FFC9; }
+  #recent-edits li.ham h2 a:hover {
+    background-color: black;
+    color: #C7FFC9; }
+#recent-edits li.spam {
+  background-color: #FFC7DF; }
+  #recent-edits li.spam h2 a:hover {
+    background-color: black;
+    color: #FFC7DF; }
+
+#recent-edits button, #edit-filters button {
+  background-color: #F5F5F5;
+  border: 1px solid #DEDEDE;
+  border-top: 1px solid #EEE;
+  border-left: 1px solid #EEE;
+  color: #565656;
+  text-decoration: none; }
