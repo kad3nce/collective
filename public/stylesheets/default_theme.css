@@ -4,6 +4,10 @@
 body {
   background: #DDD; }
 
+pre {
+  background-color: black;
+  color: white; }
+
 /* ****************************** */
 /* * HEADER */
 /* ****************************** */
