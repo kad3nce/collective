@@ -32,7 +32,7 @@ Dependencies required
 * datamapper (<=0.3)
 * merb_helpers
 * diff-lcs
-* can_has_fixtures (use for spec test)
+* can\_has\_fixtures (use for spec test)
 
   
 Spam Protection
