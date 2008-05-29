@@ -16,8 +16,8 @@ class Pages < Application
   end
 
   # Accessed by: GET /pages/new
-  def new
-    @page = Page.new(:name => 'New Page')
+  def new(page = 'New Page')
+    @page = Page.new(:name => page)
     render
   end
 
