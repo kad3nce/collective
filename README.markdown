@@ -16,11 +16,24 @@ Take It For A Spin
  
 * $ git clone git://github.com/meekish/collective.git
 * $ cd collective
-* $ cp config/database.sample.yml config/database.yml
-* $ cp config/collective.sample.yml config/collective.yml
+* $ cp config/database.yml.sample config/database.yml
+* $ cp config/collective.yml.sample config/collective.yml
 * $ rake db:bootstrap
 * $ merb
 * Open a browser at http://localhost:4000/
+
+Dependencies required
+---------------------
+
+* merb
+* RedCloth
+* vikinggem
+* merb_datamapper
+* datamapper (<=0.3)
+* merb_helpers
+* diff-lcs
+* can_has_fixtures (use for spec test)
+
   
 Spam Protection
 ---------------
