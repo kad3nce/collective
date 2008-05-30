@@ -15,9 +15,9 @@ class Edits < Application
     provides :js, :json
     @edit = Version.first(id) || raise(NotFound)
     if @edit.update_attributes(:moderated => true)
-      check_comment_with_spam_engine(@edit)
+      train_spam_engine(@edit)
       if request.xhr?
-        render "", :status => 200 # renders nothing
+        render '', :status => 200 # renders nothing
       else
         redirect url(:edits)
       end
@@ -29,17 +29,18 @@ class Edits < Application
 private
 
   def authenticate
-    authenticate_or_request_with_http_basic("login") do |username, password|
-      username == "admin" && password == "supersecret"
+    authenticate_or_request_with_http_basic('login') do |username, password|
+      username == 'admin' && password == 'supersecret'
     end
   end
 
-  def check_comment_with_spam_engine(version)
+  def train_spam_engine(version)
     if Viking.enabled?
-      Viking.mark_as_spam_or_ham(
-        version.spam?, 
-        :signatures => version.signature
-      )
+      if (version.spam?)
+        Viking.mark_as_ham(:signatures => version.signature)
+      else
+        Viking.mark_as_spam(:signatures => version.signature)
+      end
     end
   end
 
