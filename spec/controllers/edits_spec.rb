@@ -49,6 +49,35 @@ describe Edits do
       dispatch_to(Edits, :index).status.should == 401
     end
   end
+
+  describe "requesting /edits with GET but without edit" do
+    before(:each) do
+      Version.stub!(:most_recent_unmoderated).and_return(nil)
+    end
+    
+    def do_get
+      dispatch_to(Edits, :index) do |controller|
+        controller.stub!(:authenticate_or_request_with_http_basic).and_return(true)
+        controller.stub!(:display)
+        yield(controller) if block_given?
+      end
+    end
+
+    it "should be successful" do
+      do_get.should be_successful
+    end
+    
+    it "should render the records" do
+      a = do_get do |controller|
+        controller.should_receive(:display).with(nil)
+      end
+    end
+    
+    it "should return an HTTP 401 (UNAUTHORIZED) response if the user isn't authenticated" do
+      dispatch_to(Edits, :index).status.should == 401
+    end
+
+  end
   
   describe "requesting /edits/1 with PUT" do
     
