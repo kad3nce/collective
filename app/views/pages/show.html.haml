@@ -1,3 +1,7 @@
+#menu
+  %ul
+    %li= link_to 'See history', url(:edit, @page)
+
 %h1= title @page.name
 
 ~ @page.content_html

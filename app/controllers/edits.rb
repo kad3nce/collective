@@ -1,6 +1,6 @@
 class Edits < Application
 
-  before :authenticate
+  before :authenticate, :exclude => [:show]
 
   # Accessed by: GET /edits
   #--
@@ -24,6 +24,12 @@ class Edits < Application
     else
       raise BadRequest
     end
+  end
+
+  # Accessed by: GET /edits/permalink_to
+  def show(id)
+    @page = Page.by_slug(id) || raise(NotFound)
+    display @page
   end
   
 private
