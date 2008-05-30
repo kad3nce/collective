@@ -115,8 +115,14 @@ describe Edits do
       do_put
     end
     
-    it "should update the record's spam or ham status" do
-      Viking.should_receive(:mark_as_spam_or_ham).with(edit.spam?, :signatures => edit.signature)
+    it "should notify the anti-spam service that this version is spam if it was marked as ham" do
+      Viking.should_receive(:mark_as_spam).with(:signatures => edit.signature)
+      do_put
+    end
+    
+    it "should notify the anti-spam service that this version is ham if it was marked as spam" do
+      self.edit.stub!(:spam?).and_return(true)
+      Viking.should_receive(:mark_as_ham).with(:signatures => edit.signature)
       do_put
     end
     
