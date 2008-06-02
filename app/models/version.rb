@@ -39,6 +39,13 @@ class Version < DataMapper::Base
   def self.recent(number = 10)
     all(:limit => number, :order => 'id DESC', :spam => false)
   end
+
+  # Generate the diff between the version and another
+  # send by params
+  # You can define the format, by default is unified
+  def diff(other_version, format=:unified)
+    Diff.cs_diff(content, other_version.content)
+  end
   
 private
   def linkify_bracketed_phrases(string)
