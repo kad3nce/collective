@@ -5,9 +5,11 @@
 %h1= title 'History'
 
 #list_version
-  %ul#versions
+  #versions
     // with datamapper 0.9, you can use @page.versions.all(:order =>
     // [:number])
-    - @page.versions.each do |version|
-      %li= "#{version.number} - #{version.created_at.strftime '%m/%d/%Y %I:%M%p'} - #{@page.name}"
-  
+    - @page.versions.sort_by{|a| a.number}.each do |version|
+      .diffbox
+        .difftime= "#{version.number} - #{version.created_at.strftime '%m/%d/%Y %I:%M%p'} - #{@page.name}"
+        -unless version.previous.nil?
+          .diffview=view_diff(version.previous.diff(version))

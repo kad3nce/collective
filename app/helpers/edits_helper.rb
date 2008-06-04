@@ -18,5 +18,59 @@ module Merb
         "</button>"
       ].join("")
     end
+
+    def view_diff(diff)
+      render  = ""
+      render_add = ""
+      render_del = ""
+      unless diff.nil?
+        diff.split("\n").each do |line|
+          next if line.empty?
+
+          if line =~ /^@@ -(\d+),*\d* \+(\d+),*\d* @@/
+            render += fill_render_add(render_add)
+            render += fill_render_del(render_del)
+            render += fill_type_diff(Regexp.last_match(1))
+            render_add = ""
+            render_del = ""
+            next
+          end
+
+          if line =~ /^\+(.*)/
+            render_add += "#{Regexp.last_match(1)} \n"
+            next
+          end
+          if line =~ /^-(.*)/
+            render_del += "#{Regexp.last_match(1)} \n"
+            next
+          end
+        end
+        render += fill_render_add(render_add)
+        render += fill_render_del(render_del)
+      end
+      render
+    end
+
+  private
+    def fill_render_add(value)
+      unless value.empty?
+        "<div class=\"diffadd\">#{value}</div>"
+      else
+        ""
+      end
+    end
+
+    def fill_render_del(value)
+      unless value.empty?
+        "<div class=\"diffdel\">#{value}</div>"
+      else
+        ""
+      end
+    end
+
+    def fill_type_diff(line_number)
+      "<div class=\"difftype\">Changed line #{line_number} :</div>"
+    end
+
   end
 end
