@@ -46,6 +46,14 @@ class Version < DataMapper::Base
   def diff(other_version, format=:unified)
     Diff.cs_diff(content, other_version.content)
   end
+
+  # Get the previous version for this page
+  # If there are no version previous, return null
+  def previous
+    page.versions.find do |version|
+      version.number == (self.number - 1)
+    end
+  end
   
 private
   def linkify_bracketed_phrases(string)

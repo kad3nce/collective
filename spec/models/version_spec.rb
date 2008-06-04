@@ -1,34 +1,11 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
-
-module VersionSpecHelper
-  def valid_version_attributes
-    {
-      :content => "I have content!"
-    }
-  end
-end
+require File.join(File.dirname(__FILE__), '..', 'page_spec_helper')
 
 describe Version do
-  fixture {{
-    :content => 17.random.words.join(' '),
-    :content_html => RedCloth.new(17.random.words.join(' ')).to_html,
-    :created_at => Time::now,
-    :number => 1,
-    :signature => 'muchlovefromdefensio'
-  }}
-  
-  fixture(:spam) {{
-    :content => 17.random.words.join(' '),
-    :content_html => RedCloth.new(17.random.words.join(' ')).to_html,
-    :created_at => Time::now,
-    :number => 1,
-    :spam => true,
-    :spamminess => 0.99,
-    :signature => 'nolovefromdefensio'
-  }}
-  
+
+  include PageSpecHelper
+
   describe ".new" do
-    include VersionSpecHelper
     attr_accessor :page
 
     before(:each) do
@@ -122,6 +99,32 @@ describe Version do
     end
   end
 
+  describe '.previous' do
+    before(:each) do
+      Version.delete_all
+      Page.delete_all
+      @page = Page.gen(:page_with_several_versions)
+      @page.content = 17.random.words.join(' ')
+      @page.save!
+      @page.content = 17.random.words.join(' ')
+      @page.save!
+      @content = @page.versions.first.content
+      @versions = @page.versions.items.sort { |a,b| a.number <=> b.number }
+    end
+
+    it 'should get the previous version for this page' do
+      last_version = @versions.last
+      last_version.number.should == 3
+      last_version.previous.should == @versions[1]
+    end
+    
+    it 'should get nil if no previous version' do
+      last_version = @versions.first
+      last_version.number.should == 1
+      last_version.previous.should be_nil
+    end
+  end
+
   describe "#spam_or_ham" do
     it "should be 'spam' if the record is flagged as spam" do
       Version.new(:spam => true).spam_or_ham.should == "spam"
@@ -133,8 +136,6 @@ describe Version do
   end
 
   describe ".create_spam" do
-    include VersionSpecHelper
-    
     after(:each) do
       Version.delete_all
     end
