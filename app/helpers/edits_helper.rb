@@ -40,6 +40,7 @@ module Merb
             render_add += "#{Regexp.last_match(1)} \n"
             next
           end
+          
           if line =~ /^-(.*)/
             render_del += "#{Regexp.last_match(1)} \n"
             next
@@ -54,7 +55,7 @@ module Merb
   private
     def fill_render_add(value)
       unless value.empty?
-        "<div class=\"diffadd\">#{value}</div>"
+        "<div class=\"addition\">#{preserve(value)}</div>"
       else
         ""
       end
@@ -62,14 +63,14 @@ module Merb
 
     def fill_render_del(value)
       unless value.empty?
-        "<div class=\"diffdel\">#{value}</div>"
+        "<div class=\"deletion\">#{preserve(value)}</div>"
       else
         ""
       end
     end
 
     def fill_type_diff(line_number)
-      "<div class=\"difftype\">Changed line #{line_number} :</div>"
+      "<h4>Edited line #{line_number} :</h4>"
     end
 
   end

@@ -45,7 +45,7 @@ class Version < DataMapper::Base
   # You can define the format, by default is unified
   # if other_version is nil, return ""
   def diff(other_version, format=:unified)
-    Diff.cs_diff(content_html, other_version.content, :unified, 0) unless other_version.nil?
+    Diff.cs_diff(content_html, other_version.content_html, :unified, 0) unless other_version.nil?
   end
 
   # Get the previous version for this page
