@@ -52,6 +52,11 @@ ul {
     line-height: 1.3em;
     margin-bottom: 1em; }
 
+#notice {
+  font-size: 2em;
+  font-weight: bold;
+  margin-left: 25px; }
+
 /* ****************************** */
 /* * HEADER */
 /* ****************************** */
