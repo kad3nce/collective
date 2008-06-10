@@ -8,6 +8,8 @@
       = link_to 'Edit Page', url(:edit_page, @page) 
     - else
       = link_to 'Revert to This Version', url(:edit_page, :id => @page.to_param, :version => @page.selected_version.number) 
-    | Version: 
+    |
+    = link_to 'History', url(:edit, @page)
+    | Version:
     = select_versions_for_page @page, :name => 'version', :id => 'version-select'
     = submit_button 'Go', :id => 'go-button'

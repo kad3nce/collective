@@ -108,14 +108,14 @@ ul#navigation {
     font-style: oblique;
     margin: 20px; }
   #content li {
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    margin-left: 18px; }
   #content ol {
     padding-left: 20px; }
   #content textarea {
     height: 400px;
     width: 99%; }
   #content ul {
-    padding-left: 15px;
     list-style-type: disc; }
   #content ul#list-of-pages, #content ul#recent-edits, #content form ul {
     list-style-type: none;
@@ -127,6 +127,24 @@ ul#navigation {
     margin-bottom: 0; }
     #content #page-form p a {
       text-decoration: none; }
+
+/* ****************************** */
+/* * EDITS */
+/* ****************************** */
+#edits .edit {
+  margin-bottom: 30px; }
+  #edits .edit .addition, #edits .edit .deletion {
+    border: 1px solid #999;
+    margin-bottom: 10px;
+    padding: 10px; }
+  #edits .edit .addition {
+    border-left: 7px solid green; }
+  #edits .edit .deletion {
+    border-left: 7px solid red; }
+  #edits .edit .timestamp {
+    border-bottom: 3px solid #999;
+    color: #777;
+    text-align: right; }
 
 /* ****************************** */
 /* * SIDEBAR */

@@ -39,6 +39,22 @@ class Version < DataMapper::Base
   def self.recent(number = 10)
     all(:limit => number, :order => 'id DESC', :spam => false)
   end
+
+  # Generate the diff between the version and another
+  # send by params
+  # You can define the format, by default is unified
+  # if other_version is nil, return ""
+  def diff(other_version, format=:unified)
+    Diff.cs_diff(content_html, other_version.content_html, :unified, 0) unless other_version.nil?
+  end
+
+  # Get the previous version for this page
+  # If there are no version previous, return null
+  def previous
+    page.versions.find do |version|
+      version.number == (self.number - 1)
+    end
+  end
   
 private
   def linkify_bracketed_phrases(string)

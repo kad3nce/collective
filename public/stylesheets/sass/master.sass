@@ -114,13 +114,13 @@ ul#navigation
     :margin 20px
   li
     :margin-bottom 5px
+    :margin-left 18px
   ol
     :padding-left 20px
   textarea
     :height 400px
     :width 99%
   ul
-    :padding-left 15px
     :list-style-type disc
   ul#list-of-pages, ul#recent-edits, form ul
     :list-style-type none
@@ -133,6 +133,25 @@ ul#navigation
       :margin-bottom 0
       a
         :text-decoration none
+
+/* ******************************
+/* * EDITS
+/* ******************************
+#edits
+  .edit
+    :margin-bottom 30px
+    .addition, .deletion
+      :border 1px solid #999
+      :margin-bottom 10px
+      :padding 10px
+    .addition
+      :border-left 7px solid green
+    .deletion
+      :border-left 7px solid red
+    .timestamp
+      :border-bottom 3px solid #999
+      :color #777
+      :text-align right
 
 /* ******************************
 /* * SIDEBAR
