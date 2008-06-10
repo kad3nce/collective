@@ -20,6 +20,10 @@ module Merb
     end
 
     def view_diff(diff)
+      new_hunk = /^@@ -(\d+),*\d* \+(\d+),*\d* @@/
+      change = /^\-(.*)$\n\+/
+      addition = /^\+(.*)/
+      deletion = /^-(.*)/
       render  = ""
       render_add = ""
       render_del = ""
@@ -27,7 +31,7 @@ module Merb
         diff.split("\n").each do |line|
           next if line.empty?
 
-          if line =~ /^@@ -(\d+),*\d* \+(\d+),*\d* @@/
+          if line =~ new_hunk
             render += fill_render_add(render_add)
             render += fill_render_del(render_del)
             render += fill_type_diff(Regexp.last_match(1))
@@ -36,12 +40,12 @@ module Merb
             next
           end
 
-          if line =~ /^\+(.*)/
+          if line =~ addition
             render_add += "#{Regexp.last_match(1)} \n"
             next
           end
           
-          if line =~ /^-(.*)/
+          if line =~ deletion
             render_del += "#{Regexp.last_match(1)} \n"
             next
           end
