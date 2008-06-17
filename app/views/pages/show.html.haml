@@ -5,7 +5,7 @@
 %p
   %form{ :action => url(:page, @page), :method => 'get', :id => 'select-version' }
     - if @page.selected_version.number == @page.versions_count
-      = link_to 'Edit Page', url(:edit_page, @page) 
+      = link_to 'Edit Page', url(:edit_page, @page), :rel => 'nofollow'
     - else
       = link_to 'Revert to This Version', url(:edit_page, :id => @page.to_param, :version => @page.selected_version.number) 
     |
