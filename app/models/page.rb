@@ -20,20 +20,8 @@ class Page < DataMapper::Base
     first(:slug => slug)
   end
   
-  def self.by_slug_and_select_version!(slug, version)
-    page = by_slug(slug)
-    page.select_version!(version) if page
-    
-    # Order matters! This is a little clever. If +try+ fails, +nil+ is 
-    # returned, and therefore the search was invalid. If +try+ doesn't fail, 
-    # +page+ must have been found and will be returned.
-    return page.try(:selected_version) && page
-  end
-  
-  attr_accessor :content_diff
   def content=(new_content)
-    self.content_diff = diff(new_content)
-    @content          = new_content
+    @content = new_content
   end
   
   def content
@@ -42,6 +30,13 @@ class Page < DataMapper::Base
 
   def content_html
     selected_version.try(:content_html) || ''
+  end
+
+  def diff(new_content)
+    diff        = Diff::LCS.sdiff(content, new_content)
+    all_changes = diff.reject { |diff| diff.unchanged? }
+    additions   = all_changes.reject { |diff| diff.deleting? }
+    additions.map { |diff| diff.to_a.last.last }.join
   end
 
   def latest_version
@@ -76,12 +71,6 @@ class Page < DataMapper::Base
   end
 
 private
-  def diff(new_content)
-    diff        = Diff::LCS.sdiff(content, new_content)
-    all_changes = diff.reject { |diff| diff.unchanged? }
-    additions   = all_changes.reject { |diff| diff.deleting? }
-    additions.map { |diff| diff.to_a.last.last }.join
-  end
 
   def build_new_version
     # DataMapper not initializing versions_count with default value of zero. Bug?
@@ -92,8 +81,8 @@ private
     versions.create(version_attributes)
   end
   
-  def find_selected_version(version_number)
-    if version_number.nil? || version_number == :latest
+  def find_selected_version(version_number = :latest)
+    if version_number == :latest
       latest_version
     else
       version_number = version_number.to_i

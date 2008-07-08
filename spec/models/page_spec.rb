@@ -265,6 +265,10 @@ describe Page do
       @page.valid?
       @page.slug.should == 'a-super-informative-page'
     end
+    
+    it 'should provide a custom finder' do
+      Page.should respond_to(:by_slug)
+    end
   end
   
   describe '#to_param' do
@@ -272,39 +276,7 @@ describe Page do
       Page.new(:slug => 'a-slug').to_param.should == 'a-slug'
     end
   end
-  
-  describe '.by_slug_and_select_version!' do
     
-    before(:each) do
-      @version = stub('version')
-      @page    = stub('page', :select_version! => true, :selected_version => @version)
-      Page.stub!(:by_slug).and_return(@page)
-    end
-    
-    after(:each) do
-      @page = nil
-    end
-    
-    it 'should return the page with the specified slug' do
-      Page.by_slug_and_select_version!('slug', 1).should == @page
-    end
-    
-    it 'should return nil if the slug is invalid' do
-      Page.should_receive(:by_slug).and_return(nil)
-      Page.by_slug_and_select_version!('slug', 1).should be_nil
-    end
-    
-    it 'should select the specified version of the slug' do
-      @page.should_receive(:select_version!).with(1)
-      Page.by_slug_and_select_version!('slug', 1).selected_version.should == @version
-    end
-    
-    it 'should return nil if the specified version is invalid' do
-      @page.should_receive(:selected_version).and_return(nil)
-      Page.by_slug_and_select_version!('slug', 1).should be_nil
-    end
-  end
-  
   describe '.versions' do
     it 'should not include any versions marked as spam' do
       @page = Page.create!(:name => 'A Page', :content => 'blah')

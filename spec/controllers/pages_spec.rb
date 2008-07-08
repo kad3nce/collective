@@ -4,9 +4,11 @@ describe Pages do
   
   before(:each) do
     @page = mock_model(Page)
+    @version = mock_model(Version)
     @pages = [@page]
     
-    Page.stub!(:by_slug_and_select_version!).and_return(@page)
+    Page.stub!(:by_slug).and_return(@page)
+    Page.stub!(:select_version!).and_return(@version)
   end
   
   after(:each) do
@@ -53,12 +55,12 @@ describe Pages do
     end
     
     it "should load the requested Page by the specified slug" do
-      Page.should_receive(:by_slug_and_select_version!).and_return(@page)
+      Page.should_receive(:by_slug).and_return(@page)
       do_get.assigns(:page).should == @page
     end
     
     it "should raise NotFound if a record cannot be found with the specified slug" do
-      Page.should_receive(:by_slug_and_select_version!).and_return(nil)
+      Page.should_receive(:by_slug).and_return(nil)
       lambda { do_get }.should raise_error(Merb::ControllerExceptions::NotFound)
     end
     
@@ -104,7 +106,7 @@ describe Pages do
     end
     
     it "should load the requested page record" do
-      Page.should_receive(:by_slug_and_select_version!).and_return(@page)
+      Page.should_receive(:by_slug).and_return(@page)
       do_get.assigns(:page).should == @page
     end
     

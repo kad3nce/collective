@@ -35,7 +35,7 @@ module SpamProtection
     unless params[:page][:content].strip.blank?
       flash[:notice] = 'Your changes will appear momentarily.'
       redirect_then_call(url(:page, @page)) do
-        response = check_comment_with_spam_engine(@page, params[:page][:content])        
+        response = check_comment_with_spam_engine(@page, params[:page][:content])
         @page.update_attributes(
           params[:page].update(
             :signature => response[:signature], 
