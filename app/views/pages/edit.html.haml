@@ -7,4 +7,7 @@
         = link_to 'Textile Enabled', 'http://hobix.com/textile/quick.html', :target => '_blank'
         | [[Page Name]] for internal links
       ~ text_area_field @version.content, :name => 'version[content]'
-    %li= submit_button 'Submit'
+    %li
+      = submit_button 'Submit'
+      as
+      = text_field :name => :openid_url, :id => :openid_url

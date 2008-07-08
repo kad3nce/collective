@@ -57,7 +57,7 @@ private
   def linkify_bracketed_phrases(string)
     string.gsub(/\[\[([^\]]+)\]\]/) { "<a href=\"/pages/#{Page.slug_for($1.strip)}\">#{$1.strip}</a>" }
   end
-
+  
   def populate_content_html
     content_with_internal_links = linkify_bracketed_phrases(content)
     self.content_html = RedCloth.new(content_with_internal_links).to_html

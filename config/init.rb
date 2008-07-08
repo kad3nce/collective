@@ -10,15 +10,17 @@ Merb::Config.use do |c|
   c[:session_store] = 'cookie'
 end  
 
+# Temporary fix for "method `group_by' not defined in Enumerable" when
+# using merb-gen
+# dependency 'ActiveSupport', '= 2.0.2'
+
 ### Merb doesn't come with database support by default.  You need
 ### an ORM plugin.  Install one, and uncomment one of the following lines,
 ### if you need a database.
-
 use_orm :datamapper
 
 ### This defines which test framework the generators will use
 ### rspec is turned on by default
-
 use_test :rspec
 
 ### Add your other dependencies here
@@ -44,6 +46,8 @@ gem 'merb_helpers', '=0.9.4'
 require 'merb_helpers'
 gem 'merb-parts', '=0.9.5'
 require 'merb-parts'
+gem 'ruby-openid', '=2.0.4'
+require 'openid'
 gem 'RedCloth', '3.0.4'
 require 'redcloth'
 gem 'vikinggem', '0.0.3'

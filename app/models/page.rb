@@ -25,7 +25,7 @@ class Page
     name.gsub!(/\s+/, '-') # all spaces to dashes
     name
   end
-  
+
   def find_version(version_number)
     if version_number == :latest
       versions.last
