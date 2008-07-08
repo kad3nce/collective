@@ -118,7 +118,8 @@ describe Edits do
     
     before(:each) do
       Version.stub!(:first).and_return(edit)
-      Viking.stub!(:mark_as_spam_or_ham)
+      Viking.stub!(:mark_as_spam)
+      Viking.stub!(:mark_as_ham)
       Viking.stub!(:enabled?).and_return(true)
       edit.stub!(:update_attributes).and_return(true)
     end
