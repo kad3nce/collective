@@ -12,10 +12,10 @@ module SpamProtection
       redirect_then_call(url(:pages)) do
         response = check_comment_with_spam_engine(@page)
         if response[:spam]
-          Version.create_spam(@page.name, 
-            :content   => @page.content, 
-            :spaminess => response[:spaminess], 
-            :signature => response[:signature], 
+          Version.create_spam(@page.name,
+            :content   => @page.content,
+            :spaminess => response[:spaminess],
+            :signature => response[:signature],
             :remote_ip => request.remote_ip
           )
         else
