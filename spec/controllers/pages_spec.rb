@@ -1,23 +1,22 @@
 require File.join(File.dirname(__FILE__), "..", 'spec_helper.rb')
 
 describe Pages do
-  attr_accessor :page, :pages
   
   before(:each) do
-    self.page = mock_model(Page)
-    self.pages = [page]
+    @page = mock_model(Page)
+    @pages = [@page]
     
-    Page.stub!(:by_slug_and_select_version!).and_return(page)
+    Page.stub!(:by_slug_and_select_version!).and_return(@page)
   end
   
   after(:each) do
-    self.page  = nil
-    self.pages = nil
+    @page  = nil
+    @pages = nil
   end
   
   describe "requesting /pages with GET" do
     before(:each) do
-      Page.stub!(:all).and_return(pages)
+      Page.stub!(:all).and_return(@pages)
     end
     
     def do_get
@@ -31,13 +30,13 @@ describe Pages do
     end
     
     it "should load all page records" do
-      Page.should_receive(:all).and_return(pages)
-      do_get.assigns(:pages).should == pages
+      Page.should_receive(:all).and_return(@pages)
+      do_get.assigns(:pages).should == @pages
     end
     
     it "should display all pages" do
       dispatch_to(Pages, :index) do |controller|
-        controller.should_receive(:display).with(pages)
+        controller.should_receive(:display).with(@pages)
       end
     end
   end
@@ -54,8 +53,8 @@ describe Pages do
     end
     
     it "should load the requested Page by the specified slug" do
-      Page.should_receive(:by_slug_and_select_version!).and_return(page)
-      do_get.assigns(:page).should == page
+      Page.should_receive(:by_slug_and_select_version!).and_return(@page)
+      do_get.assigns(:page).should == @page
     end
     
     it "should raise NotFound if a record cannot be found with the specified slug" do
@@ -65,7 +64,7 @@ describe Pages do
     
     it "should display the Page record" do
       dispatch_to(Pages, :show, :id => "1") do |controller|
-        controller.should_receive(:display).with(page)
+        controller.should_receive(:display).with(@page)
       end
     end
   end
@@ -105,8 +104,8 @@ describe Pages do
     end
     
     it "should load the requested page record" do
-      Page.should_receive(:by_slug_and_select_version!).and_return(page)
-      do_get.assigns(:page).should == page
+      Page.should_receive(:by_slug_and_select_version!).and_return(@page)
+      do_get.assigns(:page).should == @page
     end
     
     it "should render the action" do

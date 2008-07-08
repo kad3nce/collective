@@ -6,14 +6,13 @@ describe Version do
   include PageSpecHelper
 
   describe ".new" do
-    attr_accessor :page
 
     before(:each) do
-      self.page = stub_everything('page')
+      @page = stub_everything('page')
     end
 
     after(:each) do
-      self.page = nil
+      @page = nil
     end
     
     it "should require content" do
@@ -38,48 +37,45 @@ describe Version do
     end
 
     it 'should belong to a page' do
-      Version.new(:page => page).page.should == page
+      Version.new(:page => @page).page.should == @page
     end
   end
 
   describe '#populate_html_content' do
     
-    attr_accessor :version
-    
     before(:each) do
       Version.publicize_methods do
-        self.version = Version.new(:content => 'How to make [[Merb]] cook breakfast')
-        version.populate_content_html
+        @version = Version.new(:content => 'How to make [[Merb]] cook breakfast')
+        @version.populate_content_html
       end
     end
     
     after(:each) do
-      self.version = nil
+      @version = nil
     end
     
     it 'should render content to HTML' do
-      version.content_html.should match(/^<p>How to make/)
+      @version.content_html.should match(/^<p>How to make/)
     end
     
     it 'should convert double-bracketed phrases to internal links' do
-      version.content_html.should match(/<a href="\/pages\/merb">Merb<\/a>/)
+      @version.content_html.should match(/<a href="\/pages\/merb">Merb<\/a>/)
     end
   end
 
   describe ".most_recent_unmoderated" do
-    attr_accessor :versions
     
     before(:each) do
-      self.versions = []
+      @versions = []
     end
     
     after(:each) do
-      self.versions = nil
+      @versions = nil
     end
     
     it "should find the most recent Versions" do
-      Version.should_receive(:all).and_return(versions)
-      Version.most_recent_unmoderated.should == versions
+      Version.should_receive(:all).and_return(@versions)
+      Version.most_recent_unmoderated.should == @versions
     end
   end
 
