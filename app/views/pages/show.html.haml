@@ -1,15 +1,15 @@
 %h1= title @page.name
 
-~ @page.content_html
+~ @version.content_html
 
 %p
   %form{ :action => url(:page, @page), :method => 'get', :id => 'select-version' }
-    - if @page.selected_version.number == @page.versions_count
+    - if @version.number == @page.versions_count
       = link_to 'Edit Page', url(:edit_page, @page), :rel => 'nofollow'
     - else
-      = link_to 'Revert to This Version', url(:edit_page, :id => @page.to_param, :version => @page.selected_version.number) 
+      = link_to 'Revert to This Version', url(:edit_page, :id => @page.to_param, :version => @version.number) 
     |
     = link_to 'History', url(:edit, @page)
     | Version:
-    = select_versions_for_page @page, :name => 'version', :id => 'version-select'
+    = select_versions_for_page @page, @version, {:name => 'version', :id => 'version-select'}
     = submit_button 'Go', :id => 'go-button'

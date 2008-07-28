@@ -22,10 +22,6 @@ class Version < DataMapper::Base
     all(:moderated => false, :limit => max, :order => 'created_at DESC')
   end
   
-  def self.latest_version_for_page(page)
-    first(:page_id => page.id, :order => 'number DESC', :spam => false)
-  end
-  
   def self.create_spam(page_name, options={})
     create(
       options.update(
@@ -57,6 +53,7 @@ class Version < DataMapper::Base
   end
   
 private
+
   def linkify_bracketed_phrases(string)
     string.gsub(/\[\[([^\]]+)\]\]/) { "<a href=\"/pages/#{Page.slug_for($1.strip)}\">#{$1.strip}</a>" }
   end
@@ -65,4 +62,5 @@ private
     content_with_internal_links = linkify_bracketed_phrases(content)
     self.content_html = RedCloth.new(content_with_internal_links).to_html
   end
+  
 end
