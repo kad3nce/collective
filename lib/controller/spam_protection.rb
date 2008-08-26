@@ -5,7 +5,14 @@ module SpamProtection
 
   # Accessed by: POST /pages
   def create
+    # =========================================================================
+    # = Didn't really think of this. It's going to be a pain with the forms
+    # to nest version_attributes =
+    # =========================================================================
     @page = Page.new(params[:page])
+    # ==========================================================================
+    # = This is broken because remote_ip is now inside of version_attributes =
+    # ==========================================================================
     @page.remote_ip = request.remote_ip
     if @page.valid?
       flash[:notice] = 'Your new page will appear momentarily.'

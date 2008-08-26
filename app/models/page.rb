@@ -1,17 +1,23 @@
-class Page < DataMapper::Base
-  property :name,           :string,  :nullable => false
-  property :slug,           :string,  :nullable => false
-  property :versions_count, :integer, :default => 0
+class Page
+  include DataMapper::Resource
   
-  attr_accessor :version_attributes
-  
-  has_many :versions, :spam => false, :dependent => :destroy
-  
-  before_save :build_new_version
-  before_validation :set_slug
+  property :id,   Integer, :serial => true
+  property :name, String,  :nullable => false
+  property :slug, String,  :nullable => false
 
-  validates_uniqueness_of :slug
-  validates_uniqueness_of :name
+  has n, :versions, :spam => false
+
+  # def versions
+  #   versions_excluding_spam = versions_including_spam.reject { |version| version.spam }
+  #   versions_including_spam_association.replace(versions_including_spam.all(:spam => false).to_a)
+  # end
+  
+  before :destroy do
+    self.versions.each { |v| v.destroy }
+  end
+
+  validates_is_unique :slug
+  validates_is_unique :name
 
   def self.by_slug(slug)
     first(:slug => slug)
@@ -26,59 +32,23 @@ class Page < DataMapper::Base
     name
   end
   
-  def content(version = :latest)
-    find_version(version).try(:content)
-  end
-  
-  def content_html(version = :latest)
-    find_version(version).try(:content_html)
-  end
-
   def find_version(version_number)
     if version_number == :latest
       versions.last
     else
-      versions.detect { |version| version.number == version_number.to_i }
+      versions.at(version_number.to_i-1)
     end
   end
   
   def name=(new_name)
-    @name = new_name if new_record?
+    if new_record?
+      attribute_set(:name, new_name)
+      self.slug = Page.slug_for(new_name)
+    end
   end
 
   def to_param
     slug
-  end
-
-private
-
-  def build_new_version
-    # DataMapper not initializing versions_count with default value of zero. Bug?
-    self.versions_count ||= 0
-    self.versions_count  += 1 unless version_attributes[:spam]
-    
-    versions.create(version_attributes.merge!(:number => versions_count))
-  end
-  
-  # def version_attributes
-  #   defaults = { 
-  #     :content   => content, 
-  #     :remote_ip => remote_ip, 
-  #     :signature => signature
-  #   }
-  #   if spam
-  #     defaults.update(
-  #       :number    => versions_count.succ, 
-  #       :spam      => true, 
-  #       :spaminess => spaminess
-  #     )
-  #   else
-  #     defaults.update(:number => versions_count)
-  #   end
-  # end
-
-  def set_slug
-    self.slug = Page.slug_for(name) if new_record?
   end
 
 end

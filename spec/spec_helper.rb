@@ -15,4 +15,4 @@ Dir[File.dirname(__FILE__) / "shared" / "*.rb"].each do |helper|
   require(helper)
 end
 
-DataMapper::Persistence.auto_migrate!
+repository.auto_migrate!
