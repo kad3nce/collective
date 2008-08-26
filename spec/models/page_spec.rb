@@ -11,82 +11,26 @@ describe Page do
       Page.new(:slug => 'a-super-informative-page').slug.should == 'a-super-informative-page'
     end
 
-    it 'should have version_attributes property' do
-      Page.new(:version_attributes => {}).version_attributes.should == {}
-    end
-
     it 'should have many versions' do
       Page.new.versions.should == []
     end
-
-    it 'should have a versions_count property' do
-      Page.new(:versions_count => 10).versions_count.should == 10
-    end
   end
-  
-  describe 'content methods' do
-    
-    before(:each) do
-      @page = Page.new(:name => 'Tutorials')
-    end
-    
-    describe '#content' do
-      it 'should be nil for a new page' do
-        @page.content.should == nil
-      end
 
-      it "should return the content attribute of an existing page's latest version" do
-        @page.version_attributes = { :content => 'Getting Started' }
-        @page.save!
-        @page.content.should == 'Getting Started'
-      end
-      
-      it 'should return the content attribute of the version number passed in' do
-        @page.version_attributes = { :content => 'Getting Started' }
-        @page.save!
-        @page.version_attributes = { :content => "Getting Started\n\nAdvanced Guide" }
-        @page.save!
-        @page.content(1).should == 'Getting Started'
-        @page.content(2).should == "Getting Started\n\nAdvanced Guide"
-      end
-    end
-  
-    describe '#content_html' do
-      it 'should be nil for a new page' do
-        @page.content.should == nil
-      end
-    
-      it "should return the content_html attribute of an existing page's latest version" do
-        @page.version_attributes = { :content => 'Getting Started' }
-        @page.save!
-        @page.content_html.should == '<p>Getting Started</p>'
-      end
-      
-      it 'should return the content_html attribute of the version number passed in' do
-        @page.version_attributes = { :content => 'Getting Started' }
-        @page.save!
-        @page.version_attributes = { :content => "Getting Started\n\nAdvanced Guide" }
-        @page.save!
-        @page.content_html(1).should == '<p>Getting Started</p>'
-        @page.content_html(2).should == "<p>Getting Started</p>\n\n\n\t<p>Advanced Guide</p>"
-      end
-    end
-  end
-  
   describe '#find_version' do
     before(:each) do
-      @page = Page.create!(:name => 'Tutorials', :version_attributes => { :content => 'Getting started' })
+      @page = Page.new(:name => 'Tutorials')
+      @page.versions.build(:content => 'Getting started...')
       @page.save!
-      @page.version_attributes = { :content => 'Beginning' }
+      @page.versions.build(:content => '...with Collective')
       @page.save!
     end
     
     it 'should return the version number passed' do
-      @page.find_version(1).content.should == 'Getting started'
+      @page.find_version(1).content.should == 'Getting started...'
     end
     
     it 'should accept :latest as an argument and return the latest version' do
-      @page.find_version(:latest).content.should == 'Beginning'
+      @page.find_version(:latest).content.should == '...with Collective'
     end
     
     it "should return nil if the version number doesn't exist" do
@@ -151,7 +95,10 @@ describe Page do
     
   describe '.versions' do
     it 'should not include any versions marked as spam' do
-      @page = Page.create!(:name => 'A Page', :version_attributes => { :content => 'blah', :spam => true })
+      @page = Page.create!(:name => 'A Page')
+      @version = Version.new(:content => 'Free Viagra!', :spam => true)
+      @page.versions << @version
+      @version.save
       Page[@page.id].versions.length.should == 0
     end
   end

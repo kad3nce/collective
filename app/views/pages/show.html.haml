@@ -7,7 +7,7 @@
     - if @version === @page.versions.last
       = link_to 'Edit Page', url(:edit_page, @page), :rel => 'nofollow'
     - else
-      = link_to 'Revert to This Version', url(:edit_page, :id => @page.to_param, :version => @version.number) 
+      = link_to 'Revert to This Version', url(:edit_page, :id => @page.to_param, :version => @page.versions.index(@version)+1) 
     |
     = link_to 'History', url(:edit, @page)
     | Version:

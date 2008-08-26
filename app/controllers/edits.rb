@@ -17,7 +17,7 @@ class Edits < Application
     if @edit.update_attributes(:moderated => true)
       train_spam_engine(@edit)
       if request.xhr?
-        render '', :status => 200 # renders nothing
+        render '', :status => 200, :layout => false # renders nothing
       else
         redirect url(:edits)
       end

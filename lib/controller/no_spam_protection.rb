@@ -1,15 +1,12 @@
-# ========================================================
-# = TODO: Use action-args after the next release of Merb =
-# ========================================================
 module NoSpamProtection
   def self.included(base)
     base.show_action(:create, :update)
   end
   
   # Accessed by: POST /pages
-  def create
-    @page = Page.new(params[:page])
-    @version = Version.new(params[:version])
+  def create(page, version)
+    @page = Page.new(page)
+    @version = Version.new(version)
     if @page.valid? && @version.valid?
       @page.versions << @version
       @page.save
@@ -20,9 +17,9 @@ module NoSpamProtection
   end
 
   # Accessed by: PUT /pages/1
-  def update
-    @page = Page.by_slug(params[:id]) || raise(NotFound)
-    @page.versions << @version = Version.new(params[:version])
+  def update(id, version)
+    @page = Page.by_slug(id) || raise(NotFound)
+    @page.versions << @version = Version.new(version)
     if @version.save
       redirect url(:page, @page)
     else

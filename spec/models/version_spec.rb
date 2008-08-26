@@ -29,10 +29,6 @@ describe Version do
       Version.create!(:content => 'some words').created_at.should be_an_instance_of(DateTime)
     end
   
-    it 'should have a number field' do
-      Version.new(:number => 10).number.should == 10
-    end
-  
     it 'should belong to a page' do
       Version.new(:page => @page).page.should == @page
     end
@@ -41,14 +37,8 @@ describe Version do
   describe '#populate_html_content' do
     
     before(:each) do
-      Version.publicize_methods do
-        @version = Version.new(:content => 'How to make [[Merb]] cook breakfast')
-        @version.populate_content_html
-      end
-    end
-    
-    after(:each) do
-      @version = nil
+      @version = Version.new(:content => 'How to make [[Merb]] cook breakfast')
+      @version.save
     end
     
     it 'should render content to HTML' do

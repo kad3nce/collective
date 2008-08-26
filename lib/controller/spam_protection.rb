@@ -1,81 +1,59 @@
 module SpamProtection
   def self.included(base)
     base.show_action(:create, :update)
+    # Merb::Config[:deferred_actions] = ['/heavy/lifting']
   end
 
   # Accessed by: POST /pages
-  def create
-    # =========================================================================
-    # = Didn't really think of this. It's going to be a pain with the forms
-    # to nest version_attributes =
-    # =========================================================================
-    @page = Page.new(params[:page])
-    # ==========================================================================
-    # = This is broken because remote_ip is now inside of version_attributes =
-    # ==========================================================================
-    @page.remote_ip = request.remote_ip
-    if @page.valid?
-      flash[:notice] = 'Your new page will appear momentarily.'
-      redirect_then_call(url(:pages)) do
-        response = check_comment_with_spam_engine(@page)
-        if response[:spam]
-          Version.create_spam(@page.name,
-            :content   => @page.content,
-            :spaminess => response[:spaminess],
-            :signature => response[:signature],
-            :remote_ip => request.remote_ip
-          )
-        else
-          @page.signature = response[:signature]
-          @page.spaminess = response[:spaminess]
-          @page.save
-        end
+  def create(page, version)
+    @page = Page.new(page)
+    @page.versions << @version = Version.new(version.merge!(:remote_ip => request.remote_ip))
+    if @page.valid? && @version.valid?
+      response = check_comment_with_spam_engine(@page.url, @version.content_html)
+      if response[:spam]
+        Version.create_spam(@page.name,
+          :content   => @version.content,
+          :spaminess => response[:spaminess],
+          :signature => response[:signature],
+          :remote_ip => @version.remote_ip
+        )
+      else
+        @version.signature = response[:signature]
+        @version.spaminess = response[:spaminess]
+        @page.save
       end
+      redirect url(:pages)
     else
       render :new
     end
   end
 
   # Accessed by: PUT /pages/1
-  def update
-    @page = Page.by_slug(params[:id]) || raise(Merb::ControllerExceptions::NotFound)
-    unless params[:page][:content].strip.blank?
-      flash[:notice] = 'Your changes will appear momentarily.'
-      redirect_then_call(url(:page, @page)) do
-        response = check_comment_with_spam_engine(@page, params[:page][:content])
-        @page.update_attributes(
-          params[:page].update(
-            :signature => response[:signature], 
-            :spaminess => response[:spaminess], 
-            :remote_ip => request.remote_ip
-          )
-        )
-      end
+  def update(id, version)
+    @page = Page.by_slug(id) || raise(Merb::ControllerExceptions::NotFound)
+    @page.versions << @version = Version.new(version.merge!(:remote_ip => request.remote_ip))
+    if @version.valid?
+      response = check_comment_with_spam_engine(@page.url, @version.content_html)
+      @version.signature = response[:signature]
+      @version.spam      = response[:spam]
+      @version.spaminess = response[:spaminess]
+      @version.save
+      redirect url(:page, @page)
     else
-      flash[:notice] = 'Your changes have been rejected.'
       render :edit
     end
   end
   
 private
 
-  def check_comment_with_spam_engine(page, content=nil)
+  def check_comment_with_spam_engine(url, content)
     Viking.check_comment(
       default_spam_engine_params.update(
-        :comment_content => content_as_html(page, content),
+        :comment_content => content,
         :user_ip         => request.remote_ip,
-        :permalink       => slug_for_page(page.slug)
+        :permalink       => url
       )
     )
-  end
-
-  def content_as_html(page, content)
-    content = page.new_record? ? page.content : page.content_diff(content)
-    RedCloth.new(content).to_html
-  end
-
-  def slug_for_page(slug)
-    "http://#{Viking.default_instance.options[:blog]}/pages/#{slug}"
   end
 
   def default_spam_engine_params

@@ -2,22 +2,20 @@ class Version
   include DataMapper::Resource
   
   property :id,		        Integer, :serial => true
-  property :content,      Text,    :nullable => false
-  property :content_html, Text
+  # Disabled lazy-loading as it was causing the first call to these attributes to return nil
+  property :content,      Text,    :nullable => false, :lazy => false
+  property :content_html, Text,    :lazy => false
   property :created_at,   DateTime
   property :moderated,    Boolean, :default => false
+  property :remote_ip,    String
   property :spam,         Boolean, :default => false
   property :spaminess,    Float,   :default => 0
   property :signature,    String
   
   belongs_to :page
   
-  before :save, :populate_content_html
+  before :valid?, :populate_content_html
 
-  def spam_or_ham
-    spam? ? 'spam' : 'ham'
-  end
-  
   def self.most_recent_unmoderated(max=100)
     all(:moderated => false, :limit => max, :order => [:created_at.desc])
   end
@@ -52,6 +50,10 @@ class Version
     end
   end
   
+  def spam_or_ham
+    spam? ? 'spam' : 'ham'
+  end
+  
 private
 
   def linkify_bracketed_phrases(string)
@@ -59,8 +61,10 @@ private
   end
 
   def populate_content_html
-    content_with_internal_links = linkify_bracketed_phrases(content)
-    self.content_html = RedCloth.new(content_with_internal_links).to_html
+    unless content.blank?
+      content_with_internal_links = linkify_bracketed_phrases(content)
+      self.content_html = RedCloth.new(content_with_internal_links).to_html
+    end
   end
   
 end

@@ -8,12 +8,7 @@ describe Pages do
     @pages = [@page]
     
     Page.stub!(:by_slug).and_return(@page)
-    Page.stub!(:select_version!).and_return(@version)
-  end
-  
-  after(:each) do
-    @page  = nil
-    @pages = nil
+    @page.stub!(:find_version).and_return(@version)
   end
   
   describe "requesting /pages with GET" do

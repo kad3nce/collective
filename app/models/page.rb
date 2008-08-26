@@ -5,12 +5,12 @@ class Page
   property :name, String,  :nullable => false
   property :slug, String,  :nullable => false
 
-  has n, :versions, :spam => false
+  has n, :versions_including_spam, :class_name => 'Version'
 
-  # def versions
-  #   versions_excluding_spam = versions_including_spam.reject { |version| version.spam }
-  #   versions_including_spam_association.replace(versions_including_spam.all(:spam => false).to_a)
-  # end
+  def versions
+    versions_excluding_spam = versions_including_spam.reject { |version| version.spam }
+    versions_including_spam_association.replace(versions_including_spam.all(:spam => false).to_a)
+  end
   
   before :destroy do
     self.versions.each { |v| v.destroy }
@@ -36,7 +36,7 @@ class Page
     if version_number == :latest
       versions.last
     else
-      versions.at(version_number.to_i-1)
+      versions[version_number.to_i-1]
     end
   end
   
@@ -49,6 +49,10 @@ class Page
 
   def to_param
     slug
+  end
+
+  def url
+    "http://#{Viking.default_instance.options[:blog]}/pages/#{slug}"
   end
 
 end
