@@ -1,7 +1,7 @@
 Collective
 ==========
 
-A no-frills wiki built on Merb 0.9.x and DataMapper
+A no-frills wiki built on Merb 0.9.x and DataMapper 0.9.x
  
 Features/Problems
 -----------------
@@ -25,14 +25,10 @@ Take It For A Spin
 Dependencies required
 ---------------------
 
-* merb
+* [Edge Merb & DataMapper](http://wiki.merbivore.com/pages/getting-merb-and-datamapper-edge-step-by-step)
 * RedCloth
 * vikinggem
-* merb_datamapper
-* datamapper (<=0.3)
-* merb_helpers
 * diff-lcs
-* can\_has\_fixtures (use for spec test)
 
   
 Spam Protection

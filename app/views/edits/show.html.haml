@@ -5,10 +5,7 @@
   \/ Edits
 
 #edits
-  // with datamapper 0.9, you can use @page.versions.all(:order =>
-  // [:number])
-  - @page.versions.to_a.reverse_each do |version|
+  - @page.versions.all(:order => [:id.desc]).each do |version|
     .edit
       %p.timestamp= "#{time_ago_in_words(version.created_at)} ago"
-      - unless version.previous.nil?
-        = view_diff(version.previous.diff(version))
+      = view_diff(version.diff)

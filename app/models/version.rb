@@ -34,20 +34,18 @@ class Version
     all(:limit => number, :order => [:id.desc], :spam => false)
   end
 
-  # Generate the diff between the version and another
-  # send by params
-  # You can define the format, by default is unified
-  # if other_version is nil, return ""
-  def diff(other_version, format=:unified)
-    Diff.cs_diff(content_html, other_version.content_html, :unified, 0) unless other_version.nil?
+  def additions
+    diff.gsub("\t", '').scan(/^\+(.*)/).flatten.join("\n")
   end
 
-  # Get the previous version for this page
-  # If there are no version previous, return null
+  def diff
+    previous_content = previous.try(:content_html) || ''
+    Diff.cs_diff(previous_content, content_html, :unified, 0)
+  end
+
   def previous
-    page.versions.find do |version|
-      version.number == (self.number - 1)
-    end
+    index = page.versions.index(self)
+    index == 0 ? nil : page.versions[index-1]
   end
   
   def spam_or_ham

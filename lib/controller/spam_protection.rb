@@ -33,7 +33,7 @@ module SpamProtection
     @page = Page.by_slug(id) || raise(Merb::ControllerExceptions::NotFound)
     @page.versions << @version = Version.new(version.merge!(:remote_ip => request.remote_ip))
     if @version.valid?
-      response = check_comment_with_spam_engine(@page.url, @version.content_html)
+      response = check_comment_with_spam_engine(@page.url, @version.additions)
       @version.signature = response[:signature]
       @version.spam      = response[:spam]
       @version.spaminess = response[:spaminess]
