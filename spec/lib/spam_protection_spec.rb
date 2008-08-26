@@ -14,8 +14,9 @@ describe Pages, "with spam protection" do
   
   before(:each) do
     @page     = Page.new
-    @version  = Version.new
+    @version  = Version.new(:content => 'this is some content')
     @version.stub!(:valid?).and_return(true)
+    @version.stub!(:additions).and_return('the new text')
     @response = {
       :spaminess => 0.1, 
       :signature => '1234', 
@@ -86,6 +87,7 @@ describe Pages, "with spam protection" do
     before(:each) do
       @page.stub!(:update_attributes).and_return(true)
       Page.stub!(:by_slug).and_return(@page)
+      Version.stub!(:new).and_return(@version)
     end
     
     def do_put
