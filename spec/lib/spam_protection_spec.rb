@@ -16,6 +16,7 @@ describe Pages, "with spam protection" do
     @page     = Page.new
     @version  = Version.new(:content => 'this is some content')
     @version.stub!(:valid?).and_return(true)
+    @version.stub!(:save).and_return(true)
     @version.stub!(:additions).and_return('the new text')
     @response = {
       :spaminess => 0.1, 

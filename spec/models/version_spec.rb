@@ -1,9 +1,12 @@
 require File.join(File.dirname(__FILE__), '..', 'spec_helper')
-require File.join(File.dirname(__FILE__), '..', 'page_spec_helper')
+
+module VersionSpecHelper
+  def valid_version_attributes
+    { :content => 'Some content' }
+  end
+end
 
 describe Version do
-
-  include PageSpecHelper
 
   describe ".new" do
   
@@ -27,6 +30,7 @@ describe Version do
     
     it 'should have a created_at field' do
       Version.create!(:content => 'some words').created_at.should be_an_instance_of(DateTime)
+      Version.auto_migrate!
     end
   
     it 'should belong to a page' do
@@ -36,9 +40,13 @@ describe Version do
 
   describe '#populate_html_content' do
     
-    before(:each) do
+    before(:all) do
       @version = Version.new(:content => 'How to make [[Merb]] cook breakfast')
       @version.save
+    end
+    
+    after(:all) do
+      Version.auto_migrate!
     end
     
     it 'should render content to HTML' do
@@ -63,48 +71,43 @@ describe Version do
   end
   
   describe '.recent' do
-    # before(:each) do
-    #   @versions = []
-    #   10.times { @versions.unshift(Version.gen) }
-    #   Version.gen(:spam)
-    # end
+    before(:each) do
+      @versions = []
+      10.times { @versions.unshift(Version.gen) }
+      Version.gen(:spam)
+    end
+
+    after(:each) do
+      Version.auto_migrate!
+    end
     
     it 'should return the ten (by default) most recent non-spam versions' do
-      pending 'Can has fixtures not working'
       Version.recent.should == @versions
     end
     
     it 'should accept an argument to return an arbitrary number of recent versions' do
-      pending 'Can has fixtures not working'
       Version.recent(3).should == @versions[0..2]
     end
   end
   
   describe '.previous' do
     before(:each) do
-      # Version.delete_all
-      # Page.delete_all
-      # @page = Page.gen(:page_with_several_versions)
-      # @page.content = 17.random.words.join(' ')
-      # @page.save!
-      # @page.content = 17.random.words.join(' ')
-      # @page.save!
-      # @content = @page.versions.first.content
-      # @versions = @page.versions.items.sort { |a,b| a.number <=> b.number }
+      @page = Page.gen(:page_with_several_versions)
+      @content = @page.versions.first.content
+      @versions = @page.versions
+    end
+
+    after(:each) do
+      Version.auto_migrate!
+      Page.auto_migrate!
     end
   
     it 'should get the previous version for this page' do
-      pending 'Can has fixtures not working'
-      last_version = @versions.last
-      last_version.number.should == 3
-      last_version.previous.should == @versions[1]
+      @versions.last.previous.should == @versions[-2]
     end
     
     it 'should get nil if no previous version' do
-      pending 'Can has fixtures not working'
-      last_version = @versions.first
-      last_version.number.should == 1
-      last_version.previous.should be_nil
+      @versions.first.previous.should == nil
     end
   end
   
@@ -120,6 +123,10 @@ describe Version do
   
   describe ".create_spam" do
     include VersionSpecHelper
+    
+    after(:each) do
+      Version.auto_migrate!
+    end
     
     it "should create a new record" do
       lambda { Version.create_spam("Name", valid_version_attributes) }.should change{ Version.all.length }.by(1)

@@ -2,6 +2,23 @@ require File.join(File.dirname(__FILE__), '..',  'spec_helper')
 
 describe Page do
   
+  describe 'associations' do
+    before(:each) do
+      @page = Page.gen(:page_with_several_versions)
+    end
+    
+    after(:each) do
+      Page.auto_migrate!
+      Version.auto_migrate!
+    end
+    
+    it 'should destroy all associated versions when destroyed' do
+      Version.all.length.should == 7
+      @page.destroy
+      Version.all.length.should == 0
+    end
+  end
+  
   describe '.new' do
     it 'should have a name property' do
       Page.new(:name => 'A super informative page').name.should == 'A super informative page'
@@ -23,6 +40,11 @@ describe Page do
       @page.save!
       @page.versions.build(:content => '...with Collective')
       @page.save!
+    end
+    
+    after(:each) do
+      Page.auto_migrate!
+      Version.auto_migrate!
     end
     
     it 'should return the version number passed' do
@@ -94,12 +116,18 @@ describe Page do
   end
     
   describe '.versions' do
+    after(:each) do
+      Page.auto_migrate!
+      Version.auto_migrate!
+    end
+    
     it 'should not include any versions marked as spam' do
       @page = Page.create!(:name => 'A Page')
       @version = Version.new(:content => 'Free Viagra!', :spam => true)
       @page.versions << @version
       @version.save
-      Page[@page.id].versions.length.should == 0
+      @page.save
+      Page.get!(@page.id).versions.length.should == 0
     end
   end
   

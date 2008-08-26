@@ -5,13 +5,7 @@ class Page
   property :name, String,  :nullable => false
   property :slug, String,  :nullable => false
 
-  has n, :versions_including_spam, :class_name => 'Version'
-
-  def versions
-    versions_excluding_spam = versions_including_spam.reject { |version| version.spam }
-    versions_including_spam_association.replace(versions_including_spam.all(:spam => false).to_a)
-  end
-  
+  has n, :versions, :spam => false #, :dependent => :destroy
   before :destroy do
     self.versions.each { |v| v.destroy }
   end
