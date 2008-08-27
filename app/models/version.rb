@@ -34,16 +34,16 @@ class Version
     all(:limit => number, :order => [:id.desc], :spam => false)
   end
 
-  def additions
-    diff.gsub("\t", '').scan(/^\+(.*)/).flatten.join("\n")
+  def additions(versions)
+    diff(versions).gsub("\t", '').scan(/^\+(.*)/).flatten.join("\n")
   end
 
-  def diff
-    previous_content = previous.try(:content_html) || ''
+  def diff(versions = page.versions)
+    previous_content = previous(versions).try(:content_html) || ''
     Diff.cs_diff(previous_content, content_html, :unified, 0)
   end
 
-  def previous(versions)
+  def previous(versions = page.versions)
     index = versions.index(self)
     index == 0 ? nil : versions[index-1]
   end
