@@ -12,9 +12,9 @@
         %li= highlighted_link_to 'Home', url(:home)
         %li= highlighted_link_to 'All Pages', url(:pages)
         %li.last= highlighted_link_to 'New Page', url(:new_page)
-    - flash.each do |type, message|      
-      #notice{ :class => type }
-        %p= message
+    / - flash.each do |type, message|      
+    /   #notice{ :class => type }
+    /     %p= message
     #content
       = catch_content :for_layout
     #sidebar
