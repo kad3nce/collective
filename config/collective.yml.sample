@@ -4,3 +4,5 @@
 - default_theme
 # - custom_theme
 :footer: "&copy;2010, John Doe"
+:admin_password: supersecret
+:admin_username: admin
