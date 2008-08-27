@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: append_features_without_class_extension
+block_params: 
+comment: 
+full_name: Module#append_features
+is_singleton: false
+name: append_features
+params: ( base )
+visibility: public

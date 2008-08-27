@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: HtmlFilter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />HtmlFilter</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/htmlfilter_rb.html">lib/more/facets/htmlfilter.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="HtmlFilter.html">HtmlFilter</a></h1>
+<p>
+HTML Filter library can be used to sanitize and sterilize HTML. A good idea
+if you let users submit HTML in comments, for instance.
+</p>
+<p>
+lib_filter.php, v1.15 by Cal Henderson &lt;cal@iamcal.com&gt;
+</p>
+<p>
+This code is licensed under a Creative Commons Attribution-ShareAlike 2.5
+License <a
+href="http://creativecommons.org/licenses/by-sa/2.5">creativecommons.org/licenses/by-sa/2.5</a>/
+</p>
+<p>
+Thanks to Jang Kim for adding support for single quoted attributes.
+</p>
+<h2><a href="Reference.html">Reference</a></h2>
+<ul>
+<li><a
+href="http://iamcal.com/publish/articles/php/processing_html">iamcal.com/publish/articles/php/processing_html</a>/
+
+</li>
+<li><a
+href="http://iamcal.com/publish/articles/php/processing_html_part_2">iamcal.com/publish/articles/php/processing_html_part_2</a>/
+
+</li>
+</ul>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000658">filter</a></li>
+  <li><a href="#M000657">new</a></li>
+  </ul>
+
+<div class="sectiontitle">Included Modules</div>
+<ul>
+  <li><a href="Multiton.html">Multiton</a></li>
+</ul>
+
+
+
+  <div class="sectiontitle">Constants</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class="attr-name">DEFAULT</td>
+    <td>=</td>
+    <td class="attr-value">{     'allowed' =&gt; {       'a'   =&gt; ['href', 'target'],       'b'   =&gt; [],       'i'   =&gt; [],       'img' =&gt; ['src', 'width', 'height', 'alt']</td>
+  </tr>
+  <tr valign='top'>
+    <td>&nbsp;</td>
+    <td colspan="2" class="attr-desc">
+default settings
+
+</td>
+  </tr>
+  </table>
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>allow_numbered_entities</td>
+    <td class='attr-desc'>
+entity control option (true, false)
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>allowed</td>
+    <td class='attr-desc'>
+tags and attributes that are allowed
+
+<p>
+Eg.
+</p>
+<pre>
+  {
+    'a' =&gt; ['href', 'target'],
+    'b' =&gt; [],
+    'img' =&gt; ['src', 'width', 'height', 'alt']
+  }
+</pre>
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>allowed_entities</td>
+    <td class='attr-desc'>
+entity control option (amp, gt, lt, quot, etc.)
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>allowed_protocols</td>
+    <td class='attr-desc'>
+protocols which are allowed (http, ftp, mailto)
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>always_close</td>
+    <td class='attr-desc'>
+tags which must always have seperate opening and closing tags (e.g.
+&quot;&quot;)
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>always_make_tags</td>
+    <td class='attr-desc'>
+should we try and make a b tag out of &quot;b&gt;&quot; (true, false)
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>no_close</td>
+    <td class='attr-desc'>
+tags which should always be self-closing (e.g. &quot;&lt;img /&gt;&quot;)
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>protocol_attributes</td>
+    <td class='attr-desc'>
+attributes which should be checked for valid protocols (src,href)
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>remove_blanks</td>
+    <td class='attr-desc'>
+tags which should be removed if they contain no content (e.g. &quot;&quot;
+or &quot;&lt;b /&gt;&quot;)
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>strip_comments</td>
+    <td class='attr-desc'>
+should we remove comments? (true, false)
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>tag_counts</td>
+    <td class='attr-desc'>
+internal tag counter
+
+</td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000657"></a><b>new</b>( options=nil )
+  </div>
+  <div class="description">
+  <p>
+New html <a href="HtmlFilter.html#M000658">filter</a>.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000657_source')" id="l_M000657_source">show source</a> ]</p>
+  <div id="M000657_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/htmlfilter.rb, line 122</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">options</span>=<span class="ruby-keyword kw">nil</span> )
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>
+      <span class="ruby-identifier">h</span> = <span class="ruby-constant">DEFAULT</span>.<span class="ruby-identifier">dup</span>
+      <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">v</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">options</span> = <span class="ruby-identifier">h</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">options</span> = <span class="ruby-constant">DEFAULT</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">send</span>(<span class="ruby-node">&quot;#{k}=&quot;</span>,<span class="ruby-identifier">v</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000658"></a><b>filter</b>(data)
+  </div>
+  <div class="description">
+  <p>
+Filter html string.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000658_source')" id="l_M000658_source">show source</a> ]</p>
+  <div id="M000658_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/htmlfilter.rb, line 138</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">filter</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-ivar">@tag_counts</span> = {}
+
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">escape_comments</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">balance_html</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">check_tags</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">process_remove_blanks</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-identifier">data</span> = <span class="ruby-identifier">validate_entities</span>(<span class="ruby-identifier">data</span>)
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

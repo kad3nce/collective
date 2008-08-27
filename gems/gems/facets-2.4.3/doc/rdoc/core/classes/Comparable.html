@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Comparable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Comparable</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/core/facets/comparable/bound_rb.html">lib/core/facets/comparable/bound.rb</a>
+<a href="../files/lib/core/facets/comparable/cmp_rb.html">lib/core/facets/comparable/cmp.rb</a>
+<a href="../files/lib/core/facets/comparable/bound_rb.html">lib/core/facets/comparable/bound.rb</a>
+<a href="../files/lib/core/facets/comparable/cmp_rb.html">lib/core/facets/comparable/cmp.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000716">at_least</a></li>
+  <li><a href="#M000722">at_least</a></li>
+  <li><a href="#M000723">at_most</a></li>
+  <li><a href="#M000717">at_most</a></li>
+  <li><a href="#M000719">bound</a></li>
+  <li><a href="#M000725">bound</a></li>
+  <li><a href="#M000718">cap</a></li>
+  <li><a href="#M000724">cap</a></li>
+  <li><a href="#M000720">clip</a></li>
+  <li><a href="#M000726">clip</a></li>
+  <li><a href="#M000721">cmp</a></li>
+  <li><a href="#M000727">cmp</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000716"></a><b>at_least</b>(x)
+  </div>
+  <div class="description">
+  <p>
+Returns the lower of self or x.
+</p>
+<pre>
+  4.at_least(5)  #=&gt; 5
+  6.at_least(5)  #=&gt; 6
+
+  CREDIT Florian Gross
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000716_source')" id="l_M000716_source">show source</a> ]</p>
+  <div id="M000716_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/comparable/bound.rb, line 16</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">at_least</span>(<span class="ruby-identifier">x</span>)
+    (<span class="ruby-keyword kw">self</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">x</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">x</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000722"></a><b>at_least</b>(x)
+  </div>
+  <div class="description">
+  <p>
+Returns the lower of self or x.
+</p>
+<pre>
+  4.at_least(5)  #=&gt; 5
+  6.at_least(5)  #=&gt; 6
+
+  CREDIT Florian Gross
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000722_source')" id="l_M000722_source">show source</a> ]</p>
+  <div id="M000722_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/comparable/bound.rb, line 16</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">at_least</span>(<span class="ruby-identifier">x</span>)
+    (<span class="ruby-keyword kw">self</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">x</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">x</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000723"></a><b>at_most</b>(x)
+  </div>
+  <div class="description">
+  <p>
+Returns the greater of self or x.
+</p>
+<pre>
+  4.at_most(5)  #=&gt; 4
+  6.at_most(5)  #=&gt; 5
+
+  CREDIT Florian Gross
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000723_source')" id="l_M000723_source">show source</a> ]</p>
+  <div id="M000723_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/comparable/bound.rb, line 27</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">at_most</span>(<span class="ruby-identifier">x</span>)
+    (<span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">x</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">x</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000717"></a><b>at_most</b>(x)
+  </div>
+  <div class="description">
+  <p>
+Returns the greater of self or x.
+</p>
+<pre>
+  4.at_most(5)  #=&gt; 4
+  6.at_most(5)  #=&gt; 5
+
+  CREDIT Florian Gross
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000717_source')" id="l_M000717_source">show source</a> ]</p>
+  <div id="M000717_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/comparable/bound.rb, line 27</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">at_most</span>(<span class="ruby-identifier">x</span>)
+    (<span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">x</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">x</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000719"></a><b>bound</b>(lower, upper=nil)
+  </div>
+  <div class="description">
+  <p>
+Returns self if above the given lower <a
+href="Comparable.html#M000719">bound</a>, or within the given lower and
+upper bounds, otherwise returns the the <a
+href="Comparable.html#M000719">bound</a> of which the value falls outside.
+</p>
+<pre>
+  4.clip(3)    #=&gt; 4
+  4.clip(5)    #=&gt; 5
+  4.clip(2,7)  #=&gt; 4
+  9.clip(2,7)  #=&gt; 7
+  1.clip(2,7)  #=&gt; 2
+
+  CREDIT Trans
+</pre>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Comparable.html#M000720">clip</a>
+  <a href="Comparable.html#M000726">clip</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000719_source')" id="l_M000719_source">show source</a> ]</p>
+  <div id="M000719_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/comparable/bound.rb, line 55</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bound</span>(<span class="ruby-identifier">lower</span>, <span class="ruby-identifier">upper</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">lower</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">lower</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">upper</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">upper</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">upper</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000725"></a><b>bound</b>(lower, upper=nil)
+  </div>
+  <div class="description">
+  <p>
+Returns self if above the given lower <a
+href="Comparable.html#M000719">bound</a>, or within the given lower and
+upper bounds, otherwise returns the the <a
+href="Comparable.html#M000719">bound</a> of which the value falls outside.
+</p>
+<pre>
+  4.clip(3)    #=&gt; 4
+  4.clip(5)    #=&gt; 5
+  4.clip(2,7)  #=&gt; 4
+  9.clip(2,7)  #=&gt; 7
+  1.clip(2,7)  #=&gt; 2
+
+  CREDIT Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000725_source')" id="l_M000725_source">show source</a> ]</p>
+  <div id="M000725_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/comparable/bound.rb, line 55</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bound</span>(<span class="ruby-identifier">lower</span>, <span class="ruby-identifier">upper</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">lower</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">lower</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">upper</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">upper</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">upper</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000718"></a><b>cap</b>(upper)
+  </div>
+  <div class="description">
+  <p>
+Returns the greater of self or x.
+</p>
+<pre>
+  4.cap(5)  #=&gt; 4
+  6.cap(5)  #=&gt; 5
+
+  CREDIT Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000718_source')" id="l_M000718_source">show source</a> ]</p>
+  <div id="M000718_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/comparable/bound.rb, line 38</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cap</span>(<span class="ruby-identifier">upper</span>)
+    (<span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">upper</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">upper</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000724"></a><b>cap</b>(upper)
+  </div>
+  <div class="description">
+  <p>
+Returns the greater of self or x.
+</p>
+<pre>
+  4.cap(5)  #=&gt; 4
+  6.cap(5)  #=&gt; 5
+
+  CREDIT Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000724_source')" id="l_M000724_source">show source</a> ]</p>
+  <div id="M000724_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/comparable/bound.rb, line 38</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cap</span>(<span class="ruby-identifier">upper</span>)
+    (<span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">upper</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">upper</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000720"></a><b>clip</b>(lower, upper=nil)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Comparable.html#M000719">bound</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000726"></a><b>clip</b>(lower, upper=nil)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Comparable.html#M000719">bound</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000721"></a><b>cmp</b>(o)
+  </div>
+  <div class="description">
+  <p>
+Alternate name for comparison operator #&lt;=&gt;.
+</p>
+<pre>
+  3.cmp(1)   #=&gt;  1
+  3.cmp(3)   #=&gt;  0
+  3.cmp(10)  #=&gt; -1
+</pre>
+<p>
+This fundamental compare method is used to keep comparison compatible with
+<tt>succ</tt>.
+</p>
+<pre>
+  CREDIT Peter Vanbroekhoven
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000721_source')" id="l_M000721_source">show source</a> ]</p>
+  <div id="M000721_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/comparable/cmp.rb, line 14</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cmp</span>(<span class="ruby-identifier">o</span>)
+    <span class="ruby-keyword kw">self</span><span class="ruby-operator">&lt;=&gt;</span><span class="ruby-identifier">o</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000727"></a><b>cmp</b>(o)
+  </div>
+  <div class="description">
+  <p>
+Alternate name for comparison operator #&lt;=&gt;.
+</p>
+<pre>
+  3.cmp(1)   #=&gt;  1
+  3.cmp(3)   #=&gt;  0
+  3.cmp(10)  #=&gt; -1
+</pre>
+<p>
+This fundamental compare method is used to keep comparison compatible with
+<tt>succ</tt>.
+</p>
+<pre>
+  CREDIT Peter Vanbroekhoven
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000727_source')" id="l_M000727_source">show source</a> ]</p>
+  <div id="M000727_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/comparable/cmp.rb, line 14</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cmp</span>(<span class="ruby-identifier">o</span>)
+    <span class="ruby-keyword kw">self</span><span class="ruby-operator">&lt;=&gt;</span><span class="ruby-identifier">o</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

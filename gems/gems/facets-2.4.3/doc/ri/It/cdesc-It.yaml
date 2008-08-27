@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: after
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: index
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: prior
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: value
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Iteration
+constants: []
+
+full_name: It
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: first?
+- !ruby/object:RI::MethodSummary 
+  name: last?
+- !ruby/object:RI::MethodSummary 
+  name: next_iteration
+name: It
+superclass: Object

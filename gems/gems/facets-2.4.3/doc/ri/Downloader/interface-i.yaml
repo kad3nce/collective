@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: delegate to an interface (under development)
+full_name: Downloader#interface
+is_singleton: false
+name: interface
+params: ()
+visibility: public

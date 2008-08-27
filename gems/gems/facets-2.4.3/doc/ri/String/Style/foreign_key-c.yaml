@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a foreign key name from a class name. <tt>separate_class_name_and_id_with_underscore</tt> sets whether the method should put '_' between the name and 'id'.
+- !ruby/struct:SM::Flow::P 
+  body: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &quot;Message&quot;.foreign_key #=&gt; &quot;message_id&quot;\n  &quot;Message&quot;.foreign_key(false) #=&gt; &quot;messageid&quot;\n  &quot;Admin::Post&quot;.foreign_key #=&gt; &quot;post_id&quot;\n"
+full_name: String::Style::foreign_key
+is_singleton: true
+name: foreign_key
+params: (class_name, separate_class_name_and_id_with_underscore = true)
+visibility: public

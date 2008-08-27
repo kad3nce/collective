@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: attr_switcher
+- !ruby/object:RI::AliasName 
+  name: attr_toggler
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Create a toggle attribute. This creates two methods for each given name. One is a form of tester and the other is used to toggle the value.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  attr_accessor! :a\n"
+- !ruby/struct:SM::Flow::P 
+  body: is equivalent to
+- !ruby/struct:SM::Flow::VERB 
+  body: "  def a?\n    @a\n  end\n\n  def a!(value=true)\n    @a = value\n    self\n  end\n\n CREDIT: Trans\n"
+full_name: Module#attr_accessor!
+is_singleton: false
+name: attr_accessor!
+params: (*args)
+visibility: public

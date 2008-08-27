@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: HtmlFilter#decode_num_entity
+is_singleton: false
+name: decode_num_entity
+params: (orig_type, d)
+visibility: private

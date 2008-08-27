@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Ini</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Ini</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/ini_rb.html">lib/more/facets/ini.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><p>
+ini.rb - read and write ini files
+</p>
+<p>
+Copyright (C) 2007 Jeena Paradies License: GPL Author: Jeena Paradies
+(info@jeenaparadies.net)
+</p>
+<h2>Overview</h2>
+<p>
+This file provides a read-wite handling for ini files. The data of a ini
+file is represented by a object which is populated with strings.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000411">[]</a></li>
+  <li><a href="#M000412">[]=</a></li>
+  <li><a href="#M000410">new</a></li>
+  <li><a href="#M000416">read_comment_from_file</a></li>
+  <li><a href="#M000415">read_from_file</a></li>
+  <li><a href="#M000413">restore</a></li>
+  <li><a href="#M000418">to_s</a></li>
+  <li><a href="#M000414">update</a></li>
+  <li><a href="#M000417">write_to_file</a></li>
+  </ul>
+
+
+
+
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>comment</td>
+    <td class='attr-desc'>
+:inihash is a hash which holds all ini data :comment is a string which
+holds the comments on the top of the file
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>inihash</td>
+    <td class='attr-desc'>
+:inihash is a hash which holds all ini data :comment is a string which
+holds the comments on the top of the file
+
+</td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000410"></a><b>new</b>(path, load=nil)
+  </div>
+  <div class="description">
+  <p>
+Creating a <a href="Ini.html#M000410">new</a> <a href="Ini.html">Ini</a>
+object
+</p>
+<p>
+<tt>path</tt> is a path to the ini file <tt>load</tt> if nil restores the
+data if possible
+</p>
+<pre>
+       if true restores the data, if not possible raises an error
+       if false does not resotre the data
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000410_source')" id="l_M000410_source">show source</a> ]</p>
+  <div id="M000410_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ini.rb, line 105</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">load</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-ivar">@path</span> = <span class="ruby-identifier">path</span>
+    <span class="ruby-ivar">@inihash</span> = {}
+    
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">load</span> <span class="ruby-keyword kw">or</span> ( <span class="ruby-identifier">load</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-constant">FileTest</span>.<span class="ruby-identifier">readable_real?</span> <span class="ruby-ivar">@path</span> )
+      <span class="ruby-identifier">restore</span>()
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000416"></a><b>read_comment_from_file</b>(path)
+  </div>
+  <div class="description">
+  <p>
+Reading comments from file
+</p>
+<p>
+<tt>path</tt> is a path to the ini file
+</p>
+<p>
+Returns a string with comments from the beginning of the ini file.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000416_source')" id="l_M000416_source">show source</a> ]</p>
+  <div id="M000416_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ini.rb, line 198</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Ini</span>.<span class="ruby-identifier">read_comment_from_file</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-identifier">comment</span> = <span class="ruby-value str">&quot;&quot;</span>
+    
+    <span class="ruby-constant">IO</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">path</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip!</span>
+      <span class="ruby-keyword kw">break</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">0</span>,<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;#&quot;</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">line</span> <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;&quot;</span>
+      
+      <span class="ruby-identifier">comment</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{line[1, line.length ].strip}\n&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">comment</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000415"></a><b>read_from_file</b>(path)
+  </div>
+  <div class="description">
+  <p>
+Reading data from file
+</p>
+<p>
+<tt>path</tt> is a path to the ini file
+</p>
+<p>
+returns a hash which represents the data from the file
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000415_source')" id="l_M000415_source">show source</a> ]</p>
+  <div id="M000415_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ini.rb, line 153</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Ini</span>.<span class="ruby-identifier">read_from_file</span>(<span class="ruby-identifier">path</span>)
+        
+    <span class="ruby-identifier">inihash</span> = {}
+    <span class="ruby-identifier">headline</span> = <span class="ruby-keyword kw">nil</span>
+    
+    <span class="ruby-constant">IO</span>.<span class="ruby-identifier">foreach</span>(<span class="ruby-identifier">path</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+
+      <span class="ruby-identifier">line</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/#/</span>)[<span class="ruby-value">0</span>]
+      
+      <span class="ruby-comment cmt"># read it only if the line doesn't begin with a &quot;=&quot; and is long enough</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">2</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">0</span>,<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;=&quot;</span>
+        
+        <span class="ruby-comment cmt"># it's a headline if the line begins with a &quot;[&quot; and ends with a &quot;]&quot;</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">line</span>[<span class="ruby-value">0</span>,<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;[&quot;</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">line</span>[<span class="ruby-identifier">line</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">length</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">&quot;]&quot;</span>
+          
+          <span class="ruby-comment cmt"># get rid of the [] and unnecessary spaces</span>
+          <span class="ruby-identifier">headline</span> = <span class="ruby-identifier">line</span>[<span class="ruby-value">1</span>, <span class="ruby-identifier">line</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">2</span> ].<span class="ruby-identifier">strip</span>
+          <span class="ruby-identifier">inihash</span>[<span class="ruby-identifier">headline</span>] = {}
+        <span class="ruby-keyword kw">else</span>
+        
+          <span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">split</span>(<span class="ruby-regexp re">/=/</span>, <span class="ruby-value">2</span>)
+          
+          <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">strip</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">nil?</span>
+          <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">strip</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
+          
+          <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">headline</span>.<span class="ruby-identifier">nil?</span>
+            <span class="ruby-identifier">inihash</span>[<span class="ruby-identifier">headline</span>][<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">inihash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">nil?</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>        
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">inihash</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000418"></a><b>to_s</b>(inihash={})
+  </div>
+  <div class="description">
+  <p>
+Turn a hash (up to 2 levels deepness) into a ini string
+</p>
+<p>
+<tt>inihash</tt> is a hash representing the ini File. Default is a empty
+hash.
+</p>
+<p>
+Returns a string in the ini file format.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000418_source')" id="l_M000418_source">show source</a> ]</p>
+  <div id="M000418_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ini.rb, line 243</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Ini</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">inihash</span>={})
+    <span class="ruby-identifier">str</span> = <span class="ruby-value str">&quot;&quot;</span>
+    
+    <span class="ruby-identifier">inihash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+        <span class="ruby-identifier">str</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;[#{key.to_s}]\n&quot;</span>
+        
+        <span class="ruby-identifier">value</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">under_key</span>, <span class="ruby-identifier">under_value</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">str</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{under_key.to_s}=#{under_value.to_s unless under_value.nil?}\n&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">str</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{key.to_s}=#{value.to_s unless value2.nil?}\n&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">str</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000417"></a><b>write_to_file</b>(path, inihash={}, comment=nil)
+  </div>
+  <div class="description">
+  <p>
+Writing a ini hash into a file
+</p>
+<p>
+<tt>path</tt> is a path to the ini file <tt>inihash</tt> is a hash
+representing the ini File. Default is a empty hash. <tt>comment</tt> is a
+string with comments which appear on the
+</p>
+<pre>
+          top of the file. Each line will get a &quot;#&quot; before.
+          Default is no comment.
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000417_source')" id="l_M000417_source">show source</a> ]</p>
+  <div id="M000417_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ini.rb, line 220</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Ini</span>.<span class="ruby-identifier">write_to_file</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">inihash</span>={}, <span class="ruby-identifier">comment</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-value str">&quot;String expected&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">nil?</span>
+    
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-value str">&quot;Hash expected&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">inihash</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">&quot;w&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+      
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">file</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;# #{line}&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-identifier">file</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Ini</span>.<span class="ruby-identifier">to_s</span>(<span class="ruby-identifier">inihash</span>)
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000411"></a><b>[]</b>(key)
+  </div>
+  <div class="description">
+  <p>
+Retrive the ini data for the key <tt>key</tt>
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000411_source')" id="l_M000411_source">show source</a> ]</p>
+  <div id="M000411_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ini.rb, line 117</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-ivar">@inihash</span>[<span class="ruby-identifier">key</span>]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000412"></a><b>[]=</b>(key, value)
+  </div>
+  <div class="description">
+  <p>
+Set the ini data for the key <tt>key</tt>
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000412_source')" id="l_M000412_source">show source</a> ]</p>
+  <div id="M000412_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ini.rb, line 124</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-value str">&quot;String expected&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">TypeError</span>, <span class="ruby-value str">&quot;String or Hash expected&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+    
+    <span class="ruby-ivar">@inihash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000413"></a><b>restore</b>()
+  </div>
+  <div class="description">
+  <p>
+Restores the data from file into the object
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000413_source')" id="l_M000413_source">show source</a> ]</p>
+  <div id="M000413_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ini.rb, line 134</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">restore</span>()
+    <span class="ruby-ivar">@inihash</span> = <span class="ruby-constant">Ini</span>.<span class="ruby-identifier">read_from_file</span>(<span class="ruby-ivar">@path</span>)
+    <span class="ruby-ivar">@comment</span> = <span class="ruby-constant">Ini</span>.<span class="ruby-identifier">read_comment_from_file</span>(<span class="ruby-ivar">@path</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000414"></a><b>update</b>()
+  </div>
+  <div class="description">
+  <p>
+Store data from the object in the file
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000414_source')" id="l_M000414_source">show source</a> ]</p>
+  <div id="M000414_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ini.rb, line 142</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>()
+    <span class="ruby-constant">Ini</span>.<span class="ruby-identifier">write_to_file</span>(<span class="ruby-ivar">@path</span>, <span class="ruby-ivar">@inihash</span>, <span class="ruby-ivar">@comment</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

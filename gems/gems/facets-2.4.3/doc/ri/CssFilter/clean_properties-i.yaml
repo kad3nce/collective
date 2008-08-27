@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Takes a css entry and ensures it is valid (as best it can). It will fix trival mistakes, and raise an error when it is beyond repair.
+- !ruby/struct:SM::Flow::P 
+  body: "TODO: So far this does absolutely nothing!"
+full_name: CssFilter#clean_properties
+is_singleton: false
+name: clean_properties
+params: (atts)
+visibility: public

@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: combine
+comment: 
+constants: []
+
+full_name: Range
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: combine
+- !ruby/object:RI::MethodSummary 
+  name: overlap?
+- !ruby/object:RI::MethodSummary 
+  name: to_r
+- !ruby/object:RI::MethodSummary 
+  name: to_range
+- !ruby/object:RI::MethodSummary 
+  name: umbrella
+- !ruby/object:RI::MethodSummary 
+  name: within?
+name: Range
+superclass: Object

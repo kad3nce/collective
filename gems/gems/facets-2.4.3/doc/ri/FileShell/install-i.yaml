@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: install(src, dest, mode = &lt;src's&gt;, options)
+full_name: FileShell#install
+is_singleton: false
+name: install
+params: (src, dest, mode=src, options=nil)
+visibility: public

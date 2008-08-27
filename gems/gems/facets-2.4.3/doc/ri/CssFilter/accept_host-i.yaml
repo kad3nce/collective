@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: CssFilter#accept_host
+is_singleton: false
+name: accept_host
+params: (host)
+visibility: public

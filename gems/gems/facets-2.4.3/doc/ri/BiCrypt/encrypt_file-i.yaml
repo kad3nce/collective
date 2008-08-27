@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BiCrypt#encrypt_file
+is_singleton: false
+name: encrypt_file
+params: (plainFilename, cryptFilename)
+visibility: public

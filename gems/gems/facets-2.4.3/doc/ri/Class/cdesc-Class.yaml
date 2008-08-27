@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Special Extensions
+constants: []
+
+full_name: Class
+includes: []
+
+instance_methods: []
+
+name: Class
+superclass: Object

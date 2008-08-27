@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ProgressBar#percentage
+is_singleton: false
+name: percentage
+params: ()
+visibility: private

@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A RestrictedStream that also has a size limit.
+constants: []
+
+full_name: Archive::Tar::Minitar::Writer::BoundedStream
+includes: []
+
+instance_methods: []
+
+name: BoundedStream
+superclass: Archive::Tar::Minitar::Writer::RestrictedStream

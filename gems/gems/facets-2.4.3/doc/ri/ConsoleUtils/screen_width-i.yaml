@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Console screen width (taken from progress bar)
+- !ruby/struct:SM::Flow::P 
+  body: "TODO: Don't know how portable #screen_width is."
+full_name: ConsoleUtils#screen_width
+is_singleton: false
+name: screen_width
+params: (out=STDERR)
+visibility: public

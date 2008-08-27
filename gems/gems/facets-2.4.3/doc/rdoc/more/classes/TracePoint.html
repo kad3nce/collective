@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: TracePoint</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />TracePoint</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/tracepoint_rb.html">lib/more/facets/tracepoint.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="TracePoint.html">TracePoint</a></h1>
+<p>
+A <a href="TracePoint.html">TracePoint</a> is a <a
+href="Binding.html">Binding</a> with the addition of event information.
+Among other things, it functions very well as the join-point for
+Event-based AOP.
+</p>
+<h2>Usage</h2>
+<pre>
+  TracePoint.trace { |tp|
+    puts &quot;#{tp.self.class}\t#{tp.called}\t#{tp.event}\t#{tp.return?}\t#{tp.back == tp.bind}&quot;
+  }
+
+  1 + 1
+</pre>
+<p>
+produces
+</p>
+<pre>
+  Class   trace   return     true    false
+  Object          line       false   false
+  Fixnum  +       c-call     false   false
+  Fixnum  +       c-return   false   false
+</pre>
+<h2>Notes</h2>
+<p>
+You can&#8216;t subclass <a href="Binding.html">Binding</a>, so we delegate
+(which is better anyway).
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000462">===</a></li>
+  <li><a href="#M000449">active</a></li>
+  <li><a href="#M000450">active=</a></li>
+  <li><a href="#M000454">back</a></li>
+  <li><a href="#M000453">bind</a></li>
+  <li><a href="#M000457">called</a></li>
+  <li><a href="#M000456">callee</a></li>
+  <li><a href="#M000460">event?</a></li>
+  <li><a href="#M000459">event_map</a></li>
+  <li><a href="#M000461">eventless?</a></li>
+  <li><a href="#M000458">method_name</a></li>
+  <li><a href="#M000452">new</a></li>
+  <li><a href="#M000455">self</a></li>
+  <li><a href="#M000451">trace</a></li>
+  </ul>
+
+
+
+
+  <div class="sectiontitle">Constants</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class="attr-name">EVENT_MAP</td>
+    <td>=</td>
+    <td class="attr-value">{     :all     =&gt; ['call', 'c-call', 'return', 'c-return', 'line', 'class', 'end', 'raise'],     :before  =&gt; ['call', 'c-call'],     :after   =&gt; ['return', 'c-return'],     :call    =&gt; ['call'],     :return  =&gt; ['return'],     :ccall   =&gt; ['c-call'],     :creturn =&gt; ['c-return'],     :line    =&gt; ['line'],     :class   =&gt; ['class'],     :end     =&gt; ['end'],     :raise   =&gt; ['raise']</td>
+  </tr>
+  <tr valign='top'>
+    <td>&nbsp;</td>
+    <td colspan="2" class="attr-desc">
+methods for working with events
+
+</td>
+  </tr>
+  </table>
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>back_binding</td>
+    <td class='attr-desc'>
+&#8212; instance &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>binding</td>
+    <td class='attr-desc'>
+&#8212; instance &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>event</td>
+    <td class='attr-desc'>
+&#8212; instance &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+
+</td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000449"></a><b>active</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000449_source')" id="l_M000449_source">show source</a> ]</p>
+  <div id="M000449_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 86</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">active</span> ; <span class="ruby-ivar">@@active</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000450"></a><b>active=</b>(x)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000450_source')" id="l_M000450_source">show source</a> ]</p>
+  <div id="M000450_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 88</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">active=</span>(<span class="ruby-identifier">x</span>)
+      <span class="ruby-ivar">@@active</span> = <span class="ruby-identifier">x</span> <span class="ruby-value">? </span><span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+      <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@@active</span>
+        <span class="ruby-identifier">set_trace_func</span> <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000452"></a><b>new</b>( event, method, bind, back_binding=bind )
+  </div>
+  <div class="description">
+  <p>
+Until Ruby has a built-in way to get the name of the calling method that
+information must be passed into the <a
+href="TracePoint.html">TracePoint</a>.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000452_source')" id="l_M000452_source">show source</a> ]</p>
+  <div id="M000452_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 121</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>( <span class="ruby-identifier">event</span>, <span class="ruby-identifier">method</span>, <span class="ruby-identifier">bind</span>, <span class="ruby-identifier">back_binding</span>=<span class="ruby-identifier">bind</span> )
+    <span class="ruby-ivar">@event</span> = <span class="ruby-identifier">event</span>
+    <span class="ruby-ivar">@method</span> = <span class="ruby-identifier">method</span>
+    <span class="ruby-ivar">@binding</span> = <span class="ruby-identifier">bind</span>
+    <span class="ruby-ivar">@back_binding</span> = <span class="ruby-identifier">back_binding</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000451"></a><b>trace</b>( {|| ...}
+  </div>
+  <div class="description">
+  <p>
+Trace execution using a <a href="TracePoint.html">TracePoint</a>.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000451_source')" id="l_M000451_source">show source</a> ]</p>
+  <div id="M000451_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 96</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">trace</span> <span class="ruby-comment cmt"># :yield:</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">active</span>
+        <span class="ruby-identifier">bb_stack</span> = []
+        <span class="ruby-identifier">set_trace_func</span> <span class="ruby-identifier">proc</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">e</span>, <span class="ruby-identifier">f</span>, <span class="ruby-identifier">l</span>, <span class="ruby-identifier">m</span>, <span class="ruby-identifier">b</span>, <span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
+          <span class="ruby-comment cmt">#(p e, f, l, m, b, k, @@bb_stack; puts &quot;---&quot;) if $DEBUG</span>
+          <span class="ruby-keyword kw">if</span> [<span class="ruby-value str">'call'</span>,<span class="ruby-value str">'c-call'</span>,<span class="ruby-value str">'class'</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">e</span>)
+            <span class="ruby-identifier">bb_stack</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">b</span>
+          <span class="ruby-keyword kw">elsif</span> [<span class="ruby-value str">'return'</span>,<span class="ruby-value str">'c-return'</span>,<span class="ruby-value str">'end'</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">e</span>)
+            <span class="ruby-identifier">bb</span> = <span class="ruby-identifier">bb_stack</span>.<span class="ruby-identifier">pop</span>
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">b</span> = <span class="ruby-identifier">bb</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">b</span>    <span class="ruby-comment cmt"># this sucks!</span>
+          <span class="ruby-identifier">tp</span> = <span class="ruby-constant">TracePoint</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">e</span>,<span class="ruby-identifier">m</span>,<span class="ruby-identifier">b</span>,<span class="ruby-identifier">bb</span>)
+          <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">tp</span>)
+        }
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000462"></a><b>===</b>(e)
+  </div>
+  <div class="description">
+  <p>
+For use in case conditions
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000462_source')" id="l_M000462_source">show source</a> ]</p>
+  <div id="M000462_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 173</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">===</span>(<span class="ruby-identifier">e</span>)
+    <span class="ruby-constant">EVENT_MAP</span>[<span class="ruby-identifier">e</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-ivar">@event</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000454"></a><b>back</b>()
+  </div>
+  <div class="description">
+  <p>
+shorthand for back_binding
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000454_source')" id="l_M000454_source">show source</a> ]</p>
+  <div id="M000454_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 132</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">back</span> ; <span class="ruby-ivar">@back_binding</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000453"></a><b>bind</b>()
+  </div>
+  <div class="description">
+  <p>
+shorthand for binding
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000453_source')" id="l_M000453_source">show source</a> ]</p>
+  <div id="M000453_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 129</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">bind</span> ; <span class="ruby-ivar">@binding</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000457"></a><b>called</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="TracePoint.html#M000456">callee</a>
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="TracePoint.html#M000458">method_name</a>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000456"></a><b>callee</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns the name of the event&#8216;s method. This could delegate to the
+binding if Ruby had an internal way to retrieve the current method name.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="TracePoint.html#M000457">called</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000456_source')" id="l_M000456_source">show source</a> ]</p>
+  <div id="M000456_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 141</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">callee</span> ; <span class="ruby-ivar">@method</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000460"></a><b>event?</b>()
+  </div>
+  <div class="description">
+  <p>
+Is the <a href="TracePoint.html#M000451">trace</a> point defined or
+undefined?
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000460_source')" id="l_M000460_source">show source</a> ]</p>
+  <div id="M000460_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 169</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">event?</span> ; <span class="ruby-operator">!</span><span class="ruby-operator">!</span> <span class="ruby-ivar">@event</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000459"></a><b>event_map</b>(e)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000459_source')" id="l_M000459_source">show source</a> ]</p>
+  <div id="M000459_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 166</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">event_map</span>(<span class="ruby-identifier">e</span>) ; <span class="ruby-constant">EVENT_MAP</span>[<span class="ruby-identifier">e</span>] ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000461"></a><b>eventless?</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000461_source')" id="l_M000461_source">show source</a> ]</p>
+  <div id="M000461_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 170</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">eventless?</span> ; <span class="ruby-operator">!</span> <span class="ruby-ivar">@event</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000458"></a><b>method_name</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="TracePoint.html#M000457">called</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000455"></a><b>self</b>()
+  </div>
+  <div class="description">
+  <p>
+Delegates &quot;<a href="TracePoint.html#M000455">self</a>&quot; to the
+binding which in turn delegates the binding object.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000455_source')" id="l_M000455_source">show source</a> ]</p>
+  <div id="M000455_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/tracepoint.rb, line 136</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span> ; <span class="ruby-ivar">@binding</span>.<span class="ruby-identifier">self</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: detect
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Make exception for #find (a negative arity method) to accept keyword argument."
+- !ruby/struct:SM::Flow::VERB 
+  body: "  ObjectSpace.find(Class, :ifnone=&gt;lambda{1}) { |e| ... }\n  ObjectSpace.find(Class, :ifnone=&gt;lambda{1}) { |e| ... }\n"
+full_name: EnumerablePass#find
+is_singleton: false
+name: find
+params: (*args, &yld)
+visibility: public

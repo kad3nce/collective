@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: shift
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Pulls a value off the beginning of a tuple. This method is otherwsie known as #shift."
+full_name: Tuple#pull
+is_singleton: false
+name: pull
+params: ()
+visibility: public

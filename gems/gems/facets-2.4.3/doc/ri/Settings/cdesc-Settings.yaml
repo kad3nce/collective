@@ -1,0 +1,33 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_setting
+- !ruby/object:RI::MethodSummary 
+  name: load
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+- !ruby/object:RI::MethodSummary 
+  name: parse
+- !ruby/object:RI::MethodSummary 
+  name: settings
+- !ruby/object:RI::MethodSummary 
+  name: setup
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Settings
+- !ruby/struct:SM::Flow::P 
+  body: Settings holds configuration information organized by Owners. An owner is a class that represents the system to be configured. An alias for this class is Settings.
+- !ruby/struct:SM::Flow::P 
+  body: You can pass strings, constants or symbols as keys for the classes to be configured. Passing symbols you can configure classes even before they are defined.
+constants: []
+
+full_name: Settings
+includes: []
+
+instance_methods: []
+
+name: Settings
+superclass: Object

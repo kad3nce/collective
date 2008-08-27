@@ -1,0 +1,36 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Chain
+- !ruby/struct:SM::Flow::P 
+  body: Expiremental library for safe method chaining.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  person = &quot;John Doe&quot;\n  def person.address = &quot;123 West St.&quot;\n  person.address.street #=&gt; Error\n"
+- !ruby/struct:SM::Flow::P 
+  body: "To avoid the error use #chain:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  person.chain.address.street.end   #=&gt; nil\n"
+- !ruby/struct:SM::Flow::P 
+  body: Or
+- !ruby/struct:SM::Flow::VERB 
+  body: "  ~ person.chain.address.street     #=&gt; nil\n"
+constants: []
+
+full_name: Chain
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: end
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+- !ruby/object:RI::MethodSummary 
+  name: "~"
+name: Chain
+superclass: Object

@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The exception raised when operations are performed on a stream that has previously been closed.
+constants: []
+
+full_name: Archive::Tar::Minitar::ClosedStream
+includes: []
+
+instance_methods: []
+
+name: ClosedStream
+superclass: StandardError

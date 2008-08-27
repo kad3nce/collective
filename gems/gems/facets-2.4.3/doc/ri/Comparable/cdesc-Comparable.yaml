@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Comparable
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: at_least
+- !ruby/object:RI::MethodSummary 
+  name: at_most
+- !ruby/object:RI::MethodSummary 
+  name: bound
+- !ruby/object:RI::MethodSummary 
+  name: cap
+- !ruby/object:RI::MethodSummary 
+  name: clip
+- !ruby/object:RI::MethodSummary 
+  name: cmp
+name: Comparable
+superclass: 

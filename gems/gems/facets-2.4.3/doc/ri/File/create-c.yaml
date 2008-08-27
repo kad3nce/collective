@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates a new file, or overwrites an existing file, and writes a string into it. Can also take a block just like File#open, which is yielded <em>after</em> the string is writ.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  str = 'The content for the file'\n  File.create('myfile.txt', str)\n\n  CREDIT: George Moschovitis\n"
+full_name: File::create
+is_singleton: true
+name: create
+params: (path, str='', &blk)
+visibility: public

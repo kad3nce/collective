@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: (k, i)
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "A small variation of #Inject that save one from having to return the aggregating or memo argument."
+- !ruby/struct:SM::Flow::P 
+  body: Say you want to count letters.
+- !ruby/struct:SM::Flow::VERB 
+  body: "   some_text.inject!(Hash.new(0)) {|h,l| h[l] += 1}\n"
+- !ruby/struct:SM::Flow::P 
+  body: vs
+- !ruby/struct:SM::Flow::VERB 
+  body: "   some_text.inject(Hash.new(0)) {|h,l| h[l] +=1; h}\n\n CREDIT: David Black\n CREDIT: Louis J Scoras\n"
+full_name: Enumerable#inject!
+is_singleton: false
+name: inject!
+params: (s) {|k, i| ...}
+visibility: public

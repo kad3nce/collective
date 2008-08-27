@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ObjectReflection#_bind_method
+is_singleton: false
+name: _bind_method
+params: (meth)
+visibility: private

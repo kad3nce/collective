@@ -1,0 +1,145 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: System
+- !ruby/struct:SM::Flow::P 
+  body: The System module provides Platform and Ruby system information. The module should also be able to stand in for rbconfig. It is intended for use as a service module although it can be mixed-in too.
+constants: []
+
+full_name: System
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: argf
+- !ruby/object:RI::MethodSummary 
+  name: argv
+- !ruby/object:RI::MethodSummary 
+  name: child_status
+- !ruby/object:RI::MethodSummary 
+  name: coding
+- !ruby/object:RI::MethodSummary 
+  name: coding=
+- !ruby/object:RI::MethodSummary 
+  name: current_platform
+- !ruby/object:RI::MethodSummary 
+  name: data
+- !ruby/object:RI::MethodSummary 
+  name: debug
+- !ruby/object:RI::MethodSummary 
+  name: default_input
+- !ruby/object:RI::MethodSummary 
+  name: default_output
+- !ruby/object:RI::MethodSummary 
+  name: default_output=
+- !ruby/object:RI::MethodSummary 
+  name: defin
+- !ruby/object:RI::MethodSummary 
+  name: defout
+- !ruby/object:RI::MethodSummary 
+  name: defout=
+- !ruby/object:RI::MethodSummary 
+  name: env
+- !ruby/object:RI::MethodSummary 
+  name: environment
+- !ruby/object:RI::MethodSummary 
+  name: error_info
+- !ruby/object:RI::MethodSummary 
+  name: error_position
+- !ruby/object:RI::MethodSummary 
+  name: exit_status
+- !ruby/object:RI::MethodSummary 
+  name: extentions
+- !ruby/object:RI::MethodSummary 
+  name: fs
+- !ruby/object:RI::MethodSummary 
+  name: fs=
+- !ruby/object:RI::MethodSummary 
+  name: input_field_separator
+- !ruby/object:RI::MethodSummary 
+  name: input_field_separator=
+- !ruby/object:RI::MethodSummary 
+  name: input_line_number
+- !ruby/object:RI::MethodSummary 
+  name: input_lineno
+- !ruby/object:RI::MethodSummary 
+  name: input_record_separator
+- !ruby/object:RI::MethodSummary 
+  name: input_record_separator=
+- !ruby/object:RI::MethodSummary 
+  name: line_end_processing
+- !ruby/object:RI::MethodSummary 
+  name: load_path
+- !ruby/object:RI::MethodSummary 
+  name: loaded_features
+- !ruby/object:RI::MethodSummary 
+  name: match_platform
+- !ruby/object:RI::MethodSummary 
+  name: ofs
+- !ruby/object:RI::MethodSummary 
+  name: ofs=
+- !ruby/object:RI::MethodSummary 
+  name: options
+- !ruby/object:RI::MethodSummary 
+  name: ors
+- !ruby/object:RI::MethodSummary 
+  name: ors=
+- !ruby/object:RI::MethodSummary 
+  name: output_field_separator
+- !ruby/object:RI::MethodSummary 
+  name: output_field_separator=
+- !ruby/object:RI::MethodSummary 
+  name: output_record_separator
+- !ruby/object:RI::MethodSummary 
+  name: output_record_separator=
+- !ruby/object:RI::MethodSummary 
+  name: pid
+- !ruby/object:RI::MethodSummary 
+  name: platform
+- !ruby/object:RI::MethodSummary 
+  name: process_id
+- !ruby/object:RI::MethodSummary 
+  name: program_loop
+- !ruby/object:RI::MethodSummary 
+  name: program_name
+- !ruby/object:RI::MethodSummary 
+  name: program_name=
+- !ruby/object:RI::MethodSummary 
+  name: release
+- !ruby/object:RI::MethodSummary 
+  name: required
+- !ruby/object:RI::MethodSummary 
+  name: rs
+- !ruby/object:RI::MethodSummary 
+  name: rs=
+- !ruby/object:RI::MethodSummary 
+  name: rubylibdir
+- !ruby/object:RI::MethodSummary 
+  name: rubypath
+- !ruby/object:RI::MethodSummary 
+  name: safe
+- !ruby/object:RI::MethodSummary 
+  name: stderr
+- !ruby/object:RI::MethodSummary 
+  name: stderr=
+- !ruby/object:RI::MethodSummary 
+  name: stdin
+- !ruby/object:RI::MethodSummary 
+  name: stdin=
+- !ruby/object:RI::MethodSummary 
+  name: stdout
+- !ruby/object:RI::MethodSummary 
+  name: stdout=
+- !ruby/object:RI::MethodSummary 
+  name: verbose
+- !ruby/object:RI::MethodSummary 
+  name: verbose=
+- !ruby/object:RI::MethodSummary 
+  name: version
+name: System
+superclass: 

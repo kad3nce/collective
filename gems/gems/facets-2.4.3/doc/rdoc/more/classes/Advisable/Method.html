@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Advisable::Method</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Advisable::Method</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/more/facets/advisable_rb.html">lib/more/facets/advisable.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><p>
+Extensions for <a href="Method.html">Method</a> class.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000713">advice_after=</a></li>
+  <li><a href="#M000714">advice_around=</a></li>
+  <li><a href="#M000712">advice_before=</a></li>
+  <li><a href="#M000711">advised?</a></li>
+  <li><a href="#M000715">call_with_advice</a></li>
+  </ul>
+
+
+
+
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>advice_after</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>advice_around</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>advice_before</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>advised</td>
+    <td class='attr-desc'></td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000713"></a><b>advice_after=</b>(set)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000713_source')" id="l_M000713_source">show source</a> ]</p>
+  <div id="M000713_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/advisable.rb, line 120</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advice_after=</span>(<span class="ruby-identifier">set</span>) ;  <span class="ruby-ivar">@advice_after</span> = <span class="ruby-identifier">set</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000714"></a><b>advice_around=</b>(set)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000714_source')" id="l_M000714_source">show source</a> ]</p>
+  <div id="M000714_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/advisable.rb, line 121</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advice_around=</span>(<span class="ruby-identifier">set</span>); <span class="ruby-ivar">@advice_around</span> = <span class="ruby-identifier">set</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000712"></a><b>advice_before=</b>(set)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000712_source')" id="l_M000712_source">show source</a> ]</p>
+  <div id="M000712_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/advisable.rb, line 119</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advice_before=</span>(<span class="ruby-identifier">set</span>); <span class="ruby-ivar">@advice_before</span> = <span class="ruby-identifier">set</span>.<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000711"></a><b>advised?</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000711_source')" id="l_M000711_source">show source</a> ]</p>
+  <div id="M000711_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/advisable.rb, line 115</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">advised?</span>
+      <span class="ruby-ivar">@advised</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000715"></a><b>call_with_advice</b>(obj, *args, &amp;blk)
+  </div>
+  <div class="description">
+  <p>
+Call with advice.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000715_source')" id="l_M000715_source">show source</a> ]</p>
+  <div id="M000715_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/advisable.rb, line 125</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call_with_advice</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-identifier">advice_before</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+        <span class="ruby-comment cmt">#advice.call(*args, &amp;blk)</span>
+        <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-identifier">target</span> = <span class="ruby-identifier">lambda</span>{ <span class="ruby-identifier">call</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>) }
+      <span class="ruby-identifier">advice_around</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">target</span> = <span class="ruby-identifier">lambda_target</span>(<span class="ruby-identifier">obj</span>, <span class="ruby-identifier">name</span>, <span class="ruby-identifier">target</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">ret</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">call</span>
+
+      <span class="ruby-identifier">advice_after</span>.<span class="ruby-identifier">reverse_each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+        <span class="ruby-comment cmt">#advice.call(*args, &amp;blk)</span>
+        <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">ret</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

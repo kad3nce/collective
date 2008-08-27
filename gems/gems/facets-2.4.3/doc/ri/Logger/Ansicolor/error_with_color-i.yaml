@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: ""
+comment: 
+full_name: Logger::Ansicolor#error_with_color
+is_singleton: false
+name: error_with_color
+params: ( {|| ...}
+visibility: public

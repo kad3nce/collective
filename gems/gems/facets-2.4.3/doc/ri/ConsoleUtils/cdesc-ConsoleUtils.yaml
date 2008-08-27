@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: ConsoleUtils
+- !ruby/struct:SM::Flow::P 
+  body: ConsoleUtils provides methods that are generally useful in the context of creating console output.
+constants: []
+
+full_name: ConsoleUtils
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ask
+- !ruby/object:RI::MethodSummary 
+  name: password
+- !ruby/object:RI::MethodSummary 
+  name: print_justified
+- !ruby/object:RI::MethodSummary 
+  name: screen_width
+name: ConsoleUtils
+superclass: 

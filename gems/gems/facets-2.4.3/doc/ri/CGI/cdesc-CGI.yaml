@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: CGI Extensions
+constants: []
+
+full_name: CGI
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: esc
+- !ruby/object:RI::MethodSummary 
+  name: escformat
+- !ruby/object:RI::MethodSummary 
+  name: marshal_from_cgi
+- !ruby/object:RI::MethodSummary 
+  name: marshal_to_cgi
+name: CGI
+superclass: 

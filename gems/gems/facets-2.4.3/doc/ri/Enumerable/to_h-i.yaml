@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Convert an Enumerable object into a hash by first turning it into an array.
+- !ruby/struct:SM::Flow::P 
+  body: "CREDIT: Trans"
+full_name: Enumerable#to_h
+is_singleton: false
+name: to_h
+params: (arrayed=nil)
+visibility: public

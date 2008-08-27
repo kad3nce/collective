@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: In the future we may test each connection for fastest download
+full_name: Downloader#prioritize_urls
+is_singleton: false
+name: prioritize_urls
+params: ( urls )
+visibility: public

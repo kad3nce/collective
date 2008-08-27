@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: HtmlFilter#decode_hex_entity
+is_singleton: false
+name: decode_hex_entity
+params: (*m)
+visibility: private

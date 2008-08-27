@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #append_features"
+full_name: Module#append_features_without_class_extension
+is_singleton: false
+name: append_features_without_class_extension
+params: ( base )
+visibility: public

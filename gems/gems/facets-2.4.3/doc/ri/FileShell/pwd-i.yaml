@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Present working directory.
+full_name: FileShell#pwd
+is_singleton: false
+name: pwd
+params: ()
+visibility: public

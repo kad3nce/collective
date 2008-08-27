@@ -1,0 +1,77 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: argv
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: arity
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: line
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: parameters
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: CLI::Arguments
+- !ruby/struct:SM::Flow::P 
+  body: CLI::Arguments provides a very simple means of parsing command line arguments.
+- !ruby/struct:SM::Flow::P 
+  body: Unlike other more complex libs this provides only the most basic and standard parsing functionality. In many cases that's all one really needs.
+- !ruby/struct:SM::Flow::P 
+  body: Usage is straight foward. Simply instantiate the class and query it for the particular &quot;views&quot; of the command line you want.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  cargs = CLI::Arguments.new(&quot;-a foo -b=2&quot;)\n\n  cargs.parameters    #=&gt; [['foo'],{'a'=&gt;true,'b'=&gt;'2'}]\n  cargs.flags         #=&gt; ['a']\n  cargs.preoptions    #=&gt; {'a'=&gt;true}\n  cargs.preflags      #=&gt; ['a']\n  cargs.subcommand    #=&gt; ['foo',{'b'=&gt;'2'}]\n"
+constants: []
+
+full_name: CLI::Arguments
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: arguments
+- !ruby/object:RI::MethodSummary 
+  name: assoc_options
+- !ruby/object:RI::MethodSummary 
+  name: flags
+- !ruby/object:RI::MethodSummary 
+  name: format_options
+- !ruby/object:RI::MethodSummary 
+  name: multi_flag
+- !ruby/object:RI::MethodSummary 
+  name: operands
+- !ruby/object:RI::MethodSummary 
+  name: options
+- !ruby/object:RI::MethodSummary 
+  name: parameters
+- !ruby/object:RI::MethodSummary 
+  name: parameters_without_duplicates
+- !ruby/object:RI::MethodSummary 
+  name: parse
+- !ruby/object:RI::MethodSummary 
+  name: parse_arity
+- !ruby/object:RI::MethodSummary 
+  name: parse_line
+- !ruby/object:RI::MethodSummary 
+  name: parse_preoptions
+- !ruby/object:RI::MethodSummary 
+  name: preflags
+- !ruby/object:RI::MethodSummary 
+  name: preoptions
+- !ruby/object:RI::MethodSummary 
+  name: subcommand
+- !ruby/object:RI::MethodSummary 
+  name: subcommand_with_arguments
+- !ruby/object:RI::MethodSummary 
+  name: subcommand_with_parameters
+- !ruby/object:RI::MethodSummary 
+  name: subcommand_with_preoptions
+name: Arguments
+superclass: Object

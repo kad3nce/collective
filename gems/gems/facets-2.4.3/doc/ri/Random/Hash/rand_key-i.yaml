@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns a random key.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  {:one =&gt; 1, :two =&gt; 2, :three =&gt; 3}.pick_key  #=&gt; :three\n"
+full_name: Random::Hash#rand_key
+is_singleton: false
+name: rand_key
+params: ()
+visibility: public

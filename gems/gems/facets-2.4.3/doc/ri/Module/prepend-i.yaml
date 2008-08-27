@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Prepend an <tt>aspect</tt> module to a module.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  module X\n    def x; &quot;x&quot;; end\n  end\n\n  module U\n    def x; '{' + super + '}'; end\n  end\n\n  X.prepend U\n\n  X.x  # =&gt; &quot;{x}&quot;\n\n CREDIT Trans\n"
+full_name: Module#prepend
+is_singleton: false
+name: prepend
+params: (aspect)
+visibility: public

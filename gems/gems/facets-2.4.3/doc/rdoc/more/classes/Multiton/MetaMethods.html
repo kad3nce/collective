@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Multiton::MetaMethods</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Multiton::MetaMethods</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/more/facets/multiton_rb.html">lib/more/facets/multiton.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000864">_load</a></li>
+  <li><a href="#M000860">initialized?</a></li>
+  <li><a href="#M000858">instance</a></li>
+  <li><a href="#M000861">multiton_instance</a></li>
+  <li><a href="#M000862">multiton_mutex</a></li>
+  <li><a href="#M000859">new</a></li>
+  <li><a href="#M000863">reinitialize</a></li>
+  </ul>
+
+<div class="sectiontitle">Included Modules</div>
+<ul>
+  <li><a href="Inclusive.html">Inclusive</a></li>
+</ul>
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000860"></a><b>initialized?</b>(*e, &amp;b)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000860_source')" id="l_M000860_source">show source</a> ]</p>
+  <div id="M000860_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multiton.rb, line 230</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialized?</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">e</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+      <span class="ruby-identifier">multiton_instance</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">multiton_id</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">e</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>))
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000858"></a><b>instance</b>(*e, &amp;b)
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="MetaMethods.html#M000859">new</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000858_source')" id="l_M000858_source">show source</a> ]</p>
+  <div id="M000858_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multiton.rb, line 215</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">instance</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">e</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+      <span class="ruby-identifier">arg</span> = <span class="ruby-identifier">multiton_id</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">e</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+      <span class="ruby-identifier">multiton_instance</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">arg</span>) <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">multiton_mutex</span>[<span class="ruby-identifier">arg</span>].<span class="ruby-identifier">synchronize</span> <span class="ruby-keyword kw">do</span>
+          <span class="ruby-identifier">multiton_instance</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">arg</span>) <span class="ruby-keyword kw">do</span>
+            <span class="ruby-identifier">val</span> = <span class="ruby-identifier">multiton_instance</span>[<span class="ruby-identifier">arg</span>] = <span class="ruby-identifier">new!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">e</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>) <span class="ruby-comment cmt">#new(*e, &amp;b)</span>
+            <span class="ruby-identifier">val</span>.<span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-identifier">:@multiton_initializer</span>, <span class="ruby-identifier">e</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+            <span class="ruby-identifier">multiton_mutex</span>.<span class="ruby-identifier">initialized</span>(<span class="ruby-identifier">arg</span>)
+            <span class="ruby-identifier">val</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000859"></a><b>new</b>(*e, &amp;b)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="MetaMethods.html#M000858">instance</a>
+</p>
+  </div>
+</div>
+<div class="sectiontitle">Protected Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000864"></a><b>_load</b>(str)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000864_source')" id="l_M000864_source">show source</a> ]</p>
+  <div id="M000864_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multiton.rb, line 249</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">_load</span>(<span class="ruby-identifier">str</span>)
+      <span class="ruby-identifier">instance</span>(<span class="ruby-operator">*</span><span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">str</span>))
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000861"></a><b>multiton_instance</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000861_source')" id="l_M000861_source">show source</a> ]</p>
+  <div id="M000861_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multiton.rb, line 236</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">multiton_instance</span>
+      <span class="ruby-ivar">@multiton_instance</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000862"></a><b>multiton_mutex</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000862_source')" id="l_M000862_source">show source</a> ]</p>
+  <div id="M000862_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multiton.rb, line 240</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">multiton_mutex</span>
+      <span class="ruby-ivar">@multiton_mutex</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">InstanceMutex</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000863"></a><b>reinitialize</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000863_source')" id="l_M000863_source">show source</a> ]</p>
+  <div id="M000863_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/multiton.rb, line 244</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">reinitialize</span>
+      <span class="ruby-identifier">multiton_instance</span>.<span class="ruby-identifier">clear</span>
+      <span class="ruby-identifier">multiton_mutex</span>.<span class="ruby-identifier">clear</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

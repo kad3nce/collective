@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Manually add a Settings setting. The class key can be the actual class name constant or a symbol. If the setting is already defined it updates it.
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Examples
+- !ruby/struct:SM::Flow::P 
+  body: Settings.add_setting Compiler, :verification, :value =&gt; 12, :doc =&gt; '...' Settings.setting :IdPart, :verify_registration_email, :value =&gt; false s = Settings.Compiler.verification.value
+full_name: Settings::add_setting
+is_singleton: true
+name: add_setting
+params: (owner, name, options)
+visibility: public

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: BaseX</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />BaseX</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/basex_rb.html">lib/more/facets/basex.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000638">convert_base</a></li>
+  <li><a href="#M000637">decode</a></li>
+  <li><a href="#M000636">encode</a></li>
+  <li><a href="#M000635">new</a></li>
+  </ul>
+
+
+
+
+  <div class="sectiontitle">Constants</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class="attr-name">BASE62</td>
+    <td>=</td>
+    <td class="attr-value">[&quot;0&quot;..&quot;9&quot;, &quot;a&quot;..&quot;z&quot;, &quot;A&quot;..&quot;Z&quot;].map { |r| r.to_a }.flatten</td>
+  </tr>
+  </table>
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>chars</td>
+    <td class='attr-desc'></td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000635"></a><b>new</b>(chars=BASE62)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000635_source')" id="l_M000635_source">show source</a> ]</p>
+  <div id="M000635_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/basex.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">chars</span>=<span class="ruby-constant">BASE62</span>)
+    <span class="ruby-ivar">@chars</span>  = <span class="ruby-identifier">chars</span>
+    <span class="ruby-ivar">@base</span>   = <span class="ruby-ivar">@chars</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-ivar">@values</span> = <span class="ruby-constant">Hash</span>[<span class="ruby-operator">*</span>(<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-ivar">@base</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> [ <span class="ruby-ivar">@chars</span>[<span class="ruby-identifier">i</span>], <span class="ruby-identifier">i</span> ] }.<span class="ruby-identifier">flatten</span>]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000638"></a><b>convert_base</b>(digits, from_base, to_base)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000638_source')" id="l_M000638_source">show source</a> ]</p>
+  <div id="M000638_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/basex.rb, line 25</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">convert_base</span>(<span class="ruby-identifier">digits</span>, <span class="ruby-identifier">from_base</span>, <span class="ruby-identifier">to_base</span>)
+    <span class="ruby-identifier">bignum</span> = <span class="ruby-value">0</span>
+    <span class="ruby-identifier">digits</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">digit</span><span class="ruby-operator">|</span> <span class="ruby-identifier">bignum</span> = <span class="ruby-identifier">bignum</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">from_base</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">digit</span> }
+    <span class="ruby-identifier">converted</span> = []
+    <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">bignum</span>.<span class="ruby-identifier">zero?</span>
+      <span class="ruby-identifier">bignum</span>, <span class="ruby-identifier">digit</span> = <span class="ruby-identifier">bignum</span>.<span class="ruby-identifier">divmod</span> <span class="ruby-identifier">to_base</span>
+      <span class="ruby-identifier">converted</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">digit</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">converted</span>.<span class="ruby-identifier">reverse</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000637"></a><b>decode</b>(encoded)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000637_source')" id="l_M000637_source">show source</a> ]</p>
+  <div id="M000637_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/basex.rb, line 19</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decode</span>(<span class="ruby-identifier">encoded</span>)
+    <span class="ruby-identifier">convert_base</span>(<span class="ruby-identifier">encoded</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">''</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@values</span>[<span class="ruby-identifier">c</span>]
+    }, <span class="ruby-ivar">@base</span>, <span class="ruby-value">256</span>).<span class="ruby-identifier">pack</span>(<span class="ruby-value str">&quot;C*&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000636"></a><b>encode</b>(byte_string)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000636_source')" id="l_M000636_source">show source</a> ]</p>
+  <div id="M000636_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/basex.rb, line 13</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encode</span>(<span class="ruby-identifier">byte_string</span>)
+    <span class="ruby-identifier">convert_base</span>(<span class="ruby-identifier">byte_string</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">&quot;C*&quot;</span>), <span class="ruby-value">256</span>, <span class="ruby-ivar">@base</span>).<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@chars</span>[<span class="ruby-identifier">d</span>]
+    }.<span class="ruby-identifier">join</span>(<span class="ruby-value str">''</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

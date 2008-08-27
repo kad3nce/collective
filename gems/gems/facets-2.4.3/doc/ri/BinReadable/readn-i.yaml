@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: read exactly n characters, otherwise raise an exception.
+full_name: BinReadable#readn
+is_singleton: false
+name: readn
+params: (n)
+visibility: public

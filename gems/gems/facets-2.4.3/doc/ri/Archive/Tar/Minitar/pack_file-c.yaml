@@ -1,0 +1,75 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: ":file_start, name, stats if block_given?"
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "A convenience method to packs the file provided. <tt>entry</tt> may either be a filename (in which case various values for the file (see below) will be obtained from <tt>File#stat(entry)</tt> or a Hash with the fields:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:name</tt>:"
+    body: The filename to be packed into the tarchive. <b>REQUIRED</b>.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:mode</tt>:"
+    body: The mode to be applied.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:uid</tt>:"
+    body: The user owner of the file. (Ignored on Windows.)
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:gid</tt>:"
+    body: The group owner of the file. (Ignored on Windows.)
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:mtime</tt>:"
+    body: The modification Time of the file.
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: "During packing, if a block is provided, #pack_file yields an <tt>action</tt> Symol, the full name of the file being packed, and a Hash of statistical information, just as with Archive::Tar::Minitar::Input#extract_entry."
+- !ruby/struct:SM::Flow::P 
+  body: "The <tt>action</tt> will be one of:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:dir</tt>:"
+    body: The <tt>entry</tt> is a directory.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:file_start</tt>:"
+    body: The <tt>entry</tt> is a file; the extract of the file is just beginning.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:file_progress</tt>:"
+    body: Yielded every 4096 bytes during the extract of the <tt>entry</tt>.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:file_done</tt>:"
+    body: Yielded when the <tt>entry</tt> is completed.
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: "The <tt>stats</tt> hash contains the following keys:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:current</tt>:"
+    body: The current total number of bytes read in the <tt>entry</tt>.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:currinc</tt>:"
+    body: The current number of bytes read in this read cycle.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:name</tt>:"
+    body: The filename to be packed into the tarchive. <b>REQUIRED</b>.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:mode</tt>:"
+    body: The mode to be applied.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:uid</tt>:"
+    body: The user owner of the file. (<tt>nil</tt> on Windows.)
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:gid</tt>:"
+    body: The group owner of the file. (<tt>nil</tt> on Windows.)
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:mtime</tt>:"
+    body: The modification Time of the file.
+  type: :NOTE
+full_name: Archive::Tar::Minitar::pack_file
+is_singleton: true
+name: pack_file
+params: (entry, outputter) {|:file_start, name, stats if block_given?| ...}
+visibility: public

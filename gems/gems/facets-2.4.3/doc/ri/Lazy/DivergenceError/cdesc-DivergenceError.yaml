@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Raised when a demanded computation diverges (e.g. if it tries to directly use its own result)
+constants: []
+
+full_name: Lazy::DivergenceError
+includes: []
+
+instance_methods: []
+
+name: DivergenceError
+superclass: Exception

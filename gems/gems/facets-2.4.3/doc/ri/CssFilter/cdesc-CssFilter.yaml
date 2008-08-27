@@ -1,0 +1,98 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: url hosts which will be allowed.
+  name: allowed_hosts
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: url schemes which will be allowed (http, ftp, mailto)
+  name: allowed_scheme
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: urls which will be allowed. (NOT YET USED)
+  name: allowed_urls
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Complete parse and rewrite of CSS document. This does a complete &quot;cleaning&quot; but note that is not yet a perfect parser.
+  name: rewrite
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: remove blank lines.
+  name: strip_blanklines
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: should we remove comments? (true, false)
+  name: strip_comments
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: should we remove urls? (true, false)
+  name: strip_urls
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: remove blank lines.
+  name: strip_whitespace
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: substitue urls (NOT YET USED)
+  name: substitute_urls
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: CSS Filter
+- !ruby/struct:SM::Flow::P 
+  body: The CssFilter class will clean up a cascading style sheet. It can be used to remove whitespace and most importantly remove urls.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: CssFilter option defaults.
+  name: DEFAULT
+  value: "{     'strip_comments' => true,     'strip_urls' => true,     'allowed_urls' => [],     'allowed_hosts' => [],     'allowed_scheme' => [],     'strip_whitespace' => false,     'strip_blanklines' => true,     'rewrite' => false,     'substitute_urls' => {}"
+full_name: CssFilter
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: accept_host
+- !ruby/object:RI::MethodSummary 
+  name: clean_properties
+- !ruby/object:RI::MethodSummary 
+  name: clean_value
+- !ruby/object:RI::MethodSummary 
+  name: filter
+- !ruby/object:RI::MethodSummary 
+  name: parse
+- !ruby/object:RI::MethodSummary 
+  name: remove_blanklines
+- !ruby/object:RI::MethodSummary 
+  name: remove_comments
+- !ruby/object:RI::MethodSummary 
+  name: remove_nullvalues
+- !ruby/object:RI::MethodSummary 
+  name: remove_urls
+- !ruby/object:RI::MethodSummary 
+  name: remove_whitespace
+name: CssFilter
+superclass: Object

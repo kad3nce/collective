@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: clip
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns self if above the given lower bound, or within the given lower and upper bounds, otherwise returns the the bound of which the value falls outside.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  4.clip(3)    #=&gt; 4\n  4.clip(5)    #=&gt; 5\n  4.clip(2,7)  #=&gt; 4\n  9.clip(2,7)  #=&gt; 7\n  1.clip(2,7)  #=&gt; 2\n\n  CREDIT Trans\n"
+full_name: Comparable#bound
+is_singleton: false
+name: bound
+params: (lower, upper=nil)
+visibility: public

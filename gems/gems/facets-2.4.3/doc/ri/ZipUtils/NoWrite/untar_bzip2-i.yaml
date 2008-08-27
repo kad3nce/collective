@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ZipUtils::NoWrite#untar_bzip2
+is_singleton: false
+name: untar_bzip2
+params: (file, options={})
+visibility: public

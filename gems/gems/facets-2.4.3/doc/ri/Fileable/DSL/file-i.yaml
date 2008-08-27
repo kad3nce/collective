@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Find file. The <tt>path</tt> has to be either the exact path or the directory where a standard-named file resides.
+full_name: Fileable::DSL#file
+is_singleton: false
+name: file
+params: (path=nil)
+visibility: public

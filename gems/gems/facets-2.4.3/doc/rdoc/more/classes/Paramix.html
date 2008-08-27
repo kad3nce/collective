@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Paramix</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Paramix</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/paramix_rb.html">lib/more/facets/paramix.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1>Parametric Mixin</h1>
+<p>
+Parametric Mixins provides parameters for mixin modules. <a
+href="Module.html">Module</a> parameters can be set at the time of
+inclusion or extension using <a href="Module.html">Module</a>#[] method,
+then parameters can be accessed via the mixin_parameters method.
+</p>
+<pre>
+  module MyMixin
+    include Paramix
+
+    def hello
+      puts &quot;Hello from #{mixin_parameters[MyMixin][:name]}!&quot;
+    end
+  end
+
+  class MyClass
+    include Mixin[:name =&gt; 'Ruby']
+  end
+
+  m = MyClass.new
+  m.hello -&gt; 'Hello from Ruby!'
+</pre>
+<p>
+You can view the full set of parameters via the mixin_parameters class
+method, which returns a hash keyed on the included modules.
+</p>
+<pre>
+  MyClass.mixin_parameters         #=&gt; {MyMixin=&gt;{:name=&gt;'Ruby'}}
+  MyClass.mixin_parameters[MyMixin]  #=&gt; {:name=&gt;'ruby'}
+</pre>
+<p>
+The include Praamix is equivalent to:
+</p>
+<pre>
+  def [](parameters)
+    Paramix.new(self, parameters)
+  end
+</pre>
+<p>
+<a href="Paramix.html#M000874">Paramix.new</a> can also take a block that
+injects code into the class or module including the parametric mixin. This
+is useful as an alternative to using the included callback for creating
+dynamic mixins.. For example:
+</p>
+<pre>
+  def self.[](parameters)
+    Paramix.new(self, parameters) do
+      attr_accessor mixin_params[MyMixin][:name]
+    end
+  end
+</pre>
+<p>
+As opposed to:
+</p>
+<pre>
+  module Mixin
+    def self.included(base)
+      base.class_eval do
+        attr_accessor mixin_params[MyMixin][:name]
+      end
+    end
+  end
+</pre>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000873">append_features</a></li>
+  <li><a href="#M000874">new</a></li>
+  </ul>
+
+
+
+  <div class="sectiontitle">Classes and Modules</div>
+  Class <a href="Paramix/Delegator.html" class="link">Paramix::Delegator</a><br />
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000873"></a><b>append_features</b>(base)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000873_source')" id="l_M000873_source">show source</a> ]</p>
+  <div id="M000873_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/paramix.rb, line 107</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">append_features</span>(<span class="ruby-identifier">base</span>)
+    (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">base</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>).<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">:[]</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">parameters</span><span class="ruby-operator">|</span>  <span class="ruby-comment cmt"># TODO until 1.9 no &amp;block</span>
+        <span class="ruby-constant">Delegator</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">base</span>, <span class="ruby-identifier">parameters</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000874"></a><b>new</b>(delegate_module, parameters={}, &amp;base_block)
+  </div>
+  <div class="description">
+  <p>
+<a href="It.html">It</a> you want to define the module&#8216;s ::[] method
+by hand. You can use <a href="Paramix.html#M000874">Paramix.new</a> instead
+of <a href="Paramix/Delegator.html#M000875">Paramix::Delegator.new</a>.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000874_source')" id="l_M000874_source">show source</a> ]</p>
+  <div id="M000874_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/paramix.rb, line 118</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">delegate_module</span>, <span class="ruby-identifier">parameters</span>={}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">base_block</span>)
+    <span class="ruby-constant">Delegator</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">delegate_module</span>, <span class="ruby-identifier">parameters</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">base_block</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

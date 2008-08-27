@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Create a class name from a plural table name like Rails does for table names to models. Note that this returns a string and not a Class. (To convert to an actual class follow classify with constantize.)
+- !ruby/struct:SM::Flow::P 
+  body: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &quot;egg_and_hams&quot;.classify #=&gt; &quot;EggAndHam&quot;\n  &quot;posts&quot;.classify #=&gt; &quot;Post&quot;\n"
+- !ruby/struct:SM::Flow::P 
+  body: Singular names are not handled correctly
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &quot;business&quot;.classify #=&gt; &quot;Busines&quot;\n"
+full_name: String::Style::classify
+is_singleton: true
+name: classify
+params: (table_name)
+visibility: public

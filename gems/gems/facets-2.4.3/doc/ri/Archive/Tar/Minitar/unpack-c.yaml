@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A convenience method to unpack files from <tt>src</tt> into the directory specified by <tt>dest</tt>. Only those files named explicitly in <tt>files</tt> will be extracted.
+full_name: Archive::Tar::Minitar::unpack
+is_singleton: true
+name: unpack
+params: (src, dest, files = [], &block)
+visibility: public

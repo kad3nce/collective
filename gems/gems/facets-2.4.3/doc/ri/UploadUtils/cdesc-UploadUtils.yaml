@@ -1,0 +1,47 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: UploadUtils
+- !ruby/struct:SM::Flow::P 
+  body: "Upload files to host. These means of uploading are current supported: ftp, sftp, scp and rsync."
+- !ruby/struct:SM::Flow::VERB 
+  body: "    user       Username for host.\n    host       Host server's domain name.\n    root       Document root path on host.\n    copy       Directory of files to publish, or\n               Files to publish using from and to.\n\n    dryrun     If true only pretend to upload.\n    quiet      Supress all output.\n    verbose    Provide extra details.\n"
+- !ruby/struct:SM::Flow::P 
+  body: The copy parameter allows you to simply specify a file or directory which will be published to host's document root location.
+- !ruby/struct:SM::Flow::P 
+  body: "If you need more control over which files to publish where, you can use the copy parameter instead. Provide an array of pattern strings in the form of &quot;{from} {to}&quot;. If the desitination is the host's document root you do not need to specify the {to} part. For example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "    copy = [ 'web/*', 'doc/api/* doc/api' ]\n"
+- !ruby/struct:SM::Flow::P 
+  body: The first copies the files under your project's web directory to the host's document root. The second copies your projects doc/api files to the doc/api location on the host.
+- !ruby/struct:SM::Flow::P 
+  body: The internal template used for the outbound destination is 'username@host:root/'.
+constants: []
+
+full_name: UploadUtils
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: files
+- !ruby/object:RI::MethodSummary 
+  name: ftp
+- !ruby/object:RI::MethodSummary 
+  name: rsync
+- !ruby/object:RI::MethodSummary 
+  name: sftp
+- !ruby/object:RI::MethodSummary 
+  name: stage_linkdir
+- !ruby/object:RI::MethodSummary 
+  name: stage_transfer
+- !ruby/object:RI::MethodSummary 
+  name: upload
+- !ruby/object:RI::MethodSummary 
+  name: upload_parameters
+name: UploadUtils
+superclass: 

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns onlt the first portion of the directory of a file path name.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  File.rootname('lib/jump.rb')  #=&gt; 'lib'\n  File.rootname('/jump.rb')     #=&gt; '/'\n  File.rootname('jump.rb')      #=&gt; '.'\n\n  CREDIT: Trans\n"
+full_name: File::rootname
+is_singleton: true
+name: rootname
+params: (path)
+visibility: public

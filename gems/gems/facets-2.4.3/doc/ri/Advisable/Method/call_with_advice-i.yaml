@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Call with advice.
+full_name: Advisable::Method#call_with_advice
+is_singleton: false
+name: call_with_advice
+params: (obj, *args, &blk)
+visibility: public

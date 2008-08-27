@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BiCrypt#encrypt_pair
+is_singleton: false
+name: encrypt_pair
+params: (xl, xr)
+visibility: public

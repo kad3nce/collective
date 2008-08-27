@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The exception raised when a filename exceeds 256 bytes in length, the maximum supported by the standard Tar format.
+constants: []
+
+full_name: Archive::Tar::Minitar::FileNameTooLong
+includes: []
+
+instance_methods: []
+
+name: FileNameTooLong
+superclass: StandardError

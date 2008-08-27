@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: When using stage options this will create temporary linked location.
+full_name: UploadUtils#stage_linkdir
+is_singleton: false
+name: stage_linkdir
+params: ( dir, list )
+visibility: public

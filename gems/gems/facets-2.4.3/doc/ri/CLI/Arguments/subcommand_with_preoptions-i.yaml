@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: CLI::Arguments#subcommand_with_preoptions
+is_singleton: false
+name: subcommand_with_preoptions
+params: ()
+visibility: public

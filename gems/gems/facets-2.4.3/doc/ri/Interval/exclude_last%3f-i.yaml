@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: exclude_end?
+block_params: 
+comment: 
+full_name: Interval#exclude_last?
+is_singleton: false
+name: exclude_last?
+params: ()
+visibility: public

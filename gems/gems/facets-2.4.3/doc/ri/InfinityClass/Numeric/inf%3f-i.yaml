@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #infinite?"
+full_name: InfinityClass::Numeric#inf?
+is_singleton: false
+name: inf?
+params: ()
+visibility: public

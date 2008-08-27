@@ -1,0 +1,38 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: append
+- !ruby/object:RI::MethodSummary 
+  name: create
+- !ruby/object:RI::MethodSummary 
+  name: "null"
+- !ruby/object:RI::MethodSummary 
+  name: read_binary
+- !ruby/object:RI::MethodSummary 
+  name: read_list
+- !ruby/object:RI::MethodSummary 
+  name: rewrite
+- !ruby/object:RI::MethodSummary 
+  name: rewrite!
+- !ruby/object:RI::MethodSummary 
+  name: rootname
+- !ruby/object:RI::MethodSummary 
+  name: sanitize
+- !ruby/object:RI::MethodSummary 
+  name: write
+- !ruby/object:RI::MethodSummary 
+  name: writelines
+- !ruby/object:RI::MethodSummary 
+  name: yaml?
+comment: 
+constants: []
+
+full_name: File
+includes: []
+
+instance_methods: []
+
+name: File
+superclass: Object

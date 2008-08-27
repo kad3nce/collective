@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Replace the top element with the given one, and return this top element.
+- !ruby/struct:SM::Flow::P 
+  body: "Equivalent to successively calling #pop and #push(v)."
+full_name: PQueue#replace_top
+is_singleton: false
+name: replace_top
+params: (v)
+visibility: public

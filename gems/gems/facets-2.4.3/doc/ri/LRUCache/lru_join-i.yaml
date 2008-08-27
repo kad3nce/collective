@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Join two items in the lru list. Return y to allow for chaining.
+full_name: LRUCache#lru_join
+is_singleton: false
+name: lru_join
+params: (x, y)
+visibility: private

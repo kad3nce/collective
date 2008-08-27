@@ -1,0 +1,35 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Advisable
+- !ruby/struct:SM::Flow::P 
+  body: Advisable provides a means of using before, after and around adivce.
+constants: []
+
+full_name: Advisable
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: advice_after
+- !ruby/object:RI::MethodSummary 
+  name: advice_around
+- !ruby/object:RI::MethodSummary 
+  name: advice_before
+- !ruby/object:RI::MethodSummary 
+  name: advise
+- !ruby/object:RI::MethodSummary 
+  name: after
+- !ruby/object:RI::MethodSummary 
+  name: around
+- !ruby/object:RI::MethodSummary 
+  name: before
+- !ruby/object:RI::MethodSummary 
+  name: method_added
+name: Advisable
+superclass: 

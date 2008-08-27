@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Loads <em>file</em> into the capsule. Searches relative to the local dir, that is, the dir of the file given in the original call to <tt>Capsule.load(file)</tt>, loads the file, if found, into this Capsule's scope, and returns true. If the file is not found, falls back to <tt>Kernel.load</tt>, which searches on <tt>$LOAD_PATH</tt>, loads the file, if found, into global scope, and returns true. Otherwise, raises <tt>LoadError</tt>.
+- !ruby/struct:SM::Flow::P 
+  body: The <em>wrap</em> argument is passed to <tt>Kernel.load</tt> in the fallback case, when the file is not found locally.
+- !ruby/struct:SM::Flow::P 
+  body: Typically called from within the main file to load additional sub files, or from those sub files.
+full_name: Capsule#load
+is_singleton: false
+name: load
+params: (file, wrap = false)
+visibility: public

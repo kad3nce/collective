@@ -1,0 +1,31 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: []
+
+constants: []
+
+full_name: Fileable::DSL
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: file
+- !ruby/object:RI::MethodSummary 
+  name: filename
+- !ruby/object:RI::MethodSummary 
+  name: included
+- !ruby/object:RI::MethodSummary 
+  name: load
+- !ruby/object:RI::MethodSummary 
+  name: load_cache
+- !ruby/object:RI::MethodSummary 
+  name: locate
+- !ruby/object:RI::MethodSummary 
+  name: lookup
+- !ruby/object:RI::MethodSummary 
+  name: open
+name: DSL
+superclass: 

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Show a modules nesting in module namespaces.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  A::B::C.nesting  #=&gt; [ A, A::B ]\n\n CREDIT: Trans\n"
+full_name: Module#nesting
+is_singleton: false
+name: nesting
+params: ()
+visibility: public

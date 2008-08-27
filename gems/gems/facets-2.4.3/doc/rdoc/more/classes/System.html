@@ -1,0 +1,1119 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: System</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />System</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/rbsystem_rb.html">lib/more/facets/rbsystem.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="System.html">System</a></h1>
+<p>
+The <a href="System.html">System</a> module provides <a
+href="Platform.html">Platform</a> and Ruby system information. The module
+should also be able to stand in for rbconfig. <a href="It.html">It</a> is
+intended for use as a service module although it can be mixed-in too.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000818">argf</a></li>
+  <li><a href="#M000792">argv</a></li>
+  <li><a href="#M000796">child_status</a></li>
+  <li><a href="#M000804">coding</a></li>
+  <li><a href="#M000805">coding=</a></li>
+  <li><a href="#M000851">current_platform</a></li>
+  <li><a href="#M000841">data</a></li>
+  <li><a href="#M000800">debug</a></li>
+  <li><a href="#M000816">default_input</a></li>
+  <li><a href="#M000819">default_output</a></li>
+  <li><a href="#M000820">default_output=</a></li>
+  <li><a href="#M000817">defin</a></li>
+  <li><a href="#M000821">defout</a></li>
+  <li><a href="#M000822">defout=</a></li>
+  <li><a href="#M000809">env</a></li>
+  <li><a href="#M000808">environment</a></li>
+  <li><a href="#M000798">error_info</a></li>
+  <li><a href="#M000799">error_position</a></li>
+  <li><a href="#M000797">exit_status</a></li>
+  <li><a href="#M000846">extentions</a></li>
+  <li><a href="#M000837">fs</a></li>
+  <li><a href="#M000838">fs=</a></li>
+  <li><a href="#M000835">input_field_separator</a></li>
+  <li><a href="#M000836">input_field_separator=</a></li>
+  <li><a href="#M000839">input_line_number</a></li>
+  <li><a href="#M000840">input_lineno</a></li>
+  <li><a href="#M000831">input_record_separator</a></li>
+  <li><a href="#M000832">input_record_separator=</a></li>
+  <li><a href="#M000806">line_end_processing</a></li>
+  <li><a href="#M000848">load_path</a></li>
+  <li><a href="#M000849">loaded_features</a></li>
+  <li><a href="#M000852">match_platform</a></li>
+  <li><a href="#M000829">ofs</a></li>
+  <li><a href="#M000830">ofs=</a></li>
+  <li><a href="#M000793">options</a></li>
+  <li><a href="#M000825">ors</a></li>
+  <li><a href="#M000826">ors=</a></li>
+  <li><a href="#M000827">output_field_separator</a></li>
+  <li><a href="#M000828">output_field_separator=</a></li>
+  <li><a href="#M000823">output_record_separator</a></li>
+  <li><a href="#M000824">output_record_separator=</a></li>
+  <li><a href="#M000795">pid</a></li>
+  <li><a href="#M000843">platform</a></li>
+  <li><a href="#M000794">process_id</a></li>
+  <li><a href="#M000807">program_loop</a></li>
+  <li><a href="#M000790">program_name</a></li>
+  <li><a href="#M000791">program_name=</a></li>
+  <li><a href="#M000845">release</a></li>
+  <li><a href="#M000850">required</a></li>
+  <li><a href="#M000833">rs</a></li>
+  <li><a href="#M000834">rs=</a></li>
+  <li><a href="#M000847">rubylibdir</a></li>
+  <li><a href="#M000842">rubypath</a></li>
+  <li><a href="#M000801">safe</a></li>
+  <li><a href="#M000814">stderr</a></li>
+  <li><a href="#M000815">stderr=</a></li>
+  <li><a href="#M000810">stdin</a></li>
+  <li><a href="#M000811">stdin=</a></li>
+  <li><a href="#M000812">stdout</a></li>
+  <li><a href="#M000813">stdout=</a></li>
+  <li><a href="#M000802">verbose</a></li>
+  <li><a href="#M000803">verbose=</a></li>
+  <li><a href="#M000844">version</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000818"></a><b>argf</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000816">default_input</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000792"></a><b>argv</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000793">options</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000792_source')" id="l_M000792_source">show source</a> ]</p>
+  <div id="M000792_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 55</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">argv</span>; <span class="ruby-identifier">$*</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000796"></a><b>child_status</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000797">exit_status</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000796_source')" id="l_M000796_source">show source</a> ]</p>
+  <div id="M000796_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 66</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">child_status</span>; <span class="ruby-identifier">$?</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000804"></a><b>coding</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000804_source')" id="l_M000804_source">show source</a> ]</p>
+  <div id="M000804_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 79</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">coding</span>; <span class="ruby-identifier">$-K</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000805"></a><b>coding=</b>(x)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000805_source')" id="l_M000805_source">show source</a> ]</p>
+  <div id="M000805_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 80</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">coding=</span>(<span class="ruby-identifier">x</span>); <span class="ruby-identifier">$-K</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000851"></a><b>current_platform</b>()
+  </div>
+  <div class="description">
+  <p>
+<a href="System.html#M000843">platform</a>
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000851_source')" id="l_M000851_source">show source</a> ]</p>
+  <div id="M000851_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 188</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">current_platform</span>
+    <span class="ruby-identifier">arch</span> = <span class="ruby-constant">Config</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-value str">'arch'</span>]
+    <span class="ruby-comment cmt">#cpu, os = arch.split '-', 2</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">match_platform</span>(<span class="ruby-identifier">arch</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000841"></a><b>data</b>()
+  </div>
+  <div class="description">
+  <p>
+Miscellaneous
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000841_source')" id="l_M000841_source">show source</a> ]</p>
+  <div id="M000841_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 134</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">data</span>; <span class="ruby-constant">DATA</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000800"></a><b>debug</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000800_source')" id="l_M000800_source">show source</a> ]</p>
+  <div id="M000800_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 72</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">debug</span>; <span class="ruby-identifier">$DEBUG</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000816"></a><b>default_input</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000817">defin</a>
+  <a href="System.html#M000818">argf</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000816_source')" id="l_M000816_source">show source</a> ]</p>
+  <div id="M000816_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 100</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_input</span> ; <span class="ruby-identifier">$&lt;</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000819"></a><b>default_output</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000821">defout</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000819_source')" id="l_M000819_source">show source</a> ]</p>
+  <div id="M000819_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 104</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_output</span> ; <span class="ruby-identifier">$&gt;</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000820"></a><b>default_output=</b>(x)
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000822">defout=</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000820_source')" id="l_M000820_source">show source</a> ]</p>
+  <div id="M000820_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 105</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">default_output=</span>(<span class="ruby-identifier">x</span>); <span class="ruby-identifier">$defout</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000817"></a><b>defin</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000816">default_input</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000821"></a><b>defout</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000819">default_output</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000822"></a><b>defout=</b>(x)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000819">default_output</a>=
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000809"></a><b>env</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000809_source')" id="l_M000809_source">show source</a> ]</p>
+  <div id="M000809_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 87</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">env</span>; <span class="ruby-constant">ENV</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000808"></a><b>environment</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000808_source')" id="l_M000808_source">show source</a> ]</p>
+  <div id="M000808_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 86</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">environment</span>; <span class="ruby-constant">ENV</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000798"></a><b>error_info</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000798_source')" id="l_M000798_source">show source</a> ]</p>
+  <div id="M000798_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 69</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error_info</span>; <span class="ruby-identifier">$!</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000799"></a><b>error_position</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000799_source')" id="l_M000799_source">show source</a> ]</p>
+  <div id="M000799_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 70</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">error_position</span>; <span class="ruby-identifier">$@</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000797"></a><b>exit_status</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000796">child_status</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000846"></a><b>extentions</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000846_source')" id="l_M000846_source">show source</a> ]</p>
+  <div id="M000846_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 160</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">extentions</span>
+    [ <span class="ruby-value str">'rb'</span>, <span class="ruby-constant">DLEXT</span> ]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000837"></a><b>fs</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000835">input_field_separator</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000838"></a><b>fs=</b>(x)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000835">input_field_separator</a>=
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000835"></a><b>input_field_separator</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000837">fs</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000835_source')" id="l_M000835_source">show source</a> ]</p>
+  <div id="M000835_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 124</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">input_field_separator</span> ; <span class="ruby-identifier">$/</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000836"></a><b>input_field_separator=</b>(x)
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000838">fs=</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000836_source')" id="l_M000836_source">show source</a> ]</p>
+  <div id="M000836_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 125</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">input_field_separator=</span>(<span class="ruby-identifier">x</span>) ; <span class="ruby-identifier">$/</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000839"></a><b>input_line_number</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000840">input_lineno</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000839_source')" id="l_M000839_source">show source</a> ]</p>
+  <div id="M000839_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 129</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">input_line_number</span> ; <span class="ruby-identifier">$.</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000840"></a><b>input_lineno</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000839">input_line_number</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000831"></a><b>input_record_separator</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000833">rs</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000831_source')" id="l_M000831_source">show source</a> ]</p>
+  <div id="M000831_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 119</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">input_record_separator</span> ; <span class="ruby-identifier">$/</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000832"></a><b>input_record_separator=</b>(x)
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000834">rs=</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000832_source')" id="l_M000832_source">show source</a> ]</p>
+  <div id="M000832_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 120</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">input_record_separator=</span>(<span class="ruby-identifier">x</span>) ; <span class="ruby-identifier">$/</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000806"></a><b>line_end_processing</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000806_source')" id="l_M000806_source">show source</a> ]</p>
+  <div id="M000806_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 82</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">line_end_processing</span>; <span class="ruby-identifier">$-l</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000848"></a><b>load_path</b>()
+  </div>
+  <div class="description">
+  <p>
+load path
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000848_source')" id="l_M000848_source">show source</a> ]</p>
+  <div id="M000848_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 181</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_path</span>; <span class="ruby-identifier">$:</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000849"></a><b>loaded_features</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000850">required</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000849_source')" id="l_M000849_source">show source</a> ]</p>
+  <div id="M000849_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 183</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">loaded_features</span>; <span class="ruby-identifier">$&quot;</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000852"></a><b>match_platform</b>(arch)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000852_source')" id="l_M000852_source">show source</a> ]</p>
+  <div id="M000852_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 196</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">match_platform</span>(<span class="ruby-identifier">arch</span>)
+    <span class="ruby-identifier">cpu</span>, <span class="ruby-identifier">os</span> = <span class="ruby-identifier">arch</span>.<span class="ruby-identifier">split</span> <span class="ruby-value str">'-'</span>, <span class="ruby-value">2</span>
+    <span class="ruby-identifier">cpu</span>, <span class="ruby-identifier">os</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">cpu</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">os</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-comment cmt"># java</span>
+
+    <span class="ruby-identifier">cpu</span> = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">cpu</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/i\d86/</span> <span class="ruby-keyword kw">then</span> <span class="ruby-value str">'x86'</span>
+          <span class="ruby-keyword kw">else</span> <span class="ruby-identifier">cpu</span>
+          <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">os</span>  = <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">os</span>
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/cygwin/</span> <span class="ruby-keyword kw">then</span>            [ <span class="ruby-value str">'cygwin'</span>,  <span class="ruby-keyword kw">nil</span> ]
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/darwin(\d+)?/</span> <span class="ruby-keyword kw">then</span>      [ <span class="ruby-value str">'darwin'</span>,  <span class="ruby-identifier">$1</span>  ]
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/freebsd(\d+)/</span> <span class="ruby-keyword kw">then</span>      [ <span class="ruby-value str">'freebsd'</span>, <span class="ruby-identifier">$1</span>  ]
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/^java$/</span> <span class="ruby-keyword kw">then</span>            [ <span class="ruby-value str">'java'</span>,    <span class="ruby-keyword kw">nil</span> ]
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/^java([\d.]*)/</span> <span class="ruby-keyword kw">then</span>     [ <span class="ruby-value str">'java'</span>,    <span class="ruby-identifier">$1</span>  ]
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/linux/</span> <span class="ruby-keyword kw">then</span>             [ <span class="ruby-value str">'linux'</span>,   <span class="ruby-identifier">$1</span>  ]
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/mingw32/</span> <span class="ruby-keyword kw">then</span>           [ <span class="ruby-value str">'mingw32'</span>, <span class="ruby-keyword kw">nil</span> ]
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/mswin32/</span> <span class="ruby-keyword kw">then</span>           [ <span class="ruby-value str">'mswin32'</span>, <span class="ruby-keyword kw">nil</span> ]
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/openbsd(\d+\.\d+)/</span> <span class="ruby-keyword kw">then</span> [ <span class="ruby-value str">'openbsd'</span>, <span class="ruby-identifier">$1</span>  ]
+          <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/solaris(\d+\.\d+)/</span> <span class="ruby-keyword kw">then</span> [ <span class="ruby-value str">'solaris'</span>, <span class="ruby-identifier">$1</span>  ]
+          <span class="ruby-keyword kw">else</span>                          [ <span class="ruby-value str">'unknown'</span>, <span class="ruby-keyword kw">nil</span> ]
+          <span class="ruby-keyword kw">end</span>
+
+    [<span class="ruby-identifier">cpu</span>, <span class="ruby-identifier">os</span>].<span class="ruby-identifier">flatten</span>.<span class="ruby-identifier">compact</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;-&quot;</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000829"></a><b>ofs</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000827">output_field_separator</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000830"></a><b>ofs=</b>(x)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000827">output_field_separator</a>=
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000793"></a><b>options</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000792">argv</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000825"></a><b>ors</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000823">output_record_separator</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000826"></a><b>ors=</b>(x)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000823">output_record_separator</a>=
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000827"></a><b>output_field_separator</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000829">ofs</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000827_source')" id="l_M000827_source">show source</a> ]</p>
+  <div id="M000827_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 114</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">output_field_separator</span> ; <span class="ruby-identifier">$-F</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000828"></a><b>output_field_separator=</b>(x)
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000830">ofs=</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000828_source')" id="l_M000828_source">show source</a> ]</p>
+  <div id="M000828_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 115</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">output_field_separator=</span>(<span class="ruby-identifier">x</span>) ; <span class="ruby-identifier">$-F</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000823"></a><b>output_record_separator</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000825">ors</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000823_source')" id="l_M000823_source">show source</a> ]</p>
+  <div id="M000823_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 109</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">output_record_separator</span> ; <span class="ruby-identifier">$\</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000824"></a><b>output_record_separator=</b>(x)
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000826">ors=</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000824_source')" id="l_M000824_source">show source</a> ]</p>
+  <div id="M000824_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 110</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">output_record_separator=</span>(<span class="ruby-identifier">x</span>) ; <span class="ruby-identifier">$\</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000795"></a><b>pid</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000794">process_id</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000843"></a><b>platform</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000843_source')" id="l_M000843_source">show source</a> ]</p>
+  <div id="M000843_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 148</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">platform</span>
+    <span class="ruby-constant">RUBY_PLATFORM</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000794"></a><b>process_id</b>()
+  </div>
+  <div class="description">
+  <pre>
+ these won't work here
+</pre>
+<p>
+def file; <em>FILE</em> ; end def filepath; File.expand_path(<em>FILE</em>)
+; end def lineno; <em>LINE</em> ; end
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="System.html#M000795">pid</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000794_source')" id="l_M000794_source">show source</a> ]</p>
+  <div id="M000794_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 63</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process_id</span>; <span class="ruby-identifier">$$</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000807"></a><b>program_loop</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000807_source')" id="l_M000807_source">show source</a> ]</p>
+  <div id="M000807_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 84</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">program_loop</span>; <span class="ruby-identifier">$-p</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000790"></a><b>program_name</b>()
+  </div>
+  <div class="description">
+  <p>
+Execution Environment
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000790_source')" id="l_M000790_source">show source</a> ]</p>
+  <div id="M000790_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 52</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">program_name</span>; <span class="ruby-identifier">$0</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000791"></a><b>program_name=</b>(x)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000791_source')" id="l_M000791_source">show source</a> ]</p>
+  <div id="M000791_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 53</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">program_name=</span>(<span class="ruby-identifier">x</span>); <span class="ruby-identifier">$0</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000845"></a><b>release</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000845_source')" id="l_M000845_source">show source</a> ]</p>
+  <div id="M000845_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 156</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">release</span>
+    <span class="ruby-constant">RUBY_RELEASE_DATE</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000850"></a><b>required</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000849">loaded_features</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000833"></a><b>rs</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000831">input_record_separator</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000834"></a><b>rs=</b>(x)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="System.html#M000831">input_record_separator</a>=
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000847"></a><b>rubylibdir</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000847_source')" id="l_M000847_source">show source</a> ]</p>
+  <div id="M000847_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 164</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rubylibdir</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>( <span class="ruby-identifier">libdir</span>, <span class="ruby-value str">'ruby'</span>  )
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000842"></a><b>rubypath</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000842_source')" id="l_M000842_source">show source</a> ]</p>
+  <div id="M000842_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 144</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rubypath</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>( <span class="ruby-identifier">bindir</span>, <span class="ruby-identifier">ruby_install_name</span> )
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000801"></a><b>safe</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000801_source')" id="l_M000801_source">show source</a> ]</p>
+  <div id="M000801_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 74</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">safe</span>; <span class="ruby-identifier">$SAFE</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000814"></a><b>stderr</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000814_source')" id="l_M000814_source">show source</a> ]</p>
+  <div id="M000814_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 97</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stderr</span> ; <span class="ruby-identifier">$stderr</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000815"></a><b>stderr=</b>(x)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000815_source')" id="l_M000815_source">show source</a> ]</p>
+  <div id="M000815_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 98</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stderr=</span>(<span class="ruby-identifier">x</span>); <span class="ruby-identifier">$stderr</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000810"></a><b>stdin</b>()
+  </div>
+  <div class="description">
+  <p>
+Input/Ouput Variables
+&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000810_source')" id="l_M000810_source">show source</a> ]</p>
+  <div id="M000810_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 91</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stdin</span>; <span class="ruby-identifier">$stdin</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000811"></a><b>stdin=</b>(x)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000811_source')" id="l_M000811_source">show source</a> ]</p>
+  <div id="M000811_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 92</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stdin=</span>(<span class="ruby-identifier">x</span>); <span class="ruby-identifier">$stdin</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000812"></a><b>stdout</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000812_source')" id="l_M000812_source">show source</a> ]</p>
+  <div id="M000812_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 94</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stdout</span> ; <span class="ruby-identifier">$stdout</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000813"></a><b>stdout=</b>(x)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000813_source')" id="l_M000813_source">show source</a> ]</p>
+  <div id="M000813_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 95</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stdout=</span>(<span class="ruby-identifier">x</span>); <span class="ruby-identifier">$stdout</span>=<span class="ruby-identifier">x</span> ; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000802"></a><b>verbose</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000802_source')" id="l_M000802_source">show source</a> ]</p>
+  <div id="M000802_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 76</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verbose</span>; <span class="ruby-identifier">$VERBOSE</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000803"></a><b>verbose=</b>(x)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000803_source')" id="l_M000803_source">show source</a> ]</p>
+  <div id="M000803_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 77</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">verbose=</span>(<span class="ruby-identifier">x</span>); <span class="ruby-identifier">$VERBOSE</span>=<span class="ruby-identifier">x</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000844"></a><b>version</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000844_source')" id="l_M000844_source">show source</a> ]</p>
+  <div id="M000844_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/rbsystem.rb, line 152</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">version</span>
+    <span class="ruby-constant">RUBY_VERSION</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

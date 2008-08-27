@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: ObjectReflection
+- !ruby/struct:SM::Flow::VERB 
+  body: "  obj.<em>object</em>.id\n  obj.<em>object</em>.class\n"
+- !ruby/struct:SM::Flow::P 
+  body: "NOTE: This is still an expirmental library."
+constants: []
+
+full_name: ObjectReflection
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: _bind_method
+- !ruby/object:RI::MethodSummary 
+  name: id
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+name: ObjectReflection
+superclass: Object

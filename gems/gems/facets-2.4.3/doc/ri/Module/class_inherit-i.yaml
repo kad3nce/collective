@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #class_methods"
+full_name: Module#class_inherit
+is_singleton: false
+name: class_inherit
+params: ( &yld )
+visibility: public

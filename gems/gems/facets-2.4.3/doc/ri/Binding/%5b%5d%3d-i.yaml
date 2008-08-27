@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set the value of a local variable.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  binding[&quot;a&quot;] = 4\n  a  #=&gt; 4\n"
+full_name: Binding#[]=
+is_singleton: false
+name: "[]="
+params: ( l, v )
+visibility: public

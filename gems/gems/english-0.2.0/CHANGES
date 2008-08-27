@@ -1,0 +1,5 @@
+== 0.2.0 // 2008-02-06
+
+* Removed Language module. All libraries (except extensions) are now in toplevel English module.
+* Incorporated a few libraries from the Text project.
+

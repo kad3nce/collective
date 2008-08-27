@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return the name of the method. Is this already in 1.9+ ?
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class X\n    def foo; end\n  end\n\n  meth = X.instance_method(:foo)\n\n  meth.name  #=&gt; &quot;foo&quot;\n\n  CREDIT: Trans\n"
+full_name: UnboundMethod#name
+is_singleton: false
+name: name
+params: ()
+visibility: public

@@ -1,0 +1,97 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Interval
+- !ruby/struct:SM::Flow::P 
+  body: While Ruby support the Range class out of the box, is does not quite fullfil the role od a real Interval class. For instance, it does not support excluding the front sentinel. This is because Range also tries to do triple duty as a simple Sequence and as a simple Tuple-Pair, thus limiting its potential as an Interval. The Interval class remedies the situation by commiting to interval behavior, and then extends the class' capabilites beyond that of the standard Range in ways that naturally fall out of that.
+- !ruby/struct:SM::Flow::P 
+  body: "Range depends on two methods: #succ and #&lt;=&gt;. If numeric ranges were the only concern, those could just as well be #+ and #&lt;=&gt;, but esoteric forms make that unfeasible --the obvious example being a String range. But a proper Interval class requires mathematical continuation, thus the Interval depends on #+ and #&lt;=&gt;, as well as #- as the inverse of #+."
+- !ruby/struct:SM::Flow::VERB 
+  body: "  i = Interval.new(1,5)\n  i.to_a       #=&gt; [1,2,3,4,5]\n\n  i = Interval[0,5]\n  i.to_a(2)    #=&gt; [0,2,4]\n\n  i = Interval[1,5]\n  i.to_a(-1)   #=&gt; [5,4,3,2,1]\n\n  i = Interval[1,3]\n  i.to_a(1,2)  #=&gt; [1.0,1.5,2.0,2.5,3.0]\n"
+constants: []
+
+full_name: Interval
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Multiton
+- !ruby/object:RI::IncludedModule 
+  name: EnumerablePass
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: +@
+- !ruby/object:RI::MethodSummary 
+  name: -@
+- !ruby/object:RI::MethodSummary 
+  name: ===
+- !ruby/object:RI::MethodSummary 
+  name: begin
+- !ruby/object:RI::MethodSummary 
+  name: closed
+- !ruby/object:RI::MethodSummary 
+  name: degenerate?
+- !ruby/object:RI::MethodSummary 
+  name: direction
+- !ruby/object:RI::MethodSummary 
+  name: distance
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: end
+- !ruby/object:RI::MethodSummary 
+  name: eql?
+- !ruby/object:RI::MethodSummary 
+  name: exclude_begin?
+- !ruby/object:RI::MethodSummary 
+  name: exclude_end?
+- !ruby/object:RI::MethodSummary 
+  name: exclude_first?
+- !ruby/object:RI::MethodSummary 
+  name: exclude_last?
+- !ruby/object:RI::MethodSummary 
+  name: first
+- !ruby/object:RI::MethodSummary 
+  name: first_closed
+- !ruby/object:RI::MethodSummary 
+  name: first_opened
+- !ruby/object:RI::MethodSummary 
+  name: half_closed
+- !ruby/object:RI::MethodSummary 
+  name: include?
+- !ruby/object:RI::MethodSummary 
+  name: last
+- !ruby/object:RI::MethodSummary 
+  name: last_closed
+- !ruby/object:RI::MethodSummary 
+  name: last_opened
+- !ruby/object:RI::MethodSummary 
+  name: length
+- !ruby/object:RI::MethodSummary 
+  name: max
+- !ruby/object:RI::MethodSummary 
+  name: member?
+- !ruby/object:RI::MethodSummary 
+  name: min
+- !ruby/object:RI::MethodSummary 
+  name: null?
+- !ruby/object:RI::MethodSummary 
+  name: opened
+- !ruby/object:RI::MethodSummary 
+  name: reversed
+- !ruby/object:RI::MethodSummary 
+  name: sentinels
+- !ruby/object:RI::MethodSummary 
+  name: size
+- !ruby/object:RI::MethodSummary 
+  name: step
+- !ruby/object:RI::MethodSummary 
+  name: "~"
+name: Interval
+superclass: Object

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: within attributes, we want to convert all hex/dec/url escape sequences into their raw characters so that we can check we don't get stray quotes/brackets inside strings.
+full_name: HtmlFilter#decode_entities
+is_singleton: false
+name: decode_entities
+params: (data)
+visibility: private

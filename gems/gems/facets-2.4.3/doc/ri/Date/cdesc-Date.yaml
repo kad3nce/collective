@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Date
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: days_in_month
+- !ruby/object:RI::MethodSummary 
+  name: days_of_month
+- !ruby/object:RI::MethodSummary 
+  name: month_name
+- !ruby/object:RI::MethodSummary 
+  name: stamp
+- !ruby/object:RI::MethodSummary 
+  name: to_date
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: to_time
+name: Date
+superclass: Object

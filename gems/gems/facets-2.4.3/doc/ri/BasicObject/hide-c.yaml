@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Undef unwanted method as long as it doesn't match anything in the EXCLUDE list.
+full_name: BasicObject::hide
+is_singleton: true
+name: hide
+params: (name)
+visibility: public

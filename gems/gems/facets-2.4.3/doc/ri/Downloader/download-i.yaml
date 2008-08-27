@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: currently can only download a single compressed file does not handle downloading an uncompressed directory tree (should it? doubt it)
+- !ruby/struct:SM::Flow::P 
+  body: currently this displays progress to STDOUT; either their should be a way to activate/deactivate or preferably use ducktype singletons (more on that later, see google://_whytheluckystiff if interested) of course I prefer chain messaging but matz said no :(
+full_name: Downloader#download
+is_singleton: false
+name: download
+params: ( url, filepath, checksum='', est_size=nil )
+visibility: public

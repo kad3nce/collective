@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Replaces underscores with dashes in the string.
+- !ruby/struct:SM::Flow::P 
+  body: Example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  dasherize(&quot;puni_puni&quot;) #=&gt; &quot;puni-puni&quot;\n"
+full_name: String::Style::dasherize
+is_singleton: true
+name: dasherize
+params: (underscored_word)
+visibility: public

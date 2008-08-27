@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: shortcut method for readn+unpack
+full_name: BinReadable#ru
+is_singleton: false
+name: ru
+params: (size, template)
+visibility: private

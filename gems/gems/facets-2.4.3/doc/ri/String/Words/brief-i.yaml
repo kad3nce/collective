@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns short abstract of long strings; not exceeding <tt>range</tt> characters. If range is an integer then the minimum is 20% of the maximum. The string is chopped at the nearest word if possible, and appended by <tt>ellipsis</tt>, which defaults to '...'.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  CREDIT: George Moschovitis\n  CREDIT: Trans\n"
+full_name: String::Words#brief
+is_singleton: false
+name: brief
+params: (range=76, ellipsis="...")
+visibility: public

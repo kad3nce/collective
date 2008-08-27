@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Promise
+- !ruby/struct:SM::Flow::P 
+  body: A handle for a promised computation. They are transparent, so that in most cases, a promise can be used as a proxy for the computation's result object. The one exception is truth testing -- a promise will always look true to Ruby, even if the actual result object is nil or false.
+- !ruby/struct:SM::Flow::P 
+  body: If you want to test the result for truth, get the unwrapped result object via Kernel.demand.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DIVERGES
+  value: diverges
+full_name: Lazy::Promise
+includes: []
+
+instance_methods: []
+
+name: Promise
+superclass: Object

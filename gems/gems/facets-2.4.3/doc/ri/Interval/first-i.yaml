@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: begin
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the first or last sentinal of the interval.
+full_name: Interval#first
+is_singleton: false
+name: first
+params: ()
+visibility: public

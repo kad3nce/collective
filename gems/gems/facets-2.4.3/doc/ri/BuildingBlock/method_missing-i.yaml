@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: BuildingBlock#method_missing
+is_singleton: false
+name: method_missing
+params: (s, *a, &b)
+visibility: public

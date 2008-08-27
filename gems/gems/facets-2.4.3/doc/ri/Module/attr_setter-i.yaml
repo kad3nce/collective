@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Create an attribute method for both getting and setting an instance variable.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  attr_setter :a\n"
+- !ruby/struct:SM::Flow::P 
+  body: _is equivalent to_
+- !ruby/struct:SM::Flow::VERB 
+  body: "  def a(*args)\n    if args.size &gt; 0\n      @a = args[0]\n      self\n    else\n      @a\n    end\n  end\n\n CREDIT: Trans\n"
+full_name: Module#attr_setter
+is_singleton: false
+name: attr_setter
+params: (*args)
+visibility: public

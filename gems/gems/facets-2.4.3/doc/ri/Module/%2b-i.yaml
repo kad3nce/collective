@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Combine modules.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  module A\n    def a; &quot;a&quot;; end\n  end\n\n  module B\n    def b; &quot;b&quot;; end\n  end\n\n  C = A + B\n\n  class X; include C; end\n\n  X.new.a    #=&gt; &quot;a&quot;\n  X.new.b    #=&gt; &quot;b&quot;\n"
+- !ruby/struct:SM::Flow::P 
+  body: Note that in the old version of traits.rb we cloned modules and altered their copies. Eg.
+- !ruby/struct:SM::Flow::VERB 
+  body: "    def +(other)\n      mod1 = other.clone\n      mod2 = clone\n      mod1.module_eval{ include mod2 }\n    end\n"
+- !ruby/struct:SM::Flow::P 
+  body: Later it was realized that this thwarted the main benefit that Ruby's concept of modules has over traditional traits, inheritance.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  CREDIT: Thomas Sawyer\n  CREDIT: Robert Dober\n"
+full_name: Module#+
+is_singleton: false
+name: +
+params: (other)
+visibility: public

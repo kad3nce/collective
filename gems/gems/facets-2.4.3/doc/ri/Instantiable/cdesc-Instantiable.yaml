@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: append_features
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Instantiable
+- !ruby/struct:SM::Flow::P 
+  body: Initialize modules, almost as if they were classes.
+- !ruby/struct:SM::Flow::P 
+  body: "Alows a module to be used much like a class, by defining a #new method that creates a class on demand."
+constants: []
+
+full_name: Instantiable
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+name: Instantiable
+superclass: 

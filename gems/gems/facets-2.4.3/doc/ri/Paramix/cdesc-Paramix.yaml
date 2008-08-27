@@ -1,0 +1,41 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: append_features
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Parametric Mixin
+- !ruby/struct:SM::Flow::P 
+  body: "Parametric Mixins provides parameters for mixin modules. Module parameters can be set at the time of inclusion or extension using Module#[] method, then parameters can be accessed via the #mixin_parameters method."
+- !ruby/struct:SM::Flow::VERB 
+  body: "  module MyMixin\n    include Paramix\n\n    def hello\n      puts &quot;Hello from #{mixin_parameters[MyMixin][:name]}!&quot;\n    end\n  end\n\n  class MyClass\n    include Mixin[:name =&gt; 'Ruby']\n  end\n\n  m = MyClass.new\n  m.hello -&gt; 'Hello from Ruby!'\n"
+- !ruby/struct:SM::Flow::P 
+  body: "You can view the full set of parameters via the #mixin_parameters class method, which returns a hash keyed on the included modules."
+- !ruby/struct:SM::Flow::VERB 
+  body: "  MyClass.mixin_parameters         #=&gt; {MyMixin=&gt;{:name=&gt;'Ruby'}}\n  MyClass.mixin_parameters[MyMixin]  #=&gt; {:name=&gt;'ruby'}\n"
+- !ruby/struct:SM::Flow::P 
+  body: "The include Praamix is equivalent to:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  def [](parameters)\n    Paramix.new(self, parameters)\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: "Paramix.new can also take a block that injects code into the class or module including the parametric mixin. This is useful as an alternative to using the #included callback for creating dynamic mixins.. For example:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  def self.[](parameters)\n    Paramix.new(self, parameters) do\n      attr_accessor mixin_params[MyMixin][:name]\n    end\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: "As opposed to:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  module Mixin\n    def self.included(base)\n      base.class_eval do\n        attr_accessor mixin_params[MyMixin][:name]\n      end\n    end\n  end\n"
+constants: []
+
+full_name: Paramix
+includes: []
+
+instance_methods: []
+
+name: Paramix
+superclass: 

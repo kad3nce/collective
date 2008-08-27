@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: method_name
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #callee"
+full_name: TracePoint#called
+is_singleton: false
+name: called
+params: ()
+visibility: public

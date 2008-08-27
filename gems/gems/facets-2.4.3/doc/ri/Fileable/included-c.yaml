@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: When included extend DSL too.
+full_name: Fileable::included
+is_singleton: true
+name: included
+params: (base)
+visibility: public

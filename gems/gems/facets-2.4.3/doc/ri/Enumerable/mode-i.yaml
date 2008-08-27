@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: In Statistics mode is the value that occurs most frequently in a given set of data.
+- !ruby/struct:SM::Flow::VERB 
+  body: " CREDIT: Trans\n"
+full_name: Enumerable#mode
+is_singleton: false
+name: mode
+params: ()
+visibility: public

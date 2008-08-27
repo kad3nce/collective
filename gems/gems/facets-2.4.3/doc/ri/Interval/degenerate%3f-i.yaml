@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns <tt>true</tt> if the start and end sentinels are equal and the interval is closed; otherwise <tt>false</tt>.
+full_name: Interval#degenerate?
+is_singleton: false
+name: degenerate?
+params: ()
+visibility: public

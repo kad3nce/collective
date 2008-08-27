@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #byte_order="
+full_name: BinReadable#byteorder=
+is_singleton: false
+name: byteorder=
+params: (new_byteorder)
+visibility: public

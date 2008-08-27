@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "For a single command (ie. a subcommand) override #call with arity=0."
+full_name: CLI::Command#call
+is_singleton: false
+name: call
+params: (cmd=nil, *args)
+visibility: public

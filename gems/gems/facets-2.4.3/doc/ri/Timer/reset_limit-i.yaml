@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Resets the time limit. Same as:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  t.stop\n  t.start\n"
+full_name: Timer#reset_limit
+is_singleton: false
+name: reset_limit
+params: ()
+visibility: public

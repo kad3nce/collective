@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Inject the Settings parameters provided as a hash (dictionary, ordered) to classes to be configured.
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: "Warning: Pass an ordered hash (dictionary)"
+full_name: Settings::setup
+is_singleton: true
+name: setup
+params: (options)
+visibility: public

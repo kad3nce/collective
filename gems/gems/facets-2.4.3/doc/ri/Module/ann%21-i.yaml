@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: To change an annotation's value in place for a given class or module it first must be duplicated, otherwise the change may effect annotations in the class or module's ancestors.
+full_name: Module#ann!
+is_singleton: false
+name: ann!
+params: ( ref, keys_or_class=nil, keys=nil )
+visibility: public

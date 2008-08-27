@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Do two ranges overlap?
+- !ruby/struct:SM::Flow::VERB 
+  body: "  CREDIT: Daniel Schierbeck\n  CREDIT: Brandon Keepers\n"
+full_name: Range#overlap?
+is_singleton: false
+name: overlap?
+params: (other)
+visibility: public

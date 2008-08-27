@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: For dispatchers, this is a convenience method for creating subcommands.
+full_name: CLI::Command::subcommand
+is_singleton: true
+name: subcommand
+params: (name, command_class, options=nil)
+visibility: public

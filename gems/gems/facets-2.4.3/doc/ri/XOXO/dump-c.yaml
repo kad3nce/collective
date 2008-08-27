@@ -1,0 +1,35 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Return a XOXO string corresponding to the Ruby object <tt>struct</tt>, translated to the following rules:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Arrays become ordered lists <tt>&lt;ol&gt;</tt>.
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Hashes become definition lists <tt>&lt;dl&gt;</tt>, keys are stringified with <tt>to_s</tt>.
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Everything else becomes stringified with <tt>to_s</tt> and wrapped in appropriate list elements (<tt>&lt;li&gt;</tt> or <tt>&lt;dt&gt;</tt>/<tt>&lt;dd&gt;</tt>).
+  type: :BULLET
+- !ruby/struct:SM::Flow::P 
+  body: "Additionally, you can pass these options on the <em>options</em> hash:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:html_wrap</tt> => +true+:"
+    body: Wrap the XOXO with a basic XHTML 1.0 Transitional header.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:css</tt> => _css_:"
+    body: Reference <em>css</em> as stylesheet for the wrapped XOXO document.
+  type: :NOTE
+full_name: XOXO::dump
+is_singleton: true
+name: dump
+params: (struct, options={})
+visibility: public

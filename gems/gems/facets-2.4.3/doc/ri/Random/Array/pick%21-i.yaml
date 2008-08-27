@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Similar to #at_rand!, but given a number will return an array of exclusive elements."
+full_name: Random::Array#pick!
+is_singleton: false
+name: pick!
+params: (n=nil)
+visibility: public

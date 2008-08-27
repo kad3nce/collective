@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Enumerable::Elementor#instance_operator
+is_singleton: false
+name: instance_operator
+params: ()
+visibility: public

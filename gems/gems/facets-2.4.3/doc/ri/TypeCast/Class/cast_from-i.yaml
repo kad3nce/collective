@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Cast on object from another.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  String.cast_from(1234) =&gt; &quot;1234&quot;\n"
+full_name: TypeCast::Class#cast_from
+is_singleton: false
+name: cast_from
+params: (object)
+visibility: public

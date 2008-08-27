@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: big?
+- !ruby/object:RI::AliasName 
+  name: network?
+block_params: 
+comment: 
+full_name: BinReadable::ByteOrder#big_endian?
+is_singleton: false
+name: big_endian?
+params: ()
+visibility: public

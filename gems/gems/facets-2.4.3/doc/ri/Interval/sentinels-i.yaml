@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns a two element array of first and last sentinels.
+- !ruby/struct:SM::Flow::VERB 
+  body: " (0..10).sentinels   #=&gt; [0,10]\n"
+full_name: Interval#sentinels
+is_singleton: false
+name: sentinels
+params: ()
+visibility: public

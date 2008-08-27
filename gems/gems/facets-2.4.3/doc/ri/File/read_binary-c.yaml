@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Read in a file as binary data.
+- !ruby/struct:SM::Flow::VERB 
+  body: " CREDIT: George Moschovitis\n"
+full_name: File::read_binary
+is_singleton: true
+name: read_binary
+params: (fname)
+visibility: public

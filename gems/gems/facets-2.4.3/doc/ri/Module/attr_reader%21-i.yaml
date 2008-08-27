@@ -1,0 +1,21 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: attr_reader?
+- !ruby/object:RI::AliasName 
+  name: attr_tester
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Create an tester attribute. This creates a single method used to test the attribute for truth.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  attr_reader! :a\n"
+- !ruby/struct:SM::Flow::P 
+  body: is equivalent to
+- !ruby/struct:SM::Flow::VERB 
+  body: "  def a?\n    @a ? true : @a\n  end\n"
+full_name: Module#attr_reader!
+is_singleton: false
+name: attr_reader!
+params: (*args)
+visibility: public

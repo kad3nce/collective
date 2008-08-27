@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the greater of self or x.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  4.cap(5)  #=&gt; 4\n  6.cap(5)  #=&gt; 5\n\n  CREDIT Trans\n"
+full_name: Comparable#cap
+is_singleton: false
+name: cap
+params: (upper)
+visibility: public

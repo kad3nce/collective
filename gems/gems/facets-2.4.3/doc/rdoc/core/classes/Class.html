@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Class</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Class</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/core/facets/class/prepend_rb.html">lib/core/facets/class/prepend.rb</a>
+<a href="../files/lib/core/facets/class/methodize_rb.html">lib/core/facets/class/methodize.rb</a>
+<a href="../files/lib/core/facets/class/pathize_rb.html">lib/core/facets/class/pathize.rb</a>
+<a href="../files/lib/core/facets/class/descendents_rb.html">lib/core/facets/class/descendents.rb</a>
+<a href="../files/lib/core/facets/class/to_proc_rb.html">lib/core/facets/class/to_proc.rb</a>
+<a href="../files/lib/core/facets/class/prepend_rb.html">lib/core/facets/class/prepend.rb</a>
+<a href="../files/lib/core/facets/class/methodize_rb.html">lib/core/facets/class/methodize.rb</a>
+<a href="../files/lib/core/facets/class/pathize_rb.html">lib/core/facets/class/pathize.rb</a>
+<a href="../files/lib/core/facets/class/descendents_rb.html">lib/core/facets/class/descendents.rb</a>
+<a href="../files/lib/core/facets/class/to_proc_rb.html">lib/core/facets/class/to_proc.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+        <a href="Object.html">
+Object
+         </a>
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000360">descendents</a></li>
+  <li><a href="#M000366">descendents</a></li>
+  <li><a href="#M000358">methodize</a></li>
+  <li><a href="#M000364">methodize</a></li>
+  <li><a href="#M000359">pathize</a></li>
+  <li><a href="#M000365">pathize</a></li>
+  <li><a href="#M000357">prepend</a></li>
+  <li><a href="#M000363">prepend</a></li>
+  <li><a href="#M000367">subclasses</a></li>
+  <li><a href="#M000361">subclasses</a></li>
+  <li><a href="#M000362">to_proc</a></li>
+  <li><a href="#M000368">to_proc</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000360"></a><b>descendents</b>()
+  </div>
+  <div class="description">
+  <p>
+List all descedents of this class.
+</p>
+<pre>
+  class X ; end
+  class A &lt; X; end
+  class B &lt; X; end
+  X.descendents  #=&gt; [A,B]
+</pre>
+<p>
+NOTE: This is a intesive operation. Do not expect it to be super fast.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Class.html#M000361">subclasses</a>
+  <a href="Class.html#M000367">subclasses</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000360_source')" id="l_M000360_source">show source</a> ]</p>
+  <div id="M000360_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/class/descendents.rb, line 13</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">descendents</span>
+    <span class="ruby-identifier">subclass</span> = []
+    <span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">each_object</span>( <span class="ruby-constant">Class</span> ) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">ancestors</span>.<span class="ruby-identifier">include?</span>( <span class="ruby-keyword kw">self</span> ) <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">c</span>
+        <span class="ruby-identifier">subclass</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">c</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">subclass</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000366"></a><b>descendents</b>()
+  </div>
+  <div class="description">
+  <p>
+List all descedents of this class.
+</p>
+<pre>
+  class X ; end
+  class A &lt; X; end
+  class B &lt; X; end
+  X.descendents  #=&gt; [A,B]
+</pre>
+<p>
+NOTE: This is a intesive operation. Do not expect it to be super fast.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000366_source')" id="l_M000366_source">show source</a> ]</p>
+  <div id="M000366_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/class/descendents.rb, line 13</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">descendents</span>
+    <span class="ruby-identifier">subclass</span> = []
+    <span class="ruby-constant">ObjectSpace</span>.<span class="ruby-identifier">each_object</span>( <span class="ruby-constant">Class</span> ) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">ancestors</span>.<span class="ruby-identifier">include?</span>( <span class="ruby-keyword kw">self</span> ) <span class="ruby-keyword kw">and</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">c</span>
+        <span class="ruby-identifier">subclass</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">c</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">subclass</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000358"></a><b>methodize</b>()
+  </div>
+  <div class="description">
+  <p>
+Translate a class name to a suitable method name.
+</p>
+<pre>
+  My::CoolClass.methodize =&gt; &quot;my__cool_class&quot;
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000358_source')" id="l_M000358_source">show source</a> ]</p>
+  <div id="M000358_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/class/methodize.rb, line 9</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">methodize</span>
+    <span class="ruby-identifier">name</span>.<span class="ruby-identifier">methodize</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000364"></a><b>methodize</b>()
+  </div>
+  <div class="description">
+  <p>
+Translate a class name to a suitable method name.
+</p>
+<pre>
+  My::CoolClass.methodize =&gt; &quot;my__cool_class&quot;
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000364_source')" id="l_M000364_source">show source</a> ]</p>
+  <div id="M000364_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/class/methodize.rb, line 9</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">methodize</span>
+    <span class="ruby-identifier">name</span>.<span class="ruby-identifier">methodize</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000359"></a><b>pathize</b>()
+  </div>
+  <div class="description">
+  <p>
+Converts a class name to a unix path.
+</p>
+<pre>
+  My::CoolClass.pathize  #=&gt; &quot;my/cool_class&quot;
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000359_source')" id="l_M000359_source">show source</a> ]</p>
+  <div id="M000359_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/class/pathize.rb, line 9</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pathize</span>
+    <span class="ruby-identifier">name</span>.<span class="ruby-identifier">pathize</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000365"></a><b>pathize</b>()
+  </div>
+  <div class="description">
+  <p>
+Converts a class name to a unix path.
+</p>
+<pre>
+  My::CoolClass.pathize  #=&gt; &quot;my/cool_class&quot;
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000365_source')" id="l_M000365_source">show source</a> ]</p>
+  <div id="M000365_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/class/pathize.rb, line 9</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">pathize</span>
+    <span class="ruby-identifier">name</span>.<span class="ruby-identifier">pathize</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000357"></a><b>prepend</b>( aspect )
+  </div>
+  <div class="description">
+  <p>
+Prepend an &quot;aspect module&quot; to a class.
+</p>
+<pre>
+  class Firetruck
+    def put_out_fire(option)
+      &quot;Put out #{option}&quot;
+    end
+  end
+
+  module FastFiretruck
+    def put_out_fire(option)
+      super(&quot;very #{option}!&quot;)
+    end
+  end
+
+  Firetruck.prepend(FastFiretruck)
+
+  ft = Firetruck.new
+  ft.put_out_fire('fast') #=&gt; &quot;Put out very fast!&quot;
+</pre>
+<p>
+Implementation of this method has some limitations, in that it works by
+overriding new and allocate.
+</p>
+<p>
+CREDIT Trans
+</p>
+<p>
+TODO: Perhaps rename this to preallocate, b/c of
+</p>
+<pre>
+      the way it works. It is not really a clean
+      prepend, like that of Module#prepend.
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000357_source')" id="l_M000357_source">show source</a> ]</p>
+  <div id="M000357_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/class/prepend.rb, line 31</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepend</span>( <span class="ruby-identifier">aspect</span> )
+    <span class="ruby-identifier">_new</span>      = <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:new</span>)
+    <span class="ruby-identifier">_allocate</span> = <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:allocate</span>)
+    (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>).<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">:new</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">o</span> = <span class="ruby-identifier">_new</span>.<span class="ruby-identifier">call</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-identifier">o</span>.<span class="ruby-identifier">extend</span> <span class="ruby-identifier">aspect</span>
+        <span class="ruby-identifier">o</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">:allocate</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">o</span> = <span class="ruby-identifier">_allocate</span>.<span class="ruby-identifier">call</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-identifier">o</span>.<span class="ruby-identifier">extend</span> <span class="ruby-identifier">aspect</span>
+        <span class="ruby-identifier">o</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000363"></a><b>prepend</b>( aspect )
+  </div>
+  <div class="description">
+  <p>
+Prepend an &quot;aspect module&quot; to a class.
+</p>
+<pre>
+  class Firetruck
+    def put_out_fire(option)
+      &quot;Put out #{option}&quot;
+    end
+  end
+
+  module FastFiretruck
+    def put_out_fire(option)
+      super(&quot;very #{option}!&quot;)
+    end
+  end
+
+  Firetruck.prepend(FastFiretruck)
+
+  ft = Firetruck.new
+  ft.put_out_fire('fast') #=&gt; &quot;Put out very fast!&quot;
+</pre>
+<p>
+Implementation of this method has some limitations, in that it works by
+overriding new and allocate.
+</p>
+<p>
+CREDIT Trans
+</p>
+<p>
+TODO: Perhaps rename this to preallocate, b/c of
+</p>
+<pre>
+      the way it works. It is not really a clean
+      prepend, like that of Module#prepend.
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000363_source')" id="l_M000363_source">show source</a> ]</p>
+  <div id="M000363_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/class/prepend.rb, line 31</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prepend</span>( <span class="ruby-identifier">aspect</span> )
+    <span class="ruby-identifier">_new</span>      = <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:new</span>)
+    <span class="ruby-identifier">_allocate</span> = <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:allocate</span>)
+    (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>).<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">:new</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">o</span> = <span class="ruby-identifier">_new</span>.<span class="ruby-identifier">call</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-identifier">o</span>.<span class="ruby-identifier">extend</span> <span class="ruby-identifier">aspect</span>
+        <span class="ruby-identifier">o</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">define_method</span>(<span class="ruby-identifier">:allocate</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">o</span> = <span class="ruby-identifier">_allocate</span>.<span class="ruby-identifier">call</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-identifier">o</span>.<span class="ruby-identifier">extend</span> <span class="ruby-identifier">aspect</span>
+        <span class="ruby-identifier">o</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000367"></a><b>subclasses</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Class.html#M000360">descendents</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000361"></a><b>subclasses</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Class.html#M000360">descendents</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000362"></a><b>to_proc</b>()
+  </div>
+  <div class="description">
+  <p>
+Convert instatiation of a class into a <a href="Proc.html">Proc</a>.
+</p>
+<pre>
+  class Person
+    def initialize(name)
+      @name = name
+    end
+
+    def inspect
+      @name.to_str
+    end
+  end
+
+  %w(john bob jane hans).map(&amp;Person) =&gt; [john, bob, jane, hans]
+</pre>
+<p>
+CREDIT: Daniel Schierbeck
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000362_source')" id="l_M000362_source">show source</a> ]</p>
+  <div id="M000362_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/class/to_proc.rb, line 19</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_proc</span>
+    <span class="ruby-identifier">proc</span>{<span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span> <span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)}
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000368"></a><b>to_proc</b>()
+  </div>
+  <div class="description">
+  <p>
+Convert instatiation of a class into a <a href="Proc.html">Proc</a>.
+</p>
+<pre>
+  class Person
+    def initialize(name)
+      @name = name
+    end
+
+    def inspect
+      @name.to_str
+    end
+  end
+
+  %w(john bob jane hans).map(&amp;Person) =&gt; [john, bob, jane, hans]
+</pre>
+<p>
+CREDIT: Daniel Schierbeck
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000368_source')" id="l_M000368_source">show source</a> ]</p>
+  <div id="M000368_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/class/to_proc.rb, line 19</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_proc</span>
+    <span class="ruby-identifier">proc</span>{<span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span> <span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)}
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

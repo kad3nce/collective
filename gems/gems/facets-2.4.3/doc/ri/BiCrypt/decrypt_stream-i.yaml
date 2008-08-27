@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BiCrypt#decrypt_stream
+is_singleton: false
+name: decrypt_stream
+params: (cryptStream, plainStream)
+visibility: public

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns an array from second element to last element.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  [1,2,3].tail  #=&gt; [2,3]\n"
+full_name: Indexable#tail
+is_singleton: false
+name: tail
+params: ()
+visibility: public

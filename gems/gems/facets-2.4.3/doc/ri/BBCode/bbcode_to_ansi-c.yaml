@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Converts a BBCode string to one with ANSI sequences. Returns the string with all formatting instructions in BBCodes converted to ANSI code sequences / aligned with spaces to specified width.
+full_name: BBCode::bbcode_to_ansi
+is_singleton: true
+name: bbcode_to_ansi
+params: (string, usecolors = true)
+visibility: public

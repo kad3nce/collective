@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns a new interval with either the first or the last sentinel exclusive. If the parameter is false, the deafult, then the first sentinel is excluded; if the parameter is true, the last sentinel is excluded.
+full_name: Interval#half_closed
+is_singleton: false
+name: half_closed
+params: (e=false)
+visibility: public

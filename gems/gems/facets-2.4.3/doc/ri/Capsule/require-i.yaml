@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Analogous to <tt>Kernel#require</tt>. First tries the local dir, then falls back to <tt>Kernel#require</tt>. Will load a given <em>feature</em> only once.
+- !ruby/struct:SM::Flow::P 
+  body: Note that extensions (*.so, *.dll) can be required in the global scope, as usual, but not in the local scope. (This is not much of a limitation in practice--you wouldn't want to load an extension more than once.) This implementation falls back to <tt>Kernel#require</tt> when the argument is an extension or is not found locally.
+full_name: Capsule#require
+is_singleton: false
+name: require
+params: (feature)
+visibility: public

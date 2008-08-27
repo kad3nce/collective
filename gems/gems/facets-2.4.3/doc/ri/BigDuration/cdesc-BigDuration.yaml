@@ -1,0 +1,41 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: months
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: years
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: BigDuration is a variant of Duration that supports years and months. Support for months is not accurate, as a month is assumed to be 30 days so use at your own risk.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: YEAR
+  value: 60 * 60 * 24 * 30 * 12
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MONTH
+  value: 60 * 60 * 24 * 30
+full_name: BigDuration
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: months=
+- !ruby/object:RI::MethodSummary 
+  name: seconds
+- !ruby/object:RI::MethodSummary 
+  name: strftime
+- !ruby/object:RI::MethodSummary 
+  name: years=
+name: BigDuration
+superclass: Duration

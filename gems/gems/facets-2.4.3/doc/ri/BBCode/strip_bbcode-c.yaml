@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: --- strip_bbcode( string ) Will strip any BBCode tags from the given string.
+full_name: BBCode::strip_bbcode
+is_singleton: true
+name: strip_bbcode
+params: (string)
+visibility: public

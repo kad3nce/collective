@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: HtmlFilter#strip_single
+is_singleton: false
+name: strip_single
+params: (data)
+visibility: private

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Parse flags takes the command line and transforms it such that flags (eg. -x and --x) are elemental associative arrays.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  line = &quot;--foo hello --try=this&quot;\n\n  parse_flags(line) #=&gt; [ [foo,true], hello, [&quot;try&quot;,&quot;this&quot;] ]\n"
+full_name: CLI::Arguments#assoc_options
+is_singleton: false
+name: assoc_options
+params: (args)
+visibility: private

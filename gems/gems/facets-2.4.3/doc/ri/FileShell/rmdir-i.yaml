@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: rmdir(dir, options) rmdir(list, options)
+full_name: FileShell#rmdir
+is_singleton: false
+name: rmdir
+params: (dir, options=nil)
+visibility: public

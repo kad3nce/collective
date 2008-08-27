@@ -3,6 +3,13 @@ require File.join(File.dirname(__FILE__), '..', 'spec_helper.rb')
 describe Edits do
   attr_accessor :edit, :edits
   
+  def do_get
+    dispatch_with_basic_authentication_to(Edits, :index, Collective.admin_username, Collective.admin_password) do |controller|
+      controller.stub!(:display)
+      yield(controller) if block_given?
+    end
+  end
+  
   before(:each) do
     @edit  = Version.new(
       :content   => 'I have content', 
@@ -15,14 +22,6 @@ describe Edits do
   describe 'requesting /edits with GET' do
     before(:each) do
       Version.stub!(:most_recent_unmoderated).and_return(@edits)
-    end
-    
-    def do_get
-      dispatch_to(Edits, :index) do |controller|
-        controller.stub!(:authenticate_or_request_with_http_basic).and_return(true)
-        controller.stub!(:display)
-        yield(controller) if block_given?
-      end
     end
     
     it 'should be successful' do
@@ -50,14 +49,6 @@ describe Edits do
       Version.stub!(:most_recent_unmoderated).and_return(nil)
     end
     
-    def do_get
-      dispatch_to(Edits, :index) do |controller|
-        controller.stub!(:authenticate_or_request_with_http_basic).and_return(true)
-        controller.stub!(:display)
-        yield(controller) if block_given?
-      end
-    end
-
     it 'should be successful' do
       do_get.should be_successful
     end
@@ -77,8 +68,9 @@ describe Edits do
   describe 'requesting /edits/1 with GET' do
     
     def do_get
-      dispatch_to(Edits, :show, :id => '1' ) do |controller|
+      dispatch_with_basic_authentication_to(Edits, :show, Collective.admin_username, Collective.admin_password, :id => '1') do |controller|
         controller.stub!(:display)
+        yield(controller) if block_given?
       end
     end
 
@@ -102,7 +94,7 @@ describe Edits do
     end
     
     it 'should display the Page history' do
-      dispatch_to(Edits, :show, :id => "1") do |controller|
+      do_get do |controller|
         controller.should_receive(:display).with(@page)
       end
     end
@@ -120,15 +112,11 @@ describe Edits do
     end
     
     def do_put
-      dispatch_to(Edits, :update, :id => "1", :page => {}) do |controller|
-        controller.stub!(:authenticate_or_request_with_http_basic).and_return(true)
-      end
+      dispatch_with_basic_authentication_to(Edits, :update, Collective.admin_username, Collective.admin_password, :id => "1", :page => {})
     end
     
     def do_xhr_put
-      dispatch_to(Edits, :update, {:id => "1", :page => {}}, {:http_x_requested_with => "XMLHttpRequest"}) do |controller|
-        controller.stub!(:authenticate_or_request_with_http_basic).and_return(true)
-      end
+      dispatch_with_basic_authentication_to(Edits, :update, Collective.admin_username, Collective.admin_password, {:id => "1", :page => {}}, {:http_x_requested_with => "XMLHttpRequest"})
     end
     
     it 'should load the requested Version' do
@@ -165,11 +153,6 @@ describe Edits do
       do_xhr_put.should be_successful
     end
     
-    it 'should raise BadRequest if the update fails' do
-      @edit.should_receive(:update_attributes).and_return(false)
-      lambda { do_put }.should raise_error(Merb::ControllerExceptions::BadRequest)
-    end
-
     it 'should not require Viking to update a Version' do
       Viking.should_receive(:enabled?).and_return(false)
       do_put.should be_redirection_to(url(:edits))

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Determine whether one of the words in the DictionaryMatcher is a substring of <tt>string</tt>. Returns a DictionaryMatcher::MatchData object if found, <tt>nil</tt> if not #found."
+full_name: DictionaryMatcher#match
+is_singleton: false
+name: match
+params: (text)
+visibility: public

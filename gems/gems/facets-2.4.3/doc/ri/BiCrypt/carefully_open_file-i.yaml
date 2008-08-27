@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BiCrypt#carefully_open_file
+is_singleton: false
+name: carefully_open_file
+params: (filename, mode)
+visibility: public

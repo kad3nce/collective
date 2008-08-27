@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: pid
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::VERB 
+  body: " these won't work here\n"
+- !ruby/struct:SM::Flow::P 
+  body: def file; <em>FILE</em> ; end def filepath; File.expand_path(<em>FILE</em>) ; end def lineno; <em>LINE</em> ; end
+full_name: System#process_id
+is_singleton: false
+name: process_id
+params: ()
+visibility: public

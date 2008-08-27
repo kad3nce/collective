@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: CLI::Command#initialize_options
+is_singleton: false
+name: initialize_options
+params: (*options)
+visibility: private

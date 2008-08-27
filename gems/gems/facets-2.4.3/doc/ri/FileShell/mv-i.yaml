@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: move
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: mv(src, dest, options) mv(list, dir, options)
+full_name: FileShell#mv
+is_singleton: false
+name: mv
+params: (src, dest, options=nil)
+visibility: public

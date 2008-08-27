@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: chmod_R(mode, list, options)
+full_name: FileShell#chmod_R
+is_singleton: false
+name: chmod_R
+params: (mode, list, options=nil)
+visibility: public

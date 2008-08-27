@@ -1,0 +1,28 @@
+---
+project  : facets
+version  : 2.4.3
+released : 2008-08-14
+
+title     : Facets
+status    : stable
+summary   : Premium Core Extensions and Standard Additions
+copyright : (c) 2005,2008 Tiger Ops
+
+description :
+  Facets is a single largest collection of core extension methods
+  and standard class additions available for the Ruby programming
+  language.
+
+author   : Thomas Sawyer <transfire@gmail.com>
+email    : facets-universal@rubyforge.org
+homepage : 'http://facets.rubyforge.org'
+download : 'http://rubyforge.org/projects/facets'
+
+slogan    : ALL YOUR BASE ARE BELONG TO RUBY!
+created   : 2004-12-16
+
+loadpath:
+  - lib/core
+  - lib/lore
+  - lib/more
+

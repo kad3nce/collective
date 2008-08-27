@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the greater of self or x.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  4.at_most(5)  #=&gt; 4\n  6.at_most(5)  #=&gt; 5\n\n  CREDIT Florian Gross\n"
+full_name: Comparable#at_most
+is_singleton: false
+name: at_most
+params: (x)
+visibility: public

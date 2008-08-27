@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: Win32Exts
+  value: "%w{.exe .com .bat .cmd}"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: Win32Exts
+  value: "%w{.exe .com .bat .cmd}"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: LINKING_SUPPORTED
+  value: "[true]"
+full_name: FileUtils
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: head
+- !ruby/object:RI::MethodSummary 
+  name: safe_ln
+- !ruby/object:RI::MethodSummary 
+  name: slice
+- !ruby/object:RI::MethodSummary 
+  name: tail
+- !ruby/object:RI::MethodSummary 
+  name: wc
+- !ruby/object:RI::MethodSummary 
+  name: whereis
+- !ruby/object:RI::MethodSummary 
+  name: which
+name: FileUtils
+superclass: 

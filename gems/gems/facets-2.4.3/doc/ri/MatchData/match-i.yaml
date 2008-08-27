@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return the primary match string. This is equivalent to +md[0]+.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  md = /123/.match &quot;123456&quot;\n  md.match  #=&gt; &quot;123&quot;\n\n CREDIT: Martin DeMello\n"
+full_name: MatchData#match
+is_singleton: false
+name: match
+params: (index=0)
+visibility: public

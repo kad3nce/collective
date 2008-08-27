@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: This method returns the query string of a uri
+- !ruby/struct:SM::Flow::P 
+  body: "Input: the uri"
+- !ruby/struct:SM::Flow::P 
+  body: "Output: the query string. returns nil if no query string"
+full_name: URI#get_query_string
+is_singleton: false
+name: get_query_string
+params: (uri)
+visibility: public

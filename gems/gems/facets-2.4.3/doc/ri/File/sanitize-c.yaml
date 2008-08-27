@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Cleans up a filename to ensure it will work on filesystem.
+- !ruby/struct:SM::Flow::VERB 
+  body: " CREDIT: George Moschovitis\n"
+full_name: File::sanitize
+is_singleton: true
+name: sanitize
+params: (filename)
+visibility: public

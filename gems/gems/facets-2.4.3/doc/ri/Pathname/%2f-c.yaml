@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Active path separator.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  p1 = Pathname.new('/')\n  p2 = p1 / 'usr' / 'share'   #=&gt; Pathname:/usr/share\n"
+full_name: Pathname::/
+is_singleton: true
+name: /
+params: (path)
+visibility: public

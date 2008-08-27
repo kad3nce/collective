@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns [operands, options], which is good for plugging directly into a method.
+full_name: CLI::Arguments#parameters
+is_singleton: false
+name: parameters
+params: ()
+visibility: public

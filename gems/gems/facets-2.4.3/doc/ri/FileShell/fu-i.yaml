@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: FileShell#fu
+is_singleton: false
+name: fu
+params: (opts)
+visibility: private

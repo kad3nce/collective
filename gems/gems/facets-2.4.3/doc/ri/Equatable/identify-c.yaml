@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Equatable::identify
+is_singleton: true
+name: identify
+params: (base, *accessors)
+visibility: public

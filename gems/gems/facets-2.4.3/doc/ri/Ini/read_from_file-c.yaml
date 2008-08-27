@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Reading data from file
+- !ruby/struct:SM::Flow::P 
+  body: <tt>path</tt> is a path to the ini file
+- !ruby/struct:SM::Flow::P 
+  body: returns a hash which represents the data from the file
+full_name: Ini::read_from_file
+is_singleton: true
+name: read_from_file
+params: (path)
+visibility: public

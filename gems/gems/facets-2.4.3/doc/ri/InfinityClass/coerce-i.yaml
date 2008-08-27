@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Coerce allows other numbers to be compared to infinity.
+full_name: InfinityClass#coerce
+is_singleton: false
+name: coerce
+params: (other)
+visibility: public

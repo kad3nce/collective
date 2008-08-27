@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the value of some variable.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  a = 2\n  binding[&quot;a&quot;]  #=&gt; 2\n"
+full_name: Binding#[]
+is_singleton: false
+name: "[]"
+params: ( x )
+visibility: public

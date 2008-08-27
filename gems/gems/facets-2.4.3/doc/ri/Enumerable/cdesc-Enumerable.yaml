@@ -1,0 +1,94 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: Enumerable
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: accumulate
+- !ruby/object:RI::MethodSummary 
+  name: cluster_by
+- !ruby/object:RI::MethodSummary 
+  name: collect_with_index
+- !ruby/object:RI::MethodSummary 
+  name: commonality
+- !ruby/object:RI::MethodSummary 
+  name: compact_collect
+- !ruby/object:RI::MethodSummary 
+  name: compact_map
+- !ruby/object:RI::MethodSummary 
+  name: count
+- !ruby/object:RI::MethodSummary 
+  name: divide
+- !ruby/object:RI::MethodSummary 
+  name: duplicates
+- !ruby/object:RI::MethodSummary 
+  name: each_by
+- !ruby/object:RI::MethodSummary 
+  name: elements
+- !ruby/object:RI::MethodSummary 
+  name: elements!
+- !ruby/object:RI::MethodSummary 
+  name: elementwise
+- !ruby/object:RI::MethodSummary 
+  name: entropy
+- !ruby/object:RI::MethodSummary 
+  name: every
+- !ruby/object:RI::MethodSummary 
+  name: every!
+- !ruby/object:RI::MethodSummary 
+  name: ewise
+- !ruby/object:RI::MethodSummary 
+  name: frequency
+- !ruby/object:RI::MethodSummary 
+  name: graph
+- !ruby/object:RI::MethodSummary 
+  name: group_by
+- !ruby/object:RI::MethodSummary 
+  name: ideal_entropy
+- !ruby/object:RI::MethodSummary 
+  name: inject!
+- !ruby/object:RI::MethodSummary 
+  name: map_send
+- !ruby/object:RI::MethodSummary 
+  name: map_with_index
+- !ruby/object:RI::MethodSummary 
+  name: mash
+- !ruby/object:RI::MethodSummary 
+  name: mode
+- !ruby/object:RI::MethodSummary 
+  name: modulate
+- !ruby/object:RI::MethodSummary 
+  name: none?
+- !ruby/object:RI::MethodSummary 
+  name: nonuniq
+- !ruby/object:RI::MethodSummary 
+  name: occur
+- !ruby/object:RI::MethodSummary 
+  name: one?
+- !ruby/object:RI::MethodSummary 
+  name: per
+- !ruby/object:RI::MethodSummary 
+  name: probability
+- !ruby/object:RI::MethodSummary 
+  name: split
+- !ruby/object:RI::MethodSummary 
+  name: sum
+- !ruby/object:RI::MethodSummary 
+  name: threaded_map
+- !ruby/object:RI::MethodSummary 
+  name: threaded_map_send
+- !ruby/object:RI::MethodSummary 
+  name: to_elem
+- !ruby/object:RI::MethodSummary 
+  name: to_h
+- !ruby/object:RI::MethodSummary 
+  name: uniq_by
+name: Enumerable
+superclass: 

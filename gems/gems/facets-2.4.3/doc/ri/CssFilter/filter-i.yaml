@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: CssFilter#filter
+is_singleton: false
+name: filter
+params: (css)
+visibility: public

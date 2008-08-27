@@ -1,0 +1,17 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: pick
+- !ruby/object:RI::AliasName 
+  name: at_rand!
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Deletes a random key-value pair and returns the value.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  a = {:one =&gt; 1, :two =&gt; 2, :three =&gt; 3}\n  a.at_rand!  #=&gt; 2\n  a           #=&gt; {:one =&gt; 1, :three =&gt; 3}\n"
+full_name: Random::Hash#rand_value!
+is_singleton: false
+name: rand_value!
+params: ()
+visibility: public

@@ -1,0 +1,75 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: direction
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Infinity
+- !ruby/struct:SM::Flow::P 
+  body: A full featured Infinity class, supporting signed direction. Inifinty is a multiton based on direction The constant INFINITY is provided as the common case with direction=+1 (positive).
+- !ruby/struct:SM::Flow::P 
+  body: "Besides being an class, these four constants are preset:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  NaN\n  Inf\n  PosInf\n  NegInf\n"
+- !ruby/struct:SM::Flow::P 
+  body: "These four constants a built from two other basic constants:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  UNDEFINED\n  INFINITY\n"
+- !ruby/struct:SM::Flow::P 
+  body: In physical memory there are actually only three objects, namely three instances of InfinityClass, one for NaN, PosInf and NegInf, respectively.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Set constant to positive infinity.
+  name: UNDEFINED
+  value: InfinityClass.new(0)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: INFINITY
+  value: InfinityClass.new(1)
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NaN
+  value: UNDEFINED
+- !ruby/object:RI::Constant 
+  comment: 
+  name: Inf
+  value: INFINITY
+- !ruby/object:RI::Constant 
+  comment: 
+  name: PosInf
+  value: +INFINITY
+- !ruby/object:RI::Constant 
+  comment: 
+  name: NegInf
+  value: -INFINITY
+full_name: InfinityClass
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Multiton
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: +@
+- !ruby/object:RI::MethodSummary 
+  name: -@
+- !ruby/object:RI::MethodSummary 
+  name: <=>
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: coerce
+- !ruby/object:RI::MethodSummary 
+  name: times
+- !ruby/object:RI::MethodSummary 
+  name: to_f
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+name: InfinityClass
+superclass: Numeric

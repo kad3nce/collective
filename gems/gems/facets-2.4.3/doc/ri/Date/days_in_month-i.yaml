@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the number of days in the date's month.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Date.new(2004,2).days_in_month #=&gt; 28\n\n CREDIT: Ken Kunz.\n"
+full_name: Date#days_in_month
+is_singleton: false
+name: days_in_month
+params: ()
+visibility: public

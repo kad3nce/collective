@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Cast an object to another
+- !ruby/struct:SM::Flow::VERB 
+  body: "   1234.cast_to(String)  =&gt; &quot;1234&quot;\n"
+full_name: TypeCast::Object#cast_to
+is_singleton: false
+name: cast_to
+params: (klass)
+visibility: public

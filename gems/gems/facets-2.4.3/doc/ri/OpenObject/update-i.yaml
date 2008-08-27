@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Update this OpenObject with another.
+full_name: OpenObject#update
+is_singleton: false
+name: update
+params: ( other )
+visibility: public

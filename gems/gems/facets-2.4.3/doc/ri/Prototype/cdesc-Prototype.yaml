@@ -1,0 +1,30 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Prototype
+constants: []
+
+full_name: Prototype
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: fn
+- !ruby/object:RI::MethodSummary 
+  name: meta
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: trait
+- !ruby/object:RI::MethodSummary 
+  name: traits
+name: Prototype
+superclass: Object

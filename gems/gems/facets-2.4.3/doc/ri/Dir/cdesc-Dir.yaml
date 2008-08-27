@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ascend
+- !ruby/object:RI::MethodSummary 
+  name: descend
+- !ruby/object:RI::MethodSummary 
+  name: ls_r
+- !ruby/object:RI::MethodSummary 
+  name: multiglob
+- !ruby/object:RI::MethodSummary 
+  name: multiglob_r
+- !ruby/object:RI::MethodSummary 
+  name: parent?
+- !ruby/object:RI::MethodSummary 
+  name: recurse
+comment: 
+constants: []
+
+full_name: Dir
+includes: []
+
+instance_methods: []
+
+name: Dir
+superclass: Object

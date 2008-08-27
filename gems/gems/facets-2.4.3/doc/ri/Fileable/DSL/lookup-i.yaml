@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Lookup file.
+full_name: Fileable::DSL#lookup
+is_singleton: false
+name: lookup
+params: (name=nil)
+visibility: public

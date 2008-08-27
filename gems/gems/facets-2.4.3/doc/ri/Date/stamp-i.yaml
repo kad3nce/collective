@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: to_s
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "An enhanched #to_s method that cane take an optional format flag of :short or :long."
+full_name: Date#stamp
+is_singleton: false
+name: stamp
+params: (format = nil)
+visibility: public

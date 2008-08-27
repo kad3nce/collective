@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: revisal
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return a new module based on another. This includes the original module into the new one.
+- !ruby/struct:SM::Flow::VERB 
+  body: " CREDIT: Trans\n"
+full_name: Module#revise
+is_singleton: false
+name: revise
+params: (&blk)
+visibility: public

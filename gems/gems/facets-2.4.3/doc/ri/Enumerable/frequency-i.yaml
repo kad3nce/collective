@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Generates a hash mapping each unique symbol in the array to the absolute frequency it appears.
+- !ruby/struct:SM::Flow::VERB 
+  body: " CREDIT: Brian Schr\xC3\xB6der\n"
+full_name: Enumerable#frequency
+is_singleton: false
+name: frequency
+params: ()
+visibility: public

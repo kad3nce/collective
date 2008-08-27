@@ -1,0 +1,34 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: identify
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Equatable
+- !ruby/struct:SM::Flow::P 
+  body: "This mixin provides methods of equality based on a single #identity method which must return a list of accessors used as the identity keys."
+- !ruby/struct:SM::Flow::P 
+  body: "It also provides a &quot;shortcut&quot; for creating the #identity method based on given accessors and returns the Equatable module for inclusion."
+- !ruby/struct:SM::Flow::VERB 
+  body: "  include Equatable(:a, :b)\n"
+- !ruby/struct:SM::Flow::P 
+  body: "is equivalent to including a module containing:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  def ==(other)\n    self.a == other.a &amp;&amp; self.b == other.b\n  end\n\n  def eql?(other)\n    self.a.eql?(other.a) &amp;&amp; self.b.eql?(other.b)\n  end\n\n  def hash()\n    self.a.hash ^ self.b.hash\n  end\n"
+constants: []
+
+full_name: Equatable
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: eql?
+- !ruby/object:RI::MethodSummary 
+  name: hash
+name: Equatable
+superclass: 

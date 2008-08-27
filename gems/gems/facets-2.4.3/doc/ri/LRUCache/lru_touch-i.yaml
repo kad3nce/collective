@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Touch an item, make mru! Returns the item.
+full_name: LRUCache#lru_touch
+is_singleton: false
+name: lru_touch
+params: (item)
+visibility: private

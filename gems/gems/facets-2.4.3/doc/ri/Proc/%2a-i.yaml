@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Operator for Proc#compose and Integer#times_collect/of.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  a = lambda { |x| x + 4 }\n  b = lambda { |y| y / 2 }\n\n  (a * b).call(4)  #=&gt; 6\n  (b * a).call(4)  #=&gt; 4\n\n  CREDIT: Dave\n"
+full_name: Proc#*
+is_singleton: false
+name: "*"
+params: (x)
+visibility: public

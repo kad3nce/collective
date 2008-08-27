@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Queries total recorded time of timer.
+full_name: Timer#total_time
+is_singleton: false
+name: total_time
+params: ()
+visibility: public

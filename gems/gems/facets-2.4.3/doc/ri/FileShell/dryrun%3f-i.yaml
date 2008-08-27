@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: FileShell#dryrun?
+is_singleton: false
+name: dryrun?
+params: ()
+visibility: public

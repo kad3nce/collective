@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #pull"
+full_name: Tuple#shift
+is_singleton: false
+name: shift
+params: ()
+visibility: public

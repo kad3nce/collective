@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: byteorder=
+block_params: 
+comment: 
+full_name: BinReadable#byte_order=
+is_singleton: false
+name: byte_order=
+params: (new_byteorder)
+visibility: public

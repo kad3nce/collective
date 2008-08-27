@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BiCrypt#precalculate_S_table
+is_singleton: false
+name: precalculate_S_table
+params: ()
+visibility: public

@@ -22,24 +22,32 @@ use_orm :datamapper
 use_test :rspec
 
 ### Add your other dependencies here
-dependencies 'iconv', 'dm-validations', 'dm-timestamps', 'merb-action-args',
-             'merb-assets', 'merb_has_flash', 'merb-haml', 'merb_helpers',
-             'merb_http_basic_auth', 'merb-parts', 'uri'
-
-# dependency "RedCloth", "> 3.0"
-# OR
-# dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
-
-# There seems to be an issue with the fact that the RedCloth gem doesn't
-# put a redcloth.rb file next to its lib dir. Work around it by bypassing
-# the #dependencies helper and doing an explicit #require. Perhaps we
-# should patch #dependencies to support this edge case.
-require 'redcloth'
-require 'viking'
-
-#Require needed for Diff module (/lib/diff.rb)
+# Gems
+gem 'diff-lcs', '=1.1.2'
 require 'diff/lcs'
 require 'diff/lcs/hunk'
+gem 'dm-validations', '=0.9.5'
+require 'dm-validations'
+gem 'dm-timestamps',  '=0.9.5'
+require 'dm-timestamps'
+gem 'merb-action-args', '=0.9.5'
+require 'merb-action-args'
+gem 'merb-assets', '=0.9.5'
+require 'merb-assets'
+gem 'merb-haml', '=0.9.5'
+require 'merb-haml'
+gem 'merb_helpers', '=0.9.5'
+require 'merb_helpers'
+gem 'merb-parts', '=0.9.5'
+require 'merb-parts'
+gem 'RedCloth', '3.0.4'
+require 'redcloth'
+gem 'vikinggem', '0.0.3'
+require 'viking'
+
+# Standard Libraries
+require 'iconv'
+require 'open-uri'
 
 # Load initializers
 Dir[Merb.root / 'config' / 'initializers' / '*.rb'].each do |initializer|

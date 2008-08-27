@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ZipUtils::DryRun#tar_gzip
+is_singleton: false
+name: tar_gzip
+params: (folder, file=nil, options={})
+visibility: public

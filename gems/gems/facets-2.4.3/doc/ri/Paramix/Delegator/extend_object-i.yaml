@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: Paramix::Delegator#extend_object
+is_singleton: false
+name: extend_object
+params: (base)
+visibility: public

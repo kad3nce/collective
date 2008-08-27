@@ -1,0 +1,53 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: BiCrypt
+- !ruby/struct:SM::Flow::P 
+  body: A simple two-way encryption class.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: ULONG
+  value: "0x100000000"
+full_name: BiCrypt
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: block_size
+- !ruby/object:RI::MethodSummary 
+  name: carefully_open_file
+- !ruby/object:RI::MethodSummary 
+  name: decrypt_block
+- !ruby/object:RI::MethodSummary 
+  name: decrypt_file
+- !ruby/object:RI::MethodSummary 
+  name: decrypt_pair
+- !ruby/object:RI::MethodSummary 
+  name: decrypt_stream
+- !ruby/object:RI::MethodSummary 
+  name: decrypt_string
+- !ruby/object:RI::MethodSummary 
+  name: encrypt_block
+- !ruby/object:RI::MethodSummary 
+  name: encrypt_file
+- !ruby/object:RI::MethodSummary 
+  name: encrypt_pair
+- !ruby/object:RI::MethodSummary 
+  name: encrypt_stream
+- !ruby/object:RI::MethodSummary 
+  name: encrypt_string
+- !ruby/object:RI::MethodSummary 
+  name: f
+- !ruby/object:RI::MethodSummary 
+  name: generate_initialization_vector
+- !ruby/object:RI::MethodSummary 
+  name: precalculate_S_table
+name: BiCrypt
+superclass: Object

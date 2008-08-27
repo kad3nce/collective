@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: ewise
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns an elementwise Functor designed to make R-like elementwise operations possible.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  [1,2].elementwise + 3          #=&gt; [4,5]\n  [1,2].elementwise + [4,5]      #=&gt; [5,7]\n  [1,2].elementwise + [[4,5],3]  #=&gt; [[5,7],[4,5]\n"
+full_name: Enumerable#elementwise
+is_singleton: false
+name: elementwise
+params: (count=1)
+visibility: public

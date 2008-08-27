@@ -1,0 +1,21 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: find_ext
+  rw: RW
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: PathList::Finder
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: find
+- !ruby/object:RI::MethodSummary 
+  name: include?
+name: Finder
+superclass: 

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Split single letter option groupings into separate options. ie. -xyz =&gt; -x -y -z
+full_name: CLI::Arguments#multi_flag
+is_singleton: false
+name: multi_flag
+params: (args=nil)
+visibility: private

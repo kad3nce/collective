@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Convert Date to Time.
+full_name: Date#to_time
+is_singleton: false
+name: to_time
+params: (form = :local)
+visibility: public

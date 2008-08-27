@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: wrap_enumerable_method
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: EnumerablePass
+- !ruby/struct:SM::Flow::P 
+  body: "This is a simple reimplementation of the core Enumerable module to allow the methods to take and pass-on arbitrary arguments to the underlying #each call. This library uses Enumerator and scans Enumerable so it can alwasy stay in sync."
+- !ruby/struct:SM::Flow::P 
+  body: "NOTE Any Enumerable method with a negative arity cannot do pass arguments due to ambiguity in the argument count. So the methods #inject and #zip do NOT work this way, but simply work as they do in Enumerable. The method #find (and #detect) though has been made to work by removing its rarely used optional parameter and providing instead an optional keyword parameter (:ifnone =&gt; ...). Please keep these difference in mind."
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class T\n    include EnumerablePass\n    def initialize(arr)\n      @arr = arr\n    end\n    def each(n)\n      arr.each{ |e| yield(e+n) }\n    end\n  end\n\n  t = T.new([1,2,3])\n  t.collect(4)\n  #=&gt; [5,6,7]\n"
+constants: []
+
+full_name: EnumerablePass
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: detect
+- !ruby/object:RI::MethodSummary 
+  name: find
+name: EnumerablePass
+superclass: 

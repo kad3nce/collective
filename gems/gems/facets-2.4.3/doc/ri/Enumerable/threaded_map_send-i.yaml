@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Like Enumerable#map_send but each iteration is processed via a separate thread.
+- !ruby/struct:SM::Flow::VERB 
+  body: " CREDIT Sean O'Halpin\n"
+full_name: Enumerable#threaded_map_send
+is_singleton: false
+name: threaded_map_send
+params: (meth, *args, &block)
+visibility: public

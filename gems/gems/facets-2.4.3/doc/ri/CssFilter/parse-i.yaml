@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Breaks a css document up into a hash. This can be used completely rewritting the css.
+- !ruby/struct:SM::Flow::P 
+  body: "TODO: Not complete, does not work with &quot;@xxx foo;&quot; for example."
+full_name: CssFilter#parse
+is_singleton: false
+name: parse
+params: (css)
+visibility: public

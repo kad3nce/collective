@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Shannon's entropy for an array - returns the average bits per symbol required to encode the array. Lower values mean less &quot;entropy&quot; - i.e. less unique information in the array.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  %w{ a b c d e e e }.entropy  #=&gt;\n\n  CREDIT: Derek\n"
+full_name: Enumerable#entropy
+is_singleton: false
+name: entropy
+params: ()
+visibility: public

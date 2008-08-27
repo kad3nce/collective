@@ -1,0 +1,39 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: ""
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: Native
+  value: ":Native"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: BigEndian
+  value: Big = Network = :BigEndian
+- !ruby/object:RI::Constant 
+  comment: 
+  name: LittleEndian
+  value: Little = :LittleEndian
+full_name: BinReadable::ByteOrder
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: big?
+- !ruby/object:RI::MethodSummary 
+  name: big_endian?
+- !ruby/object:RI::MethodSummary 
+  name: byte_order
+- !ruby/object:RI::MethodSummary 
+  name: byteorder
+- !ruby/object:RI::MethodSummary 
+  name: little?
+- !ruby/object:RI::MethodSummary 
+  name: little_endian?
+- !ruby/object:RI::MethodSummary 
+  name: network?
+name: ByteOrder
+superclass: 

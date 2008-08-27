@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: rename
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Aliases a method and undefines the original.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  rename_method( :to_method, :from_method  )\n\n CREDIT: Trans\n"
+full_name: Module#rename_method
+is_singleton: false
+name: rename_method
+params: ( to_sym, from_sym )
+visibility: private

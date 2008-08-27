@@ -1,0 +1,23 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: owner
+  rw: RW
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "A collection of Settings. This helper enables intuitive settings initialization like this:"
+- !ruby/struct:SM::Flow::P 
+  body: Settings.Compiler.template_root = 'public' instead of Settings.setting :compiler, :template_root, :value =&gt; 'public'
+constants: []
+
+full_name: Settings::SettingCollection
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+name: SettingCollection
+superclass: Hash

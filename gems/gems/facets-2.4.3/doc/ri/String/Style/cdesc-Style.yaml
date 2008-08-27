@@ -1,0 +1,69 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: camelize
+- !ruby/object:RI::MethodSummary 
+  name: capitalize
+- !ruby/object:RI::MethodSummary 
+  name: classify
+- !ruby/object:RI::MethodSummary 
+  name: dasherize
+- !ruby/object:RI::MethodSummary 
+  name: demodulize
+- !ruby/object:RI::MethodSummary 
+  name: downcase
+- !ruby/object:RI::MethodSummary 
+  name: foreign_key
+- !ruby/object:RI::MethodSummary 
+  name: humanize
+- !ruby/object:RI::MethodSummary 
+  name: lowercamel
+- !ruby/object:RI::MethodSummary 
+  name: lowercase
+- !ruby/object:RI::MethodSummary 
+  name: methodize
+- !ruby/object:RI::MethodSummary 
+  name: modulize
+- !ruby/object:RI::MethodSummary 
+  name: ordinalize
+- !ruby/object:RI::MethodSummary 
+  name: pathize
+- !ruby/object:RI::MethodSummary 
+  name: snakecase
+- !ruby/object:RI::MethodSummary 
+  name: tableize
+- !ruby/object:RI::MethodSummary 
+  name: titlecase
+- !ruby/object:RI::MethodSummary 
+  name: titleize
+- !ruby/object:RI::MethodSummary 
+  name: underscore
+- !ruby/object:RI::MethodSummary 
+  name: upcase
+- !ruby/object:RI::MethodSummary 
+  name: uppercamel
+- !ruby/object:RI::MethodSummary 
+  name: uppercase
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Stlyist module provides an extensible means of applying common alteration patterns to strings. This library is likely to evolve a great deal. For now it borrows most of it's styles from Rails Inflector library.
+- !ruby/struct:SM::Flow::P 
+  body: This module is used by the string/style extension.
+- !ruby/struct:SM::Flow::P 
+  body: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  String::Style.snakecase(&quot;SuperMan&quot;)    #=&gt; &quot;super_man&quot;\n  String::Style.dasherize(&quot;super_man&quot;)   #=&gt; &quot;super-man&quot;\n"
+- !ruby/struct:SM::Flow::P 
+  body: "TODO: With #pathize, is downcasing really needed? After all paths can have capitalize letters ;p TODO: With #methodize, is downcasing any but the first letter really needed? Desipite Matz prefernce methods can have capitalized letters."
+constants: []
+
+full_name: String::Style
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Instantise
+instance_methods: []
+
+name: Style
+superclass: 

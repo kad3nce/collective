@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Symbol</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Symbol</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/core/facets/metaid_rb.html">lib/core/facets/metaid.rb</a>
+<a href="../files/lib/core/facets/symbol/not_rb.html">lib/core/facets/symbol/not.rb</a>
+<a href="../files/lib/core/facets/symbol/to_proc_rb.html">lib/core/facets/symbol/to_proc.rb</a>
+<a href="../files/lib/core/facets/symbol/generate_rb.html">lib/core/facets/symbol/generate.rb</a>
+<a href="../files/lib/core/facets/symbol/succ_rb.html">lib/core/facets/symbol/succ.rb</a>
+<a href="../files/lib/core/facets/symbol/chomp_rb.html">lib/core/facets/symbol/chomp.rb</a>
+<a href="../files/lib/core/facets/symbol/not_rb.html">lib/core/facets/symbol/not.rb</a>
+<a href="../files/lib/core/facets/symbol/to_proc_rb.html">lib/core/facets/symbol/to_proc.rb</a>
+<a href="../files/lib/core/facets/symbol/generate_rb.html">lib/core/facets/symbol/generate.rb</a>
+<a href="../files/lib/core/facets/symbol/succ_rb.html">lib/core/facets/symbol/succ.rb</a>
+<a href="../files/lib/core/facets/symbol/chomp_rb.html">lib/core/facets/symbol/chomp.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+        <a href="Object.html">
+Object
+         </a>
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000118">chomp</a></li>
+  <li><a href="#M000125">chomp</a></li>
+  <li><a href="#M000116">generate</a></li>
+  <li><a href="#M000123">generate</a></li>
+  <li><a href="#M000126">lchomp</a></li>
+  <li><a href="#M000119">lchomp</a></li>
+  <li><a href="#M000120">not?</a></li>
+  <li><a href="#M000113">not?</a></li>
+  <li><a href="#M000117">succ</a></li>
+  <li><a href="#M000124">succ</a></li>
+  <li><a href="#M000115">to_proc</a></li>
+  <li><a href="#M000122">to_proc</a></li>
+  <li><a href="#M000112">variablize</a></li>
+  <li><a href="#M000121">~</a></li>
+  <li><a href="#M000114">~</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000116"></a><b>generate</b>(key=nil)
+  </div>
+  <div class="description">
+  <p>
+Generate a unique symbol.
+</p>
+<pre>
+  Symbol.generate =&gt; :-1
+</pre>
+<p>
+If <tt>key</tt> is given the new symbol will be prefixed with it.
+</p>
+<pre>
+  Symbol.generate(:foo) =&gt; :foo-1
+
+  TODO: Is the generated symbol format acceptable?
+
+ CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000116_source')" id="l_M000116_source">show source</a> ]</p>
+  <div id="M000116_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/generate.rb, line 15</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">generate</span>(<span class="ruby-identifier">key</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span>
+    <span class="ruby-ivar">@symbol_generate_counter</span> <span class="ruby-operator">||=</span> {}
+    <span class="ruby-ivar">@symbol_generate_counter</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">num</span> = <span class="ruby-ivar">@symbol_generate_counter</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    (<span class="ruby-node">&quot;#{key}-%X&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">num</span>).<span class="ruby-identifier">to_sym</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000123"></a><b>generate</b>(key=nil)
+  </div>
+  <div class="description">
+  <p>
+Generate a unique symbol.
+</p>
+<pre>
+  Symbol.generate =&gt; :-1
+</pre>
+<p>
+If <tt>key</tt> is given the new symbol will be prefixed with it.
+</p>
+<pre>
+  Symbol.generate(:foo) =&gt; :foo-1
+
+  TODO: Is the generated symbol format acceptable?
+
+ CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000123_source')" id="l_M000123_source">show source</a> ]</p>
+  <div id="M000123_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/generate.rb, line 15</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">generate</span>(<span class="ruby-identifier">key</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span>
+    <span class="ruby-ivar">@symbol_generate_counter</span> <span class="ruby-operator">||=</span> {}
+    <span class="ruby-ivar">@symbol_generate_counter</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">num</span> = <span class="ruby-ivar">@symbol_generate_counter</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    (<span class="ruby-node">&quot;#{key}-%X&quot;</span> <span class="ruby-operator">%</span> <span class="ruby-identifier">num</span>).<span class="ruby-identifier">to_sym</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000118"></a><b>chomp</b>(seperator)
+  </div>
+  <div class="description">
+  <p>
+Just like String#chomp.
+</p>
+<pre>
+  :ab.chomp(:b)  #=&gt; :a
+
+  CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000118_source')" id="l_M000118_source">show source</a> ]</p>
+  <div id="M000118_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/chomp.rb, line 9</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">seperator</span>)
+    <span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">seperator</span>.<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">to_sym</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000125"></a><b>chomp</b>(seperator)
+  </div>
+  <div class="description">
+  <p>
+Just like String#chomp.
+</p>
+<pre>
+  :ab.chomp(:b)  #=&gt; :a
+
+  CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000125_source')" id="l_M000125_source">show source</a> ]</p>
+  <div id="M000125_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/chomp.rb, line 9</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">seperator</span>)
+    <span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">seperator</span>.<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">to_sym</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000126"></a><b>lchomp</b>(seperator)
+  </div>
+  <div class="description">
+  <p>
+Just like <a href="String.html#M000507">String#lchomp</a>.
+</p>
+<pre>
+  :ab.lchomp(:a)  #=&gt; :b
+
+  CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000126_source')" id="l_M000126_source">show source</a> ]</p>
+  <div id="M000126_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/chomp.rb, line 19</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lchomp</span>(<span class="ruby-identifier">seperator</span>)
+    <span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">seperator</span>.<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">to_sym</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000119"></a><b>lchomp</b>(seperator)
+  </div>
+  <div class="description">
+  <p>
+Just like <a href="String.html#M000507">String#lchomp</a>.
+</p>
+<pre>
+  :ab.lchomp(:a)  #=&gt; :b
+
+  CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000119_source')" id="l_M000119_source">show source</a> ]</p>
+  <div id="M000119_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/chomp.rb, line 19</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">lchomp</span>(<span class="ruby-identifier">seperator</span>)
+    <span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">seperator</span>.<span class="ruby-identifier">to_s</span>).<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">to_sym</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000120"></a><b>not?</b>()
+  </div>
+  <div class="description">
+  <p>
+Does a symbol have a &quot;not&quot; sign?
+</p>
+<pre>
+  &quot;friend&quot;.to_sym.not?   #=&gt; false
+  &quot;~friend&quot;.to_sym.not?  #=&gt; true
+
+ CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000120_source')" id="l_M000120_source">show source</a> ]</p>
+  <div id="M000120_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/not.rb, line 10</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">not?</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">1</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'~'</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000113"></a><b>not?</b>()
+  </div>
+  <div class="description">
+  <p>
+Does a symbol have a &quot;not&quot; sign?
+</p>
+<pre>
+  &quot;friend&quot;.to_sym.not?   #=&gt; false
+  &quot;~friend&quot;.to_sym.not?  #=&gt; true
+
+ CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000113_source')" id="l_M000113_source">show source</a> ]</p>
+  <div id="M000113_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/not.rb, line 10</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">not?</span>
+    <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">1</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'~'</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000117"></a><b>succ</b>()
+  </div>
+  <div class="description">
+  <p>
+Successor method for symobol. This simply converts the symbol to a string
+uses String#succ and then converts it back to a symbol.
+</p>
+<pre>
+  :a.succ =&gt; :b
+
+ TODO: Make this  work more like a simple character dial?
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000117_source')" id="l_M000117_source">show source</a> ]</p>
+  <div id="M000117_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/succ.rb, line 13</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">succ</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">succ</span>.<span class="ruby-identifier">intern</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000124"></a><b>succ</b>()
+  </div>
+  <div class="description">
+  <p>
+Successor method for symobol. This simply converts the symbol to a string
+uses String#succ and then converts it back to a symbol.
+</p>
+<pre>
+  :a.succ =&gt; :b
+
+ TODO: Make this  work more like a simple character dial?
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000124_source')" id="l_M000124_source">show source</a> ]</p>
+  <div id="M000124_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/succ.rb, line 13</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">succ</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">succ</span>.<span class="ruby-identifier">intern</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000115"></a><b>to_proc</b>()
+  </div>
+  <div class="description">
+  <p>
+Turn a symbol into a proc calling the method to which it refers.
+</p>
+<pre>
+  up = :upcase.to_proc
+  up.call(&quot;hello&quot;)  #=&gt; HELLO
+</pre>
+<p>
+More useful is the fact that this allows <tt>&amp;</tt> to be used to
+coerce <a href="Symbol.html">Symbol</a> into <a href="Proc.html">Proc</a>.
+</p>
+<pre>
+  %w{foo bar qux}.map(&amp;:upcase)   #=&gt; [&quot;FOO&quot;,&quot;BAR&quot;,&quot;QUX&quot;]
+  [1, 2, 3].inject(&amp;:+)           #=&gt; 6
+</pre>
+<p>
+And other conveniences such as:
+</p>
+<pre>
+  %{john terry fiona}.map(&amp;:capitalize)   # -&gt; %{John Terry Fiona}
+  sum = numbers.inject(&amp;:+)
+
+  TODO: This will be deprecated as of Ruby 1.9, since it will become standard Ruby.
+</pre>
+<p>
+CREDIT: Florian Gross (orignal) CREDIT: Nobuhiro Imai (current)
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000115_source')" id="l_M000115_source">show source</a> ]</p>
+  <div id="M000115_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/to_proc.rb, line 27</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_proc</span>
+      <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>{<span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)}
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000122"></a><b>to_proc</b>()
+  </div>
+  <div class="description">
+  <p>
+Turn a symbol into a proc calling the method to which it refers.
+</p>
+<pre>
+  up = :upcase.to_proc
+  up.call(&quot;hello&quot;)  #=&gt; HELLO
+</pre>
+<p>
+More useful is the fact that this allows <tt>&amp;</tt> to be used to
+coerce <a href="Symbol.html">Symbol</a> into <a href="Proc.html">Proc</a>.
+</p>
+<pre>
+  %w{foo bar qux}.map(&amp;:upcase)   #=&gt; [&quot;FOO&quot;,&quot;BAR&quot;,&quot;QUX&quot;]
+  [1, 2, 3].inject(&amp;:+)           #=&gt; 6
+</pre>
+<p>
+And other conveniences such as:
+</p>
+<pre>
+  %{john terry fiona}.map(&amp;:capitalize)   # -&gt; %{John Terry Fiona}
+  sum = numbers.inject(&amp;:+)
+
+  TODO: This will be deprecated as of Ruby 1.9, since it will become standard Ruby.
+</pre>
+<p>
+CREDIT: Florian Gross (orignal) CREDIT: Nobuhiro Imai (current)
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000122_source')" id="l_M000122_source">show source</a> ]</p>
+  <div id="M000122_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/to_proc.rb, line 27</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_proc</span>
+      <span class="ruby-constant">Proc</span>.<span class="ruby-identifier">new</span>{<span class="ruby-operator">|</span><span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">shift</span>.<span class="ruby-identifier">__send__</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)}
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000112"></a><b>variablize</b>()
+  </div>
+  <div class="description">
+  <p>
+Append an &quot;@&quot; to the beginning of a symbol to make a instance
+variable name. This also replaces non-valid characters with underscores.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000112_source')" id="l_M000112_source">show source</a> ]</p>
+  <div id="M000112_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/metaid.rb, line 140</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">variablize</span>
+    <span class="ruby-node">&quot;@#{self}&quot;</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/\W/</span>, <span class="ruby-value str">'_'</span>).<span class="ruby-identifier">to_sym</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000121"></a><b>~</b>()
+  </div>
+  <div class="description">
+  <p>
+Add a &quot;not&quot; sign to the front of a symbol.
+</p>
+<pre>
+  ~:friend    #=&gt; :&quot;~friend&quot;
+
+ CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000121_source')" id="l_M000121_source">show source</a> ]</p>
+  <div id="M000121_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/not.rb, line 20</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">~@</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">1</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'~'</span>
+      <span class="ruby-node">&quot;#{self.to_s[1..-1]}&quot;</span>.<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-node">&quot;~#{self}&quot;</span>.<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000114"></a><b>~</b>()
+  </div>
+  <div class="description">
+  <p>
+Add a &quot;not&quot; sign to the front of a symbol.
+</p>
+<pre>
+  ~:friend    #=&gt; :&quot;~friend&quot;
+
+ CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000114_source')" id="l_M000114_source">show source</a> ]</p>
+  <div id="M000114_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/symbol/not.rb, line 20</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">~@</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">0</span>,<span class="ruby-value">1</span>) <span class="ruby-operator">==</span> <span class="ruby-value str">'~'</span>
+      <span class="ruby-node">&quot;#{self.to_s[1..-1]}&quot;</span>.<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-node">&quot;~#{self}&quot;</span>.<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

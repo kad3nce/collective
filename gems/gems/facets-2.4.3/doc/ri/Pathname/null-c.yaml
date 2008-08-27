@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Platform dependent null device.
+full_name: Pathname::null
+is_singleton: true
+name: "null"
+params: ()
+visibility: public

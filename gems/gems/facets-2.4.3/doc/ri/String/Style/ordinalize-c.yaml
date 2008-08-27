@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Ordinalize turns a number into an ordinal string used to denote the position in an ordered sequence such as 1st, 2nd, 3rd, 4th.
+- !ruby/struct:SM::Flow::P 
+  body: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  ordinalize('1')     # =&gt; &quot;1st&quot;\n  ordinalize('2')     # =&gt; &quot;2nd&quot;\n  ordinalize('1002')  # =&gt; &quot;1002nd&quot;\n  ordinalize('1003')  # =&gt; &quot;1003rd&quot;\n"
+full_name: String::Style::ordinalize
+is_singleton: true
+name: ordinalize
+params: (number_string)
+visibility: public

@@ -1,0 +1,47 @@
+= English
+
+English intends to provide a general purpose, comprehensive text manipulation and
+natural language processing library the Ruby programming language.
+
+
+== Status
+
+This is a very early BETA release. Many of the libraries work fine, but
+there is an exensive amount of work being done, so names are subject
+to change.
+
+
+== Usage
+
+Please see the API documentation.
+
+
+== Install
+
+  % gem install english
+
+or download the tar.gz and install manually:
+
+  % tar -xvvzf english-x.y.z.tar.gz
+  % cd english-x.y.z
+  % sudo util/setup
+
+
+== Authors
+
+* Trans
+* Paul Battley
+* Tim Fletcher
+* George Moschovitis
+
+
+== Copying
+
+English, Copyright (c) 2007 Trans & English Developers
+
+Some libraries within English are copyrighted to respective authors,
+or are deriviatives of such acknowledged work.
+
+English is distributed under the terms of the Ruby License.
+Which is a dual GPL license.
+

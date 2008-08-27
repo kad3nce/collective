@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "gmosx: delegator is not yet used."
+full_name: SyncArray::new
+is_singleton: true
+name: new
+params: (delegator = nil)
+visibility: public

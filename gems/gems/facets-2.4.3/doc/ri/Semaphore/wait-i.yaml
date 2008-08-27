@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: down
+- !ruby/object:RI::AliasName 
+  name: p
+block_params: 
+comment: 
+full_name: Semaphore#wait
+is_singleton: false
+name: wait
+params: ()
+visibility: public

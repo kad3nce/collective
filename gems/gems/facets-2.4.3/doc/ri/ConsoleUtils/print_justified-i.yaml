@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Print a justified line with left and right entries.
+- !ruby/struct:SM::Flow::P 
+  body: A fill option can be given to fill in any empty space between the two. And a ratio option can be given which defaults to 0.8 (eg. 80/20)
+full_name: ConsoleUtils#print_justified
+is_singleton: false
+name: print_justified
+params: (left, right, options={})
+visibility: public

@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: tar_z
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Tar Gzip
+full_name: ZipUtils#tar_gzip
+is_singleton: false
+name: tar_gzip
+params: (folder, file=nil, options={})
+visibility: public

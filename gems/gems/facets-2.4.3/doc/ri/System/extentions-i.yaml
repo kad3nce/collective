@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: System#extentions
+is_singleton: false
+name: extentions
+params: ()
+visibility: public

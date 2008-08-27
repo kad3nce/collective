@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #untar_bzip2"
+full_name: ZipUtils#untar_j
+is_singleton: false
+name: untar_j
+params: (file, options={})
+visibility: public

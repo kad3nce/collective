@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #default_output="
+full_name: System#defout=
+is_singleton: false
+name: defout=
+params: (x)
+visibility: public

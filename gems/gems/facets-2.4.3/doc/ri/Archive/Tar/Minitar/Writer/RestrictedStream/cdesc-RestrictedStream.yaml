@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A stream wrapper that can only be written to. Any attempt to read from this restricted stream will result in a NameError being thrown.
+constants: []
+
+full_name: Archive::Tar::Minitar::Writer::RestrictedStream
+includes: []
+
+instance_methods: []
+
+name: RestrictedStream
+superclass: Object

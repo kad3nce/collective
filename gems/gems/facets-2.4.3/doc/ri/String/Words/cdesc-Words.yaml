@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: String::Words
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: brief
+- !ruby/object:RI::MethodSummary 
+  name: each_word
+- !ruby/object:RI::MethodSummary 
+  name: word_filter
+- !ruby/object:RI::MethodSummary 
+  name: word_filter!
+- !ruby/object:RI::MethodSummary 
+  name: word_wrap
+- !ruby/object:RI::MethodSummary 
+  name: word_wrap!
+- !ruby/object:RI::MethodSummary 
+  name: words
+name: Words
+superclass: 

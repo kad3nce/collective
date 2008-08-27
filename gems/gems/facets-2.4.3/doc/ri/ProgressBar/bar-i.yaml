@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ProgressBar#bar
+is_singleton: false
+name: bar
+params: ()
+visibility: private

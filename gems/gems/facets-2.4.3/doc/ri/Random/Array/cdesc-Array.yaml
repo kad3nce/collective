@@ -1,0 +1,31 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: []
+
+constants: []
+
+full_name: Random::Array
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: at_rand
+- !ruby/object:RI::MethodSummary 
+  name: at_rand!
+- !ruby/object:RI::MethodSummary 
+  name: pick
+- !ruby/object:RI::MethodSummary 
+  name: pick!
+- !ruby/object:RI::MethodSummary 
+  name: rand_index
+- !ruby/object:RI::MethodSummary 
+  name: rand_subset
+- !ruby/object:RI::MethodSummary 
+  name: shuffle
+- !ruby/object:RI::MethodSummary 
+  name: shuffle!
+name: Array
+superclass: 

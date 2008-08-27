@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #signal"
+full_name: Semaphore#v
+is_singleton: false
+name: v
+params: ()
+visibility: public

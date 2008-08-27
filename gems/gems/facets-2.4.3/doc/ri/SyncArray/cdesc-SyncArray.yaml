@@ -1,0 +1,19 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: sync
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: []
+
+full_name: SyncArray
+includes: []
+
+instance_methods: []
+
+name: SyncArray
+superclass: Array

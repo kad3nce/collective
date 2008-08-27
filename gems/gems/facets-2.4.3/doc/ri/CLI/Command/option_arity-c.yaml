@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: CLI::Command::option_arity
+is_singleton: true
+name: option_arity
+params: (arity_hash=nil)
+visibility: public

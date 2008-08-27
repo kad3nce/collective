@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: end
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Gee, a real infinite loop!
+full_name: InfinityClass#times
+is_singleton: false
+name: times
+params: () {|end| ...}
+visibility: public

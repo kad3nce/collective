@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Autoarray::new
+is_singleton: true
+name: new
+params: (size=0, default=nil, update = nil, update_index = nil)
+visibility: public

@@ -1,0 +1,21 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Uninheritable
+- !ruby/struct:SM::Flow::P 
+  body: "Allows an object to declare itself as unable to be subclassed. The technique behind this is very simple (redefinition of #inherited), so this just provides an easier way to do the same thing with a consistent error message."
+constants: []
+
+full_name: Uninheritable
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: inherited
+name: Uninheritable
+superclass: 

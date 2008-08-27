@@ -1,0 +1,55 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Indexable
+- !ruby/struct:SM::Flow::P 
+  body: "Indexable is a mixin that provides index based methods, working soley with four methods: #index, #slice, #splice and #size."
+- !ruby/struct:SM::Flow::P 
+  body: "These methods work in harmony. Where #index returns a position of a given element, #slice returns elements for given positions. #splice is like #slice but replaces the given position with new values. This mehtod is not part of ruby core, but it generally just an alias for #[]=, just as #slice is an alias of #[]. #size of course simply returns the total length of the indexable object."
+constants: []
+
+full_name: Indexable
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: body
+- !ruby/object:RI::MethodSummary 
+  name: ends
+- !ruby/object:RI::MethodSummary 
+  name: first
+- !ruby/object:RI::MethodSummary 
+  name: first!
+- !ruby/object:RI::MethodSummary 
+  name: first=
+- !ruby/object:RI::MethodSummary 
+  name: foot
+- !ruby/object:RI::MethodSummary 
+  name: head
+- !ruby/object:RI::MethodSummary 
+  name: index_of
+- !ruby/object:RI::MethodSummary 
+  name: last
+- !ruby/object:RI::MethodSummary 
+  name: last!
+- !ruby/object:RI::MethodSummary 
+  name: last=
+- !ruby/object:RI::MethodSummary 
+  name: mid
+- !ruby/object:RI::MethodSummary 
+  name: middle
+- !ruby/object:RI::MethodSummary 
+  name: pos
+- !ruby/object:RI::MethodSummary 
+  name: range
+- !ruby/object:RI::MethodSummary 
+  name: tail
+- !ruby/object:RI::MethodSummary 
+  name: thru
+name: Indexable
+superclass: 

@@ -1,0 +1,36 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: For adding ansicolor output.
+constants: []
+
+full_name: Logger::Ansicolor
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: debug
+- !ruby/object:RI::MethodSummary 
+  name: debug_with_color
+- !ruby/object:RI::MethodSummary 
+  name: error
+- !ruby/object:RI::MethodSummary 
+  name: error_with_color
+- !ruby/object:RI::MethodSummary 
+  name: fatal
+- !ruby/object:RI::MethodSummary 
+  name: fatal_with_color
+- !ruby/object:RI::MethodSummary 
+  name: info
+- !ruby/object:RI::MethodSummary 
+  name: info_with_color
+- !ruby/object:RI::MethodSummary 
+  name: warn
+- !ruby/object:RI::MethodSummary 
+  name: warn_with_color
+name: Ansicolor
+superclass: 

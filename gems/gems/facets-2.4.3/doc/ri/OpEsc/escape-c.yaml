@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Applies operator escape's according to OPERATORS_ESCAPE_TABLE.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  op_esc('-') #=&gt; &quot;op_minus&quot;\n\n  CREDIT: Trans\n"
+full_name: OpEsc::escape
+is_singleton: true
+name: escape
+params: (str)
+visibility: public

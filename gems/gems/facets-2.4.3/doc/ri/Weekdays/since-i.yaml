@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: from_now
+- !ruby/object:RI::AliasName 
+  name: after
+block_params: 
+comment: 
+full_name: Weekdays#since
+is_singleton: false
+name: since
+params: (time = ::Time.now)
+visibility: public

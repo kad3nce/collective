@@ -1,0 +1,43 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: ":dir, entry.full_name, stats if block_given?"
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Extracts the current <tt>entry</tt> to <tt>destdir</tt>. If a block is provided, it yields an <tt>action</tt> Symbol, the full name of the file being extracted (<tt>name</tt>), and a Hash of statistical information (<tt>stats</tt>).
+- !ruby/struct:SM::Flow::P 
+  body: "The <tt>action</tt> will be one of:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:dir</tt>:"
+    body: The <tt>entry</tt> is a directory.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:file_start</tt>:"
+    body: The <tt>entry</tt> is a file; the extract of the file is just beginning.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:file_progress</tt>:"
+    body: Yielded every 4096 bytes during the extract of the <tt>entry</tt>.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:file_done</tt>:"
+    body: Yielded when the <tt>entry</tt> is completed.
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: "The <tt>stats</tt> hash contains the following keys:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:current</tt>:"
+    body: The current total number of bytes read in the <tt>entry</tt>.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:currinc</tt>:"
+    body: The current number of bytes read in this read cycle.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:entry</tt>:"
+    body: The entry being extracted; this is a Reader::EntryStream, with all methods thereof.
+  type: :NOTE
+full_name: Archive::Tar::Minitar::Input#extract_entry
+is_singleton: false
+name: extract_entry
+params: (destdir, entry) {|:dir, entry.full_name, stats if block_given?| ...}
+visibility: public

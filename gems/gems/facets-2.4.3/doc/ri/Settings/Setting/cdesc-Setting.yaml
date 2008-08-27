@@ -1,0 +1,42 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: name
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: options
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: owner
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: type
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: value
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A datastructure to store Settings metadata.
+- !ruby/struct:SM::Flow::P 
+  body: Please note the difference between :default and :value, :default does NOT override :value.
+constants: []
+
+full_name: Settings::Setting
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: update
+name: Setting
+superclass: Object

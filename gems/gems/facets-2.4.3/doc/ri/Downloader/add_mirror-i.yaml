@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Downloader#add_mirror
+is_singleton: false
+name: add_mirror
+params: ( url, region=nil )
+visibility: public

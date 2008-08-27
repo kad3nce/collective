@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: dump
+- !ruby/object:RI::MethodSummary 
+  name: load
+- !ruby/object:RI::MethodSummary 
+  name: make_xoxo
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: XOXO
+- !ruby/struct:SM::Flow::P 
+  body: XOXO is a Ruby XOXO parser and generator. It provides a Ruby API similar to Marshal and YAML (though more specific) to load and dump XOXO[http://microformats.org/wiki/xoxo], an simple, open outline format written in standard XHTML and suitable for embedding in (X)HTML, Atom, RSS, and arbitrary XML.
+constants: []
+
+full_name: XOXO
+includes: []
+
+instance_methods: []
+
+name: XOXO
+superclass: 

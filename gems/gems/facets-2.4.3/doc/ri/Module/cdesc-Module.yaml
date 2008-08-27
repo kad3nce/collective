@@ -1,0 +1,192 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: append_features
+comment: []
+
+constants: []
+
+full_name: Module
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "*"
+- !ruby/object:RI::MethodSummary 
+  name: +
+- !ruby/object:RI::MethodSummary 
+  name: "-"
+- !ruby/object:RI::MethodSummary 
+  name: Comparable
+- !ruby/object:RI::MethodSummary 
+  name: Equatable
+- !ruby/object:RI::MethodSummary 
+  name: abstract
+- !ruby/object:RI::MethodSummary 
+  name: alias_accessor
+- !ruby/object:RI::MethodSummary 
+  name: alias_accessor!
+- !ruby/object:RI::MethodSummary 
+  name: alias_method_chain
+- !ruby/object:RI::MethodSummary 
+  name: alias_module_function
+- !ruby/object:RI::MethodSummary 
+  name: alias_reader
+- !ruby/object:RI::MethodSummary 
+  name: alias_reader!
+- !ruby/object:RI::MethodSummary 
+  name: alias_reader?
+- !ruby/object:RI::MethodSummary 
+  name: alias_setter
+- !ruby/object:RI::MethodSummary 
+  name: alias_switcher
+- !ruby/object:RI::MethodSummary 
+  name: alias_tester
+- !ruby/object:RI::MethodSummary 
+  name: alias_toggler
+- !ruby/object:RI::MethodSummary 
+  name: alias_validator
+- !ruby/object:RI::MethodSummary 
+  name: alias_writer
+- !ruby/object:RI::MethodSummary 
+  name: alias_writer!
+- !ruby/object:RI::MethodSummary 
+  name: all_instance_methods
+- !ruby/object:RI::MethodSummary 
+  name: ancestor?
+- !ruby/object:RI::MethodSummary 
+  name: ann
+- !ruby/object:RI::MethodSummary 
+  name: ann!
+- !ruby/object:RI::MethodSummary 
+  name: annotations
+- !ruby/object:RI::MethodSummary 
+  name: append_features
+- !ruby/object:RI::MethodSummary 
+  name: append_features
+- !ruby/object:RI::MethodSummary 
+  name: append_features_without_class_extension
+- !ruby/object:RI::MethodSummary 
+  name: attr
+- !ruby/object:RI::MethodSummary 
+  name: attr_accessor!
+- !ruby/object:RI::MethodSummary 
+  name: attr_reader!
+- !ruby/object:RI::MethodSummary 
+  name: attr_reader?
+- !ruby/object:RI::MethodSummary 
+  name: attr_setter
+- !ruby/object:RI::MethodSummary 
+  name: attr_switcher
+- !ruby/object:RI::MethodSummary 
+  name: attr_tester
+- !ruby/object:RI::MethodSummary 
+  name: attr_toggler
+- !ruby/object:RI::MethodSummary 
+  name: attr_validator
+- !ruby/object:RI::MethodSummary 
+  name: attr_writer!
+- !ruby/object:RI::MethodSummary 
+  name: basename
+- !ruby/object:RI::MethodSummary 
+  name: class_def
+- !ruby/object:RI::MethodSummary 
+  name: class_extension
+- !ruby/object:RI::MethodSummary 
+  name: class_inherit
+- !ruby/object:RI::MethodSummary 
+  name: class_load
+- !ruby/object:RI::MethodSummary 
+  name: class_methods
+- !ruby/object:RI::MethodSummary 
+  name: class_require
+- !ruby/object:RI::MethodSummary 
+  name: classified_attributes
+- !ruby/object:RI::MethodSummary 
+  name: conflict?
+- !ruby/object:RI::MethodSummary 
+  name: define_dependency
+- !ruby/object:RI::MethodSummary 
+  name: depend
+- !ruby/object:RI::MethodSummary 
+  name: dependencies
+- !ruby/object:RI::MethodSummary 
+  name: heritage
+- !ruby/object:RI::MethodSummary 
+  name: include_as
+- !ruby/object:RI::MethodSummary 
+  name: include_function_module
+- !ruby/object:RI::MethodSummary 
+  name: instance_method!
+- !ruby/object:RI::MethodSummary 
+  name: instance_method_defined?
+- !ruby/object:RI::MethodSummary 
+  name: integrate
+- !ruby/object:RI::MethodSummary 
+  name: is
+- !ruby/object:RI::MethodSummary 
+  name: is?
+- !ruby/object:RI::MethodSummary 
+  name: memoize
+- !ruby/object:RI::MethodSummary 
+  name: method_overloads
+- !ruby/object:RI::MethodSummary 
+  name: method_space
+- !ruby/object:RI::MethodSummary 
+  name: methodize
+- !ruby/object:RI::MethodSummary 
+  name: mixin_parameters
+- !ruby/object:RI::MethodSummary 
+  name: mixin_params
+- !ruby/object:RI::MethodSummary 
+  name: modspace
+- !ruby/object:RI::MethodSummary 
+  name: module_load
+- !ruby/object:RI::MethodSummary 
+  name: module_method_defined?
+- !ruby/object:RI::MethodSummary 
+  name: module_require
+- !ruby/object:RI::MethodSummary 
+  name: nesting
+- !ruby/object:RI::MethodSummary 
+  name: overload
+- !ruby/object:RI::MethodSummary 
+  name: pathize
+- !ruby/object:RI::MethodSummary 
+  name: prepend
+- !ruby/object:RI::MethodSummary 
+  name: private_conflict?
+- !ruby/object:RI::MethodSummary 
+  name: protected_conflict?
+- !ruby/object:RI::MethodSummary 
+  name: public_conflict?
+- !ruby/object:RI::MethodSummary 
+  name: redef
+- !ruby/object:RI::MethodSummary 
+  name: redefine_method
+- !ruby/object:RI::MethodSummary 
+  name: redirect
+- !ruby/object:RI::MethodSummary 
+  name: redirect_method
+- !ruby/object:RI::MethodSummary 
+  name: rename
+- !ruby/object:RI::MethodSummary 
+  name: rename_method
+- !ruby/object:RI::MethodSummary 
+  name: revisal
+- !ruby/object:RI::MethodSummary 
+  name: revise
+- !ruby/object:RI::MethodSummary 
+  name: setting
+- !ruby/object:RI::MethodSummary 
+  name: singleton_method_defined?
+- !ruby/object:RI::MethodSummary 
+  name: spacename
+- !ruby/object:RI::MethodSummary 
+  name: wrap
+- !ruby/object:RI::MethodSummary 
+  name: wrap_method
+name: Module
+superclass: Object

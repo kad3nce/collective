@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Scans <tt>string</tt> for all occurrances of strings in the DictionaryMatcher. Overlapping matches are skipped (only the first one is yielded), and when some strings in the DictionaryMatcher are substrings of others, only the shortest match at a given position is found.
+full_name: DictionaryMatcher#scan
+is_singleton: false
+name: scan
+params: (text, &block)
+visibility: public

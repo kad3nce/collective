@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "When this module is mixed in with an encryption class, the class must provide three methods: encrypt_block(block) and decrypt_block(block) and block_size()"
+full_name: BiCrypt#generate_initialization_vector
+is_singleton: false
+name: generate_initialization_vector
+params: (words)
+visibility: public

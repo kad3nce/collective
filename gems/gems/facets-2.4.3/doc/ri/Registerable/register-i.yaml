@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Register format names.
+full_name: Registerable#register
+is_singleton: false
+name: register
+params: (*names)
+visibility: public

@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Pool
+- !ruby/struct:SM::Flow::P 
+  body: Generalized object pool implementation. Implemented as a thread safe stack. Exclusive locking is needed both for push and pop.
+constants: []
+
+full_name: Pool
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: MonitorMixin
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: obtain
+- !ruby/object:RI::MethodSummary 
+  name: pop
+- !ruby/object:RI::MethodSummary 
+  name: push
+name: Pool
+superclass: Array

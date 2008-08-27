@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: elements
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns an elemental object. This allows you to map a method on to every element.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  r = [1,2,3].every + 3  #=&gt; [4,5,6]\n"
+full_name: Enumerable#every
+is_singleton: false
+name: every
+params: ()
+visibility: public

@@ -1,0 +1,68 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: dir?
+- !ruby/object:RI::MethodSummary 
+  name: open
+- !ruby/object:RI::MethodSummary 
+  name: pack
+- !ruby/object:RI::MethodSummary 
+  name: pack_file
+- !ruby/object:RI::MethodSummary 
+  name: unpack
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Archive::Tar::Minitar 0.5.1
+- !ruby/struct:SM::Flow::P 
+  body: "Archive::Tar::Minitar is a pure-Ruby library and command-line utility that provides the ability to deal with POSIX tar(1) archive files. The implementation is based heavily on Mauricio Fern\xEF\xBF\xBDdez's implementation in rpa-base, but has been reorganised to promote reuse in other projects."
+- !ruby/struct:SM::Flow::P 
+  body: This tar class performs a subset of all tar (POSIX tape archive) operations. We can only deal with typeflags 0, 1, 2, and 5 (see Archive::Tar::PosixHeader). All other typeflags will be treated as normal files.
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "NOTE::"
+    body: support for typeflags 1 and 2 is not yet implemented in this version.
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: This release is version 0.5.1. The library can only handle files and directories at this point. A future version will be expanded to handle symbolic links and hard links in a portable manner. The command line utility, minitar, can only create archives, extract from archives, and list archive contents.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Synopsis
+- !ruby/struct:SM::Flow::P 
+  body: "Using this library is easy. The simplest case is:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  require 'zlib'\n  require 'archive/tar/minitar'\n  include Archive::Tar\n\n    # Packs everything that matches Find.find('tests')\n  File.open('test.tar', 'wb') { |tar| Minitar.pack('tests', tar) }\n    # Unpacks 'test.tar' to 'x', creating 'x' if necessary.\n  Minitar.unpack('test.tar', 'x')\n"
+- !ruby/struct:SM::Flow::P 
+  body: "A gzipped tar can be written with:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  tgz = Zlib::GzipWriter.new(File.open('test.tgz', 'wb'))\n    # Warning: tgz will be closed!\n  Minitar.pack('tests', tgz)\n\n  tgz = Zlib::GzipReader.new(File.open('test.tgz', 'rb'))\n    # Warning: tgz will be closed!\n  Minitar.unpack(tgz, 'x')\n"
+- !ruby/struct:SM::Flow::P 
+  body: As the case above shows, one need not write to a file. However, it will sometimes require that one dive a little deeper into the API, as in the case of StringIO objects. Note that I'm not providing a block with Minitar::Output, as Minitar::Output#close automatically closes both the Output object and the wrapped data stream object.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  begin\n    sgz = Zlib::GzipWriter.new(StringIO.new(&quot;&quot;))\n    tar = Output.new(sgz)\n    Find.find('tests') do |entry|\n      Minitar.pack_file(entry, tar)\n    end\n  ensure\n      # Closes both tar and sgz.\n    tar.close\n  end\n"
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Copyright
+- !ruby/struct:SM::Flow::P 
+  body: "Copyright 2004 Mauricio Julio Fern\xEF\xBF\xBDdez Pradier and Austin Ziegler"
+- !ruby/struct:SM::Flow::P 
+  body: This program is based on and incorporates parts of RPA::Package from rpa-base (lib/rpa/package.rb and lib/rpa/util.rb) by Mauricio and has been adapted to be more generic by Austin.
+- !ruby/struct:SM::Flow::P 
+  body: "'minitar' contains an adaptation of Ruby/ProgressBar by Satoru Takabayashi &lt;satoru@namazu.org&gt;, copyright 2001 - 2004."
+- !ruby/struct:SM::Flow::P 
+  body: This program is free software. It may be redistributed and/or modified under the terms of the GPL version 2 (or later) or Ruby's licence.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: VERSION
+  value: "\"0.5.1\""
+full_name: Archive::Tar::Minitar
+includes: []
+
+instance_methods: []
+
+name: Minitar
+superclass: 

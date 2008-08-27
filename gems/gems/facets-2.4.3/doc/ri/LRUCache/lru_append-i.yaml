@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Append a child item to a parent item in the lru list (Re)inserts the child in the list.
+full_name: LRUCache#lru_append
+is_singleton: false
+name: lru_append
+params: (parent, child)
+visibility: private

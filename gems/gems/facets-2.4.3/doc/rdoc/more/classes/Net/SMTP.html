@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Net::SMTP</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Net::SMTP</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/more/facets/net/smtp_tls_rb.html">lib/more/facets/net/smtp_tls.rb</a>
+<a href="../../files/lib/more/facets/net/smtp_tls_rb.html">lib/more/facets/net/smtp_tls.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000920">start</a></li>
+  <li><a href="#M000921">start</a></li>
+  <li><a href="#M000924">start</a></li>
+  <li><a href="#M000922">start</a></li>
+  <li><a href="#M000923">tls_old_start</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000920"></a><b>start</b>(address, port=nil, helo='localhost.localdomain', user=nil, secret=nil, authtype=nil, use_tls=false) {|smtp| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000920_source')" id="l_M000920_source">show source</a> ]</p>
+  <div id="M000920_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/net/smtp_tls.rb, line 44</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">start</span>(<span class="ruby-identifier">address</span>, <span class="ruby-identifier">port</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">helo</span>=<span class="ruby-value str">'localhost.localdomain'</span>, <span class="ruby-identifier">user</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">secret</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">authtype</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">use_tls</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-comment cmt"># :yield: smtp</span>
+    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">address</span>, <span class="ruby-identifier">port</span>).<span class="ruby-identifier">start</span>(<span class="ruby-identifier">helo</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">secret</span>, <span class="ruby-identifier">authtype</span>, <span class="ruby-identifier">use_tls</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000922"></a><b>start</b>(address, port=nil, helo='localhost.localdomain', user=nil, secret=nil, authtype=nil, use_tls=false) {|smtp| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000922_source')" id="l_M000922_source">show source</a> ]</p>
+  <div id="M000922_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/net/smtp_tls.rb, line 44</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">start</span>(<span class="ruby-identifier">address</span>, <span class="ruby-identifier">port</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">helo</span>=<span class="ruby-value str">'localhost.localdomain'</span>, <span class="ruby-identifier">user</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">secret</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">authtype</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">use_tls</span>=<span class="ruby-keyword kw">false</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) <span class="ruby-comment cmt"># :yield: smtp</span>
+    <span class="ruby-identifier">new</span>(<span class="ruby-identifier">address</span>, <span class="ruby-identifier">port</span>).<span class="ruby-identifier">start</span>(<span class="ruby-identifier">helo</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">secret</span>, <span class="ruby-identifier">authtype</span>, <span class="ruby-identifier">use_tls</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000921"></a><b>start</b>(helo='localhost.localdomain', user=nil, secret=nil, authtype=nil, use_tls=false) {|smtp| ...}
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="SMTP.html#M000923">tls_old_start</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000921_source')" id="l_M000921_source">show source</a> ]</p>
+  <div id="M000921_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/net/smtp_tls.rb, line 50</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>(<span class="ruby-identifier">helo</span>=<span class="ruby-value str">'localhost.localdomain'</span>, <span class="ruby-identifier">user</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">secret</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">authtype</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">use_tls</span>=<span class="ruby-keyword kw">false</span>) <span class="ruby-comment cmt"># :yield: smtp</span>
+    <span class="ruby-identifier">start_method</span> = <span class="ruby-identifier">use_tls</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">do_tls_start</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:do_start</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">send</span> <span class="ruby-identifier">start_method</span>, <span class="ruby-identifier">helo</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">secret</span>, <span class="ruby-identifier">authtype</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>)
+      <span class="ruby-keyword kw">ensure</span>
+        <span class="ruby-identifier">do_finish</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">send</span> <span class="ruby-identifier">start_method</span>, <span class="ruby-identifier">helo</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">secret</span>, <span class="ruby-identifier">authtype</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000924"></a><b>start</b>(helo='localhost.localdomain', user=nil, secret=nil, authtype=nil, use_tls=false) {|smtp| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000924_source')" id="l_M000924_source">show source</a> ]</p>
+  <div id="M000924_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/net/smtp_tls.rb, line 50</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">start</span>(<span class="ruby-identifier">helo</span>=<span class="ruby-value str">'localhost.localdomain'</span>, <span class="ruby-identifier">user</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">secret</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">authtype</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">use_tls</span>=<span class="ruby-keyword kw">false</span>) <span class="ruby-comment cmt"># :yield: smtp</span>
+    <span class="ruby-identifier">start_method</span> = <span class="ruby-identifier">use_tls</span> <span class="ruby-value">? </span><span class="ruby-operator">:</span><span class="ruby-identifier">do_tls_start</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">:do_start</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-keyword kw">begin</span>
+        <span class="ruby-identifier">send</span> <span class="ruby-identifier">start_method</span>, <span class="ruby-identifier">helo</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">secret</span>, <span class="ruby-identifier">authtype</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">yield</span>(<span class="ruby-keyword kw">self</span>)
+      <span class="ruby-keyword kw">ensure</span>
+        <span class="ruby-identifier">do_finish</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">send</span> <span class="ruby-identifier">start_method</span>, <span class="ruby-identifier">helo</span>, <span class="ruby-identifier">user</span>, <span class="ruby-identifier">secret</span>, <span class="ruby-identifier">authtype</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000923"></a><b>tls_old_start</b>(helo='localhost.localdomain', user=nil, secret=nil, authtype=nil, use_tls=false)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="SMTP.html#M000920">start</a>
+</p>
+  </div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

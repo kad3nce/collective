@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: ANSICode</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />ANSICode</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/ansicode_rb.html">lib/more/facets/ansicode.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="ANSICode.html">ANSICode</a></h1>
+<p>
+<a href="Module.html">Module</a> which makes it very easy to use ANSI
+codes. These are esspecially nice for beautifying shell output.
+</p>
+<pre>
+  include ANSICode
+
+  p red, &quot;Hello&quot;, blue, &quot;World&quot;
+  =&gt; &quot;\e[31mHello\e[34mWorld&quot;
+
+  p red { &quot;Hello&quot; } + blue { &quot;World&quot; }
+  =&gt; &quot;\e[31mHello\e[0m\e[34mWorld\e[0m&quot;
+</pre>
+<h2>Supported ANSI Comands</h2>
+<p>
+The following is a list of supported codes.
+</p>
+<pre>
+    save
+    restore
+    clear_screen
+    cls             # synonym for :clear_screen
+    clear_line
+    clr             # synonym for :clear_line
+    move
+    up
+    down
+    left
+    right
+    display
+
+    clear
+    reset           # synonym for :clear
+    bold
+    dark
+    italic          # not widely implemented
+    underline
+    underscore      # synonym for :underline
+    blink
+    rapid_blink     # not widely implemented
+    negative        # no reverse because of String#reverse
+    concealed
+    strikethrough   # not widely implemented
+
+    black
+    red
+    green
+    yellow
+    blue
+    magenta
+    cyan
+    white
+
+    on_black
+    on_red
+    on_green
+    on_yellow
+    on_blue
+    on_magenta
+    on_cyan
+    on_white
+</pre>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M001003">clear_line</a></li>
+  <li><a href="#M001001">clear_screen</a></li>
+  <li><a href="#M001004">clr</a></li>
+  <li><a href="#M001002">cls</a></li>
+  <li><a href="#M001013">colors</a></li>
+  <li><a href="#M001011">define_ansicolor_method</a></li>
+  <li><a href="#M001010">display</a></li>
+  <li><a href="#M001007">down</a></li>
+  <li><a href="#M001008">left</a></li>
+  <li><a href="#M001005">move</a></li>
+  <li><a href="#M001000">restore</a></li>
+  <li><a href="#M001009">right</a></li>
+  <li><a href="#M000999">save</a></li>
+  <li><a href="#M001012">uncolored</a></li>
+  <li><a href="#M001006">up</a></li>
+  </ul>
+
+
+
+
+  <div class="sectiontitle">Constants</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class="attr-name">ColoredRegexp</td>
+    <td>=</td>
+    <td class="attr-value">/\e\[([34][0-7]|[0-9])m/</td>
+  </tr>
+  </table>
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M001011"></a><b>define_ansicolor_method</b>(name,code)
+  </div>
+  <div class="description">
+  <p>
+Define color codes.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001011_source')" id="l_M001011_source">show source</a> ]</p>
+  <div id="M001011_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 240</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">define_ansicolor_method</span>(<span class="ruby-identifier">name</span>,<span class="ruby-identifier">code</span>)
+    <span class="ruby-identifier">class_eval</span> <span class="ruby-value str">&quot;def \#{name.to_s}(string = nil)\nresult = \&quot;\\e[\#{code}m\&quot;\nif block_given?\nresult &lt;&lt; yield\nresult &lt;&lt; \&quot;\\e[0m\&quot;\nelsif string\nresult &lt;&lt; string\nresult &lt;&lt; \&quot;\\e[0m\&quot;\nelsif respond_to?(:to_str)\nresult &lt;&lt; self\nresult &lt;&lt; \&quot;\\e[0m\&quot;\nend\nreturn result\nend\n&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M001003"></a><b>clear_line</b>()
+  </div>
+  <div class="description">
+  <p>
+Clear to the end of the current line.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="ANSICode.html#M001004">clr</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001003_source')" id="l_M001003_source">show source</a> ]</p>
+  <div id="M001003_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 178</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_line</span>
+    <span class="ruby-value str">&quot;\e[K&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001001"></a><b>clear_screen</b>()
+  </div>
+  <div class="description">
+  <p>
+Clear the screen and <a href="ANSICode.html#M001005">move</a> cursor to
+home.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="ANSICode.html#M001002">cls</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001001_source')" id="l_M001001_source">show source</a> ]</p>
+  <div id="M001001_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 171</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear_screen</span>
+    <span class="ruby-value str">&quot;\e[2J&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001004"></a><b>clr</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="ANSICode.html#M001003">clear_line</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001002"></a><b>cls</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="ANSICode.html#M001001">clear_screen</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001013"></a><b>colors</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001013_source')" id="l_M001013_source">show source</a> ]</p>
+  <div id="M001013_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 311</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">colors</span>
+    <span class="ruby-ivar">@@colors</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>[<span class="ruby-value">0</span>] }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001010"></a><b>display</b>( line, column=0, string=nil ) {|| ...}
+  </div>
+  <div class="description">
+  <p>
+Like <tt><a href="ANSICode.html#M001005">move</a></tt> but returns to
+original positon after yielding block or adding string argument.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001010_source')" id="l_M001010_source">show source</a> ]</p>
+  <div id="M001010_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 222</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">display</span>( <span class="ruby-identifier">line</span>, <span class="ruby-identifier">column</span>=<span class="ruby-value">0</span>, <span class="ruby-identifier">string</span>=<span class="ruby-keyword kw">nil</span> ) <span class="ruby-comment cmt">#:yield:</span>
+    <span class="ruby-identifier">result</span> = <span class="ruby-value str">&quot;\e[s&quot;</span>
+    <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;\e[#{line.to_i};#{column.to_i}H&quot;</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">yield</span>
+      <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\e[u&quot;</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">string</span>
+      <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">string</span>
+      <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\e[u&quot;</span>
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>)
+      <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>
+      <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;\e[u&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">result</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001007"></a><b>down</b>( spaces=1 )
+  </div>
+  <div class="description">
+  <p>
+Move cursor <a href="ANSICode.html#M001007">down</a> a specificed number of
+spaces.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001007_source')" id="l_M001007_source">show source</a> ]</p>
+  <div id="M001007_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 203</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">down</span>( <span class="ruby-identifier">spaces</span>=<span class="ruby-value">1</span> )
+    <span class="ruby-node">&quot;\e[#{spaces.to_i}B&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001008"></a><b>left</b>( spaces=1 )
+  </div>
+  <div class="description">
+  <p>
+Move cursor <a href="ANSICode.html#M001008">left</a> a specificed number of
+spaces.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001008_source')" id="l_M001008_source">show source</a> ]</p>
+  <div id="M001008_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 209</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">left</span>( <span class="ruby-identifier">spaces</span>=<span class="ruby-value">1</span> )
+    <span class="ruby-node">&quot;\e[#{spaces.to_i}D&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001005"></a><b>move</b>( line, column=0 )
+  </div>
+  <div class="description">
+  <p>
+Move curose to line and column.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001005_source')" id="l_M001005_source">show source</a> ]</p>
+  <div id="M001005_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 191</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">move</span>( <span class="ruby-identifier">line</span>, <span class="ruby-identifier">column</span>=<span class="ruby-value">0</span> )
+    <span class="ruby-node">&quot;\e[#{line.to_i};#{column.to_i}H&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001000"></a><b>restore</b>()
+  </div>
+  <div class="description">
+  <p>
+Restore saved cursor positon.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001000_source')" id="l_M001000_source">show source</a> ]</p>
+  <div id="M001000_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 165</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">restore</span>
+    <span class="ruby-value str">&quot;\e[u&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001009"></a><b>right</b>( spaces=1 )
+  </div>
+  <div class="description">
+  <p>
+Move cursor <a href="ANSICode.html#M001009">right</a> a specificed number
+of spaces.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001009_source')" id="l_M001009_source">show source</a> ]</p>
+  <div id="M001009_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 215</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">right</span>( <span class="ruby-identifier">spaces</span>=<span class="ruby-value">1</span> )
+    <span class="ruby-node">&quot;\e[#{spaces.to_i}C&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000999"></a><b>save</b>()
+  </div>
+  <div class="description">
+  <p>
+Save current cursor positon.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000999_source')" id="l_M000999_source">show source</a> ]</p>
+  <div id="M000999_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 159</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save</span>
+    <span class="ruby-value str">&quot;\e[s&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001012"></a><b>uncolored</b>(string = nil) {|.gsub(ColoredRegexp, '')| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001012_source')" id="l_M001012_source">show source</a> ]</p>
+  <div id="M001012_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 297</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uncolored</span>(<span class="ruby-identifier">string</span> = <span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-keyword kw">yield</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">ColoredRegexp</span>, <span class="ruby-value str">''</span>)
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">string</span>
+      <span class="ruby-identifier">string</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">ColoredRegexp</span>, <span class="ruby-value str">''</span>)
+    <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:to_str</span>)
+      <span class="ruby-identifier">gsub</span>(<span class="ruby-constant">ColoredRegexp</span>, <span class="ruby-value str">''</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-value str">''</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M001006"></a><b>up</b>( spaces=1 )
+  </div>
+  <div class="description">
+  <p>
+Move cursor <a href="ANSICode.html#M001006">up</a> a specificed number of
+spaces.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M001006_source')" id="l_M001006_source">show source</a> ]</p>
+  <div id="M001006_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/ansicode.rb, line 197</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">up</span>( <span class="ruby-identifier">spaces</span>=<span class="ruby-value">1</span> )
+    <span class="ruby-node">&quot;\e[#{spaces.to_i}A&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

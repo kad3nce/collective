@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: DictionaryMatcher#compute_failure_function
+is_singleton: false
+name: compute_failure_function
+params: (p)
+visibility: private

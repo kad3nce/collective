@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ZipUtils::NoWrite#compress
+is_singleton: false
+name: compress
+params: (format_extension, folder, file=nil, options={})
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #collect_with_index"
+full_name: Enumerable#map_with_index
+is_singleton: false
+name: map_with_index
+params: ()
+visibility: public

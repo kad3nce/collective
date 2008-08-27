@@ -1,0 +1,51 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: ":inihash is a hash which holds all ini data :comment is a string which holds the comments on the top of the file"
+  name: comment
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: ":inihash is a hash which holds all ini data :comment is a string which holds the comments on the top of the file"
+  name: inihash
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: read_comment_from_file
+- !ruby/object:RI::MethodSummary 
+  name: read_from_file
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: write_to_file
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: ini.rb - read and write ini files
+- !ruby/struct:SM::Flow::P 
+  body: "Copyright (C) 2007 Jeena Paradies License: GPL Author: Jeena Paradies (info@jeenaparadies.net)"
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Overview
+- !ruby/struct:SM::Flow::P 
+  body: This file provides a read-wite handling for ini files. The data of a ini file is represented by a object which is populated with strings.
+constants: []
+
+full_name: Ini
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: restore
+- !ruby/object:RI::MethodSummary 
+  name: update
+name: Ini
+superclass: Object

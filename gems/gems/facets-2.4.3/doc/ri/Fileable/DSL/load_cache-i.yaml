@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Load cache. PackageInfo is multiton when loaded by file.
+full_name: Fileable::DSL#load_cache
+is_singleton: false
+name: load_cache
+params: ()
+visibility: public

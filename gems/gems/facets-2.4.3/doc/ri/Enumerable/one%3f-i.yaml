@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: e
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Enumerable#one? returns <tt>true</tt> if and only if <em>exactly one</em> element in the collection satisfies the given predicate.
+- !ruby/struct:SM::Flow::P 
+  body: If no predicate is provided, Enumerable#one? returns <tt>true</tt> if and only if <em>exactly one</em> element has a true value (i.e. not <tt>nil</tt> or <tt>false</tt>).
+- !ruby/struct:SM::Flow::VERB 
+  body: "  [].one?                      # false\n  [nil].one?                   # false\n  [5].one?                     # true\n  [5,8,9].one?                 # false\n  (1...10).one? { |n| n == 5 } # true\n  (1...10).one? { |n| n &lt; 5 }  # false\n\n  CREDIT: Gavin Sinclair\n"
+full_name: Enumerable#one?
+is_singleton: false
+name: one?
+params: ( {|e| ...}
+visibility: public

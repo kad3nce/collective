@@ -1,0 +1,83 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: root
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: File Shell
+- !ruby/struct:SM::Flow::P 
+  body: Comprehensive file system access tool. FileShell acts as a &quot;virtual&quot; shell prompt.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  c = VirtualShell.new\n  c.ls  #=&gt; ['ipso.txt']\n"
+constants: []
+
+full_name: FileShell
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: cd
+- !ruby/object:RI::MethodSummary 
+  name: chdir
+- !ruby/object:RI::MethodSummary 
+  name: chmod
+- !ruby/object:RI::MethodSummary 
+  name: chmod_R
+- !ruby/object:RI::MethodSummary 
+  name: chown
+- !ruby/object:RI::MethodSummary 
+  name: chown_R
+- !ruby/object:RI::MethodSummary 
+  name: cp
+- !ruby/object:RI::MethodSummary 
+  name: cp_r
+- !ruby/object:RI::MethodSummary 
+  name: dryrun?
+- !ruby/object:RI::MethodSummary 
+  name: fu
+- !ruby/object:RI::MethodSummary 
+  name: install
+- !ruby/object:RI::MethodSummary 
+  name: ln
+- !ruby/object:RI::MethodSummary 
+  name: ln_s
+- !ruby/object:RI::MethodSummary 
+  name: ln_sf
+- !ruby/object:RI::MethodSummary 
+  name: ls
+- !ruby/object:RI::MethodSummary 
+  name: mkdir
+- !ruby/object:RI::MethodSummary 
+  name: mkdir_p
+- !ruby/object:RI::MethodSummary 
+  name: move
+- !ruby/object:RI::MethodSummary 
+  name: mv
+- !ruby/object:RI::MethodSummary 
+  name: pwd
+- !ruby/object:RI::MethodSummary 
+  name: quiet?
+- !ruby/object:RI::MethodSummary 
+  name: rm
+- !ruby/object:RI::MethodSummary 
+  name: rm_r
+- !ruby/object:RI::MethodSummary 
+  name: rm_rf
+- !ruby/object:RI::MethodSummary 
+  name: rmdir
+- !ruby/object:RI::MethodSummary 
+  name: root?
+- !ruby/object:RI::MethodSummary 
+  name: touch
+- !ruby/object:RI::MethodSummary 
+  name: verbose?
+name: FileShell
+superclass: Object

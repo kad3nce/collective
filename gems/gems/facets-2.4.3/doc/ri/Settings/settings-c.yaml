@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return the settings for the given owner. The owner is typically the Class that represents the system to be configured. If no class is provided, it returns all the registered settings.
+full_name: Settings::settings
+is_singleton: true
+name: settings
+params: (owner = nil)
+visibility: public

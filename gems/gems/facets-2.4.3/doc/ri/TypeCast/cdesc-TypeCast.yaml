@@ -1,0 +1,52 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Typecast
+- !ruby/struct:SM::Flow::P 
+  body: Provides a generic simple type conversion utility. All the ruby core conversions are available by default.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &quot;1234&quot;.cast_to Float     =&gt; 1234.0  (Float)\n  Time.cast_from(&quot;6:30&quot;)   =&gt; 1234.0   (Time)\n"
+- !ruby/struct:SM::Flow::P 
+  body: "To implement a new type conversion, you have two choices, take:"
+- !ruby/struct:SM::Flow::VERB 
+  body: " class CustomType\n   def initialize(my_var)\n     @my_var = my_var\n   end\n end\n"
+- !ruby/struct:SM::Flow::P 
+  body: Define a to_class_name instance method
+- !ruby/struct:SM::Flow::VERB 
+  body: " class CustomType\n   def to_string\n     my_var.to_s\n   end\n end\n\n c = CustomType.new 1234\n s.cast_to String   =&gt;  &quot;1234&quot; (String)\n"
+- !ruby/struct:SM::Flow::P 
+  body: Define a from_class_name class method
+- !ruby/struct:SM::Flow::VERB 
+  body: " class CustomType\n   def self.from_string(str)\n     self.new(str)\n   end\n end\n\n &quot;1234&quot;.cast_to CustomType  =&gt;  #&lt;CustomType:0xb7d1958c @my_var=&quot;1234&quot;&gt;\n"
+- !ruby/struct:SM::Flow::P 
+  body: Those two methods are equivalent in the result. It was coded like that to avoid the pollution of core classes with tons of to_* methods.
+- !ruby/struct:SM::Flow::P 
+  body: The standard methods to_s, to_f, to_i, to_a and to_sym are also used by this system if available.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Faq
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: Q.
+    body: Why didn't you name the `cast_to` method to `to` ?
+  - !ruby/struct:SM::Flow::LI 
+    label: A.
+    body: Even if it would make the syntax more friendly, I suspect it could cause
+  type: :UPPERALPHA
+- !ruby/struct:SM::Flow::P 
+  body: a lot of collisions with already existing code. The goal is that each time you call cast_to, you either get your result, either a TypeCastException
+constants: []
+
+full_name: TypeCast
+includes: []
+
+instance_methods: []
+
+name: TypeCast
+superclass: 

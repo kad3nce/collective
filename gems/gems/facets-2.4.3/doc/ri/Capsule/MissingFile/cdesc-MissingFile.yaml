@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Raised by #load_in_module, caught by #load and #require."
+constants: []
+
+full_name: Capsule::MissingFile
+includes: []
+
+instance_methods: []
+
+name: MissingFile
+superclass: LoadError

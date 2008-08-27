@@ -1,0 +1,150 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: alpha
+- !ruby/object:RI::MethodSummary 
+  name: auto
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: new_by
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Dictionary
+- !ruby/struct:SM::Flow::P 
+  body: The Dictionary class is a Hash that preserves order. So it has some array-like extensions also. By defualt a Dictionary object preserves insertion order, but any order can be specified including alphabetical key order.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Usage
+- !ruby/struct:SM::Flow::P 
+  body: Just require this file and use Dictionary instead of Hash.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # You can do simply\n  hsh = Dictionary.new\n  hsh['z'] = 1\n  hsh['a'] = 2\n  hsh['c'] = 3\n  p hsh.keys     #=&gt; ['z','a','c']\n\n  # or using Dictionary[] method\n  hsh = Dictionary['z', 1, 'a', 2, 'c', 3]\n  p hsh.keys     #=&gt; ['z','a','c']\n\n  # but this don't preserve order\n  hsh = Dictionary['z'=&gt;1, 'a'=&gt;2, 'c'=&gt;3]\n  p hsh.keys     #=&gt; ['a','c','z']\n\n  # Dictionary has useful extensions: push, pop and unshift\n  p hsh.push('to_end', 15)       #=&gt; true, key added\n  p hsh.push('to_end', 30)       #=&gt; false, already - nothing happen\n  p hsh.unshift('to_begin', 50)  #=&gt; true, key added\n  p hsh.unshift('to_begin', 60)  #=&gt; false, already - nothing happen\n  p hsh.keys                     #=&gt; [&quot;to_begin&quot;, &quot;a&quot;, &quot;c&quot;, &quot;z&quot;, &quot;to_end&quot;]\n  p hsh.pop                      #=&gt; [&quot;to_end&quot;, 15], if nothing remains, return nil\n  p hsh.keys                     #=&gt; [&quot;to_begin&quot;, &quot;a&quot;, &quot;c&quot;, &quot;z&quot;]\n  p hsh.shift                    #=&gt; [&quot;to_begin&quot;, 30], if nothing remains, return nil\n"
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Usage Notes
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "You can use #order_by to set internal sort order."
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: "#&lt;&lt; takes a two element [k,v] array and inserts."
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: Use ::auto which creates Dictionay sub-entries as needed.
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: And ::alpha which creates a new Dictionary sorted by key.
+  type: :BULLET
+constants: []
+
+full_name: Dictionary
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Enumerable
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "<<"
+- !ruby/object:RI::MethodSummary 
+  name: ==
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: clear
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: delete_if
+- !ruby/object:RI::MethodSummary 
+  name: dup
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: each_key
+- !ruby/object:RI::MethodSummary 
+  name: each_pair
+- !ruby/object:RI::MethodSummary 
+  name: each_value
+- !ruby/object:RI::MethodSummary 
+  name: empty?
+- !ruby/object:RI::MethodSummary 
+  name: fetch
+- !ruby/object:RI::MethodSummary 
+  name: first
+- !ruby/object:RI::MethodSummary 
+  name: has_key?
+- !ruby/object:RI::MethodSummary 
+  name: insert
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: invert
+- !ruby/object:RI::MethodSummary 
+  name: key?
+- !ruby/object:RI::MethodSummary 
+  name: keys
+- !ruby/object:RI::MethodSummary 
+  name: last
+- !ruby/object:RI::MethodSummary 
+  name: length
+- !ruby/object:RI::MethodSummary 
+  name: merge
+- !ruby/object:RI::MethodSummary 
+  name: merge!
+- !ruby/object:RI::MethodSummary 
+  name: order
+- !ruby/object:RI::MethodSummary 
+  name: order_by
+- !ruby/object:RI::MethodSummary 
+  name: order_by_key
+- !ruby/object:RI::MethodSummary 
+  name: order_by_value
+- !ruby/object:RI::MethodSummary 
+  name: pop
+- !ruby/object:RI::MethodSummary 
+  name: push
+- !ruby/object:RI::MethodSummary 
+  name: reject
+- !ruby/object:RI::MethodSummary 
+  name: reject!
+- !ruby/object:RI::MethodSummary 
+  name: reorder
+- !ruby/object:RI::MethodSummary 
+  name: replace
+- !ruby/object:RI::MethodSummary 
+  name: reverse
+- !ruby/object:RI::MethodSummary 
+  name: reverse!
+- !ruby/object:RI::MethodSummary 
+  name: select
+- !ruby/object:RI::MethodSummary 
+  name: shift
+- !ruby/object:RI::MethodSummary 
+  name: size
+- !ruby/object:RI::MethodSummary 
+  name: store
+- !ruby/object:RI::MethodSummary 
+  name: to_a
+- !ruby/object:RI::MethodSummary 
+  name: to_h
+- !ruby/object:RI::MethodSummary 
+  name: to_hash
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: unshift
+- !ruby/object:RI::MethodSummary 
+  name: update
+- !ruby/object:RI::MethodSummary 
+  name: values
+name: Dictionary
+superclass: Object

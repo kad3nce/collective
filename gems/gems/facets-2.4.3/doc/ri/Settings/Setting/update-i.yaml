@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Update the setting from an options hash. The update does NOT take default values into account!
+full_name: Settings::Setting#update
+is_singleton: false
+name: update
+params: (hash)
+visibility: public

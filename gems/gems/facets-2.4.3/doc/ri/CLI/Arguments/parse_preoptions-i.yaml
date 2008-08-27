@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Parse preoptions. A &quot;preoption&quot; is one that occurs before the first operans (if any).
+full_name: CLI::Arguments#parse_preoptions
+is_singleton: false
+name: parse_preoptions
+params: (args)
+visibility: private

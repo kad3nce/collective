@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The exception raised when a block is required for proper operation of the method.
+constants: []
+
+full_name: Archive::Tar::Minitar::BlockRequired
+includes: []
+
+instance_methods: []
+
+name: BlockRequired
+superclass: ArgumentError

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Creates and returns a new Writer object.
+full_name: Archive::Tar::Minitar::Writer::new
+is_singleton: true
+name: new
+params: (anIO)
+visibility: public

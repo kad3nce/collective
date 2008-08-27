@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+cmd = %[rdoc --op=doc/rdoc --title="English" --main=README --merge --inline-source [A_Z]* lib]
+
+if ARGV.include?('--dryrun')
+  puts cmd
+else
+  system cmd
+end
+

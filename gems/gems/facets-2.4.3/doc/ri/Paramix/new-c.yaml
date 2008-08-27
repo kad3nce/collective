@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: It you want to define the module's ::[] method by hand. You can use Paramix.new instead of Paramix::Delegator.new.
+full_name: Paramix::new
+is_singleton: true
+name: new
+params: (delegate_module, parameters={}, &base_block)
+visibility: public

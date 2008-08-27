@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Titlecase
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &quot;this is a string&quot;.style(:titlecase)\n  =&gt; &quot;This Is A String&quot;\n"
+full_name: String::Style::titlecase
+is_singleton: true
+name: titlecase
+params: (phrase)
+visibility: public

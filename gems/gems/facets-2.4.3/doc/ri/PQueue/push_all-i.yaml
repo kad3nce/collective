@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: merge
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Add more than one element at the same time. See #push."
+- !ruby/struct:SM::Flow::P 
+  body: "The elements object must respond to #to_a, or to be a PQueue itself."
+full_name: PQueue#push_all
+is_singleton: false
+name: push_all
+params: (elements)
+visibility: public

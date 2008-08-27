@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Pop item off stack.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  a = [1, 2, 3]\n  a.pop           #=&gt; 3\n  a               #=&gt; [1, 2]\n"
+full_name: Stackable#pop
+is_singleton: false
+name: pop
+params: ()
+visibility: public

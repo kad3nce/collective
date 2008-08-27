@@ -1,0 +1,38 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: delegate
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: SyncHash
+- !ruby/struct:SM::Flow::P 
+  body: A thread-safe hash. We use a sync object instead of a mutex, because it is re-entrant. An exclusive lock is needed when writing, a shared lock IS NEEDED when reading.
+- !ruby/struct:SM::Flow::P 
+  body: Uses the delegator pattern to allow for multiple implementations!
+- !ruby/struct:SM::Flow::VERB 
+  body: "  hash = SyncHash.new\n  hash = SyncHash.new(Hash.new)   # Delegates\n"
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Design
+- !ruby/struct:SM::Flow::P 
+  body: This class uses the delegator pattern. However we don't use Ruby's delegation facilities, they are more general and powerful than we need here (and slower). Instead a custom (but simple) solution is used.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Usage
+- !ruby/struct:SM::Flow::VERB 
+  body: "  hash = SyncHash.new\n  hash = SyncHash.new(Hash.new)   # Delegates\n"
+constants: []
+
+full_name: SyncHash
+includes: []
+
+instance_methods: []
+
+name: SyncHash
+superclass: Hash

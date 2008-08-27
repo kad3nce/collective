@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Load and return a XOXO structure from the String, IO or StringIO or <em>xoxo</em>.
+full_name: XOXO::load
+is_singleton: true
+name: load
+params: (xoxo)
+visibility: public

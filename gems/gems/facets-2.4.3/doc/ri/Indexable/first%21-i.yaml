@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Remove and return the first element.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  a = [1,2,3]\n  a.first!      #=&gt; 1\n  a             #=&gt; [2,3]\n"
+full_name: Indexable#first!
+is_singleton: false
+name: first!
+params: ()
+visibility: public

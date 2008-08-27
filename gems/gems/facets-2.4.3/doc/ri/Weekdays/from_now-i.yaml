@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #since"
+full_name: Weekdays#from_now
+is_singleton: false
+name: from_now
+params: (time = ::Time.now)
+visibility: public

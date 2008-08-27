@@ -1,0 +1,30 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Like <tt>glob</tt> but can take multiple patterns.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Dir.multiglob( '*.rb', '*.py' )\n"
+- !ruby/struct:SM::Flow::P 
+  body: Rather then constants for options multiglob accepts a trailing options hash of symbol keys.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  :noescape    File::FNM_NOESCAPE\n  :casefold    File::FNM_CASEFOLD\n  :pathname    File::FNM_PATHNAME\n  :dotmatch    File::FNM_DOTMATCH\n  :strict      File::FNM_PATHNAME &amp;&amp; File::FNM_DOTMATCH\n"
+- !ruby/struct:SM::Flow::P 
+  body: It also has an option for recurse.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  :recurse     Recurively include contents of directories.\n"
+- !ruby/struct:SM::Flow::P 
+  body: For example
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Dir.multiglob( '*', :recurse =&gt; true )\n"
+- !ruby/struct:SM::Flow::P 
+  body: would have the same result as
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Dir.multiglob('**/*')\n"
+full_name: Dir::multiglob
+is_singleton: true
+name: multiglob
+params: (*patterns)
+visibility: public

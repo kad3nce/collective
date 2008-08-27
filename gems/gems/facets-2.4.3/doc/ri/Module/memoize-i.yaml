@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Directive for making your functions faster by trading space for time. When you &quot;memoize&quot; a method/function its results are cached so that later calls with the same arguments returns results in the cache instead of recalculating them.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class T\n    def initialize(a)\n      @a = a\n    end\n    def a\n      &quot;#{@a ^ 3 + 4}&quot;\n    end\n    memoize :a\n  end\n\n  t = T.new\n  t.a.<em>id</em> == t.a.<em>id</em>  #=&gt; true\n"
+full_name: Module#memoize
+is_singleton: false
+name: memoize
+params: (*meths)
+visibility: public

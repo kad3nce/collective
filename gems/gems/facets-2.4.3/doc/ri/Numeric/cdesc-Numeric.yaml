@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Bytes
+- !ruby/struct:SM::Flow::P 
+  body: Additional methods for Numeric class to make working with bits and bytes easier. Bits are used as the base value and these methods can be used to convert between different magnitudes.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  1.byte               #=&gt; 8\n  2.bytes              #=&gt; 16\n  1.kilobit            #=&gt; 1024\n  1.kilobyte           #=&gt; 8192\n"
+- !ruby/struct:SM::Flow::P 
+  body: Use the in_* methods to perform the inverse operations.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  8192.in_kilobytes    #=&gt; 1\n  1024.in_kilobits     #=&gt; 1\n"
+constants: []
+
+full_name: Numeric
+includes: []
+
+instance_methods: []
+
+name: Numeric
+superclass: Object

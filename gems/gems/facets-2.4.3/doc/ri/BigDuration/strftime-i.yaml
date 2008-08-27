@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: BigDuration variant of Duration#strftime.
+- !ruby/struct:SM::Flow::P 
+  body: "*Identifiers: BigDuration*"
+- !ruby/struct:SM::Flow::VERB 
+  body: "    %y -- Number of years\n    %m -- Number of months\n"
+full_name: BigDuration#strftime
+is_singleton: false
+name: strftime
+params: (fmt)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: cp_r(src, dest, options) cp_r(list, dir, options)
+full_name: FileShell#cp_r
+is_singleton: false
+name: cp_r
+params: (src, dest, options=nil)
+visibility: public

@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: Module#depend
+is_singleton: false
+name: depend
+params: ( name_and_deps=nil )
+visibility: public

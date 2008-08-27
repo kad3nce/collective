@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: rm(list, options)
+full_name: FileShell#rm
+is_singleton: false
+name: rm
+params: (list, options=nil)
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: String::Style::uppercamel
+is_singleton: true
+name: uppercamel
+params: (snakecase_word)
+visibility: public

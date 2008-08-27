@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Platform dependent null device.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  CREDIT: Daniel Burger\n"
+full_name: File::null
+is_singleton: true
+name: "null"
+params: ()
+visibility: public

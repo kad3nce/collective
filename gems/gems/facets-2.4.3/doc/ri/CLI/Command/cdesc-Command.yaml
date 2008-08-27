@@ -1,0 +1,50 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Command Arguments (for single commands).
+  name: arguments
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Command options. For dispatch commands these are the pre-options.
+  name: options
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: option_arity
+- !ruby/object:RI::MethodSummary 
+  name: start
+- !ruby/object:RI::MethodSummary 
+  name: subcommand
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Here is an example of usage:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  # General Options\n\n  module GeneralOptions\n    attr_writer :dryrun ; alias_writer :n, :noharm, :dryrun\n    attr_writer :quiet  ; alias_writer :q, :quiet\n    attr_writer :force\n    attr_writer :trace\n  end\n\n  # Build Subcommand\n\n  class BuildCommand &lt; Command\n    include GeneralOptions\n\n    # metadata files\n    attr_writer  :file     ; alias_writer :f, :file\n    attr_writer  :manifest ; alias_writer :m, :manifest\n\n    def call\n      # do stuf here\n    end\n  end\n\n  # Box Master Command\n\n  class BoxCommand &lt; CLI::Command\n    subcommand :build,     BuildCommand\n  end\n\n  BoxCommand.start\n"
+constants: []
+
+full_name: CLI::Command
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: call
+- !ruby/object:RI::MethodSummary 
+  name: command_missing
+- !ruby/object:RI::MethodSummary 
+  name: commands
+- !ruby/object:RI::MethodSummary 
+  name: default
+- !ruby/object:RI::MethodSummary 
+  name: initialize_arguments
+- !ruby/object:RI::MethodSummary 
+  name: initialize_options
+- !ruby/object:RI::MethodSummary 
+  name: option_missing
+name: Command
+superclass: Object

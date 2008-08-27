@@ -1,0 +1,76 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: ProgressBar
+- !ruby/struct:SM::Flow::P 
+  body: ProgressBar is a text-based progressbar library.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  pbar = ProgressBar.new( &quot;Demo&quot;, 100 )\n  100.times { pbar.inc }\n  pbar.finish\n"
+constants: []
+
+full_name: ProgressBar
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: bar
+- !ruby/object:RI::MethodSummary 
+  name: bar_mark=
+- !ruby/object:RI::MethodSummary 
+  name: bytes
+- !ruby/object:RI::MethodSummary 
+  name: convert_bytes
+- !ruby/object:RI::MethodSummary 
+  name: elapsed
+- !ruby/object:RI::MethodSummary 
+  name: eol
+- !ruby/object:RI::MethodSummary 
+  name: eta
+- !ruby/object:RI::MethodSummary 
+  name: file_transfer_mode
+- !ruby/object:RI::MethodSummary 
+  name: finish
+- !ruby/object:RI::MethodSummary 
+  name: flush
+- !ruby/object:RI::MethodSummary 
+  name: format=
+- !ruby/object:RI::MethodSummary 
+  name: format_arguments=
+- !ruby/object:RI::MethodSummary 
+  name: format_time
+- !ruby/object:RI::MethodSummary 
+  name: get_width
+- !ruby/object:RI::MethodSummary 
+  name: halt
+- !ruby/object:RI::MethodSummary 
+  name: inc
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: percentage
+- !ruby/object:RI::MethodSummary 
+  name: set
+- !ruby/object:RI::MethodSummary 
+  name: show
+- !ruby/object:RI::MethodSummary 
+  name: show_progress
+- !ruby/object:RI::MethodSummary 
+  name: stat
+- !ruby/object:RI::MethodSummary 
+  name: stat_for_file_transfer
+- !ruby/object:RI::MethodSummary 
+  name: title
+- !ruby/object:RI::MethodSummary 
+  name: title=
+- !ruby/object:RI::MethodSummary 
+  name: total_overflow=
+- !ruby/object:RI::MethodSummary 
+  name: transfer_rate
+name: ProgressBar
+superclass: Object

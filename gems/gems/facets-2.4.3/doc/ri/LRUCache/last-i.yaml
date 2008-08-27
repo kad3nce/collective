@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: lru
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The last (lru) element in the cache.
+full_name: LRUCache#last
+is_singleton: false
+name: last
+params: ()
+visibility: public

@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: class_require
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Require file into module/class namespace.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  CREDIT: Trans\n"
+full_name: Module#module_require
+is_singleton: false
+name: module_require
+params: ( path )
+visibility: public

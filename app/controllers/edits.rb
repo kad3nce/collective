@@ -14,15 +14,11 @@ class Edits < Application
   def update(id)
     provides :js, :json
     @edit = Version.first(id) || raise(NotFound)
-    if @edit.update_attributes(:moderated => true)
-      train_spam_engine(@edit)
-      if request.xhr?
-        render '', :status => 200, :layout => false # renders nothing
-      else
-        redirect url(:edits)
-      end
+    train_spam_engine(@edit)
+    if request.xhr?
+      render '', :status => 200, :layout => false # renders nothing
     else
-      raise BadRequest
+      redirect url(:edits)
     end
   end
 
@@ -35,8 +31,8 @@ class Edits < Application
 private
 
   def authenticate
-    authenticate_or_request_with_http_basic('login') do |username, password|
-      username == 'admin' && password == 'supersecret'
+    basic_authentication('Merb Wiki') do |username, password|
+      username == Collective.admin_username && password == Collective.admin_password
     end
   end
 
@@ -44,10 +40,10 @@ private
     if Viking.enabled?
       if (version.spam?)
         Viking.mark_as_ham(:signatures => version.signature)
-        version.update_attribute(:spam, false)
+        version.update_attributes(:spam => false, :moderated => true)
       else
         Viking.mark_as_spam(:signatures => version.signature)
-        version.update_attribute(:spam, true)
+        version.update_attributes(:spam => true, :moderated => true)
       end
     end
   end

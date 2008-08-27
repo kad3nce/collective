@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns last <em>n</em> elements.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &quot;Hello World&quot;.last(3)  #=&gt; &quot;rld&quot;\n"
+full_name: Indexable#last
+is_singleton: false
+name: last
+params: (n=1)
+visibility: public

@@ -1,0 +1,24 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: value
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Implements a value holder. In Wee this is useful for backtracking the reference assigned to an instance variable (not the object itself!). An example where this is used is the <tt>@__decoration</tt> attribute of class Wee::Component.
+constants: []
+
+full_name: Snapshot::ValueHolder
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: restore_snapshot
+- !ruby/object:RI::MethodSummary 
+  name: take_snapshot
+name: ValueHolder
+superclass: Object

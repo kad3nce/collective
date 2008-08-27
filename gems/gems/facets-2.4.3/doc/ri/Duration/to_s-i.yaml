@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Friendly, human-readable string representation of the duration.
+- !ruby/struct:SM::Flow::P 
+  body: <b>Example</b>
+- !ruby/struct:SM::Flow::VERB 
+  body: "    d = Duration.new(:seconds =&gt; 140)\n    =&gt; #&lt;Duration: 2 minutes and 20 seconds&gt;\n    d.to_s\n    =&gt; &quot;2 minutes and 20 seconds&quot;\n"
+full_name: Duration#to_s
+is_singleton: false
+name: to_s
+params: ()
+visibility: public

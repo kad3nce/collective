@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: InstanceVariables</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />InstanceVariables</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/core/facets/kernel/instance_variables_rb.html">lib/core/facets/kernel/instance_variables.rb</a>
+<a href="../files/lib/core/facets/kernel/instance_variables_rb.html">lib/core/facets/kernel/instance_variables.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+        <a href="Object.html">
+Object
+         </a>
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000107">&lt;&lt;</a></li>
+  <li><a href="#M000096">&lt;&lt;</a></li>
+  <li><a href="#M000105">[]</a></li>
+  <li><a href="#M000094">[]</a></li>
+  <li><a href="#M000095">[]=</a></li>
+  <li><a href="#M000106">[]=</a></li>
+  <li><a href="#M000092">each</a></li>
+  <li><a href="#M000103">each</a></li>
+  <li><a href="#M000091">instance_delegate</a></li>
+  <li><a href="#M000102">instance_delegate</a></li>
+  <li><a href="#M000098">keys</a></li>
+  <li><a href="#M000109">keys</a></li>
+  <li><a href="#M000099">names</a></li>
+  <li><a href="#M000110">names</a></li>
+  <li><a href="#M000090">new</a></li>
+  <li><a href="#M000101">new</a></li>
+  <li><a href="#M000104">to_hash</a></li>
+  <li><a href="#M000093">to_hash</a></li>
+  <li><a href="#M000108">update</a></li>
+  <li><a href="#M000097">update</a></li>
+  <li><a href="#M000100">values</a></li>
+  <li><a href="#M000111">values</a></li>
+  </ul>
+
+<div class="sectiontitle">Included Modules</div>
+<ul>
+  <li><a href="Enumerable.html">Enumerable</a></li>
+  <li><a href="Enumerable.html">Enumerable</a></li>
+</ul>
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000090"></a><b>new</b>(delegate)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000090_source')" id="l_M000090_source">show source</a> ]</p>
+  <div id="M000090_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 14</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">delegate</span>)
+    <span class="ruby-ivar">@delegate</span> = <span class="ruby-identifier">delegate</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000101"></a><b>new</b>(delegate)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000101_source')" id="l_M000101_source">show source</a> ]</p>
+  <div id="M000101_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 14</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">delegate</span>)
+    <span class="ruby-ivar">@delegate</span> = <span class="ruby-identifier">delegate</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000107"></a><b>&lt;&lt;</b>(pair)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000107_source')" id="l_M000107_source">show source</a> ]</p>
+  <div id="M000107_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 46</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">pair</span>)
+    <span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">pair</span>
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">atize</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_varaible_set</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000096"></a><b>&lt;&lt;</b>(pair)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000096_source')" id="l_M000096_source">show source</a> ]</p>
+  <div id="M000096_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 46</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">pair</span>)
+    <span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">pair</span>
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">atize</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_varaible_set</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000105"></a><b>[]</b>(name)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000105_source')" id="l_M000105_source">show source</a> ]</p>
+  <div id="M000105_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 36</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">atize</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000094"></a><b>[]</b>(name)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000094_source')" id="l_M000094_source">show source</a> ]</p>
+  <div id="M000094_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 36</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">atize</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000095"></a><b>[]=</b>(name, value)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000095_source')" id="l_M000095_source">show source</a> ]</p>
+  <div id="M000095_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 41</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">atize</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_varaible_set</span>(<span class="ruby-identifier">name</span>,<span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000106"></a><b>[]=</b>(name, value)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000106_source')" id="l_M000106_source">show source</a> ]</p>
+  <div id="M000106_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 41</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
+    <span class="ruby-identifier">name</span> = <span class="ruby-identifier">atize</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_varaible_set</span>(<span class="ruby-identifier">name</span>,<span class="ruby-identifier">value</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000092"></a><b>each</b>() {|name[1..-1].to_sym, @delegate.instance_variable_get(name)| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000092_source')" id="l_M000092_source">show source</a> ]</p>
+  <div id="M000092_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 22</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">name</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_sym</span>, <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">name</span>))
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000103"></a><b>each</b>() {|name[1..-1].to_sym, @delegate.instance_variable_get(name)| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000103_source')" id="l_M000103_source">show source</a> ]</p>
+  <div id="M000103_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 22</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">name</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_sym</span>, <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">name</span>))
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000091"></a><b>instance_delegate</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000091_source')" id="l_M000091_source">show source</a> ]</p>
+  <div id="M000091_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 18</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">instance_delegate</span>
+    <span class="ruby-ivar">@delegate</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000102"></a><b>instance_delegate</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000102_source')" id="l_M000102_source">show source</a> ]</p>
+  <div id="M000102_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 18</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">instance_delegate</span>
+    <span class="ruby-ivar">@delegate</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000098"></a><b>keys</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000098_source')" id="l_M000098_source">show source</a> ]</p>
+  <div id="M000098_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 58</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">keys</span>
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">name</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000109"></a><b>keys</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000109_source')" id="l_M000109_source">show source</a> ]</p>
+  <div id="M000109_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 58</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">keys</span>
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">name</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_sym</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000099"></a><b>names</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000099_source')" id="l_M000099_source">show source</a> ]</p>
+  <div id="M000099_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 64</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">names</span>
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">name</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000110"></a><b>names</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000110_source')" id="l_M000110_source">show source</a> ]</p>
+  <div id="M000110_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 64</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">names</span>
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">name</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000104"></a><b>to_hash</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000104_source')" id="l_M000104_source">show source</a> ]</p>
+  <div id="M000104_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 28</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>
+    <span class="ruby-identifier">h</span> = {}
+    <span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">h</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">h</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000093"></a><b>to_hash</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000093_source')" id="l_M000093_source">show source</a> ]</p>
+  <div id="M000093_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 28</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_hash</span>
+    <span class="ruby-identifier">h</span> = {}
+    <span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">h</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">value</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">h</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000108"></a><b>update</b>(hash)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000108_source')" id="l_M000108_source">show source</a> ]</p>
+  <div id="M000108_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 52</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>(<span class="ruby-identifier">hash</span>)
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pair</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">pair</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000097"></a><b>update</b>(hash)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000097_source')" id="l_M000097_source">show source</a> ]</p>
+  <div id="M000097_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 52</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>(<span class="ruby-identifier">hash</span>)
+    <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pair</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">pair</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000100"></a><b>values</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000100_source')" id="l_M000100_source">show source</a> ]</p>
+  <div id="M000100_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 70</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span>
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000111"></a><b>values</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000111_source')" id="l_M000111_source">show source</a> ]</p>
+  <div id="M000111_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/instance_variables.rb, line 70</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">values</span>
+    <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">collect</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@delegate</span>.<span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

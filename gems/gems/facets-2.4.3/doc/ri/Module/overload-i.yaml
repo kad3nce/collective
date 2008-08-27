@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Overload methods.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class X\n    def x\n      &quot;hello&quot;\n    end\n\n    overload :x, Integer do |i|\n      i\n    end\n\n    overload :x, String, String do |s1, s2|\n      [s1, s2]\n    end\n  end\n"
+full_name: Module#overload
+is_singleton: false
+name: overload
+params: ( name, *signiture, &block )
+visibility: public

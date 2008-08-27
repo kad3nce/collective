@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Override default to provide non-subcommand functionality.
+full_name: CLI::Command#default
+is_singleton: false
+name: default
+params: ()
+visibility: private

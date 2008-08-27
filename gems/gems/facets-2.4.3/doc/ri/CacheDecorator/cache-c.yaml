@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: CacheDecorator::cache
+is_singleton: true
+name: cache
+params: (object)
+visibility: public

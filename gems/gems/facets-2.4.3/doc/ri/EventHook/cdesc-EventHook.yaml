@@ -1,0 +1,31 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: cc
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: name
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Event Hook
+- !ruby/struct:SM::Flow::P 
+  body: Exception-based Event Hooks provides an Event Hooks system designed on top of Ruby's built-in Exception system.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  def dothis2\n    puts 'pre'\n    hook :quitit\n    puts 'post'\n  end\n\n  def tryit2\n    begin\n      puts &quot;BEFORE&quot;\n      dothis2\n      puts &quot;AFTER&quot;\n    rescue EventHook\n      event :quitit do\n        puts &quot;HERE&quot;\n      end\n    end\n  end\n\n  tryit2\n"
+constants: []
+
+full_name: EventHook
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: call
+name: EventHook
+superclass: Exception

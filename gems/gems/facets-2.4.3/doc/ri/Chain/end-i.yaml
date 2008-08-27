@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: def value?
+- !ruby/struct:SM::Flow::VERB 
+  body: "  @value\n"
+- !ruby/struct:SM::Flow::P 
+  body: end
+full_name: Chain#end
+is_singleton: false
+name: end
+params: ()
+visibility: public

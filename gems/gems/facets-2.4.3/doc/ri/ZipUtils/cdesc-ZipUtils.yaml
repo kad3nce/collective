@@ -1,0 +1,50 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: ZipUtils
+- !ruby/struct:SM::Flow::P 
+  body: Function module for compression methods.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: COMPRESS_FORMAT
+  value: "{     'tar.gz'  => 'tar_gzip',     'tgz'     => 'tar_gzip',     'tar.bz2' => 'tar_bzip',     'zip'     => 'zip',      '.tar.gz'  => 'tar_gzip',     '.tgz'     => 'tar_gzip',     '.tar.bz2' => 'tar_bzip',     '.zip'     => 'zip'"
+full_name: ZipUtils
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: compress
+- !ruby/object:RI::MethodSummary 
+  name: tar_bzip
+- !ruby/object:RI::MethodSummary 
+  name: tar_bzip2
+- !ruby/object:RI::MethodSummary 
+  name: tar_gzip
+- !ruby/object:RI::MethodSummary 
+  name: tar_j
+- !ruby/object:RI::MethodSummary 
+  name: tar_z
+- !ruby/object:RI::MethodSummary 
+  name: tgz
+- !ruby/object:RI::MethodSummary 
+  name: untar_bzip
+- !ruby/object:RI::MethodSummary 
+  name: untar_bzip2
+- !ruby/object:RI::MethodSummary 
+  name: untar_gzip
+- !ruby/object:RI::MethodSummary 
+  name: untar_j
+- !ruby/object:RI::MethodSummary 
+  name: untar_z
+- !ruby/object:RI::MethodSummary 
+  name: unzip
+- !ruby/object:RI::MethodSummary 
+  name: zip
+name: ZipUtils
+superclass: 

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: same as method <tt>ru</tt>, but swap bytes if native byteorder == <em>byteorder</em>
+full_name: BinReadable#ru_swap
+is_singleton: false
+name: ru_swap
+params: (size, template, byteorder)
+visibility: private

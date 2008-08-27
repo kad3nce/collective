@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Get the number of seconds of a given part, or simply just get the number of seconds.
+- !ruby/struct:SM::Flow::P 
+  body: <b>Example</b>
+- !ruby/struct:SM::Flow::VERB 
+  body: "    d = Duration.new(:weeks =&gt; 1, :days =&gt; 1, :hours =&gt; 1, :seconds =&gt; 30)\n    =&gt; #&lt;Duration: 1 week, 1 day, 1 hour and 30 seconds&gt;\n    d.seconds(:weeks)\n    =&gt; 604800\n    d.seconds(:days)\n    =&gt; 86400\n    d.seconds(:hours)\n    =&gt; 3600\n    d.seconds\n    =&gt; 30\n"
+full_name: Duration#seconds
+is_singleton: false
+name: seconds
+params: (part = nil)
+visibility: public

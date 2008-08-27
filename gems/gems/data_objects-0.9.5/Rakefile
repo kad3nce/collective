@@ -1,0 +1,54 @@
+require 'rubygems'
+require 'pathname'
+require 'spec/rake/spectask'
+require 'lib/data_objects/version'
+
+ROOT = Pathname(__FILE__).dirname.expand_path
+
+AUTHOR = "Yehuda Katz"
+EMAIL  = "wycats@gmail.com"
+GEM_NAME = "data_objects"
+GEM_VERSION = DataObjects::VERSION
+GEM_DEPENDENCIES = ["addressable", ">=1.0.3"], ["extlib", ">=0.9.5"]
+GEM_CLEAN = "{coverage,doc,log}/", "profile_results.*", "**/.*.sw?", "*.gem", ".config", "**/.DS_Store"
+GEM_EXTRAS = {}
+
+PROJECT_NAME = "dorb"
+PROJECT_URL  = "http://rubyforge.org/projects/dorb"
+PROJECT_DESCRIPTION = PROJECT_SUMMARY = "The Core DataObjects class"
+
+DRIVER = false
+
+require ROOT.parent + 'tasks/hoe'
+
+# Installation
+
+WINDOWS = (RUBY_PLATFORM =~ /mswin|mingw|cygwin/) rescue nil
+SUDO    = WINDOWS ? '' : ('sudo' unless ENV['SUDOLESS'])
+
+desc "Install #{GEM_NAME} #{GEM_VERSION} (default ruby)"
+task :install => [ :package ] do
+  sh %{#{SUDO} gem install --local pkg/#{GEM_NAME}-#{GEM_VERSION} --no-update-sources}, :verbose => false
+end
+
+desc "Uninstall #{GEM_NAME} #{GEM_VERSION} (default ruby)"
+task :uninstall => [ :clobber ] do
+  sh "#{SUDO} gem uninstall #{GEM_NAME} -v#{GEM_VERSION} -I -x", :verbose => false
+end
+
+# Specs
+
+desc 'Run specifications'
+Spec::Rake::SpecTask.new(:spec) do |t|
+  t.spec_opts << '--options' << 'spec/spec.opts' if File.exists?('spec/spec.opts')
+  t.spec_files = Pathname.glob(Pathname.new(__FILE__).dirname + 'spec/**/*_spec.rb')
+end
+
+# JRuby
+
+namespace :jruby do
+  desc "Install #{GEM_NAME} #{GEM_VERSION} with JRuby"
+  task :install => [ :package ] do
+    sh %{#{SUDO} jruby -S gem install --local pkg/#{GEM_NAME}-#{GEM_VERSION} --no-update-sources}, :verbose => false
+  end
+end

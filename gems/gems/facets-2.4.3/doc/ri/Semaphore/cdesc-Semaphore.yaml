@@ -1,0 +1,36 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Semaphore
+- !ruby/struct:SM::Flow::P 
+  body: Technically a semaphore is simply an integer variable which has an execution queue associated with it.
+constants: []
+
+full_name: Semaphore
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: down
+- !ruby/object:RI::MethodSummary 
+  name: exclusive
+- !ruby/object:RI::MethodSummary 
+  name: p
+- !ruby/object:RI::MethodSummary 
+  name: signal
+- !ruby/object:RI::MethodSummary 
+  name: synchronize
+- !ruby/object:RI::MethodSummary 
+  name: up
+- !ruby/object:RI::MethodSummary 
+  name: v
+- !ruby/object:RI::MethodSummary 
+  name: wait
+name: Semaphore
+superclass: Object

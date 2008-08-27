@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: ln(old, new, options) ln(list, destdir, options)
+full_name: FileShell#ln
+is_singleton: false
+name: ln
+params: (old, new, options=nil)
+visibility: public

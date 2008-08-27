@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set the number of days.
+- !ruby/struct:SM::Flow::P 
+  body: <b>Example</b>
+- !ruby/struct:SM::Flow::VERB 
+  body: "    d = Duration.new(0)\n    =&gt; #&lt;Duration: ...&gt;\n    d.days = 5; d\n    =&gt; #&lt;Duration: 5 days&gt;\n"
+full_name: Duration#days=
+is_singleton: false
+name: days=
+params: (n)
+visibility: public

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Query whether an instance method is defined for the module.
+- !ruby/struct:SM::Flow::VERB 
+  body: " CREDIT: Gavin Sinclair\n CREDIT: Noah Gibbs\n"
+full_name: Module#instance_method_defined?
+is_singleton: false
+name: instance_method_defined?
+params: (meth)
+visibility: public

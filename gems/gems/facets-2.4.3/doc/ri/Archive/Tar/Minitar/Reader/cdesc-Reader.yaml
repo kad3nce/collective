@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: open
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The class that reads a tar format archive from a data stream. The data stream may be sequential or random access, but certain features only work with random access data streams.
+constants: []
+
+full_name: Archive::Tar::Minitar::Reader
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: close
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: each_entry
+- !ruby/object:RI::MethodSummary 
+  name: rewind
+name: Reader
+superclass: Object

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Prototype</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Prototype</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/prototype_rb.html">lib/more/facets/prototype.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="Prototype.html">Prototype</a></h1>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000427">fn</a></li>
+  <li><a href="#M000429">meta</a></li>
+  <li><a href="#M000432">method_missing</a></li>
+  <li><a href="#M000428">new</a></li>
+  <li><a href="#M000426">new</a></li>
+  <li><a href="#M000431">trait</a></li>
+  <li><a href="#M000430">traits</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000426"></a><b>new</b>(&amp;block)
+  </div>
+  <div class="description">
+  <p>
+New prototype object.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000426_source')" id="l_M000426_source">show source</a> ]</p>
+  <div id="M000426_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/prototype.rb, line 16</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-ivar">@traits</span> = []
+
+    <span class="ruby-identifier">instance_eval</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+
+    <span class="ruby-identifier">h</span> = {}
+    <span class="ruby-identifier">iv</span> = <span class="ruby-identifier">instance_variables</span>
+    <span class="ruby-identifier">iv</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">instance_eval</span>{ <span class="ruby-identifier">instance_variable_get</span>(<span class="ruby-identifier">k</span>) } }
+    <span class="ruby-identifier">meta</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-keyword kw">do</span>
+      <span class="ruby-identifier">h</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Proc</span>
+          <span class="ruby-comment cmt">#define_method(k){ |*args| v[*args] }</span>
+          <span class="ruby-identifier">attr_reader</span> <span class="ruby-identifier">k</span>
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">attr_accessor</span> <span class="ruby-identifier">k</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000427"></a><b>fn</b>(&amp;blk)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000427_source')" id="l_M000427_source">show source</a> ]</p>
+  <div id="M000427_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/prototype.rb, line 37</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">fn</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+    <span class="ruby-identifier">proc</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000429"></a><b>meta</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000429_source')" id="l_M000429_source">show source</a> ]</p>
+  <div id="M000429_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/prototype.rb, line 46</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">meta</span>
+   (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000432"></a><b>method_missing</b>(s, *a, &amp;b)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000432_source')" id="l_M000432_source">show source</a> ]</p>
+  <div id="M000432_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/prototype.rb, line 58</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">s</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">a</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">trait</span> = <span class="ruby-identifier">traits</span>.<span class="ruby-identifier">find</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">method_defined?</span>(<span class="ruby-identifier">s</span>) }
+      <span class="ruby-identifier">trait</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">s</span>,<span class="ruby-operator">*</span><span class="ruby-identifier">a</span>,<span class="ruby-operator">&amp;</span><span class="ruby-identifier">b</span>)
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-keyword kw">super</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000428"></a><b>new</b>(o=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000428_source')" id="l_M000428_source">show source</a> ]</p>
+  <div id="M000428_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/prototype.rb, line 41</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">o</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">clone</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">clone</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000431"></a><b>trait</b>(obj)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000431_source')" id="l_M000431_source">show source</a> ]</p>
+  <div id="M000431_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/prototype.rb, line 54</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">trait</span>(<span class="ruby-identifier">obj</span>)
+    <span class="ruby-identifier">traits</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">obj</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000430"></a><b>traits</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000430_source')" id="l_M000430_source">show source</a> ]</p>
+  <div id="M000430_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/prototype.rb, line 50</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">traits</span>
+    <span class="ruby-ivar">@traits</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Like #new but the block sets the order."
+full_name: Dictionary::new_by
+is_singleton: true
+name: new_by
+params: (*args, &blk)
+visibility: public

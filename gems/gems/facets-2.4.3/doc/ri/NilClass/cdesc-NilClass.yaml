@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Core Extensions
+constants: []
+
+full_name: NilClass
+includes: []
+
+instance_methods: []
+
+name: NilClass
+superclass: Object

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns the string with all ansi escape sequences converted to BBCodes
+full_name: BBCode::ansi_to_bbcode
+is_singleton: true
+name: ansi_to_bbcode
+params: (string)
+visibility: public

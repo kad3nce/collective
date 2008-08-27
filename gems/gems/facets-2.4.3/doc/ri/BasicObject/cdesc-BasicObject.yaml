@@ -1,0 +1,53 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: hide
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: BasicObject
+- !ruby/struct:SM::Flow::P 
+  body: BasicObject provides an abstract base class with no predefined methods, except for <tt>respond_to?</tt>, any method starting in <tt>__</tt> (two underscore, like <tt>__id__</tt>) as well as any method starting with &lt;tt&gt;instance_&lt;/ttr&gt;.
+- !ruby/struct:SM::Flow::P 
+  body: BasicObject is useful as a base class when writing classes that depend upon <tt>method_missing</tt> (e.g. dynamic proxies).
+- !ruby/struct:SM::Flow::P 
+  body: "The patterns used to reserve methods are:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "   /^__/, /^instance/, /^object/, /\\?$/, /^\\W$/,\n   'initialize', 'initialize_copy', 'inspect', 'dup', 'clone', 'null', 'as'\n"
+- !ruby/struct:SM::Flow::P 
+  body: "By default these are the reserved methods:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  == <em>id</em> <em>self</em> <em>send</em> as clone dup eql? equal? frozen?\n  initialize inspect instance_eval instance_of? instance_variable_get\n  instance_variable_set instance_variables is_a? kind_of? nil? null object_class\n  respond_to? tainted?\n"
+- !ruby/struct:SM::Flow::P 
+  body: In practice only 'as', 'clone', 'dup' and 'null' have much chance of name clash. So be especially aware of these four. All the rest either begin with a '__', end in a '?' mark or start with the word 'instance' or 'object'.
+- !ruby/struct:SM::Flow::P 
+  body: "The special method #object_self allows access to the underlying object via a specialized Functor-style class access via as(Object). This binds the actual self to the subsequently called methods of Object instancea methods. So even though a method may no longer be defined for BasicObject it can still be called via this interface."
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class A &lt; BasicObject\n  end\n\n  a.object_self.class  #=&gt; A\n  a.class              #=&gt; NoMethodError\n"
+- !ruby/struct:SM::Flow::P 
+  body: "Note that #object_self used to be called <em>self</em>. Also provided is #object_class."
+- !ruby/struct:SM::Flow::P 
+  body: Since Ruby is very dynamic, methods added to the ancestors of BasicObject <em>after BasicObject is defined</em> will show up in the list of available BasicObject methods. We handle this by defining hooks in Object, Kernel and Module that will hide any defined.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Methods not to get rid of as they are either too important, or they are not likely to get in the way (such as methods ending in '?').
+  - !ruby/struct:SM::Flow::P 
+    body: "In Ruby 1.9 BasicObject has only these methods: [ /^__/, &quot;funcall&quot;, &quot;send&quot;, &quot;respond_to?&quot;, &quot;equal?&quot;, &quot;==&quot;, &quot;object_id&quot; ]"
+  - !ruby/struct:SM::Flow::P 
+    body: "NOTE The absolute bare minimum is EXCLUDE = /^(__|instance_eval$)/. But in most cases you'll want a few extra methods like #dup too."
+  name: EXCLUDE
+  value: "[     /^__/, /^instance_/, /^object_/, /\\?$/, /^\\W$/,     'initialize', 'initialize_copy', 'inspect', 'dup', 'clone', 'null', 'as'"
+full_name: BasicObject
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: __self__
+- !ruby/object:RI::MethodSummary 
+  name: object_self
+name: BasicObject
+superclass: Object

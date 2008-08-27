@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Conveniently turn a string into a tuple.
+constants: []
+
+full_name: String
+includes: []
+
+instance_methods: []
+
+name: String
+superclass: Object

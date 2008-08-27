@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Delete an item from the lru list.
+full_name: LRUCache#lru_delete
+is_singleton: false
+name: lru_delete
+params: (item)
+visibility: private

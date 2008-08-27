@@ -1,0 +1,53 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Archive::Tar::PosixHeader
+- !ruby/struct:SM::Flow::P 
+  body: "Implements the POSIX tar header as a Ruby class. The structure of the POSIX tar header is:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  struct tarfile_entry_posix\n  {                      //                               pack/unpack\n     char name[100];     // ASCII (+ Z unless filled)     a100/Z100\n     char mode[8];       // 0 padded, octal, null         a8  /A8\n     char uid[8];        // ditto                         a8  /A8\n     char gid[8];        // ditto                         a8  /A8\n     char size[12];      // 0 padded, octal, null         a12 /A12\n     char mtime[12];     // 0 padded, octal, null         a12 /A12\n     char checksum[8];   // 0 padded, octal, null, space  a8  /A8\n     char typeflag[1];   // see below                     a   /a\n     char linkname[100]; // ASCII + (Z unless filled)     a100/Z100\n     char magic[6];      // &quot;ustar\\0&quot;                     a6  /A6\n     char version[2];    // &quot;00&quot;                          a2  /A2\n     char uname[32];     // ASCIIZ                        a32 /Z32\n     char gname[32];     // ASCIIZ                        a32 /Z32\n     char devmajor[8];   // 0 padded, octal, null         a8  /A8\n     char devminor[8];   // 0 padded, octal, null         a8  /A8\n     char prefix[155];   // ASCII (+ Z unless filled)     a155/Z155\n  };\n"
+- !ruby/struct:SM::Flow::P 
+  body: "The <tt>typeflag</tt> may be one of the following known values:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>\"0\"</tt>:"
+    body: Regular file. NULL should be treated as a synonym, for compatibility purposes.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>\"1\"</tt>:"
+    body: Hard link.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>\"2\"</tt>:"
+    body: Symbolic link.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>\"3\"</tt>:"
+    body: Character device node.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>\"4\"</tt>:"
+    body: Block device node.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>\"5\"</tt>:"
+    body: Directory.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>\"6\"</tt>:"
+    body: FIFO node.
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>\"7\"</tt>:"
+    body: Reserved.
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: POSIX indicates that &quot;A POSIX-compliant implementation must treat any unrecognized typeflag value as a regular file.&quot;
+constants: []
+
+full_name: Archive::Tar::PosixHeader
+includes: []
+
+instance_methods: []
+
+name: PosixHeader
+superclass: Object

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: compute_checksum
+full_name: Downloader#compute_checksum
+is_singleton: false
+name: compute_checksum
+params: ( local_path )
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: writer
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: With no associated block, +Writer::open+ is a synonym for +Writer::new+. If the optional code block is given, it will be passed the new <em>writer</em> as an argument and the Writer object will automatically be closed when the block terminates. In this instance, +Writer::open+ returns the value of the block.
+full_name: Archive::Tar::Minitar::Writer::open
+is_singleton: true
+name: open
+params: (anIO) {|writer| ...}
+visibility: public

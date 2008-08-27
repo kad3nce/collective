@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ZipUtils::NoWrite#unzip
+is_singleton: false
+name: unzip
+params: (file, options={})
+visibility: public

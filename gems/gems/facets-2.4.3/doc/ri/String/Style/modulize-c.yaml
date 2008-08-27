@@ -1,0 +1,18 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Converts a string into a valid ruby class or module name This method is geared toward code reflection.
+- !ruby/struct:SM::Flow::P 
+  body: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Style.modulize(&quot;camel_case&quot;)          #=&gt; &quot;CamelCase&quot;\n  Style.modulize(&quot;camel/case&quot;)          #=&gt; &quot;Camel::Case&quot;\n  Style.modulize(&quot;my_module__my_path&quot;)  #=&gt; &quot;MyModule::MyPath&quot;\n"
+- !ruby/struct:SM::Flow::P 
+  body: "See also #methodize, #pathize"
+full_name: String::Style::modulize
+is_singleton: true
+name: modulize
+params: (pathized_or_methodized_string)
+visibility: public

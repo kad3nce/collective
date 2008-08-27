@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Curry Proc object into new Proc object.
+- !ruby/struct:SM::Flow::P 
+  body: "TODO: Utilize Ruby 1.9's #curry method."
+full_name: Proc#curry
+is_singleton: false
+name: curry
+params: (*args)
+visibility: public

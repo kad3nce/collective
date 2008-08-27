@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: defin
+- !ruby/object:RI::AliasName 
+  name: argf
+block_params: 
+comment: 
+full_name: System#default_input
+is_singleton: false
+name: default_input
+params: ()
+visibility: public

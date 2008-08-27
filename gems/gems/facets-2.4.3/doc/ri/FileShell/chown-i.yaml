@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: chown(user, group, list, options)
+full_name: FileShell#chown
+is_singleton: false
+name: chown
+params: (user, group, list, options=nil)
+visibility: public

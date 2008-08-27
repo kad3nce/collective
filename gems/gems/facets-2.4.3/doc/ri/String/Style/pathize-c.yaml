@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Converts a string into a unix path. This method is geared toward code reflection.
+- !ruby/struct:SM::Flow::P 
+  body: "See : String#modulize, String#methodize"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Style.pathize(&quot;MyModule::MyClass&quot;)    #=&gt; my_module/my_class\n  Style.pathize(&quot;my_module__my_class&quot;)  #=&gt; my_module/my_class\n"
+- !ruby/struct:SM::Flow::P 
+  body: "TODO:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "  * Make sure that all scenarios return a valid unix path\n  * Make sure it is revertible\n"
+- !ruby/struct:SM::Flow::P 
+  body: "See also #modulize, #methodize"
+full_name: String::Style::pathize
+is_singleton: true
+name: pathize
+params: (module_name)
+visibility: public

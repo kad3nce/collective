@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Delegate to the array.
+full_name: VersionNumber#method_missing
+is_singleton: false
+name: method_missing
+params: ( sym, *args, &blk )
+visibility: public

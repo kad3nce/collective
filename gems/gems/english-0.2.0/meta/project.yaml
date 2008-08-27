@@ -1,0 +1,21 @@
+project  : english
+
+title    : English
+summary  : English Code Kit
+created  : '2007-08-01'
+contact  : Trans <transfire @ gmail.com>
+homepage : "http://english.rubyforge.org"
+authors:
+  - 7rans
+  - George Moschovitis
+description: >
+  English is a English grammer and general language processing library.
+  It include a number of usefule tools, such as Inflect.
+
+exclude: [ pkg, doc, work ]
+dependencies:
+  - [facets, '>= 2.2.0']
+
+#libpath :
+#  - lib/english
+

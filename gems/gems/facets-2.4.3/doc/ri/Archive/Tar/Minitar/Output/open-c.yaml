@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: stream
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: With no associated block, +Output::open+ is a synonym for +Output::new+. If the optional code block is given, it will be passed the new <em>writer</em> as an argument and the Output object will automatically be closed when the block terminates. In this instance, +Output::open+ returns the value of the block.
+full_name: Archive::Tar::Minitar::Output::open
+is_singleton: true
+name: open
+params: (output) {|stream| ...}
+visibility: public

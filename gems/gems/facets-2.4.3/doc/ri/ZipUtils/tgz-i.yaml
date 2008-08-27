@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: ZipUtils#tgz
+is_singleton: false
+name: tgz
+params: (folder, file=nil, options={})
+visibility: public

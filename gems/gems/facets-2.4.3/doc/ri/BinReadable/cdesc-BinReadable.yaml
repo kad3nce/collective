@@ -1,0 +1,65 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: BinReadable
+- !ruby/struct:SM::Flow::P 
+  body: This mixin solely depends on method read(n), which must be defined in the class/module where you mix in this module.
+constants: []
+
+full_name: BinReadable
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: byte_order
+- !ruby/object:RI::MethodSummary 
+  name: byte_order=
+- !ruby/object:RI::MethodSummary 
+  name: byteorder
+- !ruby/object:RI::MethodSummary 
+  name: byteorder=
+- !ruby/object:RI::MethodSummary 
+  name: read_cstring
+- !ruby/object:RI::MethodSummary 
+  name: read_int16_big
+- !ruby/object:RI::MethodSummary 
+  name: read_int16_little
+- !ruby/object:RI::MethodSummary 
+  name: read_int16_native
+- !ruby/object:RI::MethodSummary 
+  name: read_int32_big
+- !ruby/object:RI::MethodSummary 
+  name: read_int32_little
+- !ruby/object:RI::MethodSummary 
+  name: read_int32_native
+- !ruby/object:RI::MethodSummary 
+  name: read_int8
+- !ruby/object:RI::MethodSummary 
+  name: read_uint8
+- !ruby/object:RI::MethodSummary 
+  name: read_word16_big
+- !ruby/object:RI::MethodSummary 
+  name: read_word16_little
+- !ruby/object:RI::MethodSummary 
+  name: read_word16_native
+- !ruby/object:RI::MethodSummary 
+  name: read_word32_big
+- !ruby/object:RI::MethodSummary 
+  name: read_word32_little
+- !ruby/object:RI::MethodSummary 
+  name: read_word32_native
+- !ruby/object:RI::MethodSummary 
+  name: read_word8
+- !ruby/object:RI::MethodSummary 
+  name: readn
+- !ruby/object:RI::MethodSummary 
+  name: ru
+- !ruby/object:RI::MethodSummary 
+  name: ru_swap
+name: BinReadable
+superclass: 

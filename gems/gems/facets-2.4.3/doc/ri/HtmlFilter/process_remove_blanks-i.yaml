@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: HtmlFilter#process_remove_blanks
+is_singleton: false
+name: process_remove_blanks
+params: (data)
+visibility: private

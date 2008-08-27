@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: class_inherit
+block_params: 
+comment: 
+full_name: Module#class_methods
+is_singleton: false
+name: class_methods
+params: ( &yld )
+visibility: public

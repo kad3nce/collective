@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: EnumerablePass::wrap_enumerable_method
+is_singleton: true
+name: wrap_enumerable_method
+params: ( methodname )
+visibility: public

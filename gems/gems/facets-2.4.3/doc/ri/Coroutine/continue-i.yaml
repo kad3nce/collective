@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Coroutine#continue
+is_singleton: false
+name: continue
+params: (from = nil)
+visibility: protected

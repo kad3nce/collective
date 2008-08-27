@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: An initializer that can take either a File, Pathname or raw data. This works much like YAML::load does. Unlike <tt>open</tt>, <tt>load</tt> requires an exact path parameter.
+full_name: Fileable::DSL#load
+is_singleton: false
+name: load
+params: (path_or_data)
+visibility: public

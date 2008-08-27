@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BinReadable#read_int8
+is_singleton: false
+name: read_int8
+params: ()
+visibility: public

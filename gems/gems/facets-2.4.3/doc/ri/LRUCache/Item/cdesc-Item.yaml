@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: lru_key
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: lru_next
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: lru_prev
+  rw: RW
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Mix this in your class to make LRU-managable.
+constants: []
+
+full_name: LRUCache::Item
+includes: []
+
+instance_methods: []
+
+name: Item
+superclass: 

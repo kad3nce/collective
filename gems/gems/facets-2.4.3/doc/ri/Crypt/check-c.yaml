@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: check the validity of a password against an hashed string
+full_name: Crypt::check
+is_singleton: true
+name: check
+params: (password, hash, algo = :md5)
+visibility: public

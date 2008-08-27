@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: parse publishing options.
+full_name: UploadUtils#upload_parameters
+is_singleton: false
+name: upload_parameters
+params: ( keys )
+visibility: public

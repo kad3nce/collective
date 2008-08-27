@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return list of attributes that have a :class annotation.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class MyClass\n    attr_accessor :test\n    attr_accessor :name, String, :doc =&gt; 'Hello'\n    attr_accessor :age, Fixnum\n  end\n\n  MyClass.instance_attributes # =&gt; [:test, :name, :age, :body]\n  MyClass.classified_attributes # =&gt; [:name, :age]\n"
+full_name: Module#classified_attributes
+is_singleton: false
+name: classified_attributes
+params: ()
+visibility: public

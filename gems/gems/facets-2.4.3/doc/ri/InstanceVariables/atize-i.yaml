@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: InstanceVariables#atize
+is_singleton: false
+name: atize
+params: (name)
+visibility: private

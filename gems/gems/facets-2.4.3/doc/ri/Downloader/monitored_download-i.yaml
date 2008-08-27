@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: regional_urls - array of arrays of [ url, region, md5, expected_size ] local_region - region of the user's system to_dir - where to store downloaded file (full path) force - download even if file already exists locally
+full_name: Downloader#monitored_download
+is_singleton: false
+name: monitored_download
+params: ( urls, filepath, checksum, est_size=0, force=false )
+visibility: public

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Divide on matching pattern.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  ['a1','b1','a2','b2'].divide(/^a/)\n  =&gt; [['a1,'b1'],['a2','b2']]\n\n CREDIT: Trans\n"
+full_name: Enumerable#divide
+is_singleton: false
+name: divide
+params: (pattern)
+visibility: public

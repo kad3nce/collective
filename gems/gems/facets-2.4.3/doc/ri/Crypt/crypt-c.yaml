@@ -1,0 +1,20 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A pure ruby version of crypt(3), a salted one-way hashing of a password.
+- !ruby/struct:SM::Flow::P 
+  body: "Supported hashing algorithms are: md5, sha1, sha256, sha384, sha512, rmd160."
+- !ruby/struct:SM::Flow::P 
+  body: Only the md5 hashing algorithm is standard and compatible with crypt(3), the others are not standard.
+- !ruby/struct:SM::Flow::P 
+  body: Automatically generate a 8-bytes salt if nil.
+- !ruby/struct:SM::Flow::P 
+  body: Output a length hashed and salted string with size of magic.size + salt.size + 23.
+full_name: Crypt::crypt
+is_singleton: true
+name: crypt
+params: (password, algo = :md5, salt = nil, magic='$1$')
+visibility: public

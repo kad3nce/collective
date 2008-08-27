@@ -1,0 +1,27 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: chars
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: BASE62
+  value: "[\"0\"..\"9\", \"a\"..\"z\", \"A\"..\"Z\"].map { |r| r.to_a }.flatten"
+full_name: BaseX
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: convert_base
+- !ruby/object:RI::MethodSummary 
+  name: decode
+- !ruby/object:RI::MethodSummary 
+  name: encode
+name: BaseX
+superclass: Object

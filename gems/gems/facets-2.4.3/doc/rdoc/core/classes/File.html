@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: File</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />File</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/core/facets/file/rootname_rb.html">lib/core/facets/file/rootname.rb</a>
+<a href="../files/lib/core/facets/file/null_rb.html">lib/core/facets/file/null.rb</a>
+<a href="../files/lib/core/facets/file/write_rb.html">lib/core/facets/file/write.rb</a>
+<a href="../files/lib/core/facets/file/rewrite_rb.html">lib/core/facets/file/rewrite.rb</a>
+<a href="../files/lib/core/facets/file/read_rb.html">lib/core/facets/file/read.rb</a>
+<a href="../files/lib/core/facets/file/rootname_rb.html">lib/core/facets/file/rootname.rb</a>
+<a href="../files/lib/core/facets/file/null_rb.html">lib/core/facets/file/null.rb</a>
+<a href="../files/lib/core/facets/file/write_rb.html">lib/core/facets/file/write.rb</a>
+<a href="../files/lib/core/facets/file/rewrite_rb.html">lib/core/facets/file/rewrite.rb</a>
+<a href="../files/lib/core/facets/file/read_rb.html">lib/core/facets/file/read.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+        <a href="Object.html">
+Object
+         </a>
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000436">append</a></li>
+  <li><a href="#M000425">append</a></li>
+  <li><a href="#M000426">create</a></li>
+  <li><a href="#M000437">create</a></li>
+  <li><a href="#M000435">null</a></li>
+  <li><a href="#M000424">null</a></li>
+  <li><a href="#M000432">read_binary</a></li>
+  <li><a href="#M000443">read_binary</a></li>
+  <li><a href="#M000433">read_list</a></li>
+  <li><a href="#M000444">read_list</a></li>
+  <li><a href="#M000440">rewrite</a></li>
+  <li><a href="#M000429">rewrite</a></li>
+  <li><a href="#M000441">rewrite!</a></li>
+  <li><a href="#M000430">rewrite!</a></li>
+  <li><a href="#M000434">rootname</a></li>
+  <li><a href="#M000423">rootname</a></li>
+  <li><a href="#M000431">sanitize</a></li>
+  <li><a href="#M000442">sanitize</a></li>
+  <li><a href="#M000427">write</a></li>
+  <li><a href="#M000438">write</a></li>
+  <li><a href="#M000439">writelines</a></li>
+  <li><a href="#M000428">writelines</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000436"></a><b>append</b>( file, str )
+  </div>
+  <div class="description">
+  <p>
+Append to a file.
+</p>
+<pre>
+  CREDIT: George Moschovitis
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000436_source')" id="l_M000436_source">show source</a> ]</p>
+  <div id="M000436_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/write.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">append</span>( <span class="ruby-identifier">file</span>, <span class="ruby-identifier">str</span> )
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>( <span class="ruby-identifier">file</span>, <span class="ruby-value str">'ab'</span> ) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">str</span>
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000425"></a><b>append</b>( file, str )
+  </div>
+  <div class="description">
+  <p>
+Append to a file.
+</p>
+<pre>
+  CREDIT: George Moschovitis
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000425_source')" id="l_M000425_source">show source</a> ]</p>
+  <div id="M000425_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/write.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">append</span>( <span class="ruby-identifier">file</span>, <span class="ruby-identifier">str</span> )
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>( <span class="ruby-identifier">file</span>, <span class="ruby-value str">'ab'</span> ) { <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">str</span>
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000426"></a><b>create</b>(path, str='', &amp;blk)
+  </div>
+  <div class="description">
+  <p>
+Creates a new file, or overwrites an existing file, and writes a string
+into it. Can also take a block just like File#open, which is yielded
+<em>after</em> the string is writ.
+</p>
+<pre>
+  str = 'The content for the file'
+  File.create('myfile.txt', str)
+
+  CREDIT: George Moschovitis
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000426_source')" id="l_M000426_source">show source</a> ]</p>
+  <div id="M000426_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/write.rb, line 23</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">str</span>=<span class="ruby-value str">''</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">'wb'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">str</span>
+      <span class="ruby-identifier">blk</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">f</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">blk</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000437"></a><b>create</b>(path, str='', &amp;blk)
+  </div>
+  <div class="description">
+  <p>
+Creates a new file, or overwrites an existing file, and writes a string
+into it. Can also take a block just like File#open, which is yielded
+<em>after</em> the string is writ.
+</p>
+<pre>
+  str = 'The content for the file'
+  File.create('myfile.txt', str)
+
+  CREDIT: George Moschovitis
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000437_source')" id="l_M000437_source">show source</a> ]</p>
+  <div id="M000437_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/write.rb, line 23</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">str</span>=<span class="ruby-value str">''</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">blk</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">'wb'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">f</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">str</span>
+      <span class="ruby-identifier">blk</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">f</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">blk</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000435"></a><b>null</b>()
+  </div>
+  <div class="description">
+  <p>
+Platform dependent <a href="File.html#M000424">null</a> device.
+</p>
+<pre>
+  CREDIT: Daniel Burger
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000435_source')" id="l_M000435_source">show source</a> ]</p>
+  <div id="M000435_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/null.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">null</span>
+    <span class="ruby-keyword kw">case</span> <span class="ruby-constant">RUBY_PLATFORM</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/mswin/i</span>
+      <span class="ruby-value str">'NUL'</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/amiga/i</span>
+      <span class="ruby-value str">'NIL:'</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/openvms/i</span>
+      <span class="ruby-value str">'NL:'</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-value str">'/dev/null'</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000424"></a><b>null</b>()
+  </div>
+  <div class="description">
+  <p>
+Platform dependent <a href="File.html#M000424">null</a> device.
+</p>
+<pre>
+  CREDIT: Daniel Burger
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000424_source')" id="l_M000424_source">show source</a> ]</p>
+  <div id="M000424_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/null.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">null</span>
+    <span class="ruby-keyword kw">case</span> <span class="ruby-constant">RUBY_PLATFORM</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/mswin/i</span>
+      <span class="ruby-value str">'NUL'</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/amiga/i</span>
+      <span class="ruby-value str">'NIL:'</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/openvms/i</span>
+      <span class="ruby-value str">'NL:'</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-value str">'/dev/null'</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000432"></a><b>read_binary</b>(fname)
+  </div>
+  <div class="description">
+  <p>
+Read in a file as binary data.
+</p>
+<pre>
+ CREDIT: George Moschovitis
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000432_source')" id="l_M000432_source">show source</a> ]</p>
+  <div id="M000432_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/read.rb, line 18</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">read_binary</span>(<span class="ruby-identifier">fname</span>)
+    <span class="ruby-identifier">open</span>(<span class="ruby-identifier">fname</span>, <span class="ruby-value str">'rb'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">read</span>
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000443"></a><b>read_binary</b>(fname)
+  </div>
+  <div class="description">
+  <p>
+Read in a file as binary data.
+</p>
+<pre>
+ CREDIT: George Moschovitis
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000443_source')" id="l_M000443_source">show source</a> ]</p>
+  <div id="M000443_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/read.rb, line 18</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">read_binary</span>(<span class="ruby-identifier">fname</span>)
+    <span class="ruby-identifier">open</span>(<span class="ruby-identifier">fname</span>, <span class="ruby-value str">'rb'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">read</span>
+    }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000433"></a><b>read_list</b>(filepath, chomp_string='')
+  </div>
+  <div class="description">
+  <p>
+Reads in a file, removes blank lines and remarks (lines starting with
+&#8217;#&#8217;) and then returns an array of all the remaining lines.
+</p>
+<pre>
+  CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000433_source')" id="l_M000433_source">show source</a> ]</p>
+  <div id="M000433_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/read.rb, line 30</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">read_list</span>(<span class="ruby-identifier">filepath</span>, <span class="ruby-identifier">chomp_string</span>=<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">farr</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">farr</span> = <span class="ruby-identifier">read</span>(<span class="ruby-identifier">filepath</span>).<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+    <span class="ruby-identifier">farr</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">l</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">chomp_string</span>)
+      (<span class="ruby-identifier">l</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">l</span>[<span class="ruby-value">0</span>,<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'#'</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">l</span>
+    }
+    <span class="ruby-identifier">farr</span>.<span class="ruby-identifier">compact</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000444"></a><b>read_list</b>(filepath, chomp_string='')
+  </div>
+  <div class="description">
+  <p>
+Reads in a file, removes blank lines and remarks (lines starting with
+&#8217;#&#8217;) and then returns an array of all the remaining lines.
+</p>
+<pre>
+  CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000444_source')" id="l_M000444_source">show source</a> ]</p>
+  <div id="M000444_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/read.rb, line 30</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">read_list</span>(<span class="ruby-identifier">filepath</span>, <span class="ruby-identifier">chomp_string</span>=<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">farr</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">farr</span> = <span class="ruby-identifier">read</span>(<span class="ruby-identifier">filepath</span>).<span class="ruby-identifier">split</span>(<span class="ruby-value str">&quot;\n&quot;</span>)
+    <span class="ruby-identifier">farr</span>.<span class="ruby-identifier">collect!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">l</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">chomp_string</span>)
+      (<span class="ruby-identifier">l</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">l</span>[<span class="ruby-value">0</span>,<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'#'</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">l</span>
+    }
+    <span class="ruby-identifier">farr</span>.<span class="ruby-identifier">compact</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000440"></a><b>rewrite</b>(name, mode = &quot;&quot;) {|| ...}
+  </div>
+  <div class="description">
+  <p>
+Opens a file as a string and writes back the string to the file at the end
+of the block.
+</p>
+<p>
+Returns the number of written bytes or <tt>nil</tt> if the file
+wasn&#8216;t modified.
+</p>
+<p>
+Note that the file will even be written back in case the block raises an
+exception.
+</p>
+<p>
+Mode can either be &quot;b&quot; or &quot;+&quot; and specifies to open the
+file in binary mode (no mapping of the plattform&#8216;s newlines to
+&quot;\n&quot; is done) or to <a href="File.html#M000425">append</a> to it.
+</p>
+<pre>
+  # Reverse contents of &quot;message&quot;
+  File.rewrite(&quot;message&quot;) { |str| str.reverse }
+
+  # Replace &quot;foo&quot; by &quot;bar&quot; in &quot;binary&quot;
+  File.rewrite(&quot;binary&quot;, &quot;b&quot;) { |str| str.gsub(&quot;foo&quot;, &quot;bar&quot;) }
+</pre>
+<p>
+IMPORTANT: The old version of this method required in place modification of
+the file string. The new version will <a href="File.html#M000427">write</a>
+whatever the block returns instead!!!
+</p>
+<pre>
+ CREDIT: George Moschovitis
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000440_source')" id="l_M000440_source">show source</a> ]</p>
+  <div id="M000440_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/rewrite.rb, line 28</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">rewrite</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-value str">&quot;&quot;</span>) <span class="ruby-comment cmt">#:yield:</span>
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;Need to supply block to File.rewrite&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Numeric</span>) <span class="ruby-keyword kw">then</span>
+      <span class="ruby-identifier">flag</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-identifier">mode</span>, <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-identifier">mode</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;b&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">flag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">BINARY</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">mode</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;+&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">flag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">APPEND</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">delete!</span>(<span class="ruby-value str">&quot;^b+&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">old_str</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;r#{mode}&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span> } <span class="ruby-comment cmt">#rescue &quot;&quot;</span>
+    <span class="ruby-identifier">old_str</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">clone</span>
+
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">new_str</span> = <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">old_str</span>)
+    <span class="ruby-keyword kw">ensure</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old_str</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">new_str</span>
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;w#{mode}&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">new_str</span>) }
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000429"></a><b>rewrite</b>(name, mode = &quot;&quot;) {|| ...}
+  </div>
+  <div class="description">
+  <p>
+Opens a file as a string and writes back the string to the file at the end
+of the block.
+</p>
+<p>
+Returns the number of written bytes or <tt>nil</tt> if the file
+wasn&#8216;t modified.
+</p>
+<p>
+Note that the file will even be written back in case the block raises an
+exception.
+</p>
+<p>
+Mode can either be &quot;b&quot; or &quot;+&quot; and specifies to open the
+file in binary mode (no mapping of the plattform&#8216;s newlines to
+&quot;\n&quot; is done) or to <a href="File.html#M000425">append</a> to it.
+</p>
+<pre>
+  # Reverse contents of &quot;message&quot;
+  File.rewrite(&quot;message&quot;) { |str| str.reverse }
+
+  # Replace &quot;foo&quot; by &quot;bar&quot; in &quot;binary&quot;
+  File.rewrite(&quot;binary&quot;, &quot;b&quot;) { |str| str.gsub(&quot;foo&quot;, &quot;bar&quot;) }
+</pre>
+<p>
+IMPORTANT: The old version of this method required in place modification of
+the file string. The new version will <a href="File.html#M000427">write</a>
+whatever the block returns instead!!!
+</p>
+<pre>
+ CREDIT: George Moschovitis
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000429_source')" id="l_M000429_source">show source</a> ]</p>
+  <div id="M000429_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/rewrite.rb, line 28</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">rewrite</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-value str">&quot;&quot;</span>) <span class="ruby-comment cmt">#:yield:</span>
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;Need to supply block to File.rewrite&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Numeric</span>) <span class="ruby-keyword kw">then</span>
+      <span class="ruby-identifier">flag</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-identifier">mode</span>, <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-identifier">mode</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;b&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">flag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">BINARY</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">mode</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;+&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">flag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">APPEND</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">delete!</span>(<span class="ruby-value str">&quot;^b+&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">old_str</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;r#{mode}&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span> } <span class="ruby-comment cmt">#rescue &quot;&quot;</span>
+    <span class="ruby-identifier">old_str</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">clone</span>
+
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">new_str</span> = <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">old_str</span>)
+    <span class="ruby-keyword kw">ensure</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old_str</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">new_str</span>
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;w#{mode}&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">new_str</span>) }
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000441"></a><b>rewrite!</b>(name, mode = &quot;&quot;) {|| ...}
+  </div>
+  <div class="description">
+  <p>
+In place version of <a href="File.html#M000429">rewrite</a>. This version
+of method requires that the string be modified in place within the block.
+</p>
+<pre>
+  # Reverse contents of &quot;message&quot;
+  File.rewrite(&quot;message&quot;) { |str| str.reverse! }
+
+  # Replace &quot;foo&quot; by &quot;bar&quot; in &quot;binary&quot;
+  File.rewrite(&quot;binary&quot;, &quot;b&quot;) { |str| str.gsub!(&quot;foo&quot;, &quot;bar&quot;) }
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000441_source')" id="l_M000441_source">show source</a> ]</p>
+  <div id="M000441_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/rewrite.rb, line 62</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">rewrite!</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-value str">&quot;&quot;</span>) <span class="ruby-comment cmt">#:yield:</span>
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;Need to supply block to File.rewrite&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Numeric</span>) <span class="ruby-keyword kw">then</span>
+      <span class="ruby-identifier">flag</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-identifier">mode</span>, <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-identifier">mode</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;b&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">flag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">BINARY</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">mode</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;+&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">flag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">APPEND</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">delete!</span>(<span class="ruby-value str">&quot;^b+&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">old_str</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;r#{mode}&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span> } <span class="ruby-comment cmt">#rescue &quot;&quot;</span>
+    <span class="ruby-identifier">new_str</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">clone</span>
+
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">new_str</span>)
+    <span class="ruby-keyword kw">ensure</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old_str</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">new_str</span>
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;w#{mode}&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">str</span>) }
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000430"></a><b>rewrite!</b>(name, mode = &quot;&quot;) {|| ...}
+  </div>
+  <div class="description">
+  <p>
+In place version of <a href="File.html#M000429">rewrite</a>. This version
+of method requires that the string be modified in place within the block.
+</p>
+<pre>
+  # Reverse contents of &quot;message&quot;
+  File.rewrite(&quot;message&quot;) { |str| str.reverse! }
+
+  # Replace &quot;foo&quot; by &quot;bar&quot; in &quot;binary&quot;
+  File.rewrite(&quot;binary&quot;, &quot;b&quot;) { |str| str.gsub!(&quot;foo&quot;, &quot;bar&quot;) }
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000430_source')" id="l_M000430_source">show source</a> ]</p>
+  <div id="M000430_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/rewrite.rb, line 62</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">rewrite!</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-value str">&quot;&quot;</span>) <span class="ruby-comment cmt">#:yield:</span>
+    <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+      <span class="ruby-identifier">raise</span>(<span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;Need to supply block to File.rewrite&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Numeric</span>) <span class="ruby-keyword kw">then</span>
+      <span class="ruby-identifier">flag</span>, <span class="ruby-identifier">mode</span> = <span class="ruby-identifier">mode</span>, <span class="ruby-value str">&quot;&quot;</span>
+      <span class="ruby-identifier">mode</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;b&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">flag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">BINARY</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">mode</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;+&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">flag</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">APPEND</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">mode</span>.<span class="ruby-identifier">delete!</span>(<span class="ruby-value str">&quot;^b+&quot;</span>)
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">old_str</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;r#{mode}&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span> } <span class="ruby-comment cmt">#rescue &quot;&quot;</span>
+    <span class="ruby-identifier">new_str</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">clone</span>
+
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-keyword kw">yield</span>(<span class="ruby-identifier">new_str</span>)
+    <span class="ruby-keyword kw">ensure</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">old_str</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">new_str</span>
+        <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">name</span>, <span class="ruby-node">&quot;w#{mode}&quot;</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">str</span>) }
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000434"></a><b>rootname</b>(path)
+  </div>
+  <div class="description">
+  <p>
+Returns onlt the first portion of the directory of a file path name.
+</p>
+<pre>
+  File.rootname('lib/jump.rb')  #=&gt; 'lib'
+  File.rootname('/jump.rb')     #=&gt; '/'
+  File.rootname('jump.rb')      #=&gt; '.'
+
+  CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000434_source')" id="l_M000434_source">show source</a> ]</p>
+  <div id="M000434_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/rootname.rb, line 12</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">rootname</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-comment cmt"># this should be fairly robust</span>
+    <span class="ruby-identifier">path_re</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'['</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">Separator</span> <span class="ruby-operator">+</span> <span class="ruby-value str">%q{\/}</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">']'</span>)
+
+    <span class="ruby-identifier">head</span>, <span class="ruby-identifier">tail</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">path_re</span>, <span class="ruby-value">2</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'.'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">head</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'/'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">head</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">head</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000423"></a><b>rootname</b>(path)
+  </div>
+  <div class="description">
+  <p>
+Returns onlt the first portion of the directory of a file path name.
+</p>
+<pre>
+  File.rootname('lib/jump.rb')  #=&gt; 'lib'
+  File.rootname('/jump.rb')     #=&gt; '/'
+  File.rootname('jump.rb')      #=&gt; '.'
+
+  CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000423_source')" id="l_M000423_source">show source</a> ]</p>
+  <div id="M000423_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/rootname.rb, line 12</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">rootname</span>(<span class="ruby-identifier">path</span>)
+    <span class="ruby-comment cmt"># this should be fairly robust</span>
+    <span class="ruby-identifier">path_re</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'['</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">Separator</span> <span class="ruby-operator">+</span> <span class="ruby-value str">%q{\/}</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">']'</span>)
+
+    <span class="ruby-identifier">head</span>, <span class="ruby-identifier">tail</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">path_re</span>, <span class="ruby-value">2</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'.'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">head</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'/'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">head</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">head</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000431"></a><b>sanitize</b>(filename)
+  </div>
+  <div class="description">
+  <p>
+Cleans up a filename to ensure it will work on filesystem.
+</p>
+<pre>
+ CREDIT: George Moschovitis
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000431_source')" id="l_M000431_source">show source</a> ]</p>
+  <div id="M000431_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/read.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">sanitize</span>(<span class="ruby-identifier">filename</span>)
+    <span class="ruby-identifier">filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">filename</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;\\&quot;</span>, <span class="ruby-value str">&quot;/&quot;</span>)) <span class="ruby-comment cmt"># work-around for IE</span>
+    <span class="ruby-identifier">filename</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/[^a-zA-Z0-9\.\-\+_]/</span>,<span class="ruby-value str">&quot;_&quot;</span>)
+    <span class="ruby-identifier">filename</span> = <span class="ruby-node">&quot;_#{filename}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">filename</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^\.+$/</span>
+    <span class="ruby-identifier">filename</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000442"></a><b>sanitize</b>(filename)
+  </div>
+  <div class="description">
+  <p>
+Cleans up a filename to ensure it will work on filesystem.
+</p>
+<pre>
+ CREDIT: George Moschovitis
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000442_source')" id="l_M000442_source">show source</a> ]</p>
+  <div id="M000442_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/read.rb, line 7</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">sanitize</span>(<span class="ruby-identifier">filename</span>)
+    <span class="ruby-identifier">filename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">filename</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;\\&quot;</span>, <span class="ruby-value str">&quot;/&quot;</span>)) <span class="ruby-comment cmt"># work-around for IE</span>
+    <span class="ruby-identifier">filename</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-regexp re">/[^a-zA-Z0-9\.\-\+_]/</span>,<span class="ruby-value str">&quot;_&quot;</span>)
+    <span class="ruby-identifier">filename</span> = <span class="ruby-node">&quot;_#{filename}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">filename</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^\.+$/</span>
+    <span class="ruby-identifier">filename</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000427"></a><b>write</b>(path, data)
+  </div>
+  <div class="description">
+  <p>
+Writes the given data to the given path and closes the file. This is done
+in binary mode, complementing <tt>IO.read</tt> in standard Ruby.
+</p>
+<p>
+Returns the number of bytes written.
+</p>
+<pre>
+  CREDIT: Gavin Sinclair
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000427_source')" id="l_M000427_source">show source</a> ]</p>
+  <div id="M000427_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/write.rb, line 37</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">data</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">&quot;wb&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000438"></a><b>write</b>(path, data)
+  </div>
+  <div class="description">
+  <p>
+Writes the given data to the given path and closes the file. This is done
+in binary mode, complementing <tt>IO.read</tt> in standard Ruby.
+</p>
+<p>
+Returns the number of bytes written.
+</p>
+<pre>
+  CREDIT: Gavin Sinclair
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000438_source')" id="l_M000438_source">show source</a> ]</p>
+  <div id="M000438_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/write.rb, line 37</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">data</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">&quot;wb&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000439"></a><b>writelines</b>(path, data)
+  </div>
+  <div class="description">
+  <p>
+Writes the given array of data to the given path and closes the file. This
+is done in binary mode, complementing <tt>IO.readlines</tt> in standard
+Ruby.
+</p>
+<p>
+Note that <tt>readlines</tt> (the standard Ruby method) returns an array of
+lines <em>with newlines intact</em>, whereas <tt><a
+href="File.html#M000428">writelines</a></tt> uses <tt>puts</tt>, and so
+appends newlines if necessary. In this small way, <tt>readlines</tt> and
+<tt><a href="File.html#M000428">writelines</a></tt> are not exact
+opposites.
+</p>
+<p>
+Returns <tt>nil</tt>.
+</p>
+<pre>
+  CREDIT: Noah Gibbs
+  CREDIT: Gavin Sinclair
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000439_source')" id="l_M000439_source">show source</a> ]</p>
+  <div id="M000439_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/write.rb, line 57</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">writelines</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">data</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">&quot;wb&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">file</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000428"></a><b>writelines</b>(path, data)
+  </div>
+  <div class="description">
+  <p>
+Writes the given array of data to the given path and closes the file. This
+is done in binary mode, complementing <tt>IO.readlines</tt> in standard
+Ruby.
+</p>
+<p>
+Note that <tt>readlines</tt> (the standard Ruby method) returns an array of
+lines <em>with newlines intact</em>, whereas <tt><a
+href="File.html#M000428">writelines</a></tt> uses <tt>puts</tt>, and so
+appends newlines if necessary. In this small way, <tt>readlines</tt> and
+<tt><a href="File.html#M000428">writelines</a></tt> are not exact
+opposites.
+</p>
+<p>
+Returns <tt>nil</tt>.
+</p>
+<pre>
+  CREDIT: Noah Gibbs
+  CREDIT: Gavin Sinclair
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000428_source')" id="l_M000428_source">show source</a> ]</p>
+  <div id="M000428_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/file/write.rb, line 57</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">writelines</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">data</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">path</span>, <span class="ruby-value str">&quot;wb&quot;</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">file</span>.<span class="ruby-identifier">puts</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

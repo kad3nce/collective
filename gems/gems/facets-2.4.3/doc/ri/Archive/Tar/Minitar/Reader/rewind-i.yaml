@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Resets the read pointer to the beginning of data stream. Do not call this during a #each or #each_entry iteration. This only works with random access data streams that respond to #rewind and #pos."
+full_name: Archive::Tar::Minitar::Reader#rewind
+is_singleton: false
+name: rewind
+params: ()
+visibility: public

@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Capsule#include_script
+is_singleton: false
+name: include_script
+params: (file)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #instance_delegate"
+full_name: OpenStruct#ostruct_delegate
+is_singleton: false
+name: ostruct_delegate
+params: ()
+visibility: public

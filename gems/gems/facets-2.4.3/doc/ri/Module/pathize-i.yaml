@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Converts a class name to a unix path
+- !ruby/struct:SM::Flow::P 
+  body: Examples
+- !ruby/struct:SM::Flow::VERB 
+  body: "  CoolClass.pathize       #=&gt; &quot;cool_class&quot;\n  My::CoolClass.pathize   #=&gt; &quot;my/cool_class&quot;\n"
+full_name: Module#pathize
+is_singleton: false
+name: pathize
+params: ()
+visibility: public

@@ -1,0 +1,33 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Stackable
+- !ruby/struct:SM::Flow::P 
+  body: "Stackable mixin provides #pop, #push, #pull, etc. It depends on #slice, #splice and #insert."
+constants: []
+
+full_name: Stackable
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: peek
+- !ruby/object:RI::MethodSummary 
+  name: poke
+- !ruby/object:RI::MethodSummary 
+  name: pop
+- !ruby/object:RI::MethodSummary 
+  name: pull
+- !ruby/object:RI::MethodSummary 
+  name: push
+- !ruby/object:RI::MethodSummary 
+  name: shift
+- !ruby/object:RI::MethodSummary 
+  name: unshift
+name: Stackable
+superclass: 

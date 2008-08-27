@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: fetch
+full_name: Downloader#fetch
+is_singleton: false
+name: fetch
+params: ( file, checksum=0, est_size=0, force=false )
+visibility: public

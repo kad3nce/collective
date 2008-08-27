@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Weekdays#step
+is_singleton: false
+name: step
+params: (direction, original_time)
+visibility: private

@@ -1,0 +1,55 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: An array of paths to search for scripts. This has the same semantics as <tt>$:</tt>, alias <tt>$LOAD_PATH</tt>, excpet that it is local to this script. The path of the current script is added automatically (equivalent to '.')
+  name: load_path
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: A hash that maps <tt>filename=&gt;true</tt> for each file that has been required locally by the script. This has the same semantics as <tt>$&quot;</tt>, alias <tt>$LOADED_FEATURES</tt>, except that it is local to this script.
+  name: loaded_features
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: The script file with which the Import was instantiated.
+  name: main_file
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: load
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Capsule
+- !ruby/struct:SM::Flow::P 
+  body: A Capsule is subclass of Module. It encapsulates an extenal script as a funcitons module.
+- !ruby/struct:SM::Flow::P 
+  body: A module which is an instance of the Capsule class encapsulates in its scope the top-level methods, top-level constants, and instance variables defined in a ruby script file (and its subfiles) loaded by a ruby program. This allows use of script files to define objects that can be loaded into a program in much the same way that objects can be loaded from YAML or Marshal files.
+- !ruby/struct:SM::Flow::P 
+  body: See intro.txt[link:files/intro_txt.html] for an overview.
+constants: []
+
+full_name: Capsule
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: include
+- !ruby/object:RI::MethodSummary 
+  name: include_script
+- !ruby/object:RI::MethodSummary 
+  name: load
+- !ruby/object:RI::MethodSummary 
+  name: load_in_module
+- !ruby/object:RI::MethodSummary 
+  name: load_path_lookup
+- !ruby/object:RI::MethodSummary 
+  name: require
+name: Capsule
+superclass: Module

@@ -1,0 +1,65 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: the head sentinel and the tail sentinel, tail.prev points to the lru item.
+  name: head
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: the maximum number of items in the cache.
+  name: max_items
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: the head sentinel and the tail sentinel, tail.prev points to the lru item.
+  name: tail
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: LRUCache
+- !ruby/struct:SM::Flow::P 
+  body: "A cache utilizing a simple LRU (Least Recently Used) policy. The items managed by this cache must respond to the #key method. Attempts to optimize reads rather than inserts!"
+- !ruby/struct:SM::Flow::P 
+  body: LRU semantics are enforced by inserting the items in a queue. The lru item is always at the tail. Two special sentinels (head, tail) are used to simplify (?) the code.
+constants: []
+
+full_name: LRUCache
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: clear
+- !ruby/object:RI::MethodSummary 
+  name: delete
+- !ruby/object:RI::MethodSummary 
+  name: first
+- !ruby/object:RI::MethodSummary 
+  name: last
+- !ruby/object:RI::MethodSummary 
+  name: lru
+- !ruby/object:RI::MethodSummary 
+  name: lru_append
+- !ruby/object:RI::MethodSummary 
+  name: lru_clear
+- !ruby/object:RI::MethodSummary 
+  name: lru_delete
+- !ruby/object:RI::MethodSummary 
+  name: lru_insert
+- !ruby/object:RI::MethodSummary 
+  name: lru_join
+- !ruby/object:RI::MethodSummary 
+  name: lru_touch
+name: LRUCache
+superclass: Hash

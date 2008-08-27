@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: include?
+block_params: 
+comment: 
+full_name: PathList::Finder#find
+is_singleton: false
+name: find
+params: (filename, use_ext=true)
+visibility: public

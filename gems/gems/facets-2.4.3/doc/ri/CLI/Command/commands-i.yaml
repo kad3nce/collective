@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: CLI::Command#commands
+is_singleton: false
+name: commands
+params: ()
+visibility: private

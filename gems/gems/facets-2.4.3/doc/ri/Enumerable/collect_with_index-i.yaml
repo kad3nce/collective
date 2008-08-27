@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: map_with_index
+block_params: (self[i], i)
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Same as #collect but with an iteration counter."
+- !ruby/struct:SM::Flow::VERB 
+  body: "  a = [1,2,3].collect_with_index { |e,i| e*i }\n  a  #=&gt; [0,2,6]\n\n  CREDIT: Gavin Sinclair\n"
+full_name: Enumerable#collect_with_index
+is_singleton: false
+name: collect_with_index
+params: () {|self[i], i| ...}
+visibility: public

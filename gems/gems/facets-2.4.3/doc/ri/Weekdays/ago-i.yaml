@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: until
+- !ruby/object:RI::AliasName 
+  name: before
+block_params: 
+comment: 
+full_name: Weekdays#ago
+is_singleton: false
+name: ago
+params: (time = ::Time.now)
+visibility: public

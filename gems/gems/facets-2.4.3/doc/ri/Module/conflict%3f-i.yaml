@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Detect conflicts.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  module A\n    def c; end\n  end\n\n  module B\n    def c; end\n  end\n\n  A.conflict?(B)  #=&gt; [&quot;c&quot;]\n\n  TODO: All instance methods, or just public?\n\n CREDIT: Thomas Sawyer\n CREDIT: Robert Dober\n"
+full_name: Module#conflict?
+is_singleton: false
+name: conflict?
+params: (other)
+visibility: public

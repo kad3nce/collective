@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Advisable::Method#advice_before=
+is_singleton: false
+name: advice_before=
+params: (set)
+visibility: public

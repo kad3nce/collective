@@ -1,0 +1,25 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: OpenCascade
+- !ruby/struct:SM::Flow::P 
+  body: OpenCascade is subclass of OpenObject. It differs in a few significant ways.
+- !ruby/struct:SM::Flow::P 
+  body: The main reason this class is labeled &quot;cascade&quot;, every internal Hash is trandformed into an OpenCascade dynamically upon access. This makes it easy to create &quot;cascading&quot; references.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  h = { :x =&gt; { :y =&gt; { :z =&gt; 1 } } }\n  c = OpenCascade[h]\n  c.x.y.z  #=&gt; 1\n"
+constants: []
+
+full_name: OpenCascade
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+name: OpenCascade
+superclass: OpenObject

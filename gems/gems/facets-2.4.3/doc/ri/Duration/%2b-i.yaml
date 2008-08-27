@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Add to Duration.
+- !ruby/struct:SM::Flow::P 
+  body: <b>Example</b>
+- !ruby/struct:SM::Flow::VERB 
+  body: "    d = Duration.new(30)\n    =&gt; #&lt;Duration: 30 seconds&gt;\n    d + 30\n    =&gt; #&lt;Duration: 1 minute&gt;\n"
+full_name: Duration#+
+is_singleton: false
+name: +
+params: (other)
+visibility: public

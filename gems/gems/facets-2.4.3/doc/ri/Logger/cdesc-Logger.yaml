@@ -1,0 +1,44 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: format_proc
+  rw: RW
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Logger
+- !ruby/struct:SM::Flow::P 
+  body: Extended variation of Ruby's standard Logger library. Mainly for compatibility purposes (with what?)
+- !ruby/struct:SM::Flow::VERB 
+  body: "  log = Logger.new\n\n  log.setup_format do |severity, timestamp, progname, msg|\n    Logger::SIMPLE_FORMAT % [severity, msg]\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: When using debug level logger messages always append 'if $DBG' at the end. This hack is needed because Ruby does not support lazy evaluation (lisp macros).
+- !ruby/struct:SM::Flow::P 
+  body: "TODO: What's all this about then?"
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  - !ruby/struct:SM::Flow::P 
+    body: Some available logging formats.
+  name: SIMPLE_FORMAT
+  value: "\"%5s: %s\\n\""
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DETAILED_FORMAT
+  value: "\"%s %5s: %s\\n\""
+full_name: Logger
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Ansicolor
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: ansicolor=
+- !ruby/object:RI::MethodSummary 
+  name: format_procedure
+- !ruby/object:RI::MethodSummary 
+  name: setup_format
+name: Logger
+superclass: Object

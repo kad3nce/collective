@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: read_uint8
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: no byteorder for 8 bit!
+full_name: BinReadable#read_word8
+is_singleton: false
+name: read_word8
+params: ()
+visibility: public

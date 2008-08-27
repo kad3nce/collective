@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Stops and resets the timer. If the timer was running returns the total time. If not returns 0.
+full_name: Timer#reset
+is_singleton: false
+name: reset
+params: ()
+visibility: public

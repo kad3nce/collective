@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "As with #word_wrap, but modifies the string in place."
+- !ruby/struct:SM::Flow::VERB 
+  body: "  CREDIT: Gavin Kistner\n  CREDIT: Dayne Broderson\n"
+full_name: String::Words#word_wrap!
+is_singleton: false
+name: word_wrap!
+params: ( col_width=80 )
+visibility: public

@@ -1,0 +1,18 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Typecast method extensions for Object class.
+constants: []
+
+full_name: TypeCast::Object
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: cast_to
+name: Object
+superclass: 

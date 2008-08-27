@@ -1,0 +1,22 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The same as <tt>multiglob</tt>, but recusively includes directories.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Dir.multiglob_r( 'folder' )\n"
+- !ruby/struct:SM::Flow::P 
+  body: is equivalent to
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Dir.multiglob( 'folder', :recurse=&gt;true )\n"
+- !ruby/struct:SM::Flow::P 
+  body: The effect of which is
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Dir.multiglob( 'folder', 'folder/**/**' )\n"
+full_name: Dir::multiglob_r
+is_singleton: true
+name: multiglob_r
+params: (*patterns)
+visibility: public

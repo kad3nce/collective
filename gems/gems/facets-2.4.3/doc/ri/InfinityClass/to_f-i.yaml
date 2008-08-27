@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Convert to the float version of infinity.
+full_name: InfinityClass#to_f
+is_singleton: false
+name: to_f
+params: ()
+visibility: public

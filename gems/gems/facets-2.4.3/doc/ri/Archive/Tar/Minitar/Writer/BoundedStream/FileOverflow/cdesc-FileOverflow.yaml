@@ -1,0 +1,17 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The exception raised when the user attempts to write more data to a BoundedStream than has been allocated.
+constants: []
+
+full_name: Archive::Tar::Minitar::Writer::BoundedStream::FileOverflow
+includes: []
+
+instance_methods: []
+
+name: FileOverflow
+superclass: RuntimeError

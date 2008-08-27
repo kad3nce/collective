@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #singleton_method_defined?"
+full_name: Module#module_method_defined?
+is_singleton: false
+name: module_method_defined?
+params: (meth)
+visibility: public

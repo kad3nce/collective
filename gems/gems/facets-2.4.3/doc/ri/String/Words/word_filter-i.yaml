@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Filters out words from a string based on block test.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &quot;a string&quot;.word_filter { |word| word =~ /^a/ }  #=&gt; &quot;string&quot;\n\n  CREDIT: George Moschovitis\n"
+full_name: String::Words#word_filter
+is_singleton: false
+name: word_filter
+params: ( &blk )
+visibility: public

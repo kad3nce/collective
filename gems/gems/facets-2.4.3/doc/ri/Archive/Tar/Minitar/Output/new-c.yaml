@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Creates a new Output object. If <tt>output</tt> is a stream object that responds to #read), then it will simply be wrapped. Otherwise, one will be created and opened using Kernel#open. When Output#close is called, the stream object wrapped will be closed."
+full_name: Archive::Tar::Minitar::Output::new
+is_singleton: true
+name: new
+params: (output)
+visibility: public

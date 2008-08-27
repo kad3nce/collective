@@ -1,0 +1,29 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: append_features
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Instantise
+- !ruby/struct:SM::Flow::P 
+  body: Instantise converts module methods into instance methods such that the first parameter is passed self at the instance level. This promotes DRY programming when wishing to offer both an inheritable and a module callable procedure.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  module MyModule\n    extend Instantise\n\n    def self.jumble( obj, arg )\n      obj + arg\n    end\n  end\n\n  class String\n    include MyModule\n  end\n\n  MyModule.jumble( &quot;Try&quot;, &quot;Me&quot; )  #=&gt; &quot;TryMe&quot;\n\n  &quot;Try&quot;.jumble( &quot;Me&quot; )            #=&gt; 'TryMe'\n"
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Notes
+- !ruby/struct:SM::Flow::P 
+  body: This module used to be called PromoteSelf. Instantise is more descriptive, but a better name is probably still out there.
+constants: []
+
+full_name: Instantise
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: singleton_method_added
+name: Instantise
+superclass: 

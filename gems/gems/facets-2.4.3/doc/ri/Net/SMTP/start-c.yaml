@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: smtp
+comment: 
+full_name: Net::SMTP::start
+is_singleton: true
+name: start
+params: (address, port=nil, helo='localhost.localdomain', user=nil, secret=nil, authtype=nil, use_tls=false) {|smtp| ...}
+visibility: public

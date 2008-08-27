@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: module_method_defined?
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Query whether a normal (singleton) method is defined for the module.
+- !ruby/struct:SM::Flow::VERB 
+  body: " CREDIT: Gavin Sinclair\n CREDIT: Noah Gibbs\n"
+full_name: Module#singleton_method_defined?
+is_singleton: false
+name: singleton_method_defined?
+params: (meth)
+visibility: public

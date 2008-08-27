@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Filter html string.
+full_name: HtmlFilter#filter
+is_singleton: false
+name: filter
+params: (data)
+visibility: public

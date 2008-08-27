@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Iterates through each entry in the data stream.
+full_name: Archive::Tar::Minitar::Reader#each
+is_singleton: false
+name: each
+params: (&block)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Unique hash value.
+full_name: Tuple#hash
+is_singleton: false
+name: hash
+params: ()
+visibility: public

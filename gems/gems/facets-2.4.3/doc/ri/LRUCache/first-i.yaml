@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The first (mru) element in the cache.
+full_name: LRUCache#first
+is_singleton: false
+name: first
+params: ()
+visibility: public

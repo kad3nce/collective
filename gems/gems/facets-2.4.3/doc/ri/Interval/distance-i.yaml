@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: length
+- !ruby/object:RI::AliasName 
+  name: size
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Returns the length of the interval as the difference between the first and last elements. Returns <tt>nil</tt> if the sentinal objects do not support distance comparison (#distance). TODO: Add <tt>n</tt> parameter to count segmentations like those produced by #each."
+full_name: Interval#distance
+is_singleton: false
+name: distance
+params: ()
+visibility: public

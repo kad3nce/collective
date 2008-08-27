@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Kernel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Kernel</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/memoize_rb.html">lib/more/facets/memoize.rb</a>
+<a href="../files/lib/more/facets/daemonize_rb.html">lib/more/facets/daemonize.rb</a>
+<a href="../files/lib/more/facets/reflection_rb.html">lib/more/facets/reflection.rb</a>
+<a href="../files/lib/more/facets/nullclass_rb.html">lib/more/facets/nullclass.rb</a>
+<a href="../files/lib/more/facets/chain_rb.html">lib/more/facets/chain.rb</a>
+<a href="../files/lib/more/facets/autoreload_rb.html">lib/more/facets/autoreload.rb</a>
+<a href="../files/lib/more/facets/reference_rb.html">lib/more/facets/reference.rb</a>
+<a href="../files/lib/more/facets/kernel/meta_rb.html">lib/more/facets/kernel/meta.rb</a>
+<a href="../files/lib/more/facets/kernel/meta_rb.html">lib/more/facets/kernel/meta.rb</a>
+<a href="../files/lib/more/facets/prototype_rb.html">lib/more/facets/prototype.rb</a>
+<a href="../files/lib/more/facets/1stclassmethod_rb.html">lib/more/facets/1stclassmethod.rb</a>
+<a href="../files/lib/more/facets/capsule_rb.html">lib/more/facets/capsule.rb</a>
+<a href="../files/lib/more/facets/eventhook_rb.html">lib/more/facets/eventhook.rb</a>
+<a href="../files/lib/more/facets/nackclass_rb.html">lib/more/facets/nackclass.rb</a>
+<a href="../files/lib/more/facets/timer_rb.html">lib/more/facets/timer.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000929">__object__</a></li>
+  <li><a href="#M000940">autoimport</a></li>
+  <li><a href="#M000932">autoreload</a></li>
+  <li><a href="#M000933">autoreload_files</a></li>
+  <li><a href="#M000927">cache</a></li>
+  <li><a href="#M000931">chain</a></li>
+  <li><a href="#M000928">daemonize</a></li>
+  <li><a href="#M000942">event</a></li>
+  <li><a href="#M000941">hook</a></li>
+  <li><a href="#M000935">meta</a></li>
+  <li><a href="#M000936">meta</a></li>
+  <li><a href="#M000939">method!</a></li>
+  <li><a href="#M000943">nack</a></li>
+  <li><a href="#M000938">new</a></li>
+  <li><a href="#M000930">null</a></li>
+  <li><a href="#M000937">prototype</a></li>
+  <li><a href="#M000934">ref</a></li>
+  <li><a href="#M000944">timed</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000929"></a><b>__object__</b>()
+  </div>
+  <div class="description">
+  <p>
+Binds a method to Object/<a href="Kernel.html">Kernel</a> before calling
+it.
+</p>
+<pre>
+  obj.__object__.id
+  obj.__object__.class
+</pre>
+<p>
+For metaprogramming this can be important.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000929_source')" id="l_M000929_source">show source</a> ]</p>
+  <div id="M000929_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/reflection.rb, line 92</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">__object__</span>
+    <span class="ruby-ivar">@_object_reflection</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">ObjectReflection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000940"></a><b>autoimport</b>(mod, file)
+  </div>
+  <div class="description">
+  <p>
+Calls Object.autoimport
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000940_source')" id="l_M000940_source">show source</a> ]</p>
+  <div id="M000940_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/capsule.rb, line 254</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">autoimport</span>(<span class="ruby-identifier">mod</span>, <span class="ruby-identifier">file</span>)
+    <span class="ruby-constant">Object</span>.<span class="ruby-identifier">autoimport</span>(<span class="ruby-identifier">mod</span>, <span class="ruby-identifier">file</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000932"></a><b>autoreload</b>( *args )
+  </div>
+  <div class="description">
+  <p>
+Autoreload feature files.
+</p>
+<p>
+Automatically reload, at regular intervals, any previously loaded features,
+and/or other files not already loaded, if they have been modified since the
+last interval check. A numeric parameter sets the reload interval in
+seconds and the file parameter can either be a glob string or an array of
+file paths. If a glob string, it is expanded only once on the initial
+method call. Supplying a boolean parameter of &#8216;false&#8217; will
+force autreload to skip previously loaded features and only reload the
+specified files. Also keeps a &quot;dirty&quot; flag.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000932_source')" id="l_M000932_source">show source</a> ]</p>
+  <div id="M000932_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/autoreload.rb, line 50</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">autoreload</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
+
+    <span class="ruby-identifier">check_interval</span>=<span class="ruby-value">10</span>
+    <span class="ruby-identifier">include_features</span> = <span class="ruby-keyword kw">true</span>
+    <span class="ruby-identifier">files</span> = <span class="ruby-keyword kw">nil</span>
+
+    <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">arg</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Numeric</span>
+        <span class="ruby-identifier">check_interval</span> = <span class="ruby-identifier">arg</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-constant">String</span>
+        <span class="ruby-identifier">files</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>( <span class="ruby-identifier">arg</span> )
+      <span class="ruby-keyword kw">when</span> <span class="ruby-constant">Array</span>
+        <span class="ruby-identifier">files</span> = <span class="ruby-identifier">arg</span>
+      <span class="ruby-keyword kw">when</span> <span class="ruby-constant">TrueClass</span>, <span class="ruby-constant">FalseClass</span>
+        <span class="ruby-identifier">include_features</span> = <span class="ruby-identifier">arg</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-identifier">file_mtime</span> = {}
+
+    <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">start_time</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">loop</span> <span class="ruby-keyword kw">do</span>
+        <span class="ruby-identifier">sleep</span> <span class="ruby-identifier">check_interval</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">include_features</span>
+          <span class="ruby-identifier">feature_files</span> = <span class="ruby-identifier">$LOADED_FEATURES</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">feature</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">lp</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">lp</span>, <span class="ruby-identifier">feature</span>) }
+          }.<span class="ruby-identifier">flatten</span>
+
+          <span class="ruby-identifier">feature_files</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">file</span>) <span class="ruby-keyword kw">and</span> (<span class="ruby-identifier">mtime</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">stat</span>(<span class="ruby-identifier">file</span>).<span class="ruby-identifier">mtime</span>) <span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">file_mtime</span>[<span class="ruby-identifier">file</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">start_time</span>)
+              <span class="ruby-identifier">$autoreload_dirty</span> = <span class="ruby-keyword kw">true</span>
+              <span class="ruby-identifier">file_mtime</span>[<span class="ruby-identifier">file</span>] = <span class="ruby-identifier">mtime</span>
+              <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;File '#{ file }' reloaded&quot;</span>
+              <span class="ruby-keyword kw">begin</span>
+                <span class="ruby-identifier">load</span>(<span class="ruby-identifier">file</span>)
+              <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+                <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">inspect</span>
+              <span class="ruby-keyword kw">end</span>
+            <span class="ruby-keyword kw">end</span>
+          }
+        <span class="ruby-keyword kw">end</span>
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">files</span>
+          <span class="ruby-identifier">files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">file</span>) <span class="ruby-keyword kw">and</span> (<span class="ruby-identifier">mtime</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">stat</span>(<span class="ruby-identifier">file</span>).<span class="ruby-identifier">mtime</span>) <span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">file_mtime</span>[<span class="ruby-identifier">file</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">start_time</span>)
+              <span class="ruby-identifier">$autoreload_dirty</span> = <span class="ruby-keyword kw">true</span>
+              <span class="ruby-identifier">file_mtime</span>[<span class="ruby-identifier">file</span>] = <span class="ruby-identifier">mtime</span>
+              <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;File '#{ file }' changed&quot;</span>
+            <span class="ruby-keyword kw">end</span>
+          <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000933"></a><b>autoreload_files</b>( *args )
+  </div>
+  <div class="description">
+  <p>
+Same as <a href="Kernel.html#M000932">autoreload</a>, but does not include
+previously loaded features. This is equivalent to as adding a
+&#8216;false&#8217; parameter to <a
+href="Kernel.html#M000932">autoreload</a>.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000933_source')" id="l_M000933_source">show source</a> ]</p>
+  <div id="M000933_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/autoreload.rb, line 112</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">autoreload_files</span>( <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
+    <span class="ruby-identifier">autoreload</span>( <span class="ruby-keyword kw">false</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span> )
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000927"></a><b>cache</b>(m = nil)
+  </div>
+  <div class="description">
+  <p>
+Object#cache is essentially like <a
+href="Module.html#M000348">Module#memoize</a> except it can also be used on
+singleton/eigen methods. OTOH, memoize&#8216;s implementation is arguably
+better for it&#8216;s use of bind instead of alias. Eventually the two
+implmenations will be reconciled with a single implmentation.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000927_source')" id="l_M000927_source">show source</a> ]</p>
+  <div id="M000927_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/memoize.rb, line 97</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">cache</span> <span class="ruby-identifier">m</span> = <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">m</span>
+      (<span class="ruby-constant">Module</span> <span class="ruby-operator">===</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">?</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">:</span> (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>)).<span class="ruby-identifier">module_eval</span> <span class="ruby-value str">&quot;alias_method '__\#{ m }__', '\#{ m }'\ndef \#{ m }(*__a__,&amp;__b__)\nc = cache['\#{ m }']\nk = [__a__,__b__]\nif c.has_key? k\nc[k]\nelse\nc[k] = __\#{ m }__(*__a__,&amp;__b__)\nend\nend\n&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-ivar">@cache</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Hash</span><span class="ruby-operator">::</span><span class="ruby-identifier">new</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">h</span>,<span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>]={}}
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000931"></a><b>chain</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000931_source')" id="l_M000931_source">show source</a> ]</p>
+  <div id="M000931_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/chain.rb, line 54</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">chain</span>
+    <span class="ruby-constant">Chain</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000928"></a><b>daemonize</b>()
+  </div>
+  <div class="description">
+  <p>
+Turns the current script into a daemon process that detaches from the
+console. <a href="It.html">It</a> can be shut down with a TERM signal.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000928_source')" id="l_M000928_source">show source</a> ]</p>
+  <div id="M000928_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/daemonize.rb, line 31</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">daemonize</span>
+    <span class="ruby-identifier">exit</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fork</span>                   <span class="ruby-comment cmt"># Parent exits, child continues.</span>
+    <span class="ruby-constant">Process</span>.<span class="ruby-identifier">setsid</span>                 <span class="ruby-comment cmt"># Become session leader.</span>
+    <span class="ruby-identifier">exit</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">fork</span>                   <span class="ruby-comment cmt"># Zap session leader. See [1].</span>
+    <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">chdir</span> <span class="ruby-value str">&quot;/&quot;</span>                  <span class="ruby-comment cmt"># Release old working directory.</span>
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">umask</span> <span class="ruby-value">0000</span>                <span class="ruby-comment cmt"># Ensure sensible umask. Adjust as needed.</span>
+    <span class="ruby-constant">STDIN</span>.<span class="ruby-identifier">reopen</span> <span class="ruby-value str">&quot;/dev/null&quot;</span>       <span class="ruby-comment cmt"># Free file descriptors and</span>
+    <span class="ruby-constant">STDOUT</span>.<span class="ruby-identifier">reopen</span> <span class="ruby-value str">&quot;/dev/null&quot;</span>, <span class="ruby-value str">&quot;a&quot;</span> <span class="ruby-comment cmt"># point them somewhere sensible.</span>
+    <span class="ruby-constant">STDERR</span>.<span class="ruby-identifier">reopen</span> <span class="ruby-constant">STDOUT</span>           <span class="ruby-comment cmt"># STDOUT/ERR should better go to a logfile.</span>
+    <span class="ruby-identifier">trap</span>(<span class="ruby-value str">&quot;TERM&quot;</span>) { <span class="ruby-identifier">exit</span> }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000942"></a><b>event</b>(sym) {|| ...}
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000942_source')" id="l_M000942_source">show source</a> ]</p>
+  <div id="M000942_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/eventhook.rb, line 84</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">event</span>(<span class="ruby-identifier">sym</span>)
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sym</span>
+      <span class="ruby-keyword kw">yield</span>
+      <span class="ruby-identifier">$!</span>.<span class="ruby-identifier">call</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000941"></a><b>hook</b>(sym)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000941_source')" id="l_M000941_source">show source</a> ]</p>
+  <div id="M000941_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/eventhook.rb, line 81</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">hook</span>(<span class="ruby-identifier">sym</span>)
+    <span class="ruby-identifier">callcc</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">raise</span> <span class="ruby-constant">EventHook</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-identifier">c</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000935"></a><b>meta</b>()
+  </div>
+  <div class="description">
+  <p>
+Provides access to an object&#8216;s metaclass (ie. singleton) by-passsing
+access provisions. So for example:
+</p>
+<pre>
+  class X
+    meta.attr_accesser :a
+  end
+
+  X.a = 1
+  X.a #=&gt; 1
+</pre>
+<p>
+The fact that some class methods are private and thus inaccessable via use
+of metaclass, is really a problem with them being private &#8212;which is
+probably not really neccessary. Short of making them public though, thiere
+is this method or one could use the instance functor.
+</p>
+<p>
+TODO: Don&#8216;t see any reason this can&#8216;t go into core, but there
+is a conflict with URI prior to 1.8.6, so it will have to wait.
+</p>
+<pre>
+ CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000935_source')" id="l_M000935_source">show source</a> ]</p>
+  <div id="M000935_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/kernel/meta.rb, line 25</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">meta</span>
+    <span class="ruby-ivar">@_meta_functor</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Functor</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">op</span>,<span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+      (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>).<span class="ruby-identifier">send</span>(<span class="ruby-identifier">op</span>,<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000936"></a><b>meta</b>()
+  </div>
+  <div class="description">
+  <p>
+Provides access to an object&#8216;s metaclass (ie. singleton) by-passsing
+access provisions. So for example:
+</p>
+<pre>
+  class X
+    meta.attr_accesser :a
+  end
+
+  X.a = 1
+  X.a #=&gt; 1
+</pre>
+<p>
+The fact that some class methods are private and thus inaccessable via use
+of metaclass, is really a problem with them being private &#8212;which is
+probably not really neccessary. Short of making them public though, thiere
+is this method or one could use the instance functor.
+</p>
+<p>
+TODO: Don&#8216;t see any reason this can&#8216;t go into core, but there
+is a conflict with URI prior to 1.8.6, so it will have to wait.
+</p>
+<pre>
+ CREDIT: Trans
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000936_source')" id="l_M000936_source">show source</a> ]</p>
+  <div id="M000936_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/kernel/meta.rb, line 25</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">meta</span>
+    <span class="ruby-ivar">@_meta_functor</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Functor</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">op</span>,<span class="ruby-operator">*</span><span class="ruby-identifier">args</span><span class="ruby-operator">|</span>
+      (<span class="ruby-keyword kw">class</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">self</span>; <span class="ruby-keyword kw">end</span>).<span class="ruby-identifier">send</span>(<span class="ruby-identifier">op</span>,<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000939"></a><b>method!</b>(s)
+  </div>
+  <div class="description">
+  <p>
+Easy access to method as objects, and they retain state!
+</p>
+<pre>
+  def hello
+    puts &quot;Hello World!&quot;
+  end
+
+  m1 = method!(:hello)   #=&gt; &lt;Method: #hello&gt;
+
+  def m1.annotate
+    &quot;simple example&quot;
+  end
+
+  m2 = method!(:hello)
+  m2.annotate  #=&gt; &quot;simple example&quot;
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000939_source')" id="l_M000939_source">show source</a> ]</p>
+  <div id="M000939_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/1stclassmethod.rb, line 94</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method!</span>(<span class="ruby-identifier">s</span>)
+    ( <span class="ruby-ivar">@__methods__</span> <span class="ruby-operator">||=</span> {} )[<span class="ruby-identifier">s</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">method</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000943"></a><b>nack</b>()
+  </div>
+  <div class="description">
+  <p>
+This is a light version of <a href="NackClass.html">NackClass</a> intended
+for minor usecases. See mega/nack for a complete version.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000943_source')" id="l_M000943_source">show source</a> ]</p>
+  <div id="M000943_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/nackclass.rb, line 38</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">nack</span>
+    <span class="ruby-constant">NackClass</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000938"></a><b>new</b>(o=nil)
+  </div>
+  <div class="description">
+  <p>
+Synonymous with clone, this is an interesting method in that it promotes <a
+href="Kernel.html#M000937">prototype</a>-based Ruby. Now Classes
+aren&#8216;t the only things that respond to <a
+href="Kernel.html#M000938">new</a>.
+</p>
+<pre>
+  &quot;ABC&quot;.new  =&gt; &quot;ABC&quot;
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000938_source')" id="l_M000938_source">show source</a> ]</p>
+  <div id="M000938_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/prototype.rb, line 83</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>(<span class="ruby-identifier">o</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">o</span>.<span class="ruby-identifier">clone</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">o</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">clone</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000930"></a><b>null</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000930_source')" id="l_M000930_source">show source</a> ]</p>
+  <div id="M000930_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/nullclass.rb, line 51</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">null</span>
+    <span class="ruby-constant">NullClass</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000937"></a><b>prototype</b>(&amp;block)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000937_source')" id="l_M000937_source">show source</a> ]</p>
+  <div id="M000937_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/prototype.rb, line 71</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">prototype</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+    <span class="ruby-constant">Prototype</span>.<span class="ruby-identifier">new</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000934"></a><b>ref</b>(x)
+  </div>
+  <div class="description">
+  <p>
+Shortcut reference constructor.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000934_source')" id="l_M000934_source">show source</a> ]</p>
+  <div id="M000934_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/reference.rb, line 78</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ref</span>(<span class="ruby-identifier">x</span>)
+    <span class="ruby-constant">Reference</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">x</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000944"></a><b>timed</b>() {|timer = Timer.new.start| ...}
+  </div>
+  <div class="description">
+  <p>
+Takes a block and returns the total time it took to execute.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000944_source')" id="l_M000944_source">show source</a> ]</p>
+  <div id="M000944_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/timer.rb, line 268</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">timed</span>
+    <span class="ruby-keyword kw">yield</span>( <span class="ruby-identifier">timer</span> = <span class="ruby-constant">Timer</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">start</span> )
+    <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">timer</span>.<span class="ruby-identifier">total_time</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

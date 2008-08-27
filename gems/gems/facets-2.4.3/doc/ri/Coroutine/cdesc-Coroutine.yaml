@@ -1,0 +1,42 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: stopped
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Coroutine
+- !ruby/struct:SM::Flow::P 
+  body: Coroutines are program components like subroutines. Coroutines are more generic and flexible than subroutines, but are less widely used in practice. Coroutines were first introduced natively in Simula. Coroutines are well suited for implementing more familiar program components such as cooperative tasks, iterators, infinite lists, and pipes.
+- !ruby/struct:SM::Flow::P 
+  body: This mixin solely depends on method read(n), which must be defined in the class/module where you mix in this module.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Usage
+- !ruby/struct:SM::Flow::VERB 
+  body: "  count = (ARGV.shift || 1000).to_i\n  input = (1..count).map { (rand * 10000).round.to_f / 100}\n\n  Producer = Coroutine.new do |me|\n    loop do\n      1.upto(6) do\n        me[:last_input] = input.shift\n        me.resume(Printer)\n      end\n      input.shift # discard every seventh input number\n    end\n  end\n  Printer = Coroutine.new do |me|\n    loop do\n      1.upto(8) do\n        me.resume(Producer)\n        if Producer[:last_input]\n          print Producer[:last_input], &quot;\\t&quot;\n          Producer[:last_input] = nil\n        end\n        me.resume(Controller)\n      end\n      puts\n    end\n  end\n\n  Controller = Coroutine.new do |me|\n    until input.empty? do\n      me.resume(Printer)\n    end\n  end\n\n  Controller.run\n"
+constants: []
+
+full_name: Coroutine
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+- !ruby/object:RI::MethodSummary 
+  name: continue
+- !ruby/object:RI::MethodSummary 
+  name: resume
+- !ruby/object:RI::MethodSummary 
+  name: run
+- !ruby/object:RI::MethodSummary 
+  name: stop
+name: Coroutine
+superclass: Object

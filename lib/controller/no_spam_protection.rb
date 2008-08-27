@@ -23,7 +23,6 @@ module NoSpamProtection
     if @version.save
       redirect url(:page, @page)
     else
-      flash[:notice] = 'Your changes have been rejected.'
       render :edit
     end
   end

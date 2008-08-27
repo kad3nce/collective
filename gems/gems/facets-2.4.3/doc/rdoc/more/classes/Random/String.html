@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Module: Random::String</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Module</span><br />Random::String</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/more/facets/random_rb.html">lib/more/facets/random.rb</a>
+        </td>
+      </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000772">at_rand</a></li>
+  <li><a href="#M000773">at_rand!</a></li>
+  <li><a href="#M000771">included</a></li>
+  <li><a href="#M000774">rand_byte</a></li>
+  <li><a href="#M000775">rand_byte!</a></li>
+  <li><a href="#M000776">rand_index</a></li>
+  <li><a href="#M000777">shuffle</a></li>
+  <li><a href="#M000778">shuffle!</a></li>
+  </ul>
+
+
+
+  <div class="sectiontitle">Classes and Modules</div>
+  Module <a href="String/Self.html" class="link">Random::String::Self</a><br />
+
+
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000771"></a><b>included</b>(base)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000771_source')" id="l_M000771_source">show source</a> ]</p>
+  <div id="M000771_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 315</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">included</span>(<span class="ruby-identifier">base</span>)
+      <span class="ruby-identifier">base</span>.<span class="ruby-identifier">extend</span>(<span class="ruby-constant">Self</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000772"></a><b>at_rand</b>( separator=// )
+  </div>
+  <div class="description">
+  <p>
+Return a random separation of the string. Default separation is by
+charaacter.
+</p>
+<pre>
+  &quot;Ruby rules&quot;.at_rand(' ')  #=&gt; [&quot;Ruby&quot;]
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000772_source')" id="l_M000772_source">show source</a> ]</p>
+  <div id="M000772_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 363</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">at_rand</span>( <span class="ruby-identifier">separator</span>=<span class="ruby-regexp re">//</span> )
+      <span class="ruby-comment cmt">#separator = self.class.patterns( separator )</span>
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">separator</span>,<span class="ruby-value">-1</span>).<span class="ruby-identifier">at_rand</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000773"></a><b>at_rand!</b>( separator=// )
+  </div>
+  <div class="description">
+  <p>
+Return a random separation while removing it from the string. Default
+separation is by character.
+</p>
+<pre>
+  s = &quot;Ruby rules&quot;
+  s = at_rand!(' ')  #=&gt; &quot;Ruby&quot;
+  s                  #=&gt; &quot;rules&quot;
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000773_source')" id="l_M000773_source">show source</a> ]</p>
+  <div id="M000773_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 375</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">at_rand!</span>( <span class="ruby-identifier">separator</span>=<span class="ruby-regexp re">//</span> )
+      <span class="ruby-comment cmt">#separator = self.class.patterns( separator )</span>
+      <span class="ruby-identifier">a</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">shatter</span>( <span class="ruby-identifier">separator</span> )
+      <span class="ruby-identifier">w</span> = []; <span class="ruby-identifier">a</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span>,<span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">%</span> <span class="ruby-value">2</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">w</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">w</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">s</span> }
+      <span class="ruby-identifier">i</span> = <span class="ruby-identifier">rand</span>( <span class="ruby-identifier">w</span>.<span class="ruby-identifier">size</span> )
+      <span class="ruby-identifier">r</span> = <span class="ruby-identifier">w</span>.<span class="ruby-identifier">delete_at</span>( <span class="ruby-identifier">i</span> )
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>( <span class="ruby-identifier">w</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">''</span>) )
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">r</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000774"></a><b>rand_byte</b>()
+  </div>
+  <div class="description">
+  <p>
+Return a random byte of <em>self</em>.
+</p>
+<pre>
+  &quot;Ruby rules&quot;.rand_byte  #=&gt; 121
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000774_source')" id="l_M000774_source">show source</a> ]</p>
+  <div id="M000774_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 389</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rand_byte</span>
+      <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">rand</span>( <span class="ruby-identifier">size</span> )]
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000775"></a><b>rand_byte!</b>()
+  </div>
+  <div class="description">
+  <p>
+Destructive <a href="String.html#M000774">rand_byte</a>. Delete a random
+byte of <em>self</em> and return it.
+</p>
+<pre>
+  s = &quot;Ruby rules&quot;
+  s.rand_byte!      #=&gt; 121
+  s                 #=&gt; &quot;Rub rules&quot;
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000775_source')" id="l_M000775_source">show source</a> ]</p>
+  <div id="M000775_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 399</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rand_byte!</span>
+      <span class="ruby-identifier">i</span> = <span class="ruby-identifier">rand</span>( <span class="ruby-identifier">size</span> )
+      <span class="ruby-identifier">rv</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>,<span class="ruby-value">1</span>]
+      <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">i</span>,<span class="ruby-value">1</span>] = <span class="ruby-value str">''</span>
+      <span class="ruby-identifier">rv</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000776"></a><b>rand_index</b>()
+  </div>
+  <div class="description">
+  <p>
+Return a random string index.
+</p>
+<pre>
+  &quot;Ruby rules&quot;.rand_index  #=&gt; 3
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000776_source')" id="l_M000776_source">show source</a> ]</p>
+  <div id="M000776_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 410</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">rand_index</span>
+      <span class="ruby-identifier">rand</span>( <span class="ruby-identifier">size</span> )
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000777"></a><b>shuffle</b>(separator=//)
+  </div>
+  <div class="description">
+  <p>
+Return the string with seperated sections arranged in a random order. The
+default seperation is by character.
+</p>
+<pre>
+  &quot;Ruby rules&quot;.shuffle  #=&gt; &quot;e lybRsuur&quot;
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000777_source')" id="l_M000777_source">show source</a> ]</p>
+  <div id="M000777_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 419</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shuffle</span>(<span class="ruby-identifier">separator</span>=<span class="ruby-regexp re">//</span>)
+      <span class="ruby-identifier">split</span>(<span class="ruby-identifier">separator</span>).<span class="ruby-identifier">shuffle</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">''</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000778"></a><b>shuffle!</b>(separator=//)
+  </div>
+  <div class="description">
+  <p>
+In place version of <a href="String.html#M000777">shuffle</a>.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000778_source')" id="l_M000778_source">show source</a> ]</p>
+  <div id="M000778_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/random.rb, line 425</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">shuffle!</span>(<span class="ruby-identifier">separator</span>=<span class="ruby-regexp re">//</span>)
+      <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">replace</span>( <span class="ruby-identifier">shuffle</span>(<span class="ruby-identifier">separator</span>) )
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

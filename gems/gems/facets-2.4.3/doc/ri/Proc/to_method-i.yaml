@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Convert Proc to method.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  plusproc = lambda { |x| x + 1 }\n  plusproc.to_method(self, 'foo')\n  X.new.foo(1)  #=&gt; 2\n"
+full_name: Proc#to_method
+is_singleton: false
+name: to_method
+params: (object, name=nil)
+visibility: public

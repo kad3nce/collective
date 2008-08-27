@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: reader
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: With no associated block, +Reader::open+ is a synonym for +Reader::new+. If the optional code block is given, it will be passed the new <em>writer</em> as an argument and the Reader object will automatically be closed when the block terminates. In this instance, +Reader::open+ returns the value of the block.
+full_name: Archive::Tar::Minitar::Reader::open
+is_singleton: true
+name: open
+params: (anIO) {|reader| ...}
+visibility: public

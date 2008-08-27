@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ProgressBar#file_transfer_mode
+is_singleton: false
+name: file_transfer_mode
+params: ()
+visibility: public

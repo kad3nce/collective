@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: HtmlFilter#process_param_protocol
+is_singleton: false
+name: process_param_protocol
+params: (data)
+visibility: private

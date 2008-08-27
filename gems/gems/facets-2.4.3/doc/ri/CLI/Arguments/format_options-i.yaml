@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Format flag options. This converts the associative array of options/flags into a hash. Repeat options will be placed in arrays.
+full_name: CLI::Arguments#format_options
+is_singleton: false
+name: format_options
+params: (assoc_options)
+visibility: private

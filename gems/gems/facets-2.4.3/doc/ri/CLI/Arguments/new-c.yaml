@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Takes the command line string (or array) and options. Options have flags and end with a hash of option arity.
+full_name: CLI::Arguments::new
+is_singleton: true
+name: new
+params: (line=nil, arity=nil)
+visibility: public

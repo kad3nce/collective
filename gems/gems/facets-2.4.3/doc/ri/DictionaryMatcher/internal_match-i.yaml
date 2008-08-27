@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: MatchData.new(pos, string[pos+1-nextnode[:depth],nextnode[:depth]])
+comment: 
+full_name: DictionaryMatcher#internal_match
+is_singleton: false
+name: internal_match
+params: (string) {|MatchData.new(pos, string[pos+1-nextnode[:depth],nextnode[:depth]])| ...}
+visibility: private

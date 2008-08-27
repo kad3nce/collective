@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Like #conflict?, but checks only protected methods."
+full_name: Module#protected_conflict?
+is_singleton: false
+name: protected_conflict?
+params: (other)
+visibility: public

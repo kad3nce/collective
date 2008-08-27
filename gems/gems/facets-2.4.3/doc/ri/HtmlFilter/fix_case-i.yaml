@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: HtmlFilter#fix_case
+is_singleton: false
+name: fix_case
+params: (data)
+visibility: private

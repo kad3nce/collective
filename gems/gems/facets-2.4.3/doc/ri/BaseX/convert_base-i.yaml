@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: BaseX#convert_base
+is_singleton: false
+name: convert_base
+params: (digits, from_base, to_base)
+visibility: public

@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: HtmlFilter#check_entity
+is_singleton: false
+name: check_entity
+params: (preamble, term)
+visibility: private

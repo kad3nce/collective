@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Similar to Duration.new except that BigDuration.new supports `:years' and `:months' and will also handle years and months correctly when breaking down the seconds.
+full_name: BigDuration::new
+is_singleton: true
+name: new
+params: (seconds_or_attr = 0)
+visibility: public

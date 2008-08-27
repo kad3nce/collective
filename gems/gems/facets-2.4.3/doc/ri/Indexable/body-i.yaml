@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns an array of the first element upto, but not including, the last element.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  [1,2,3].body  #=&gt; [1,2]\n"
+full_name: Indexable#body
+is_singleton: false
+name: body
+params: ()
+visibility: public

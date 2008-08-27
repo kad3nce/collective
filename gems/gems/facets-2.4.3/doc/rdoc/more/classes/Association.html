@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Association</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Association</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/association_rb.html">lib/more/facets/association.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="Association.html">Association</a></h1>
+<p>
+General binary association allows one object to be associated with another.
+<a href="It.html">It</a> has a variety of uses, link-lists, simple ordered
+maps and mixed collections, among them.
+</p>
+<h2>Usage</h2>
+<p>
+Associations can be used to draw simple relationships.
+</p>
+<pre>
+  :Apple &gt;&gt; :Fruit
+  :Apple &gt;&gt; :Red
+
+  :Apple.associations #=&gt; [ :Fruit, :Red ]
+</pre>
+<p>
+<a href="It.html">It</a> can also be used for simple lists of ordered
+pairs.
+</p>
+<pre>
+  c = [ :a &gt;&gt; 1, :b &gt;&gt; 2 ]
+  c.each { |k,v| puts &quot;#{k} associated with #{v} }
+</pre>
+<p>
+produces
+</p>
+<pre>
+  a associated with 1
+  b associated with 2
+</pre>
+<h2>Limitations</h2>
+<p>
+The method :&gt;&gt; is used to construct the association. <a
+href="It.html">It</a> is a rarely used method so it is generally available.
+But you can&#8216;t use an <a href="Association.html">Association</a> while
+extending any of the following classes becuase they use #&gt;&gt; for other
+things.
+</p>
+<pre>
+  Bignum
+  Fixnum
+  Date
+  IPAddr
+  Process::Status
+</pre>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000473">&lt;=&gt;</a></li>
+  <li><a href="#M000471">[]</a></li>
+  <li><a href="#M000476">inspect</a></li>
+  <li><a href="#M000474">invert!</a></li>
+  <li><a href="#M000472">new</a></li>
+  <li><a href="#M000477">to_ary</a></li>
+  <li><a href="#M000475">to_s</a></li>
+  </ul>
+
+<div class="sectiontitle">Included Modules</div>
+<ul>
+  <li>Comparable</li>
+</ul>
+
+
+  <div class="sectiontitle">Classes and Modules</div>
+  Module <a href="Association/Kernel.html" class="link">Association::Kernel</a><br />
+
+
+  <div class="sectiontitle">Constants</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class="attr-name">REFERENCE</td>
+    <td>=</td>
+    <td class="attr-value">Hash.new{ |h,k,v| h[k]=[] }</td>
+  </tr>
+  <tr valign='top'>
+    <td>&nbsp;</td>
+    <td colspan="2" class="attr-desc">
+Store association references.
+
+</td>
+  </tr>
+  </table>
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>index</td>
+    <td class='attr-desc'></td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[RW]
+    </td>
+    <td class='attr-name'>value</td>
+    <td class='attr-desc'></td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000471"></a><b>[]</b>(*args)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000471_source')" id="l_M000471_source">show source</a> ]</p>
+  <div id="M000471_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/association.rb, line 105</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-operator">[]</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+    <span class="ruby-identifier">new</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000472"></a><b>new</b>(index, value=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000472_source')" id="l_M000472_source">show source</a> ]</p>
+  <div id="M000472_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/association.rb, line 109</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">index</span>, <span class="ruby-identifier">value</span>=<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-ivar">@index</span> = <span class="ruby-identifier">index</span>
+    <span class="ruby-ivar">@value</span> = <span class="ruby-identifier">value</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000473"></a><b>&lt;=&gt;</b>(assoc)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000473_source')" id="l_M000473_source">show source</a> ]</p>
+  <div id="M000473_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/association.rb, line 114</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;=&gt;</span>(<span class="ruby-identifier">assoc</span>)
+    <span class="ruby-keyword kw">return</span> <span class="ruby-value">-1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">assoc</span>.<span class="ruby-identifier">value</span>
+    <span class="ruby-keyword kw">return</span>  <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">assoc</span>.<span class="ruby-identifier">value</span>
+    <span class="ruby-keyword kw">return</span>  <span class="ruby-value">0</span> <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">value</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">assoc</span>.<span class="ruby-identifier">value</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000476"></a><b>inspect</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000476_source')" id="l_M000476_source">show source</a> ]</p>
+  <div id="M000476_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/association.rb, line 130</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">inspect</span>
+    <span class="ruby-node">%{#{@index.inspect} &gt;&gt; #{@value.inspect}}</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000474"></a><b>invert!</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000474_source')" id="l_M000474_source">show source</a> ]</p>
+  <div id="M000474_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/association.rb, line 120</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">invert!</span>
+    <span class="ruby-identifier">temp</span> = <span class="ruby-ivar">@index</span>
+    <span class="ruby-ivar">@index</span> = <span class="ruby-ivar">@value</span>
+    <span class="ruby-ivar">@value</span> = <span class="ruby-identifier">temp</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000477"></a><b>to_ary</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000477_source')" id="l_M000477_source">show source</a> ]</p>
+  <div id="M000477_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/association.rb, line 134</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_ary</span>
+    [ <span class="ruby-ivar">@index</span>, <span class="ruby-ivar">@value</span> ]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000475"></a><b>to_s</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000475_source')" id="l_M000475_source">show source</a> ]</p>
+  <div id="M000475_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/association.rb, line 126</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+    <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;#{index.to_s}#{value.to_s}&quot;</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

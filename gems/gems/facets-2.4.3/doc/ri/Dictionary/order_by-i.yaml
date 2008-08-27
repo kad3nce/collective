@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Keep dictionary sorted by a specific sort order.
+full_name: Dictionary#order_by
+is_singleton: false
+name: order_by
+params: ( &block )
+visibility: public

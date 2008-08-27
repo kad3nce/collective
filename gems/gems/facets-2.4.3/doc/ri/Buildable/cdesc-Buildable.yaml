@@ -1,0 +1,29 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: included
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Buildable
+- !ruby/struct:SM::Flow::P 
+  body: Buildable is mixin variation of BuildingBlock.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  require 'facets/buildable'\n  require 'xmlmarkup'  # hypothetical library\n\n  module XMLMarkup\n    include Buildable\n    alias :build :element\n  end\n\n  doc = XMLMarkup.build do\n    html do\n      head do\n        title &quot;Test&quot;\n      end\n      body do\n        i &quot;Hello&quot;\n        br\n        text &quot;Test&quot;\n        text &quot;Hey&quot;\n      end\n    end\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: <em>produces</em>
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &lt;html&gt;&lt;head&gt;&lt;title&gt;Test&lt;/title&gt;&lt;body&gt;<em>Hello</em>&lt;br /&gt;TestHey&lt;/body&gt;&lt;/html&gt;\n"
+- !ruby/struct:SM::Flow::P 
+  body: This is based on BuildingBlock. Refer to it for more information.
+constants: []
+
+full_name: Buildable
+includes: []
+
+instance_methods: []
+
+name: Buildable
+superclass: 

@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: "<<"
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Add an element in the priority queue.
+- !ruby/struct:SM::Flow::P 
+  body: The insertion time is O(log n), with n the size of the queue.
+full_name: PQueue#push
+is_singleton: false
+name: push
+params: (v)
+visibility: public

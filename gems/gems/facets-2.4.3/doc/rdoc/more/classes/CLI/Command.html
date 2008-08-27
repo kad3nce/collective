@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: CLI::Command</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />CLI::Command</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../../files/lib/more/facets/command_rb.html">lib/more/facets/command.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><p>
+Here is an example of usage:
+</p>
+<pre>
+  # General Options
+
+  module GeneralOptions
+    attr_writer :dryrun ; alias_writer :n, :noharm, :dryrun
+    attr_writer :quiet  ; alias_writer :q, :quiet
+    attr_writer :force
+    attr_writer :trace
+  end
+
+  # Build Subcommand
+
+  class BuildCommand &lt; Command
+    include GeneralOptions
+
+    # metadata files
+    attr_writer  :file     ; alias_writer :f, :file
+    attr_writer  :manifest ; alias_writer :m, :manifest
+
+    def call
+      # do stuf here
+    end
+  end
+
+  # Box Master Command
+
+  class BoxCommand &lt; CLI::Command
+    subcommand :build,     BuildCommand
+  end
+
+  BoxCommand.start
+</pre>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000694">call</a></li>
+  <li><a href="#M000693">new</a></li>
+  <li><a href="#M000690">option_arity</a></li>
+  <li><a href="#M000691">start</a></li>
+  <li><a href="#M000692">subcommand</a></li>
+  </ul>
+
+
+
+  <div class="sectiontitle">Classes and Modules</div>
+  Module <a href="Command/UniversalOptions.html" class="link">CLI::Command::UniversalOptions</a><br />
+
+
+
+  <div class="sectiontitle">Attributes</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>arguments</td>
+    <td class='attr-desc'>
+<a href="Command.html">Command</a> <a href="Arguments.html">Arguments</a>
+(for single commands).
+
+</td>
+  </tr>
+  <tr valign='top'>
+    <td class='attr-rw'>
+[R]
+    </td>
+    <td class='attr-name'>options</td>
+    <td class='attr-desc'>
+<a href="Command.html">Command</a> options. For dispatch commands these are
+the pre-options.
+
+</td>
+  </tr>
+  </table>
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000693"></a><b>new</b>(*args)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000693_source')" id="l_M000693_source">show source</a> ]</p>
+  <div id="M000693_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/command.rb, line 187</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-ivar">@arguments</span> = []
+      <span class="ruby-ivar">@options</span>   = {}
+
+      <span class="ruby-identifier">opts</span>, <span class="ruby-identifier">args</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>.<span class="ruby-identifier">partition</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-constant">Hash</span><span class="ruby-operator">===</span><span class="ruby-identifier">e</span> }
+      <span class="ruby-comment cmt">#TEST(&quot;options should all be hashes&quot;){ ! opts.all?{ |e| Hash===e }</span>
+      <span class="ruby-identifier">initialize_arguments</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">initialize_options</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">opts</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000690"></a><b>option_arity</b>(arity_hash=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000690_source')" id="l_M000690_source">show source</a> ]</p>
+  <div id="M000690_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/command.rb, line 126</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">option_arity</span>(<span class="ruby-identifier">arity_hash</span>=<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">arity_hash</span>
+        (<span class="ruby-ivar">@option_arity</span> <span class="ruby-operator">||=</span> {}).<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">arity_hash</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@option_arity</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000691"></a><b>start</b>(line=nil)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000691_source')" id="l_M000691_source">show source</a> ]</p>
+  <div id="M000691_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/command.rb, line 135</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">start</span>(<span class="ruby-identifier">line</span>=<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">cargs</span> = <span class="ruby-constant">Arguments</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">line</span> <span class="ruby-operator">||</span> <span class="ruby-constant">ARGV</span>, <span class="ruby-identifier">option_arity</span>)
+      <span class="ruby-identifier">pre</span> = <span class="ruby-identifier">cargs</span>.<span class="ruby-identifier">preoptions</span>
+
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">instance_method</span>(<span class="ruby-identifier">:call</span>).<span class="ruby-identifier">arity</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-comment cmt">#is_a?(SingleCommand)</span>
+        <span class="ruby-identifier">args</span>, <span class="ruby-identifier">opts</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">cargs</span>.<span class="ruby-identifier">parameters</span>
+        <span class="ruby-identifier">new</span>(<span class="ruby-identifier">args</span>, <span class="ruby-identifier">opts</span>).<span class="ruby-identifier">call</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">subc</span>, <span class="ruby-identifier">args</span>, <span class="ruby-identifier">opts</span> = <span class="ruby-operator">*</span><span class="ruby-identifier">cargs</span>.<span class="ruby-identifier">subcommand</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">UniversalOptions</span>
+          <span class="ruby-identifier">new</span>(<span class="ruby-identifier">pre</span>, <span class="ruby-identifier">opts</span>).<span class="ruby-identifier">call</span>(<span class="ruby-identifier">subc</span>, <span class="ruby-identifier">args</span>, <span class="ruby-identifier">opts</span>)
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">new</span>(<span class="ruby-identifier">pre</span>).<span class="ruby-identifier">call</span>(<span class="ruby-identifier">subc</span>, <span class="ruby-identifier">args</span>, <span class="ruby-identifier">opts</span>)
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000692"></a><b>subcommand</b>(name, command_class, options=nil)
+  </div>
+  <div class="description">
+  <p>
+For dispatchers, this is a convenience method for creating subcommands.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000692_source')" id="l_M000692_source">show source</a> ]</p>
+  <div id="M000692_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/command.rb, line 162</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">subcommand</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">command_class</span>, <span class="ruby-identifier">options</span>=<span class="ruby-keyword kw">nil</span>)
+      <span class="ruby-identifier">options</span> <span class="ruby-operator">||=</span> {}
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:no_merge</span>]
+        <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span> = <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-keyword kw">__LINE__</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+        <span class="ruby-identifier">code</span> = <span class="ruby-node">%{
+          def #{name}(args, opts)
+            #{command_class}.new(args, opts).call
+          end
+        }</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span> = <span class="ruby-keyword kw">__FILE__</span>, <span class="ruby-keyword kw">__LINE__</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>
+        <span class="ruby-identifier">code</span> = <span class="ruby-node">%{
+          def #{name}(args, opts)
+            opts.merge(options)
+            #{command_class}.new(args, opts).call
+          end
+        }</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-identifier">class_eval</span>(<span class="ruby-identifier">code</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">line</span>)
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000694"></a><b>call</b>(cmd=nil, *args)
+  </div>
+  <div class="description">
+  <p>
+For a single command (ie. a <a href="Command.html#M000692">subcommand</a>)
+override <a href="Command.html#M000694">call</a> with arity=0.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000694_source')" id="l_M000694_source">show source</a> ]</p>
+  <div id="M000694_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/command.rb, line 223</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">cmd</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+      <span class="ruby-identifier">opts</span> = <span class="ruby-constant">Hash</span><span class="ruby-operator">==</span><span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span> <span class="ruby-value">? </span><span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {}
+      <span class="ruby-comment cmt">#TEST(&quot;options should all be hashes&quot;){ ! opts.all?{ |e| Hash===e }</span>
+      <span class="ruby-comment cmt">#cmd = :default if cmd.nil?</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">cmd</span>.<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">default</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-comment cmt"># FIXME: rename call to [] ?</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">NameError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">cmd</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'call'</span>
+          <span class="ruby-identifier">raise</span> <span class="ruby-constant">NameError</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">commands</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">cmd</span>.<span class="ruby-identifier">to_sym</span>)
+          <span class="ruby-identifier">subcommand</span> = <span class="ruby-identifier">method</span>(<span class="ruby-identifier">cmd</span>)
+          <span class="ruby-identifier">parameters</span> = [<span class="ruby-identifier">args</span>, <span class="ruby-identifier">opts</span>]
+        <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span>
+          <span class="ruby-identifier">subcommand</span> = <span class="ruby-identifier">method</span>(<span class="ruby-identifier">:command_missing</span>)
+          <span class="ruby-identifier">parameters</span> = [<span class="ruby-identifier">cmd</span>, <span class="ruby-identifier">args</span>, <span class="ruby-identifier">opts</span>]
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">subcommand</span>.<span class="ruby-identifier">arity</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+          <span class="ruby-identifier">subcommand</span>.<span class="ruby-identifier">call</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">parameters</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">subcommand</span>.<span class="ruby-identifier">arity</span>])
+        <span class="ruby-keyword kw">else</span>
+          <span class="ruby-identifier">subcommand</span>.<span class="ruby-identifier">call</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">parameters</span>[<span class="ruby-value">0</span>,<span class="ruby-identifier">subcommand</span>.<span class="ruby-identifier">arity</span>])
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

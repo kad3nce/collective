@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: NilClass</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />NilClass</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/core/facets/to_hash_rb.html">lib/core/facets/to_hash.rb</a>
+<a href="../files/lib/core/facets/nilclass/to_f_rb.html">lib/core/facets/nilclass/to_f.rb</a>
+<a href="../files/lib/core/facets/nilclass/to_f_rb.html">lib/core/facets/nilclass/to_f.rb</a>
+<a href="../files/lib/core/facets/boolean_rb.html">lib/core/facets/boolean.rb</a>
+<a href="../files/lib/core/facets/kernel/ergo_rb.html">lib/core/facets/kernel/ergo.rb</a>
+<a href="../files/lib/core/facets/kernel/ergo_rb.html">lib/core/facets/kernel/ergo.rb</a>
+<a href="../files/lib/core/facets/blank_rb.html">lib/core/facets/blank.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+        <a href="Object.html">
+Object
+         </a>
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000393">blank?</a></li>
+  <li><a href="#M000392">ergo</a></li>
+  <li><a href="#M000391">ergo</a></li>
+  <li><a href="#M000390">to_bool</a></li>
+  <li><a href="#M000389">to_f</a></li>
+  <li><a href="#M000388">to_f</a></li>
+  <li><a href="#M000387">to_h</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000393"></a><b>blank?</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000393_source')" id="l_M000393_source">show source</a> ]</p>
+  <div id="M000393_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/blank.rb, line 20</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">blank?</span>
+    <span class="ruby-keyword kw">true</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000392"></a><b>ergo</b>()
+  </div>
+  <div class="description">
+  <p>
+Compliments <a href="Kernel.html#M000626">Kernel#ergo</a>.
+</p>
+<pre>
+  &quot;a&quot;.ergo{ |o| o.upcase } #=&gt; &quot;A&quot;
+  nil.ergo{ |o| o.bar } #=&gt; nil
+
+  CREDIT: Daniel DeLorme
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000392_source')" id="l_M000392_source">show source</a> ]</p>
+  <div id="M000392_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/ergo.rb, line 36</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ergo</span>
+    <span class="ruby-ivar">@_ergo</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Functor</span>.<span class="ruby-identifier">new</span>{ <span class="ruby-keyword kw">nil</span> }
+    <span class="ruby-ivar">@_ergo</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000391"></a><b>ergo</b>()
+  </div>
+  <div class="description">
+  <p>
+Compliments <a href="Kernel.html#M000626">Kernel#ergo</a>.
+</p>
+<pre>
+  &quot;a&quot;.ergo{ |o| o.upcase } #=&gt; &quot;A&quot;
+  nil.ergo{ |o| o.bar } #=&gt; nil
+
+  CREDIT: Daniel DeLorme
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000391_source')" id="l_M000391_source">show source</a> ]</p>
+  <div id="M000391_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/kernel/ergo.rb, line 36</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ergo</span>
+    <span class="ruby-ivar">@_ergo</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Functor</span>.<span class="ruby-identifier">new</span>{ <span class="ruby-keyword kw">nil</span> }
+    <span class="ruby-ivar">@_ergo</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000390"></a><b>to_bool</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000390_source')" id="l_M000390_source">show source</a> ]</p>
+  <div id="M000390_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/boolean.rb, line 153</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_bool</span>
+    <span class="ruby-keyword kw">false</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000389"></a><b>to_f</b>()
+  </div>
+  <div class="description">
+  <p>
+Allows <tt>nil</tt> to respond to <a href="NilClass.html#M000388">to_f</a>.
+Always returns <tt>0</tt>.
+</p>
+<pre>
+  nil.to_f   #=&gt; 0.0
+
+  CREDIT: Matz
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000389_source')" id="l_M000389_source">show source</a> ]</p>
+  <div id="M000389_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/nilclass/to_f.rb, line 12</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_f</span>; <span class="ruby-value">0</span><span class="ruby-value">.0</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000388"></a><b>to_f</b>()
+  </div>
+  <div class="description">
+  <p>
+Allows <tt>nil</tt> to respond to <a href="NilClass.html#M000388">to_f</a>.
+Always returns <tt>0</tt>.
+</p>
+<pre>
+  nil.to_f   #=&gt; 0.0
+
+  CREDIT: Matz
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000388_source')" id="l_M000388_source">show source</a> ]</p>
+  <div id="M000388_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/nilclass/to_f.rb, line 12</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_f</span>; <span class="ruby-value">0</span><span class="ruby-value">.0</span>; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000387"></a><b>to_h</b>()
+  </div>
+  <div class="description">
+  <p>
+Allows <tt>nil</tt> to create an empty hash, similar to to_a and to_s.
+</p>
+<pre>
+  nil.to_h    #=&gt; {}
+</pre>
+<p>
+CREDIT: Trans
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000387_source')" id="l_M000387_source">show source</a> ]</p>
+  <div id="M000387_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/core/facets/to_hash.rb, line 84</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_h</span>; {}; <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

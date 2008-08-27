@@ -1,0 +1,13 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 3
+  text: Unsigned
+full_name: BinReadable#read_word32_native
+is_singleton: false
+name: read_word32_native
+params: ()
+visibility: public

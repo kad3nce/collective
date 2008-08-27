@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: ZipUtils::NoWrite#tar_bzip2
+is_singleton: false
+name: tar_bzip2
+params: (folder, file=nil, options={})
+visibility: public

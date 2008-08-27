@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Interval#first_opened
+is_singleton: false
+name: first_opened
+params: ()
+visibility: public

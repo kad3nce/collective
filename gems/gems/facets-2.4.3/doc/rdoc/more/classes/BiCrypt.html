@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: BiCrypt</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />BiCrypt</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/more/facets/bicrypt_rb.html">lib/more/facets/bicrypt.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1><a href="BiCrypt.html">BiCrypt</a></h1>
+<p>
+A simple two-way encryption class.
+</p>
+</div>
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000483">block_size</a></li>
+  <li><a href="#M000494">carefully_open_file</a></li>
+  <li><a href="#M000490">decrypt_block</a></li>
+  <li><a href="#M000496">decrypt_file</a></li>
+  <li><a href="#M000488">decrypt_pair</a></li>
+  <li><a href="#M000493">decrypt_stream</a></li>
+  <li><a href="#M000498">decrypt_string</a></li>
+  <li><a href="#M000489">encrypt_block</a></li>
+  <li><a href="#M000495">encrypt_file</a></li>
+  <li><a href="#M000487">encrypt_pair</a></li>
+  <li><a href="#M000492">encrypt_stream</a></li>
+  <li><a href="#M000497">encrypt_string</a></li>
+  <li><a href="#M000486">f</a></li>
+  <li><a href="#M000491">generate_initialization_vector</a></li>
+  <li><a href="#M000484">new</a></li>
+  <li><a href="#M000485">precalculate_S_table</a></li>
+  </ul>
+
+
+
+
+  <div class="sectiontitle">Constants</div>
+  <table border='0' cellpadding='5'>
+  <tr valign='top'>
+    <td class="attr-name">ULONG</td>
+    <td>=</td>
+    <td class="attr-value">0x100000000</td>
+  </tr>
+  </table>
+
+
+<div class="sectiontitle">Public Class methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000484"></a><b>new</b>(userKey)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000484_source')" id="l_M000484_source">show source</a> ]</p>
+  <div id="M000484_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 37</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">userKey</span>)
+
+    <span class="ruby-comment cmt"># These are the S-boxes given in Applied Cryptography 2nd Ed., p. 333</span>
+    <span class="ruby-ivar">@sBox</span> = [
+      [<span class="ruby-value">4</span>, <span class="ruby-value">10</span>, <span class="ruby-value">9</span>, <span class="ruby-value">2</span>, <span class="ruby-value">13</span>, <span class="ruby-value">8</span>, <span class="ruby-value">0</span>, <span class="ruby-value">14</span>, <span class="ruby-value">6</span>, <span class="ruby-value">11</span>, <span class="ruby-value">1</span>, <span class="ruby-value">12</span>, <span class="ruby-value">7</span>, <span class="ruby-value">15</span>, <span class="ruby-value">5</span>, <span class="ruby-value">3</span>],
+      [<span class="ruby-value">14</span>, <span class="ruby-value">11</span>, <span class="ruby-value">4</span>, <span class="ruby-value">12</span>, <span class="ruby-value">6</span>, <span class="ruby-value">13</span>, <span class="ruby-value">15</span>, <span class="ruby-value">10</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-value">8</span>, <span class="ruby-value">1</span>, <span class="ruby-value">0</span>, <span class="ruby-value">7</span>, <span class="ruby-value">5</span>, <span class="ruby-value">9</span>],
+      [<span class="ruby-value">5</span>, <span class="ruby-value">8</span>, <span class="ruby-value">1</span>, <span class="ruby-value">13</span>, <span class="ruby-value">10</span>, <span class="ruby-value">3</span>, <span class="ruby-value">4</span>, <span class="ruby-value">2</span>, <span class="ruby-value">14</span>, <span class="ruby-value">15</span>, <span class="ruby-value">12</span>, <span class="ruby-value">7</span>, <span class="ruby-value">6</span>, <span class="ruby-value">0</span>, <span class="ruby-value">9</span>, <span class="ruby-value">11</span>],
+      [<span class="ruby-value">7</span>, <span class="ruby-value">13</span>, <span class="ruby-value">10</span>, <span class="ruby-value">1</span>, <span class="ruby-value">0</span>, <span class="ruby-value">8</span>, <span class="ruby-value">9</span>, <span class="ruby-value">15</span>, <span class="ruby-value">14</span>, <span class="ruby-value">4</span>, <span class="ruby-value">6</span>, <span class="ruby-value">12</span>, <span class="ruby-value">11</span>, <span class="ruby-value">2</span>, <span class="ruby-value">5</span>, <span class="ruby-value">3</span>],
+      [<span class="ruby-value">6</span>, <span class="ruby-value">12</span>, <span class="ruby-value">7</span>, <span class="ruby-value">1</span>, <span class="ruby-value">5</span>, <span class="ruby-value">15</span>, <span class="ruby-value">13</span>, <span class="ruby-value">8</span>, <span class="ruby-value">4</span>, <span class="ruby-value">10</span>, <span class="ruby-value">9</span>, <span class="ruby-value">14</span>, <span class="ruby-value">0</span>, <span class="ruby-value">3</span>, <span class="ruby-value">11</span>, <span class="ruby-value">2</span>],
+      [<span class="ruby-value">4</span>, <span class="ruby-value">11</span>, <span class="ruby-value">10</span>, <span class="ruby-value">0</span>, <span class="ruby-value">7</span>, <span class="ruby-value">2</span>, <span class="ruby-value">1</span>, <span class="ruby-value">13</span>, <span class="ruby-value">3</span>, <span class="ruby-value">6</span>, <span class="ruby-value">8</span>, <span class="ruby-value">5</span>, <span class="ruby-value">9</span>, <span class="ruby-value">12</span>, <span class="ruby-value">15</span>, <span class="ruby-value">14</span>],
+      [<span class="ruby-value">13</span>, <span class="ruby-value">11</span>, <span class="ruby-value">4</span>, <span class="ruby-value">1</span>, <span class="ruby-value">3</span>, <span class="ruby-value">15</span>, <span class="ruby-value">5</span>, <span class="ruby-value">9</span>, <span class="ruby-value">0</span>, <span class="ruby-value">10</span>, <span class="ruby-value">14</span>, <span class="ruby-value">7</span>, <span class="ruby-value">6</span>, <span class="ruby-value">8</span>, <span class="ruby-value">2</span>, <span class="ruby-value">12</span>],
+      [<span class="ruby-value">1</span>, <span class="ruby-value">15</span>, <span class="ruby-value">13</span>, <span class="ruby-value">0</span>, <span class="ruby-value">5</span>, <span class="ruby-value">7</span>, <span class="ruby-value">10</span>, <span class="ruby-value">4</span>, <span class="ruby-value">9</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-value">14</span>, <span class="ruby-value">6</span>, <span class="ruby-value">11</span>, <span class="ruby-value">8</span>, <span class="ruby-value">12</span>]
+    ]
+
+    <span class="ruby-comment cmt"># These are the S-boxes given in the GOST source code listing in Applied</span>
+    <span class="ruby-comment cmt"># Cryptography 2nd Ed., p. 644.  They appear to be from the DES S-boxes</span>
+    <span class="ruby-comment cmt"># [13,  2,  8,  4,  6, 15, 11,  1, 10,  9,  3, 14,  5,  0, 12,  7 ],</span>
+    <span class="ruby-comment cmt"># [ 4, 11,  2, 14, 15,  0,  8, 13,  3, 12,  9,  7,  5, 10,  6,  1 ],</span>
+    <span class="ruby-comment cmt"># [12,  1, 10, 15,  9,  2,  6,  8,  0, 13,  3,  4, 14,  7,  5, 11 ],</span>
+    <span class="ruby-comment cmt"># [ 2, 12,  4,  1,  7, 10, 11,  6,  8,  5,  3, 15, 13,  0, 14,  9 ],</span>
+    <span class="ruby-comment cmt"># [ 7, 13, 14,  3,  0,  6,  9, 10,  1,  2,  8,  5, 11, 12,  4, 15 ],</span>
+    <span class="ruby-comment cmt"># [10,  0,  9, 14,  6,  3, 15,  5,  1, 13, 12,  7, 11,  4,  2,  8 ],</span>
+    <span class="ruby-comment cmt"># [15,  1,  8, 14,  6, 11,  3,  4,  9,  7,  2, 13, 12,  0,  5, 10 ],</span>
+    <span class="ruby-comment cmt"># [14,  4, 13,  1,  2, 15, 11,  8,  3, 10,  6, 12,  5,  9,  0,  7 ]</span>
+
+    <span class="ruby-comment cmt"># precalculate the S table</span>
+    <span class="ruby-ivar">@sTable</span> = <span class="ruby-identifier">precalculate_S_table</span>()
+
+    <span class="ruby-comment cmt"># derive the 32-byte key from the user-supplied key</span>
+    <span class="ruby-identifier">userKeyLength</span> = <span class="ruby-identifier">userKey</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-ivar">@key</span> = <span class="ruby-identifier">userKey</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">31</span>].<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'C'</span><span class="ruby-operator">*</span><span class="ruby-value">32</span>)
+    <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">userKeyLength</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">32</span>)
+      <span class="ruby-identifier">userKeyLength</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-value">31</span>) { <span class="ruby-ivar">@key</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">0</span> }
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000483"></a><b>block_size</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000483_source')" id="l_M000483_source">show source</a> ]</p>
+  <div id="M000483_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 33</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">block_size</span>
+    <span class="ruby-keyword kw">return</span>(<span class="ruby-value">8</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000494"></a><b>carefully_open_file</b>(filename, mode)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000494_source')" id="l_M000494_source">show source</a> ]</p>
+  <div id="M000494_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 217</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">carefully_open_file</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">mode</span>)
+    <span class="ruby-keyword kw">begin</span>
+      <span class="ruby-identifier">aFile</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">mode</span>)
+    <span class="ruby-keyword kw">rescue</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Sorry. There was a problem opening the file &lt;#{filename}&gt;.&quot;</span>
+      <span class="ruby-identifier">aFile</span>.<span class="ruby-identifier">close</span>() <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">aFile</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">raise</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">return</span>(<span class="ruby-identifier">aFile</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000490"></a><b>decrypt_block</b>(block)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000490_source')" id="l_M000490_source">show source</a> ]</p>
+  <div id="M000490_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 147</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decrypt_block</span>(<span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">xl</span>, <span class="ruby-identifier">xr</span> = <span class="ruby-identifier">block</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'NN'</span>)
+    <span class="ruby-identifier">xl</span>, <span class="ruby-identifier">xr</span> = <span class="ruby-identifier">decrypt_pair</span>(<span class="ruby-identifier">xl</span>, <span class="ruby-identifier">xr</span>)
+    <span class="ruby-identifier">decrypted</span> = [<span class="ruby-identifier">xl</span>, <span class="ruby-identifier">xr</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'NN'</span>)
+    <span class="ruby-keyword kw">return</span>(<span class="ruby-identifier">decrypted</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000496"></a><b>decrypt_file</b>(cryptFilename, plainFilename)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000496_source')" id="l_M000496_source">show source</a> ]</p>
+  <div id="M000496_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 238</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decrypt_file</span>(<span class="ruby-identifier">cryptFilename</span>, <span class="ruby-identifier">plainFilename</span>)
+    <span class="ruby-identifier">cryptFile</span> = <span class="ruby-identifier">carefully_open_file</span>(<span class="ruby-identifier">cryptFilename</span>, <span class="ruby-value str">'rb'</span>)
+    <span class="ruby-identifier">plainFile</span> = <span class="ruby-identifier">carefully_open_file</span>(<span class="ruby-identifier">plainFilename</span>, <span class="ruby-value str">'wb+'</span>)
+    <span class="ruby-identifier">decrypt_stream</span>(<span class="ruby-identifier">cryptFile</span>, <span class="ruby-identifier">plainFile</span>)
+    <span class="ruby-identifier">cryptFile</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">cryptFile</span>.<span class="ruby-identifier">closed?</span>
+    <span class="ruby-identifier">plainFile</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">plainFile</span>.<span class="ruby-identifier">closed?</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000488"></a><b>decrypt_pair</b>(xl, xr)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000488_source')" id="l_M000488_source">show source</a> ]</p>
+  <div id="M000488_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 117</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decrypt_pair</span>(<span class="ruby-identifier">xl</span>, <span class="ruby-identifier">xr</span>)
+    <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">0</span>])
+    <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">1</span>])
+    <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">2</span>])
+    <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">3</span>])
+    <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">4</span>])
+    <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">5</span>])
+    <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">6</span>])
+    <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">7</span>])
+    <span class="ruby-value">3</span>.<span class="ruby-identifier">times</span> {
+      <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">7</span>])
+      <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">6</span>])
+      <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">5</span>])
+      <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">4</span>])
+      <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">3</span>])
+      <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">2</span>])
+      <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">1</span>])
+      <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">0</span>])
+    }
+    <span class="ruby-keyword kw">return</span>([<span class="ruby-identifier">xr</span>, <span class="ruby-identifier">xl</span>])
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000493"></a><b>decrypt_stream</b>(cryptStream, plainStream)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000493_source')" id="l_M000493_source">show source</a> ]</p>
+  <div id="M000493_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 199</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decrypt_stream</span>(<span class="ruby-identifier">cryptStream</span>, <span class="ruby-identifier">plainStream</span>)
+    <span class="ruby-comment cmt"># Cypher-block-chain mode</span>
+    <span class="ruby-identifier">chain</span> = <span class="ruby-identifier">cryptStream</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">block_size</span>())
+
+    <span class="ruby-keyword kw">while</span> (<span class="ruby-identifier">block</span> = <span class="ruby-identifier">cryptStream</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">block_size</span>()))
+      <span class="ruby-identifier">decrypted</span> = <span class="ruby-identifier">decrypt_block</span>(<span class="ruby-identifier">block</span>)
+      <span class="ruby-identifier">plainText</span> = <span class="ruby-identifier">decrypted</span> <span class="ruby-operator">^</span> <span class="ruby-identifier">chain</span>
+      <span class="ruby-identifier">plainStream</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">plainText</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">cryptStream</span>.<span class="ruby-identifier">eof?</span>
+      <span class="ruby-identifier">chain</span> = <span class="ruby-identifier">block</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># write the final block, omitting the padding</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">plainText</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">remainingMessageBytes</span> = <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'C'</span>).<span class="ruby-identifier">first</span>
+    <span class="ruby-identifier">remainingMessageBytes</span>.<span class="ruby-identifier">times</span> { <span class="ruby-identifier">plainStream</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">shift</span>) }
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000498"></a><b>decrypt_string</b>(cryptText)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000498_source')" id="l_M000498_source">show source</a> ]</p>
+  <div id="M000498_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 256</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">decrypt_string</span>(<span class="ruby-identifier">cryptText</span>)
+    <span class="ruby-identifier">cryptStream</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">cryptText</span>)
+    <span class="ruby-identifier">plainStream</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">decrypt_stream</span>(<span class="ruby-identifier">cryptStream</span>, <span class="ruby-identifier">plainStream</span>)
+    <span class="ruby-identifier">plainText</span> = <span class="ruby-identifier">plainStream</span>.<span class="ruby-identifier">string</span>
+    <span class="ruby-keyword kw">return</span>(<span class="ruby-identifier">plainText</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000489"></a><b>encrypt_block</b>(block)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000489_source')" id="l_M000489_source">show source</a> ]</p>
+  <div id="M000489_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 139</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encrypt_block</span>(<span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">xl</span>, <span class="ruby-identifier">xr</span> = <span class="ruby-identifier">block</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'NN'</span>)
+    <span class="ruby-identifier">xl</span>, <span class="ruby-identifier">xr</span> = <span class="ruby-identifier">encrypt_pair</span>(<span class="ruby-identifier">xl</span>, <span class="ruby-identifier">xr</span>)
+    <span class="ruby-identifier">encrypted</span> = [<span class="ruby-identifier">xl</span>, <span class="ruby-identifier">xr</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'NN'</span>)
+    <span class="ruby-keyword kw">return</span>(<span class="ruby-identifier">encrypted</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000495"></a><b>encrypt_file</b>(plainFilename, cryptFilename)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000495_source')" id="l_M000495_source">show source</a> ]</p>
+  <div id="M000495_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 229</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encrypt_file</span>(<span class="ruby-identifier">plainFilename</span>, <span class="ruby-identifier">cryptFilename</span>)
+    <span class="ruby-identifier">plainFile</span> = <span class="ruby-identifier">carefully_open_file</span>(<span class="ruby-identifier">plainFilename</span>, <span class="ruby-value str">'rb'</span>)
+    <span class="ruby-identifier">cryptFile</span> = <span class="ruby-identifier">carefully_open_file</span>(<span class="ruby-identifier">cryptFilename</span>, <span class="ruby-value str">'wb+'</span>)
+    <span class="ruby-identifier">encrypt_stream</span>(<span class="ruby-identifier">plainFile</span>, <span class="ruby-identifier">cryptFile</span>)
+    <span class="ruby-identifier">plainFile</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">plainFile</span>.<span class="ruby-identifier">closed?</span>
+    <span class="ruby-identifier">cryptFile</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">cryptFile</span>.<span class="ruby-identifier">closed?</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000487"></a><b>encrypt_pair</b>(xl, xr)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000487_source')" id="l_M000487_source">show source</a> ]</p>
+  <div id="M000487_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 94</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encrypt_pair</span>(<span class="ruby-identifier">xl</span>, <span class="ruby-identifier">xr</span>)
+    <span class="ruby-value">3</span>.<span class="ruby-identifier">times</span> {
+      <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">0</span>])
+      <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">1</span>])
+      <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">2</span>])
+      <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">3</span>])
+      <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">4</span>])
+      <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">5</span>])
+      <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">6</span>])
+      <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">7</span>])
+    }
+    <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">7</span>])
+    <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">6</span>])
+    <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">5</span>])
+    <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">4</span>])
+    <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">3</span>])
+    <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">2</span>])
+    <span class="ruby-identifier">xr</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xl</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">1</span>])
+    <span class="ruby-identifier">xl</span> <span class="ruby-operator">^=</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">xr</span><span class="ruby-operator">+</span><span class="ruby-ivar">@key</span>[<span class="ruby-value">0</span>])
+    <span class="ruby-keyword kw">return</span>([<span class="ruby-identifier">xr</span>, <span class="ruby-identifier">xl</span>])
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000492"></a><b>encrypt_stream</b>(plainStream, cryptStream)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000492_source')" id="l_M000492_source">show source</a> ]</p>
+  <div id="M000492_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 168</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encrypt_stream</span>(<span class="ruby-identifier">plainStream</span>, <span class="ruby-identifier">cryptStream</span>)
+    <span class="ruby-comment cmt"># Cypher-block-chain mode</span>
+
+    <span class="ruby-identifier">initVector</span> = <span class="ruby-identifier">generate_initialization_vector</span>(<span class="ruby-identifier">block_size</span>() <span class="ruby-operator">/</span> <span class="ruby-value">4</span>)
+    <span class="ruby-identifier">chain</span> = <span class="ruby-identifier">encrypt_block</span>(<span class="ruby-identifier">initVector</span>)
+    <span class="ruby-identifier">cryptStream</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">chain</span>)
+
+    <span class="ruby-keyword kw">while</span> ((<span class="ruby-identifier">block</span> = <span class="ruby-identifier">plainStream</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">block_size</span>())) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">block</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">block_size</span>()))
+      <span class="ruby-identifier">block</span> = <span class="ruby-identifier">block</span> <span class="ruby-operator">^</span> <span class="ruby-identifier">chain</span>
+      <span class="ruby-identifier">encrypted</span> = <span class="ruby-identifier">encrypt_block</span>(<span class="ruby-identifier">block</span>)
+      <span class="ruby-identifier">cryptStream</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">encrypted</span>)
+      <span class="ruby-identifier">chain</span> = <span class="ruby-identifier">encrypted</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-comment cmt"># write the final block</span>
+    <span class="ruby-comment cmt"># At most block_size()-1 bytes can be part of the message.</span>
+    <span class="ruby-comment cmt"># That means the final byte can be used to store the number of meaningful</span>
+    <span class="ruby-comment cmt"># bytes in the final block</span>
+    <span class="ruby-identifier">block</span> = <span class="ruby-value str">''</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">block</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">remainingMessageBytes</span> = <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">length</span>
+    <span class="ruby-comment cmt"># we use 7-bit characters to avoid possible strange behavior on the Mac</span>
+    <span class="ruby-identifier">remainingMessageBytes</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">block_size</span>()<span class="ruby-operator">-</span><span class="ruby-value">2</span>) { <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">rand</span>(<span class="ruby-value">128</span>).<span class="ruby-identifier">chr</span> }
+    <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">remainingMessageBytes</span>.<span class="ruby-identifier">chr</span>
+    <span class="ruby-identifier">block</span> = <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">block</span> = <span class="ruby-identifier">block</span> <span class="ruby-operator">^</span> <span class="ruby-identifier">chain</span>
+    <span class="ruby-identifier">encrypted</span> = <span class="ruby-identifier">encrypt_block</span>(<span class="ruby-identifier">block</span>)
+    <span class="ruby-identifier">cryptStream</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">encrypted</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000497"></a><b>encrypt_string</b>(plainText)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000497_source')" id="l_M000497_source">show source</a> ]</p>
+  <div id="M000497_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 247</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">encrypt_string</span>(<span class="ruby-identifier">plainText</span>)
+    <span class="ruby-identifier">plainStream</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">plainText</span>)
+    <span class="ruby-identifier">cryptStream</span> = <span class="ruby-constant">StringIO</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">''</span>)
+    <span class="ruby-identifier">encrypt_stream</span>(<span class="ruby-identifier">plainStream</span>, <span class="ruby-identifier">cryptStream</span>)
+    <span class="ruby-identifier">cryptText</span> = <span class="ruby-identifier">cryptStream</span>.<span class="ruby-identifier">string</span>
+    <span class="ruby-keyword kw">return</span>(<span class="ruby-identifier">cryptText</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000486"></a><b>f</b>(longWord)
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000486_source')" id="l_M000486_source">show source</a> ]</p>
+  <div id="M000486_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 88</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">f</span>(<span class="ruby-identifier">longWord</span>)
+    <span class="ruby-identifier">longWord</span> = <span class="ruby-identifier">longWord</span> <span class="ruby-operator">%</span> <span class="ruby-constant">ULONG</span>
+    <span class="ruby-identifier">a</span>, <span class="ruby-identifier">b</span>, <span class="ruby-identifier">c</span>, <span class="ruby-identifier">d</span> = [<span class="ruby-identifier">longWord</span>].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'L'</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'CCCC'</span>)
+    <span class="ruby-keyword kw">return</span>(<span class="ruby-ivar">@sTable</span>[<span class="ruby-value">3</span>][<span class="ruby-identifier">d</span>] <span class="ruby-operator">^</span> <span class="ruby-ivar">@sTable</span>[<span class="ruby-value">2</span>][<span class="ruby-identifier">c</span>] <span class="ruby-operator">^</span> <span class="ruby-ivar">@sTable</span>[<span class="ruby-value">1</span>][<span class="ruby-identifier">b</span>] <span class="ruby-operator">^</span> <span class="ruby-ivar">@sTable</span>[<span class="ruby-value">0</span>][<span class="ruby-identifier">a</span>])
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000491"></a><b>generate_initialization_vector</b>(words)
+  </div>
+  <div class="description">
+  <p>
+When this module is mixed in with an encryption class, the class must
+provide three methods: <a
+href="BiCrypt.html#M000489">encrypt_block</a>(block) and <a
+href="BiCrypt.html#M000490">decrypt_block</a>(block) and <a
+href="BiCrypt.html#M000483">block_size</a>()
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000491_source')" id="l_M000491_source">show source</a> ]</p>
+  <div id="M000491_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 158</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">generate_initialization_vector</span>(<span class="ruby-identifier">words</span>)
+    <span class="ruby-identifier">srand</span>(<span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>.<span class="ruby-identifier">to_i</span>)
+    <span class="ruby-identifier">vector</span> = <span class="ruby-value str">&quot;&quot;</span>
+    <span class="ruby-identifier">words</span>.<span class="ruby-identifier">times</span> {
+      <span class="ruby-identifier">vector</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-identifier">rand</span>(<span class="ruby-constant">ULONG</span>)].<span class="ruby-identifier">pack</span>(<span class="ruby-value str">'N'</span>)
+    }
+    <span class="ruby-keyword kw">return</span>(<span class="ruby-identifier">vector</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000485"></a><b>precalculate_S_table</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000485_source')" id="l_M000485_source">show source</a> ]</p>
+  <div id="M000485_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/more/facets/bicrypt.rb, line 74</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">precalculate_S_table</span>()
+    <span class="ruby-identifier">sTable</span> = [[], [], [], []]
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-value">3</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+      <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-value">255</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">t</span> = <span class="ruby-ivar">@sBox</span>[<span class="ruby-value">2</span><span class="ruby-operator">*</span><span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span> <span class="ruby-operator">%</span> <span class="ruby-value">16</span>] <span class="ruby-operator">|</span> (<span class="ruby-ivar">@sBox</span>[<span class="ruby-value">2</span><span class="ruby-operator">*</span><span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>][<span class="ruby-identifier">j</span><span class="ruby-operator">/</span><span class="ruby-value">16</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value">4</span>)
+        <span class="ruby-identifier">u</span> = (<span class="ruby-value">8</span><span class="ruby-operator">*</span><span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">11</span>) <span class="ruby-operator">%</span> <span class="ruby-value">32</span>
+        <span class="ruby-identifier">v</span> = (<span class="ruby-identifier">t</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">u</span>) <span class="ruby-operator">|</span> (<span class="ruby-identifier">t</span> <span class="ruby-operator">&gt;&gt;</span> (<span class="ruby-value">32</span><span class="ruby-operator">-</span><span class="ruby-identifier">u</span>))
+        <span class="ruby-identifier">sTable</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">j</span>] = (<span class="ruby-identifier">v</span> <span class="ruby-operator">%</span> <span class="ruby-constant">ULONG</span>)
+      }
+    }
+    <span class="ruby-keyword kw">return</span>(<span class="ruby-identifier">sTable</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

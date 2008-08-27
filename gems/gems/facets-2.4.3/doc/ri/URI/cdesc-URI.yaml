@@ -1,0 +1,38 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+constants: []
+
+full_name: URI
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: cgi_escape
+- !ruby/object:RI::MethodSummary 
+  name: cgi_parse
+- !ruby/object:RI::MethodSummary 
+  name: cgi_unescape
+- !ruby/object:RI::MethodSummary 
+  name: chomp_query_string
+- !ruby/object:RI::MethodSummary 
+  name: decode
+- !ruby/object:RI::MethodSummary 
+  name: get_query_string
+- !ruby/object:RI::MethodSummary 
+  name: hash_to_query
+- !ruby/object:RI::MethodSummary 
+  name: hash_to_query_string
+- !ruby/object:RI::MethodSummary 
+  name: query_string_to_hash
+- !ruby/object:RI::MethodSummary 
+  name: query_to_hash
+- !ruby/object:RI::MethodSummary 
+  name: update_query_string
+- !ruby/object:RI::MethodSummary 
+  name: update_request_uri
+name: URI
+superclass: 

@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: CssFilter#remove_whitespace
+is_singleton: false
+name: remove_whitespace
+params: (data)
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Re-output the CSS, all tidy ;)
+full_name: CssTree#to_css
+is_singleton: false
+name: to_css
+params: ()
+visibility: public

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return buffer
+full_name: BuildingBlock#to_buffer
+is_singleton: false
+name: to_buffer
+params: ()
+visibility: public

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Array</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Array</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/lore/facets/shellwords_rb.html">lib/lore/facets/shellwords.rb</a>
+<a href="../files/lib/lore/facets/set_rb.html">lib/lore/facets/set.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000008">power_set</a></li>
+  <li><a href="#M000007">to_console</a></li>
+  <li><a href="#M000006">to_shell</a></li>
+  <li><a href="#M000005">to_shellwords</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000008"></a><b>power_set</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000008_source')" id="l_M000008_source">show source</a> ]</p>
+  <div id="M000008_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/set.rb, line 16</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">power_set</span>
+    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">empty?</span>
+      [<span class="ruby-keyword kw">self</span>]
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">subset</span>  = <span class="ruby-identifier">dup</span>
+      <span class="ruby-identifier">value</span>   = [ <span class="ruby-identifier">subset</span>.<span class="ruby-identifier">pop</span> ]
+      <span class="ruby-identifier">subsubs</span> = <span class="ruby-identifier">subset</span>.<span class="ruby-identifier">power_set</span>
+      <span class="ruby-identifier">subsubs</span>.<span class="ruby-identifier">concat</span>( <span class="ruby-identifier">subsubs</span>.<span class="ruby-identifier">map</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">subset</span><span class="ruby-operator">|</span> <span class="ruby-identifier">subset</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">value</span> } )
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000007"></a><b>to_console</b>()
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Array.html#M000006">to_shell</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000006"></a><b>to_shell</b>()
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Array.html#M000007">to_console</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000006_source')" id="l_M000006_source">show source</a> ]</p>
+  <div id="M000006_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/shellwords.rb, line 50</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_shell</span>
+    <span class="ruby-identifier">to_shellwords</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">' '</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000005"></a><b>to_shellwords</b>()
+  </div>
+  <div class="description">
+  <p>
+Convert an array into command line parameters. The array is accepted in the
+format of Ruby method arguments &#8212;ie. [arg1, arg2, &#8230;, hash]
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000005_source')" id="l_M000005_source">show source</a> ]</p>
+  <div id="M000005_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/shellwords.rb, line 44</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_shellwords</span>
+    <span class="ruby-identifier">flags</span> = (<span class="ruby-constant">Hash</span><span class="ruby-operator">===</span><span class="ruby-identifier">last</span> <span class="ruby-value">? </span><span class="ruby-identifier">pop</span> <span class="ruby-operator">:</span> {})
+    <span class="ruby-identifier">flags</span> = <span class="ruby-identifier">flags</span>.<span class="ruby-identifier">to_shellwords</span>
+    <span class="ruby-identifier">flags</span> <span class="ruby-operator">+</span> <span class="ruby-value str">' '</span> <span class="ruby-operator">+</span> <span class="ruby-keyword kw">self</span> <span class="ruby-comment cmt">#join(&quot; &quot;)</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

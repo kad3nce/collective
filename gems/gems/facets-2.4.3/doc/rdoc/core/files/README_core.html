@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>File: README.core</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table border='0' cellpadding='0' cellspacing='0' width="100%" class='banner'>
+  <tr><td>
+    <table width="100%" border='0' cellpadding='0' cellspacing='0'><tr>
+      <td class="file-title" colspan="2"><span class="file-title-prefix">File</span><br />README.core</td>
+      <td align="right">
+        <table border='0' cellspacing="0" cellpadding="2">
+          <tr>
+            <td>Path:</td>
+            <td>README.core
+            </td>
+          </tr>
+          <tr>
+            <td>Modified:</td>
+            <td>Tue Aug 12 19:19:38 -0400 2008</td>
+          </tr>
+        </table>
+      </td></tr>
+    </table>
+  </td></tr>
+</table><br />
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+  <div class="description"><h1>Facets Core Library</h1>
+<pre>
+  http://facets.rubyforge.com
+
+  &quot;ALL YOUR BASE ARE BELONG TO RUBY&quot;
+</pre>
+<h2>Introduction</h2>
+<p>
+At the heart of Facets is the core extensions library. This a sizable
+collection of methods that augment Ruby&#8216;s own core classes and
+modules.
+</p>
+<h2>Usage</h2>
+<p>
+For detailed usage of any given method or module please refer to the API
+RDocs.
+</p>
+<pre>
+  http://facets.rubyforge.org/learn.html
+</pre>
+<p>
+Most libraries are well documented. Assistance in improving documentation
+though is always appreciated.
+</p>
+<p>
+If you plan to use more then a few of Facets core method it is recommended
+that you require the main facility.
+</p>
+<pre>
+  require 'facets'
+</pre>
+<p>
+This loads all the CORE functionality at once.
+</p>
+<p>
+Of course you can use the CORE library piecemeal if you prefer. The general
+require statement for a core extensions library is:
+</p>
+<pre>
+  require 'facets/&lt;class|module&gt;/&lt;method-lib&gt;'
+</pre>
+<p>
+For example:
+</p>
+<pre>
+  require 'facets/time/stamp'
+</pre>
+<p>
+Most &quot;atoms&quot; contain only one method, but a few exceptions occur
+when methods are closely tied together.
+</p>
+<p>
+You can load per-class or per-module groups of core methods by requiring
+the class or module by name. For example&quot;
+</p>
+<pre>
+  require 'facets/time'
+</pre>
+<p>
+Will require all the core <a href="../classes/Time.html">Time</a> method
+extensions.
+</p>
+<p>
+Note that some methods that were part of CORE in 1.8 and earlier are now
+part of MORE libraries. A good example is &#8216;random.rb&#8217;. There
+were separated because they had more specialized use cases, where as CORE
+extensions are intended as general purpose.
+</p>
+<h2>Method <a href="../classes/File.html">File</a> Names</h2>
+<p>
+Operator method redirect files are stored using English names. For instance
+for <a href="../classes/Proc.html">Proc</a>#* is &#8216;proc/op_mul&#8217;.
+</p>
+<p>
+For reference, here is the chart.
+</p>
+<pre>
+     +@   =&gt; op_plus_self
+     -@   =&gt; op_minus_self
+     +    =&gt; op_plus
+     -    =&gt; op_minus
+     **   =&gt; op_pow
+     *    =&gt; op_mul
+     /    =&gt; op_div
+     %    =&gt; op_mod
+     ~    =&gt; op_tilde
+     &lt;=&gt;  =&gt; op_cmp
+     &lt;&lt;   =&gt; op_lshift
+     &gt;&gt;   =&gt; op_rshift
+     &lt;    =&gt; op_lt
+     &gt;    =&gt; op_gt
+     ===  =&gt; op_case_eq
+     ==   =&gt; op_equal
+     =~   =&gt; op_apply
+     &lt;=   =&gt; op_lt_eq
+     &gt;=   =&gt; op_gt_eq
+     |    =&gt; op_or
+     &amp;    =&gt; op_and
+     ^    =&gt; op_xor
+     []=  =&gt; op_store
+     []   =&gt; op_fetch
+</pre>
+<p>
+Facets simply takes the &#8217;*&#8217; and translates it into a string
+acceptable to all file systems. Also, if a method ends in &#8217;=&#8217;,
+&#8217;?&#8217; or &#8217;!&#8217; it is simply removed.
+</p>
+<h2>License</h2>
+<p>
+The collection PER COLLECTION is licensed as follows:
+</p>
+<pre>
+  Ruby Facets
+  Copyright (c) 2004-2006 Thomas Sawyer
+
+  Distributed under the terms of the Ruby license.
+</pre>
+<p>
+The Ruby license is a dual license that also provides for use of the GPL.
+Complete texts of both licenses accompany this document (see LICENSE).
+</p>
+<p>
+Acknowledgments and Copyrights for particular snippets of borrowed code are
+given in their respective source. All licenses are either compatible with
+the Ruby license (namely the GPL) or the original author has given
+permission for inclusion of their code under such license.
+</p>
+<p>
+ALL YOUR BASE ARE BELONG TO RUBY!
+</p>
+<p>
+Ruby Facets, Copyright (c)2005,2006,2007,2008 Thomas Sawyer
+</p>
+<p>
+Do you Ruby? (<a href="http://ruby-lang.org">ruby-lang.org</a>)
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+
+  </div>
+
+    </body>
+</html>

@@ -1,0 +1,57 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: end_time
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: start_time
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: time_limit
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Timer
+- !ruby/struct:SM::Flow::P 
+  body: Provides a strightforward means for controlling time critical execution. Can be used as a &quot;stop watch&quot; timer or as a &quot;time bomb&quot; timer.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  t = Timer.new(10) { raise TimeoutError, &quot;timeout!&quot; }\n  t.start\n    :      # done within 10sec timeout\n  t.stop\n  t.start\n    :\n  if condition then\n    t.reset       #--&gt; restart timer\n  end\n"
+- !ruby/struct:SM::Flow::P 
+  body: A Kernel method is also provided for easily timing the exectuion of a block.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  timed { |timer|\n     timer.total_time.round #=&gt; 0\n\n     sleep 1\n     timer.total_time.round #=&gt; 1\n\n     timer.stop\n     timer.total_time.round #=&gt; 1\n\n     sleep 2\n     timer.total_time.round #=&gt; 1\n\n     timer.start\n     timer.total_time.round #=&gt; 1\n\n     sleep 1\n     timer.total_time.round #=&gt; 2\n  }\n"
+constants: []
+
+full_name: Timer
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: defuse
+- !ruby/object:RI::MethodSummary 
+  name: limit
+- !ruby/object:RI::MethodSummary 
+  name: on_timeout
+- !ruby/object:RI::MethodSummary 
+  name: reset
+- !ruby/object:RI::MethodSummary 
+  name: reset_limit
+- !ruby/object:RI::MethodSummary 
+  name: running?
+- !ruby/object:RI::MethodSummary 
+  name: start
+- !ruby/object:RI::MethodSummary 
+  name: stop
+- !ruby/object:RI::MethodSummary 
+  name: stopped?
+- !ruby/object:RI::MethodSummary 
+  name: total_time
+name: Timer
+superclass: Object

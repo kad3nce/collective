@@ -1,0 +1,93 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: days
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: hours
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: minutes
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: total
+  rw: R
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: weeks
+  rw: R
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Duration
+- !ruby/struct:SM::Flow::P 
+  body: Duration is a simple class that provides ways of easily manipulating durations (timespans) and formatting them as well.
+- !ruby/struct:SM::Flow::VERB 
+  body: "    require 'duration'\n    =&gt; true\n    d = Duration.new(60 * 60 * 24 * 10 + 120 + 30)\n    =&gt; #&lt;Duration: 1 week, 3 days, 2 minutes and 30 seconds&gt;\n    d.to_s\n    =&gt; &quot;1 week, 3 days, 2 minutes and 30 seconds&quot;\n    [d.weeks, d.days]\n    =&gt; [1, 3]\n    d.days = 7; d\n    =&gt; #&lt;Duration: 2 weeks, 2 minutes and 30 seconds&gt;\n    d.strftime('%w w, %d d, %h h, %m m, %s s')\n    =&gt; &quot;2 w, 0 d, 0 h, 2 m, 30 s&quot;\n"
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: WEEK
+  value: 60 * 60 * 24 * 7
+- !ruby/object:RI::Constant 
+  comment: 
+  name: DAY
+  value: 60 * 60 * 24
+- !ruby/object:RI::Constant 
+  comment: 
+  name: HOUR
+  value: 60 * 60
+- !ruby/object:RI::Constant 
+  comment: 
+  name: MINUTE
+  value: "60"
+- !ruby/object:RI::Constant 
+  comment: 
+  name: SECOND
+  value: "1"
+full_name: Duration
+includes: 
+- !ruby/object:RI::IncludedModule 
+  name: Comparable
+- !ruby/object:RI::IncludedModule 
+  name: Enumerable
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "*"
+- !ruby/object:RI::MethodSummary 
+  name: +
+- !ruby/object:RI::MethodSummary 
+  name: "-"
+- !ruby/object:RI::MethodSummary 
+  name: /
+- !ruby/object:RI::MethodSummary 
+  name: <=>
+- !ruby/object:RI::MethodSummary 
+  name: days=
+- !ruby/object:RI::MethodSummary 
+  name: each
+- !ruby/object:RI::MethodSummary 
+  name: hours=
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: minutes=
+- !ruby/object:RI::MethodSummary 
+  name: seconds
+- !ruby/object:RI::MethodSummary 
+  name: seconds=
+- !ruby/object:RI::MethodSummary 
+  name: strftime
+- !ruby/object:RI::MethodSummary 
+  name: to_s
+- !ruby/object:RI::MethodSummary 
+  name: weeks=
+name: Duration
+superclass: Object

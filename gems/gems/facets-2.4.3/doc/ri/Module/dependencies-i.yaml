@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Compile list of all unique prerequisite calls.
+full_name: Module#dependencies
+is_singleton: false
+name: dependencies
+params: (name, build=[])
+visibility: public

@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: []
+
+full_name: HtmlFilter#process_tag
+is_singleton: false
+name: process_tag
+params: (data)
+visibility: private

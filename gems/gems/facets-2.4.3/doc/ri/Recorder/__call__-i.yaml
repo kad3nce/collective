@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Recorder#__call__
+is_singleton: false
+name: __call__
+params: ( orig )
+visibility: public

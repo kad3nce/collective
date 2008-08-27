@@ -1,0 +1,31 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: open
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: The class that writes a tar format archive to a data stream.
+constants: []
+
+full_name: Archive::Tar::Minitar::Writer
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_file
+- !ruby/object:RI::MethodSummary 
+  name: add_file_simple
+- !ruby/object:RI::MethodSummary 
+  name: close
+- !ruby/object:RI::MethodSummary 
+  name: flush
+- !ruby/object:RI::MethodSummary 
+  name: mkdir
+- !ruby/object:RI::MethodSummary 
+  name: split_name
+name: Writer
+superclass: Object

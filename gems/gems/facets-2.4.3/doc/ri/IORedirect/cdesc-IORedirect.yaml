@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: redirect
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: IORedirect
+- !ruby/struct:SM::Flow::P 
+  body: A class to redirect $stdout, or other IO object, to a StringIO object, or any other object with a write() method.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  s = StringIO.new\n  r = Redirector.redirect($stdout, s) do\n    $stdout.puts &quot;this is a test&quot;\n  end\n"
+constants: []
+
+full_name: IORedirect
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: start
+- !ruby/object:RI::MethodSummary 
+  name: stop
+name: IORedirect
+superclass: Object

@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Object inspection. (Careful, this can be clobbered!)
+full_name: OpenObject#inspect
+is_singleton: false
+name: inspect
+params: ()
+visibility: public

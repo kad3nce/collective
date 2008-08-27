@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: A convenience method to pack files specified by <tt>src</tt> into <tt>dest</tt>. If <tt>src</tt> is an Array, then each file detailed therein will be packed into the resulting Archive::Tar::Minitar::Output stream; if <tt>recurse_dirs</tt> is true, then directories will be recursed.
+- !ruby/struct:SM::Flow::P 
+  body: If <tt>src</tt> is an Array, it will be treated as the argument to Find.find; all files matching will be packed.
+full_name: Archive::Tar::Minitar::pack
+is_singleton: true
+name: pack
+params: (src, dest, recurse_dirs = true, &block)
+visibility: public

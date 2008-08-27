@@ -1,0 +1,28 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: check
+- !ruby/object:RI::MethodSummary 
+  name: crypt
+- !ruby/object:RI::MethodSummary 
+  name: generate_salt
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Crypt
+- !ruby/struct:SM::Flow::P 
+  body: A pure ruby version of crypt(3), a salted one-way hashing of a password.
+constants: 
+- !ruby/object:RI::Constant 
+  comment: 
+  name: ITOA64
+  value: "\"./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\""
+full_name: Crypt
+includes: []
+
+instance_methods: []
+
+name: Crypt
+superclass: 

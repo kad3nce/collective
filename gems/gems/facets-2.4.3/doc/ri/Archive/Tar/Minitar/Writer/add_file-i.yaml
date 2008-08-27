@@ -1,0 +1,34 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: RestrictedStream.new(@io), opts
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Adds a file to the archive as <tt>name</tt>. <tt>opts</tt> must contain the following value:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:mode</tt>:"
+    body: The Unix file permissions mode value.
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: "<tt>opts</tt> may contain the following values:"
+- !ruby/struct:SM::Flow::P 
+  body: "<tt>:uid</tt>: The Unix file owner user ID number. <tt>:gid</tt>: The Unix file owner group ID number."
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "<tt>:mtime</tt>:"
+    body: The <b>integer</b> modification time value.
+  type: :NOTE
+- !ruby/struct:SM::Flow::P 
+  body: The file's size will be determined from the amount of data written to the stream.
+- !ruby/struct:SM::Flow::P 
+  body: "For #add_file to be used, the Archive::Tar::Minitar::Writer must be wrapping a stream object that is seekable (e.g., it responds to #pos=). Otherwise, #add_file_simple must be used."
+- !ruby/struct:SM::Flow::P 
+  body: <tt>opts</tt> may be modified during the writing to the stream.
+full_name: Archive::Tar::Minitar::Writer#add_file
+is_singleton: false
+name: add_file
+params: (name, opts = {}) {|RestrictedStream.new(@io), opts| ...}
+visibility: public

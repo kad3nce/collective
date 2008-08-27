@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Combine intervals.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  Range.combine(1..2, 2..4)   #=&gt; [1..4]\n  Range.combine(1..2, 3..4)   #=&gt; [1..2, 3..4]\n\n  CREDIT: Trans\n"
+full_name: Range::combine
+is_singleton: true
+name: combine
+params: (*intervals)
+visibility: public

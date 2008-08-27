@@ -1,0 +1,45 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: cache
+- !ruby/object:RI::MethodSummary 
+  name: new
+- !ruby/object:RI::MethodSummary 
+  name: uncache
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: CacheDecorator
+- !ruby/struct:SM::Flow::P 
+  body: CacheDecorator wrap objects to provide cached versions of method calls.
+- !ruby/struct:SM::Flow::H 
+  level: 2
+  text: Usage
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class X\n    def initialize ; @tick = 0 ; end\n    def tick; @tick + 1; end\n    def cached; @cache ||= CacheDecorator.new(self) ; end\n  end\n\n  x = X.new\n  x.tick  #=&gt; 1\n  x.cached.tick  #=&gt; 2\n  x.tick  #=&gt; 3\n  x.cached.tick  #=&gt; 2\n  x.tick  #=&gt; 4\n  x.cached.tick  #=&gt; 2\n"
+- !ruby/struct:SM::Flow::P 
+  body: You can also use to cache a collections of objects to gain code speed ups.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  points = points.collect{|point| Cache.cache(point)}\n"
+- !ruby/struct:SM::Flow::P 
+  body: "After our algorithm has finished using points, we want to get rid of these Cache objects. That's easy:"
+- !ruby/struct:SM::Flow::VERB 
+  body: "   points = points.collect{|point| point.self }\n"
+- !ruby/struct:SM::Flow::P 
+  body: "Or if you prefer (it is ever so slightly safer):"
+- !ruby/struct:SM::Flow::VERB 
+  body: "   points = points.collect{|point| Cache.uncache(point)}\n"
+constants: []
+
+full_name: CacheDecorator
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+- !ruby/object:RI::MethodSummary 
+  name: self
+name: CacheDecorator
+superclass: Object

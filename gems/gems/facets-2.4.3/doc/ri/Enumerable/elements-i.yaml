@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Alias for #every"
+full_name: Enumerable#elements
+is_singleton: false
+name: elements
+params: ()
+visibility: public

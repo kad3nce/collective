@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: chdir
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Change directory.
+- !ruby/struct:SM::Flow::P 
+  body: cd(dir, options) cd(dir, options) {|dir| .... }
+full_name: FileShell#cd
+is_singleton: false
+name: cd
+params: (dir, options=nil, &yld)
+visibility: public

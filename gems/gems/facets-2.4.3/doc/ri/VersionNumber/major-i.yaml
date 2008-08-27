@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Major is the first number in the version series.
+full_name: VersionNumber#major
+is_singleton: false
+name: major
+params: ()
+visibility: public

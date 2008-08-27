@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Snapshot::ValueHolder#take_snapshot
+is_singleton: false
+name: take_snapshot
+params: ()
+visibility: public

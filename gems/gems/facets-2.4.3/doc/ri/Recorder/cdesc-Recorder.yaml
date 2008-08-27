@@ -1,0 +1,34 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Recorder
+- !ruby/struct:SM::Flow::P 
+  body: Recorder is similar essentially a method probe. It records everthing that happens to it, building an internal parse tree. You can then pass a substitute object and apply the recoding to it. Or you can utilize the parse tree.
+- !ruby/struct:SM::Flow::P 
+  body: The only limitation of Recorder is with special operators, like if, &amp;&amp;, ||, etc. Since they are not true methods they can't be recorded. (Too bad for Ruby.)
+- !ruby/struct:SM::Flow::VERB 
+  body: "  class Z\n    def name ; 'George' ; end\n    def age ; 12 ; end\n  end\n\n  z = Z.new\n\n  r = Recorder.new\n  q = proc { |x| (x.name == 'George') &amp; (x.age &gt; 10) }\n  x = q[r]\n  x.<em>call</em>(z)\n"
+- !ruby/struct:SM::Flow::P 
+  body: produces
+- !ruby/struct:SM::Flow::VERB 
+  body: "  true\n"
+constants: []
+
+full_name: Recorder
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: __call__
+- !ruby/object:RI::MethodSummary 
+  name: inspect
+- !ruby/object:RI::MethodSummary 
+  name: method_missing
+name: Recorder
+superclass: Object

@@ -1,0 +1,16 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Looks for the first occurrence of <em>program</em> within <em>path</em>.
+- !ruby/struct:SM::Flow::P 
+  body: On the MS Windows platform, it looks for executables ending with .exe, .bat and .com, which you may optionally include in the program name. Returns <tt>nil</tt> if not found.
+- !ruby/struct:SM::Flow::P 
+  body: CREDIT Daniel J. Berger &amp; Michael Granger
+full_name: FileUtils#which
+is_singleton: false
+name: which
+params: (prog, path=ENV['PATH'])
+visibility: public

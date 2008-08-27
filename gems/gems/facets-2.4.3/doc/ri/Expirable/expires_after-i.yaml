@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Set the expires timeout for this entry.
+full_name: Expirable#expires_after
+is_singleton: false
+name: expires_after
+params: (timeout = (60*60*24))
+visibility: public

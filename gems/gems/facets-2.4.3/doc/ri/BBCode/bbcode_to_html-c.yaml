@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Converts a BBCode string to one with HTML markup. Returns the string with all formatting instructions in BBCodes converted to XHTML markups.
+full_name: BBCode::bbcode_to_html
+is_singleton: true
+name: bbcode_to_html
+params: (string)
+visibility: public

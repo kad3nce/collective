@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return the string with seperated sections arranged in a random order. The default seperation is by character.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &quot;Ruby rules&quot;.shuffle  #=&gt; &quot;e lybRsuur&quot;\n"
+full_name: Random::String#shuffle
+is_singleton: false
+name: shuffle
+params: (separator=//)
+visibility: public

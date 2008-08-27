@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns [ pre_match, matchtree, post_match ]. (see matchtree)
+- !ruby/struct:SM::Flow::VERB 
+  body: "  md = /(bb)(cc(dd))(ee)/.match &quot;XXaabbccddeeffXX&quot;\n  md.to_a      #=&gt; [&quot;XXaabbccddeeffXX&quot;, &quot;bb&quot;, &quot;ccdd&quot;, &quot;dd&quot;, &quot;ee&quot;]\n  md.matchset  #=&gt; [&quot;XXaa&quot;, [[&quot;bb&quot;], [&quot;cc&quot;, [&quot;dd&quot;]], &quot;ee&quot;], &quot;ffXX&quot;]\n\n  CREDIT: Trans\n"
+full_name: MatchData#matchset
+is_singleton: false
+name: matchset
+params: ()
+visibility: public

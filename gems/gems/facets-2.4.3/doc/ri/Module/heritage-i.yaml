@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Module#heritage
+is_singleton: false
+name: heritage
+params: (ref)
+visibility: public

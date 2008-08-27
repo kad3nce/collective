@@ -1,0 +1,11 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: inf?
+block_params: 
+comment: 
+full_name: InfinityClass::Numeric#infinite?
+is_singleton: false
+name: infinite?
+params: ()
+visibility: public

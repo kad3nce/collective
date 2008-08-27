@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: XOXO::make_xoxo
+is_singleton: true
+name: make_xoxo
+params: (struct, class_name=nil)
+visibility: private

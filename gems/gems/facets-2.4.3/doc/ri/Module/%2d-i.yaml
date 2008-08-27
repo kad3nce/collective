@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Subtract modules.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  TODO: Should this use all instance_methods, not just public?\n\n  CREDIT: Thomas Sawyer\n  CREDIT: Robert Dober\n"
+full_name: Module#-
+is_singleton: false
+name: "-"
+params: (other)
+visibility: public

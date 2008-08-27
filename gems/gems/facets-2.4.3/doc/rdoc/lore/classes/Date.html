@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Class: Date</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+
+    <script language="JavaScript" type="text/javascript">
+    // <![CDATA[
+
+        function toggleSource( id )
+        {
+          var elem
+          var link
+
+          if( document.getElementById )
+          {
+            elem = document.getElementById( id )
+            link = document.getElementById( "l_" + id )
+          }
+          else if ( document.all )
+          {
+            elem = eval( "document.all." + id )
+            link = eval( "document.all.l_" + id )
+          }
+          else
+            return false;
+
+          if( elem.style.display == "block" )
+          {
+            elem.style.display = "none"
+            link.innerHTML = "show source"
+          }
+          else
+          {
+            elem.style.display = "block"
+            link.innerHTML = "hide source"
+          }
+        }
+
+        function openCode( url )
+        {
+          window.open( url, "SOURCE_CODE", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=480,width=750" ).focus();
+        }
+      // ]]>
+    </script>
+  </head>
+
+  <body>
+  <table width="100%" border='0' cellpadding='0' cellspacing='0' class='banner'><tr>
+  <td class="file-title"><span class="file-title-prefix">Class</span><br />Date</td>
+  <td align="right">
+    <table cellspacing="0" cellpadding="2">
+      <tr valign="top">
+        <td>In:</td>
+        <td>
+<a href="../files/lib/lore/facets/date_rb.html">lib/lore/facets/date.rb</a>
+        </td>
+      </tr>
+    <tr>
+      <td>Parent:</td>
+      <td>
+Object
+     </td>
+   </tr>
+         </table>
+        </td>
+        </tr>
+      </table>
+ <!-- banner header -->
+
+  <div id="bodyContent">
+      <div id="content">
+
+
+
+
+  <div class="sectiontitle">Methods</div>
+  <ul>
+  <li><a href="#M000021">days_in_month</a></li>
+  <li><a href="#M000022">days_of_month</a></li>
+  <li><a href="#M000023">month_name</a></li>
+  <li><a href="#M000019">stamp</a></li>
+  <li><a href="#M000017">to_date</a></li>
+  <li><a href="#M000020">to_s</a></li>
+  <li><a href="#M000018">to_time</a></li>
+  </ul>
+
+
+
+
+
+
+<div class="sectiontitle">Public Instance methods</div>
+<div class="method">
+  <div class="title">
+    <a name="M000021"></a><b>days_in_month</b>()
+  </div>
+  <div class="description">
+  <p>
+Returns the number of days in the date&#8216;s month.
+</p>
+<pre>
+  Date.new(2004,2).days_in_month #=&gt; 28
+
+ CREDIT: Ken Kunz.
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000021_source')" id="l_M000021_source">show source</a> ]</p>
+  <div id="M000021_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/date.rb, line 61</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">days_in_month</span>
+     <span class="ruby-constant">Date</span>.<span class="ruby-identifier">civil</span>(<span class="ruby-identifier">year</span>, <span class="ruby-identifier">month</span>, <span class="ruby-value">-1</span>).<span class="ruby-identifier">day</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000022"></a><b>days_of_month</b>()
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000022_source')" id="l_M000022_source">show source</a> ]</p>
+  <div id="M000022_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/date.rb, line 65</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">days_of_month</span>
+    (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">days_in_month</span>).<span class="ruby-identifier">to_a</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000023"></a><b>month_name</b>()
+  </div>
+  <div class="description">
+  <p>
+Get the month name for this date object
+</p>
+<pre>
+ CREDIT Benjamin Oakes
+</pre>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000023_source')" id="l_M000023_source">show source</a> ]</p>
+  <div id="M000023_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/date.rb, line 73</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">month_name</span>
+    <span class="ruby-constant">MONTHNAMES</span>[<span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">month</span>]
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000019"></a><b>stamp</b>(format = nil)
+  </div>
+  <div class="description">
+  <p>
+An enhanched <a href="Date.html#M000020">to_s</a> method that cane take an
+optional format flag of :short or :long.
+</p>
+  </div>
+<div class="aka">
+  This method is also aliased as
+  <a href="Date.html#M000020">to_s</a>
+</div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000019_source')" id="l_M000019_source">show source</a> ]</p>
+  <div id="M000019_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/date.rb, line 41</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stamp</span>(<span class="ruby-identifier">format</span> = <span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">format</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:short</span>
+      <span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%e %b&quot;</span>).<span class="ruby-identifier">strip</span>
+    <span class="ruby-keyword kw">when</span> <span class="ruby-identifier">:long</span>
+      <span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%B %e, %Y&quot;</span>).<span class="ruby-identifier">strip</span>
+    <span class="ruby-keyword kw">else</span>
+      <span class="ruby-identifier">strftime</span>(<span class="ruby-value str">&quot;%Y-%m-%d&quot;</span>)  <span class="ruby-comment cmt"># standard to_s</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000017"></a><b>to_date</b>()
+  </div>
+  <div class="description">
+  <p>
+To be able to keep Dates and Times interchangeable on conversions.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000017_source')" id="l_M000017_source">show source</a> ]</p>
+  <div id="M000017_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/date.rb, line 29</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_date</span>
+    <span class="ruby-keyword kw">self</span>
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000020"></a><b>to_s</b>(format = nil)
+  </div>
+  <div class="description">
+  <p>
+Alias for <a href="Date.html#M000019">stamp</a>
+</p>
+  </div>
+</div>
+<div class="method">
+  <div class="title">
+    <a name="M000018"></a><b>to_time</b>(form = :local)
+  </div>
+  <div class="description">
+  <p>
+Convert <a href="Date.html">Date</a> to Time.
+</p>
+  </div>
+<div class="sourcecode">
+  <p class="source-link">[ <a href="javascript:toggleSource('M000018_source')" id="l_M000018_source">show source</a> ]</p>
+  <div id="M000018_source" class="dyn-source">
+<pre>
+<span class="ruby-comment cmt"># File lib/lore/facets/date.rb, line 35</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_time</span>(<span class="ruby-identifier">form</span> = <span class="ruby-identifier">:local</span>)
+    <span class="ruby-operator">::</span><span class="ruby-constant">Time</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">form</span>, <span class="ruby-identifier">year</span>, <span class="ruby-identifier">month</span>, <span class="ruby-identifier">day</span>)
+  <span class="ruby-keyword kw">end</span>
+</pre>
+  </div>
+</div>
+</div>
+</div>
+
+  </div>
+
+    </body>
+</html>

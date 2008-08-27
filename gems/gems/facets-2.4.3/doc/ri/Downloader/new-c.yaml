@@ -1,0 +1,10 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+full_name: Downloader::new
+is_singleton: true
+name: new
+params: ( destination, mirrors=nil, region=nil, &config )
+visibility: public

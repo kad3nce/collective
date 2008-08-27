@@ -1,0 +1,27 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: "Compress based on given extension. Supported extensions are:"
+- !ruby/object:SM::Flow::LIST 
+  contents: 
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: tar.gz
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: tgz
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: tar.bz2
+  - !ruby/struct:SM::Flow::LI 
+    label: "*"
+    body: zip
+  type: :BULLET
+full_name: ZipUtils#compress
+is_singleton: false
+name: compress
+params: (format_extension, folder, file=nil, options={})
+visibility: public

@@ -1,0 +1,15 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: 
+- !ruby/object:RI::AliasName 
+  name: ===
+- !ruby/object:RI::AliasName 
+  name: member?
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Returns true or false if the element is part of the interval.
+full_name: Interval#include?
+is_singleton: false
+name: include?
+params: (x)
+visibility: public

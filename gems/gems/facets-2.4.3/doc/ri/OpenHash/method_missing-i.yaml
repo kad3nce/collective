@@ -1,0 +1,12 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Route get and set calls.
+full_name: OpenHash#method_missing
+is_singleton: false
+name: method_missing
+params: (s, *a)
+visibility: public

@@ -1,0 +1,14 @@
+--- !ruby/object:RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Return a random separation of the string. Default separation is by charaacter.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  &quot;Ruby rules&quot;.at_rand(' ')  #=&gt; [&quot;Ruby&quot;]\n"
+full_name: Random::String#at_rand
+is_singleton: false
+name: at_rand
+params: ( separator=// )
+visibility: public

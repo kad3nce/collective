@@ -1,0 +1,49 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: 
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: destination
+  rw: RW
+- !ruby/object:RI::Attribute 
+  comment: 
+  name: region
+  rw: RW
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: Downloader
+- !ruby/struct:SM::Flow::P 
+  body: Tool module for downloading files and extracting archive files. Currently this is console-based but in the future will have SOC for any interface.
+constants: []
+
+full_name: Downloader
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: add_mirror
+- !ruby/object:RI::MethodSummary 
+  name: add_mirrors
+- !ruby/object:RI::MethodSummary 
+  name: compute_checksum
+- !ruby/object:RI::MethodSummary 
+  name: download
+- !ruby/object:RI::MethodSummary 
+  name: extract
+- !ruby/object:RI::MethodSummary 
+  name: fetch
+- !ruby/object:RI::MethodSummary 
+  name: interface
+- !ruby/object:RI::MethodSummary 
+  name: interface=
+- !ruby/object:RI::MethodSummary 
+  name: mirrors
+- !ruby/object:RI::MethodSummary 
+  name: monitored_download
+- !ruby/object:RI::MethodSummary 
+  name: prioritize_urls
+name: Downloader
+superclass: Object

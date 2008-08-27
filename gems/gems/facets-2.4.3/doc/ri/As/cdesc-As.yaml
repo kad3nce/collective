@@ -1,0 +1,19 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Support class for Kernel#as.
+- !ruby/struct:SM::Flow::P 
+  body: "TODO: Deprecate this and use Functor (HigherOrderMessage) instead."
+constants: []
+
+full_name: As
+includes: []
+
+instance_methods: []
+
+name: As
+superclass: Object

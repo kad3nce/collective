@@ -25,5 +25,4 @@ task :merb_env do
 end
 
 ## Require all tasks found in ./tasks
-
 Dir["tasks/**/*.rake"].each { |rake_file| load(rake_file) }

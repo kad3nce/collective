@@ -1,0 +1,32 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:SM::Flow::P 
+  body: Dry-run verions of ZipUtils.
+- !ruby/struct:SM::Flow::P 
+  body: This is the same as passing the :dryrun flag to ZipUtils. Which is also equivalent to passing :noop and :verbose together.
+constants: []
+
+full_name: ZipUtils::DryRun
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: compress
+- !ruby/object:RI::MethodSummary 
+  name: tar_bzip2
+- !ruby/object:RI::MethodSummary 
+  name: tar_gzip
+- !ruby/object:RI::MethodSummary 
+  name: untar_bzip2
+- !ruby/object:RI::MethodSummary 
+  name: untar_gzip
+- !ruby/object:RI::MethodSummary 
+  name: unzip
+- !ruby/object:RI::MethodSummary 
+  name: zip
+name: DryRun
+superclass: 

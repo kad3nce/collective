@@ -1,0 +1,26 @@
+--- !ruby/object:RI::ClassDescription 
+attributes: []
+
+class_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: new
+comment: 
+- !ruby/struct:SM::Flow::H 
+  level: 1
+  text: AutoArray
+- !ruby/struct:SM::Flow::P 
+  body: An Array that automatically expands dimensions as needed.
+- !ruby/struct:SM::Flow::VERB 
+  body: "  a  = Autoarray.new\n  a[1][2][3] = 12\n  a             #=&gt; [nil, [nil, nil, [nil, nil, nil, 12]]]\n  a[2][3][4]    #=&gt; []\n  a             #=&gt; [nil, [nil, nil, [nil, nil, nil, 12]]]\n  a[1][-2][1] = &quot;Negative&quot;\n  a             #=&gt; [nil, [nil, [nil, &quot;Negative&quot;], [nil, nil, nil, 12]]]\n"
+constants: []
+
+full_name: Autoarray
+includes: []
+
+instance_methods: 
+- !ruby/object:RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RI::MethodSummary 
+  name: "[]="
+name: Autoarray
+superclass: Array
