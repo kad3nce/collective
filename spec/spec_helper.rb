@@ -1,4 +1,7 @@
 require 'rubygems'
+# Make the app's "gems" directory a place where gems are loaded from
+Gem.clear_paths
+Gem.path.unshift(File.expand_path(File.join(File.dirname(__FILE__), '..', 'gems')))
 require 'merb-core'
 require 'spec' # Satiates Autotest and anyone else not using the Rake tasks
 

@@ -25,40 +25,21 @@ Take It For A Spin
 Dependencies required
 ---------------------
 
-Merb 0.9.5:
+The commands below use the switch to ignore dependencies, as the needed
+dependencies are included in Collective's local gems repo.
+
+Merb Core 0.9.5:
 
 <pre>
-$ gem install merb -v 0.9.5
+$ gem install merb-core -v 0.9.5 --ignore-dependencies
 </pre>
 
-DataMapper 0.9.5:
+A Data Objects Database Adapter:
 
 <pre>
-$ gem install datamapper -v 0.9.5
-$ gem install merb_datamapper -v 0.9.5
-$ gem install data_objects -v 0.9.5
-$ gem install do_sqlite3 (or) do_mysql (or) do_postgres -v 0.9.5
+$ gem install do_sqlite3(or)do_mysql(or)do_postgres -v 0.9.5 --ignore-dependencies
 </pre>
 
-RedCloth 3.0.4:
-
-<pre>
-$ gem install RedCloth -v 3.0.4
-</pre>
-
-Viking Gem 0.0.2:
-
-<pre>
-$ gem install vikinggem -v 0.0.2
-</pre>
-
-Diff Lcs 1.1.2:
-
-<pre>
-$ gem install diff-lcs -v 1.1.2  
-</pre>
-
-  
 Spam Protection
 ---------------
 
