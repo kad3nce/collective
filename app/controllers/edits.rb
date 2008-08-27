@@ -44,8 +44,10 @@ private
     if Viking.enabled?
       if (version.spam?)
         Viking.mark_as_ham(:signatures => version.signature)
+        version.update_attribute(:spam, false)
       else
         Viking.mark_as_spam(:signatures => version.signature)
+        version.update_attribute(:spam, true)
       end
     end
   end

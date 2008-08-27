@@ -5,7 +5,7 @@ class Page
   property :name, String,  :nullable => false
   property :slug, String,  :nullable => false
 
-  has n, :versions, :spam => false #, :dependent => :destroy
+  has n, :versions, :spam => false #,:dependent => :destroy
   before :destroy do
     self.versions.each { |v| v.destroy }
   end
