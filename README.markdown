@@ -40,6 +40,12 @@ A Data Objects Database Adapter:
 $ gem install do_sqlite3(or)do_mysql(or)do_postgres -v 0.9.5 --ignore-dependencies
 </pre>
 
+ParseTree (Collective uses merb-action-args which depends on ParseTree):
+
+<pre>
+$ gem install ParseTree
+</pre>
+
 Spam Protection
 ---------------
 

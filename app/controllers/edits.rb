@@ -31,7 +31,7 @@ class Edits < Application
 private
 
   def authenticate
-    basic_authentication('Merb Wiki') do |username, password|
+    basic_authentication(Collective.title) do |username, password|
       username == Collective.admin_username && password == Collective.admin_password
     end
   end
