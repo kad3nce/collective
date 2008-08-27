@@ -103,11 +103,11 @@ describe Version do
     end
   
     it 'should get the previous version for this page' do
-      @versions.last.previous.should == @versions[-2]
+      @versions.last.previous(@versions).should == @versions[-2]
     end
     
     it 'should get nil if no previous version' do
-      @versions.first.previous.should == nil
+      @versions.first.previous(@versions).should == nil
     end
   end
   

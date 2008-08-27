@@ -43,9 +43,9 @@ class Version
     Diff.cs_diff(previous_content, content_html, :unified, 0)
   end
 
-  def previous
-    index = page.versions.index(self)
-    index == 0 ? nil : page.versions[index-1]
+  def previous(versions)
+    index = versions.index(self)
+    index == 0 ? nil : versions[index-1]
   end
   
   def spam_or_ham
