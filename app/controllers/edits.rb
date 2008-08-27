@@ -13,7 +13,7 @@ class Edits < Application
   # Accessed by: PUT /edits/1
   def update(id)
     provides :js, :json
-    @edit = Version.first(id) || raise(NotFound)
+    @edit = Version.get!(id) || raise(NotFound)
     train_spam_engine(@edit)
     if request.xhr?
       render '', :status => 200, :layout => false # renders nothing
