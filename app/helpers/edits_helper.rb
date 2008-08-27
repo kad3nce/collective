@@ -5,7 +5,7 @@ module Merb
     # any contents
     def link_to_page_or_nothing(version)
       if(page = version.page)
-        link_to page.name, url(:page, page)
+        link_to page.name, url(:page, page.slug)
       else
         "New Page: #{version.content.split(':').last}"
       end
