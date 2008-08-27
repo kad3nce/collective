@@ -3,4 +3,4 @@
 - @pages.each do |page|
   %ul#list-of-pages
     %li
-      %h2= link_to(page.name, url(:page, page))
+      %h2= link_to(page.name, url(:page, page.slug))

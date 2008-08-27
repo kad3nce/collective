@@ -3,7 +3,7 @@ class Pages < Application
   
   # Accessed by: GET /pages
   def index
-    @pages = Page.all
+    @pages = Page.all(:order => [:name.asc])
     display @pages
   end
 
