@@ -120,12 +120,12 @@ describe Edits do
     end
     
     it 'should load the requested Version' do
-      Version.should_receive(:first).with("1").and_return(@edit)
+      Version.should_receive(:get!).with("1").and_return(@edit)
       do_put.assigns(:edit).should == @edit
     end
     
     it 'should raise NotFound if an invalid ID is provided' do
-      Version.should_receive(:first).with("1").and_return(nil)
+      Version.should_receive(:get!).with("1").and_return(nil)
       lambda { do_put }.should raise_error(Merb::ControllerExceptions::NotFound)
     end
     
