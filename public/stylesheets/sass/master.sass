@@ -114,8 +114,10 @@ ul#navigation
   a
     :line-height 1.4em
     :text-decoration none
+    &#login
+      :background transparent url(/images/openid-small.png) no-repeat scroll 0 1px
+      :padding 2px 2px 2px 18px
   button
-    :background transparent
     :border none
     :cursor pointer
     :font-size 1em
@@ -135,11 +137,14 @@ ul#navigation
   :width 70%
   .error
     :color red
+  a#login
+    :background transparent url(/images/openid.png) no-repeat scroll
+    :padding 2px 0px 2px 30px
   blockquote p
     :font-style oblique
     :margin 20px
   input#openid_url
-    :background #FFFFFF url(/images/openid.png) no-repeat scroll 3px 2px
+    :background #FFFFFF url(/images/openid-small.png) no-repeat scroll 3px 2px
     :padding 2px 0px 2px 22px
     :width 200px
   li

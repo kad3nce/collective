@@ -33,7 +33,7 @@ module Merb
     end
 
     def link_to_login
-      link_to 'Login', url(:new_session, :destination => request.path)
+      link_to 'Login', url(:new_session, :destination => request.path), :id => 'login'
     end
 
     def link_to_login_or_account

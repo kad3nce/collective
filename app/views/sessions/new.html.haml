@@ -1,6 +1,6 @@
 - unless message.blank?
   %p.error= message
-%h2 Login with your OpenID. No signup required!
+%h2 Login with your OpenID. No signup required.
 - form_tag(:action => url(:login) ) do |f|
   = text_field :name => :openid_url, :id => :openid_url
   = submit_button 'Login'
