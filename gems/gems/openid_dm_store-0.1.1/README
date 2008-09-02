@@ -1,0 +1,48 @@
+=DataMapper OpenID Store
+
+(Ported from Dag Arneson's active_record_openid_store plugin)
+
+A store is required by an OpenID server and optionally by the consumer
+to store associations, nonces, and auth key information across
+requests and processes.  If an application is distributed across several
+machines, they must must all have access to the same OpenID store
+data, so the FilesystemStore won't do.
+
+This gem enables an app to use a database backed OpenID store
+through DataMapper.
+
+==Install
+
+1) Install the gem:
+  
+  gem install meekish-openid_dm_store --source http://gems.github.com
+
+2) Require it in your app
+
+  require 'rubygems'
+  require 'openid_dm_store'
+
+3) Issue the commands (script/console, merb -i, etc.) to create the needed tables in your database:
+
+  OpenIDDataMapper::Association.auto_migrate!
+  OpenIDDataMapper::Nonce.auto_migrate!
+
+4) Change your app to use the OpenIDDataMapper Store:
+
+  store = OpenIDDataMapper::DataMapperStore.new
+  consumer = OpenID::Consumer.new(session, store)
+
+5) That's it! All your OpenID state will now be stored in the database.
+
+==What about garbage collection? 
+
+You may garbage collect unused nonces and expired associations using the cleanup 
+instance method of OpenIDDataMapper::DataMapperStore.  
+
+  OpenIDDataMapper::DataMapperStore.new.cleanup
+
+Throw that into a rake task and add it to your crontab and you're all set.
+
+==Questions?
+
+Contact Jed Hurt: jed dot hurt at gmail dot com

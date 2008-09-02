@@ -8,14 +8,14 @@ describe Page do
     end
     
     after(:each) do
-      Page.auto_migrate!
-      Version.auto_migrate!
+      Bootstrapper.bootstrap!
     end
     
     it 'should destroy all associated versions when destroyed' do
-      Version.all.length.should == 7
+      page_id = @page.id
+      Version.all(:page_id => page_id).length.should == 7
       @page.destroy
-      Version.all.length.should == 0
+      Version.all(:page_id => page_id).length.should == 0
     end
   end
   
@@ -43,8 +43,7 @@ describe Page do
     end
     
     after(:each) do
-      Page.auto_migrate!
-      Version.auto_migrate!
+      Bootstrapper.bootstrap!
     end
     
     it 'should return the version number passed' do
@@ -117,8 +116,7 @@ describe Page do
     
   describe '.versions' do
     after(:each) do
-      Page.auto_migrate!
-      Version.auto_migrate!
+      Bootstrapper.bootstrap!
     end
     
     it 'should not include any versions marked as spam' do

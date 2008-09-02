@@ -20,4 +20,5 @@ Dir[File.dirname(__FILE__) / "shared" / "*.rb"].each do |helper|
   require(helper)
 end
 
-repository.auto_migrate!
+require 'bootstrapper'
+Bootstrapper.bootstrap!

@@ -2,9 +2,8 @@ class Version
   include DataMapper::Resource
   
   property :id,		        Integer, :serial => true
-  # Disabled lazy-loading as it was causing the first call to these attributes to return nil
-  property :content,      Text,    :lazy => false, :nullable => false
-  property :content_html, Text,    :lazy => false
+  property :content,      Text,    :nullable => false
+  property :content_html, Text
   property :created_at,   DateTime
   property :moderated,    Boolean, :default => false
   property :remote_ip,    String
@@ -13,6 +12,7 @@ class Version
   property :signature,    String
   
   belongs_to :page
+  belongs_to :user
   
   before(:valid?) { populate_content_html unless content.blank? }
 

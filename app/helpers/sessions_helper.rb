@@ -1,5 +1,5 @@
 module Merb
-    module SessionsHelper
+  module SessionsHelper
 
-    end
-end
+  end
+end # Merb

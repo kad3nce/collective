@@ -66,6 +66,7 @@ ul
 #header
   :height 74px
   :margin-bottom 25px
+  :position relative
   :width 100%
   img
     :margin-top 8px
@@ -93,10 +94,10 @@ ul#navigation
   :margin
     :right 20px
     :top 25px
-  :width 19em
+  :width 40em
   li
     :display block
-    :float left
+    :float right
     a
       :display block
       :float left
@@ -105,6 +106,24 @@ ul#navigation
   li.last a
     :margin-right 0
 
+#account
+  :padding 2px 2px 2px 4px
+  :position absolute
+  :right 0
+  :top 0
+  a
+    :line-height 1.4em
+    :text-decoration none
+  button
+    :background transparent
+    :border none
+    :cursor pointer
+    :font-size 1em
+    :margin 0
+    :padding 0
+  form a
+    :text-decoration underline
+    
 /* ******************************
 /* * CONTENT
 /* ******************************
@@ -117,6 +136,10 @@ ul#navigation
   blockquote p
     :font-style oblique
     :margin 20px
+  input#openid_url
+    :background #FFFFFF url(/images/openid.png) no-repeat scroll 3px 2px
+    :padding 2px 0px 2px 22px
+    :width 200px
   li
     :margin-bottom 5px
     :margin-left 18px
@@ -134,10 +157,6 @@ ul#navigation
     h1
       :border-bottom none
       :margin-bottom 10px
-    input#openid_url
-      :background #FFFFFF url(/images/openid.png) no-repeat scroll 3px 2px
-      :padding 2px 0px 2px 22px
-      :width 200px
     p
       :margin-bottom 0
       a

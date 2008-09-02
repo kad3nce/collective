@@ -6,12 +6,13 @@
     = css_include_tag :reset, :master, *Collective.stylesheets
   %body
     #header
+      #account= link_to_login_or_account
       #branding
         %h1= Collective.title
       %ul#navigation
-        %li= highlighted_link_to 'Home', url(:home)
+        %li= highlighted_link_to 'New Page', url(:new_page)
         %li= highlighted_link_to 'All Pages', url(:pages)
-        %li.last= highlighted_link_to 'New Page', url(:new_page)
+        %li= highlighted_link_to 'Home', url(:home)
     / - flash.each do |type, message|      
     /   #notice{ :class => type }
     /     %p= message

@@ -1,0 +1,5 @@
+%h2= message
+
+- form_tag(:action => url(:login) ) do |f|
+  = text_field :name => :openid_url, :id => :openid_url
+  = submit_button 'Login'

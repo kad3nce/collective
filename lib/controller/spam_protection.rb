@@ -7,7 +7,7 @@ module SpamProtection
   # Accessed by: POST /pages
   def create(page, version)
     @page = Page.new(page)
-    @page.versions << @version = Version.new(version.merge!(:remote_ip => request.remote_ip))
+    @page.versions << @version = Version.new(version.merge!(:remote_ip => request.remote_ip, :user => @user))
     if @page.valid? && @version.valid?
       response = check_comment_with_spam_engine(@page.url, @version.content_html)
       if response[:spam]
@@ -31,7 +31,7 @@ module SpamProtection
   # Accessed by: PUT /pages/1
   def update(id, version)
     @page = Page.by_slug(id) || raise(Merb::ControllerExceptions::NotFound)
-    @page.versions << @version = Version.new(version.merge!(:remote_ip => request.remote_ip))
+    @page.versions << @version = Version.new(version.merge!(:remote_ip => request.remote_ip, :user => @user))
     if @version.valid?
       response = check_comment_with_spam_engine(@page.url, @version.additions(@page.versions))
       @version.signature = response[:signature]
@@ -62,7 +62,8 @@ private
       :comment_type   => 'comment', 
       :article_date   => Time.now, 
       :user_logged_in => false,
-      :trusted_user   => false
+      :trusted_user   => false#,
+      # :openid         => x
     }
   end
 end

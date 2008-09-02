@@ -63,6 +63,7 @@ ul {
 #header {
   height: 74px;
   margin-bottom: 25px;
+  position: relative;
   width: 100%; }
   #header img {
     margin-top: 8px;
@@ -88,10 +89,10 @@ ul#navigation {
   float: right;
   margin-right: 20px;
   margin-top: 25px;
-  width: 19em; }
+  width: 40em; }
   ul#navigation li {
     display: block;
-    float: left; }
+    float: right; }
     ul#navigation li a {
       display: block;
       float: left;
@@ -99,6 +100,24 @@ ul#navigation {
       padding: 6px 9px 28px 9px; }
   ul#navigation li.last a {
     margin-right: 0; }
+
+#account {
+  padding: 2px 2px 2px 4px;
+  position: absolute;
+  right: 0;
+  top: 0; }
+  #account a {
+    line-height: 1.4em;
+    text-decoration: none; }
+  #account button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    margin: 0;
+    padding: 0; }
+  #account form a {
+    text-decoration: underline; }
 
 /* ****************************** */
 /* * CONTENT */
@@ -112,6 +131,10 @@ ul#navigation {
   #content blockquote p {
     font-style: oblique;
     margin: 20px; }
+  #content input#openid_url {
+    background: #FFFFFF url(/images/openid.png) no-repeat scroll 3px 2px;
+    padding: 2px 0px 2px 22px;
+    width: 200px; }
   #content li {
     margin-bottom: 5px;
     margin-left: 18px; }
@@ -128,10 +151,6 @@ ul#navigation {
   #content #page-form h1 {
     border-bottom: none;
     margin-bottom: 10px; }
-  #content #page-form input#openid_url {
-    background: #FFFFFF url(/images/openid.png) no-repeat scroll 3px 2px;
-    padding: 2px 0px 2px 22px;
-    width: 200px; }
   #content #page-form p {
     margin-bottom: 0; }
     #content #page-form p a {

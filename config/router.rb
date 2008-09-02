@@ -24,4 +24,8 @@ Merb::Router.prepare do |r|
   r.match('/').to(:controller => 'pages', :action =>'show', :id => 'home').name(:home)
   r.resources :pages
   r.resources :edits
+  r.resources :sessions
+  r.match('/login').to(:controller => 'sessions', :action => 'create').name(:login)
+  r.match('/logout', :method => :delete).to(:controller => 'sessions', :action => 'destroy').name(:logout)
+  # r.resources :users
 end

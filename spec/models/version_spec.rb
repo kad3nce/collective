@@ -30,7 +30,7 @@ describe Version do
     
     it 'should have a created_at field' do
       Version.create!(:content => 'some words').created_at.should be_an_instance_of(DateTime)
-      Version.auto_migrate!
+      Bootstrapper.bootstrap!
     end
   
     it 'should belong to a page' do
@@ -45,8 +45,8 @@ describe Version do
       @version.save
     end
     
-    after(:all) do
-      Version.auto_migrate!
+    after(:each) do
+      Bootstrapper.bootstrap!
     end
     
     it 'should render content to HTML' do
@@ -78,7 +78,7 @@ describe Version do
     end
 
     after(:each) do
-      Version.auto_migrate!
+      Bootstrapper.bootstrap!
     end
     
     it 'should return the ten (by default) most recent non-spam versions' do
@@ -98,8 +98,7 @@ describe Version do
     end
 
     after(:each) do
-      Version.auto_migrate!
-      Page.auto_migrate!
+      Bootstrapper.bootstrap!
     end
   
     it 'should get the previous version for this page' do
@@ -125,7 +124,7 @@ describe Version do
     include VersionSpecHelper
     
     after(:each) do
-      Version.auto_migrate!
+      Bootstrapper.bootstrap!
     end
     
     it "should create a new record" do

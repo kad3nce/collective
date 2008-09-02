@@ -23,6 +23,17 @@ pre {
       color: black; }
 
 /* ****************************** */
+/* * NAVIGATION */
+/* ****************************** */
+#account {
+  background-color: black; }
+  #account a:hover {
+    background-color: transparent;
+    color: white; }
+  #account button {
+    color: white; }
+
+/* ****************************** */
 /* * CONTENT */
 /* ****************************** */
 /* #notice p */

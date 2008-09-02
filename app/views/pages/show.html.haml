@@ -13,3 +13,4 @@
     | Version:
     = select_versions_for_page @page, @version
     = submit_button 'Go', :id => 'go-button'
+    = "by #{@version.user.name}"

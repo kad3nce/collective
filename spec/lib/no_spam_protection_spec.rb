@@ -72,7 +72,7 @@ describe Pages, "with no spam protection" do
     end
 
     it 'should initialize a new version record' do
-      Version.should_receive(:new).with({'content' => 'an updated tutorial'}).and_return(@version)
+      Version.should_receive(:new).and_return(@version)
       do_put.assigns(:version).should == @version
     end
     

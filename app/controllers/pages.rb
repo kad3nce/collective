@@ -27,7 +27,7 @@ class Pages < Application
   # - GET /pages/1/edit
   # - GET /pages/1/edit?version=3
   def edit(id, version = :latest)
-    @page = Page.by_slug(id)      || raise(NotFound)
+    @page = Page.by_slug(id) || raise(NotFound)
     @version = @page.find_version(version) || raise(NotFound)
     render
   end

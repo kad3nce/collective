@@ -1,0 +1,68 @@
+merb_openid
+===========
+
+A plugin for Merb that wraps the ruby-openid gem (2.x) and provides an easy interface for consuming OpenIDs
+in a very similar way to the open_id_authentication plugin for Rails.
+
+Installation
+============
+
+Easy:
+
+   gem install danwrong-merb_openid --source http://gems.github.com
+   
+Then in your application's init.rb:
+
+   dependency 'merb_openid'
+   
+The plugin uses the pretty limited memory store by default but you can add a new store using Merb::Config:
+
+   Merb::Config[:merb_openid][:store] = OpenID::Store::Memory.new
+   
+You'll probably want to use a database store on production apps.  I'll start adding adapters based on the
+various ORMs soon.
+
+Usage
+=====
+
+In your routes you need to make sure that the url you consume OpenIDs from can accept get requests, so:
+
+   r.match('openid').(:controller => 'session', :action => 'openid')
+   
+Then in your controller:
+
+  class Session < Merb::Controller
+  
+    def openid
+      if openid_request? # has the user provided a url (openid_url)
+        openid_authenticate do |result, identity_url|
+          if result == :success
+            user = User.find_by_openid_url(identity_url)
+          end
+        end
+      end
+    end
+    
+  end
+  
+SReg
+====
+
+Getting SReg data is easy too:
+
+  class Session < Merb::Controller
+  
+    def openid
+      if openid_request? # has the user provided a url (openid_url)
+        openid_authenticate(:fields => [:fullname, :email]) do |result, identity_url, sreg|
+          if result == :success
+            user = User.find_by_openid_url(identity_url)
+            user.name = sreg[:fullname]
+          end
+        end
+      end
+    end
+    
+  end
+  
+More to come!

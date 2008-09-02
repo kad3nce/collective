@@ -1,6 +1,10 @@
-- title 'New Page'
+- title 'Creating New Page'
 = error_messages_for @page
+= error_messages_for @version
 - form_for :page, :action => url(:page), :id => 'page-form' do
+  %p
+    Creating a new page as
+    = login_or_name
   %h1= text_control :name
   %ul
     %li

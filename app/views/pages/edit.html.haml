@@ -1,4 +1,7 @@
-%h2= title "Editing #{@page.name}"
+%h2
+  = title "Editing #{@page.name}"
+  as
+  = login_or_name
 = error_messages_for @page
 - form_for :page, :action => url(:page, @page) do
   %ul#page-form
@@ -9,5 +12,3 @@
       ~ text_area_field @version.content, :name => 'version[content]'
     %li
       = submit_button 'Submit'
-      as
-      = text_field :name => :openid_url, :id => :openid_url
