@@ -4,7 +4,7 @@ class Sessions < Application
   end
 
   # TODO: Redirect to page user was on when he/she clicked 'Login'
-    def create
+  def create
     
     if openid_request?
       openid_authenticate(:sreg => [:fullname]) do |result, identity_url, sreg|
@@ -28,4 +28,4 @@ class Sessions < Application
     redirect destination
   end
 
-end # Sessions
+end

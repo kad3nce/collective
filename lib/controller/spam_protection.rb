@@ -50,6 +50,7 @@ private
     Viking.check_comment(
       default_spam_engine_params.update(
         :comment_content => content,
+        :comment_author  => @user.name, 
         :user_ip         => request.remote_ip,
         :trusted_user    => @user.trusted?,
         :permalink       => url
@@ -59,10 +60,10 @@ private
 
   def default_spam_engine_params
     { 
-      :comment_author => 'anonymous', 
       :comment_type   => 'comment', 
       :article_date   => Time.now, 
       :user_logged_in => false
     }
   end
+  
 end
