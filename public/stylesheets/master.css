@@ -113,6 +113,7 @@ ul#navigation {
       background: transparent url(/images/openid-small.png) no-repeat scroll 0 1px;
       padding: 2px 2px 2px 18px; }
   #account button {
+    background: transparent;
     border: none;
     cursor: pointer;
     font-size: 1em;
