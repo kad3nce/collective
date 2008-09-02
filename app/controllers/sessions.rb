@@ -3,7 +3,8 @@ class Sessions < Application
     render
   end
 
-  def create
+  # TODO: Redirect to page user was on when he/she clicked 'Login'
+    def create
     
     if openid_request?
       openid_authenticate(:sreg => [:fullname]) do |result, identity_url, sreg|
@@ -12,7 +13,7 @@ class Sessions < Application
           session[:user_id] = @user.id
           redirect(params[:destination] || '/')
         else
-          @_message = "Your login failed with the following status: #{result}"
+          @_message = "Your login attempt failed with the following status: #{result}."
           render :new
         end
       end
@@ -22,9 +23,9 @@ class Sessions < Application
     
   end
 
-  def destroy
+  def destroy(destination = '/')
     session[:user_id] = nil
-    redirect '/'
+    redirect destination
   end
 
 end # Sessions

@@ -6,6 +6,7 @@ module Merb
         <form method="post" action="#{url(:logout)}">
           Logged in as #{@user.name} |
           <input type="hidden" value="delete" name="_method"/>
+          <input type="hidden" value="#{request.path}" name="destination"/>
           <button type="submit">Logout</button>
         </form>
       </div>

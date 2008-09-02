@@ -128,6 +128,8 @@ ul#navigation {
   padding: 15px;
   position: relative;
   width: 70%; }
+  #content .error {
+    color: red; }
   #content blockquote p {
     font-style: oblique;
     margin: 20px; }
@@ -151,6 +153,8 @@ ul#navigation {
   #content #page-form h1 {
     border-bottom: none;
     margin-bottom: 10px; }
+  #content #page-form li {
+    margin-left: 0; }
   #content #page-form p {
     margin-bottom: 0; }
     #content #page-form p a {

@@ -1,9 +1,10 @@
 class User
   include DataMapper::Resource
 
-  property :id,         Integer, :serial => true
+  property :id,         Integer, :serial   => true
   property :name,       String,  :nullable => false
   property :openid_url, String,  :nullable => false
+  property :trusted,    Boolean, :default  => false
 
   before :valid?, :populate_name
   

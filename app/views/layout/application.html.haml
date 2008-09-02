@@ -13,9 +13,6 @@
         %li= highlighted_link_to 'New Page', url(:new_page)
         %li= highlighted_link_to 'All Pages', url(:pages)
         %li= highlighted_link_to 'Home', url(:home)
-    / - flash.each do |type, message|      
-    /   #notice{ :class => type }
-    /     %p= message
     #content
       = catch_content :for_layout
     #sidebar

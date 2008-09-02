@@ -51,6 +51,7 @@ private
       default_spam_engine_params.update(
         :comment_content => content,
         :user_ip         => request.remote_ip,
+        :trusted_user    => @user.trusted?,
         :permalink       => url
       )
     )
@@ -61,9 +62,7 @@ private
       :comment_author => 'anonymous', 
       :comment_type   => 'comment', 
       :article_date   => Time.now, 
-      :user_logged_in => false,
-      :trusted_user   => false#,
-      # :openid         => x
+      :user_logged_in => false
     }
   end
 end
