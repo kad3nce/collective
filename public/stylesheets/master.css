@@ -133,9 +133,12 @@ ul#navigation {
   width: 70%; }
   #content .error {
     color: red; }
-  #content a#login {
+  #content h2 a#login {
     background: transparent url(/images/openid.png) no-repeat scroll;
     padding: 2px 0px 2px 30px; }
+  #content p a#login {
+    background: transparent url(/images/openid-small.png) no-repeat scroll 0 1px;
+    padding: 2px 2px 2px 18px; }
   #content blockquote p {
     font-style: oblique;
     margin: 20px; }
