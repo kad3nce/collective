@@ -38,9 +38,9 @@ class Version
     diff(versions).gsub("\t", '').scan(/^\+(.*)/).flatten.join("\n")
   end
 
-  def diff(versions = page.versions)
-    previous_content = previous(versions).try(:content_html) || ''
-    Diff.cs_diff(previous_content, content_html, :unified, 0)
+  def diff(versions = page.versions, property = :content_html)
+    previous_content = previous(versions).try(property) || ''
+    Diff.cs_diff(previous_content, send(property), :unified, 0)
   end
 
   def previous(versions = page.versions)

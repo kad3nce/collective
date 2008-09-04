@@ -8,4 +8,4 @@
   - @page.versions.all(:order => [:id.desc]).each do |version|
     .edit
       %p.timestamp= "#{time_ago_in_words(version.created_at)} ago"
-      = view_diff(version.diff)
+      = view_diff(version.diff(version.page.versions, :content))

@@ -59,7 +59,7 @@ module Merb
   private
     def fill_render_add(value)
       unless value.empty?
-        "<div class=\"addition\">#{preserve(value)}</div>"
+        "<div class=\"addition\">#{escape_once(value)}</div>"
       else
         ""
       end
@@ -67,7 +67,7 @@ module Merb
 
     def fill_render_del(value)
       unless value.empty?
-        "<div class=\"deletion\">#{preserve(value)}</div>"
+        "<div class=\"deletion\">#{escape_once(value)}</div>"
       else
         ""
       end
