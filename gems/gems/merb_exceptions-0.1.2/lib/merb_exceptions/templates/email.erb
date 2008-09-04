@@ -1,0 +1,34 @@
+Woops! Sorry but it looks like something went wrong.
+With any luck the details below will aid you in solving the problem.
+
+
+REQUEST
+--------
+URL: <%= params['request_url'] %>
+Controller: <%= params['request_controller'] %>
+Action:  <%= params['request_action'] %>
+Status Code: <%= params['request_status_code'] %>
+
+
+EXCEPTION
+----------
+Name: <%= params['exception_name'] %>
+Merb Exception Class: <%= params['merb_exception_class'] %>
+Original Exception Class: <%= params['original_exception_class'] %>
+message: <%= params['exception_message'] %>
+
+
+PARAMETERS
+-----------
+<% params['request_params'].each do |key,value| %><%= key %>: <%= value %>
+<% end %>
+
+BACKTRACE
+----------
+<%= params['exception_backtrace'] %>
+
+
+ENVIRONMENT
+------------
+<% params['environment'].each do |key,value| %><%= key %>: <%= value %>
+<% end %>

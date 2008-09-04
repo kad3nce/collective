@@ -1,0 +1,10 @@
+:exceptions:
+  :app_name: My App Name
+  :email_from: exceptions@myapp.com
+  # :web_hooks: http://localhost:4000/exceptions
+  :email_addresses: 
+  - user@myapp.com
+  - hello@exceptions.com
+:environments:
+  - staging
+  - production
