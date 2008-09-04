@@ -48,22 +48,16 @@ private
 
   def check_comment_with_spam_engine(url, content)
     Viking.check_comment(
-      default_spam_engine_params.update(
-        :comment_content => content,
-        :comment_author  => @user.name, 
-        :user_ip         => request.remote_ip,
-        :trusted_user    => @user.trusted?,
-        :permalink       => url
-      )
+      :article_date    => Time.now,
+      :comment_author  => @user.name,
+      :comment_content => content,
+      :comment_type    => 'comment',
+      :openid          => @user.openid_url,
+      :permalink       => url,
+      :trusted_user    => @user.trusted?,
+      :user_ip         => request.remote_ip,
+      :user_logged_in  => true
     )
-  end
-
-  def default_spam_engine_params
-    { 
-      :comment_type   => 'comment', 
-      :article_date   => Time.now, 
-      :user_logged_in => false
-    }
   end
   
 end

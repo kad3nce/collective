@@ -3,13 +3,15 @@ Collective
 
 A no-frills wiki built on Merb 0.9.x and DataMapper 0.9.x
  
-Features/Problems
+Features
 -----------------
  
 * Versioned pages
 * Textile/Markdown content formatting
 * Pretty page urls
 * Custom theme support
+* Integration with Defensio for Spam protection
+* Trusted user system based on OpenID
   
 Take It For A Spin
 ------------------
