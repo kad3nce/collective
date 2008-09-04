@@ -38,6 +38,10 @@ describe Version do
     end
   end
 
+  describe '#diff' do
+    it 'should return an inline diff of this version and the previous version for this page'
+  end
+
   describe '#populate_html_content' do
     
     before(:all) do
