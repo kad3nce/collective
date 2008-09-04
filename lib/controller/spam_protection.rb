@@ -51,7 +51,7 @@ private
       :article_date    => Time.now,
       :comment_author  => @user.name,
       :comment_content => content,
-      :comment_type    => 'comment',
+      :comment_type    => 'other',
       :openid          => @user.openid_url,
       :permalink       => url,
       :trusted_user    => @user.trusted?,
