@@ -25,7 +25,7 @@ module Viking
     attr_accessor :proxy_port, :proxy_host
     attr_reader   :last_response
 
-    self.service_type     = :blog
+    self.service_type     = :app
     self.host             = 'api.defensio.com'
     self.api_version      = '1.2'
     self.standard_headers = {
