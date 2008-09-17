@@ -29,7 +29,7 @@ module OpenIDDataMapper
         a = assoc.from_record    
         if a.expires_in == 0
           # assoc.destroy
-          assoc.destroy!
+          assoc.destroy
         else
           return a
         end
@@ -40,7 +40,7 @@ module OpenIDDataMapper
 
     def remove_association(server_url, handle)
       # Association.delete_all(['server_url = ? AND handle = ?', server_url, handle]) > 0
-      Association.all(:server_url => server_url, :handle => handle).destroy!
+      Association.all(:server_url => server_url, :handle => handle).destroy
     end
 
     def use_nonce(server_url, timestamp, salt)
@@ -54,13 +54,13 @@ module OpenIDDataMapper
     def cleanup_nonces
       now = Time.now.to_i
       # Nonce.delete_all(["timestamp > ? OR timestamp < ?", now + OpenID::Nonce.skew, now - OpenID::Nonce.skew])
-      Nonce.all(:conditions => ["timestamp > ? OR timestamp < ?", now + OpenID::Nonce.skew, now - OpenID::Nonce.skew]).destroy!
+      Nonce.all(:conditions => ["timestamp > ? OR timestamp < ?", now + OpenID::Nonce.skew, now - OpenID::Nonce.skew]).destroy
     end
 
     def cleanup_associations
       now = Time.now.to_i
       # Association.delete_all(['issued + lifetime > ?',now])
-      Association.all(:conditions => ['issued + lifetime > ?', now]).destroy!
+      Association.all(:conditions => ['issued + lifetime > ?', now]).destroy
     end
 
   end
